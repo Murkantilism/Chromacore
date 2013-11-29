@@ -28,9 +28,6 @@ public class Teli_Animation : MonoBehaviour {
 	// The latest timestamp to reset music track at right checkpoint
 	float checkpoint_timestamp;
 	
-	// Object used to get the movement script
-	public GameObject MovementScript;
-	
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
