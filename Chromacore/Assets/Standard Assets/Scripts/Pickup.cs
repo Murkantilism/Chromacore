@@ -10,6 +10,8 @@ public class Pickup : MonoBehaviour {
 	// Get the parent of this collectible
 	GameObject parent;
 	
+	public GameObject particleEffect;
+	
 	// Use this for initialization
 	void Start () {
 		parent = transform.parent.gameObject;
@@ -19,6 +21,9 @@ public class Pickup : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if(col.gameObject.tag == "Player")
 		{
+			// Move the particle effect to this location
+			particleEffect.transform.position = gameObject.transform.position;
+			
 			// Change the color of the textures on pickup
 			parent.SendMessage("ChangeColor");
 			// A note has been collected so increment the score

@@ -9,6 +9,8 @@ Project("{DBC62298-6D1A-4770-F7BE-CC28879D1540}") = "Chromacore", "Assembly-CSha
 EndProject
 Project("{DBC62298-6D1A-4770-F7BE-CC28879D1540}") = "Chromacore", "Assembly-UnityScript-firstpass.unityproj", "{AE6DD8DA-5073-88A5-CCCB-6C9523A73601}"
 EndProject
+Project("{DBC62298-6D1A-4770-F7BE-CC28879D1540}") = "Chromacore", "Assembly-UnityScript.unityproj", "{049C355B-3257-E8D2-23F2-8A5ED9819886}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +33,15 @@ Global
 		{AE6DD8DA-5073-88A5-CCCB-6C9523A73601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE6DD8DA-5073-88A5-CCCB-6C9523A73601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE6DD8DA-5073-88A5-CCCB-6C9523A73601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049C355B-3257-E8D2-23F2-8A5ED9819886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049C355B-3257-E8D2-23F2-8A5ED9819886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049C355B-3257-E8D2-23F2-8A5ED9819886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049C355B-3257-E8D2-23F2-8A5ED9819886}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																															GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																																																																													GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
