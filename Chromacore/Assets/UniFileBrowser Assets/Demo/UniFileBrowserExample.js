@@ -7,6 +7,29 @@ private var pathChar = "/"[0];
 
 private var myFilePath;
 
+private var pcP = false;
+private var iphoneP = false;
+private var androidP = false;
+
+// Determine Platform at compile time
+/*
+function Awake(){
+  #if UNITY_STANDALONE
+    Debug.Log("Standalone PC (Win/Mac/Lin)");
+    pcP = true;
+  #endif
+  
+  #if UNITY_IPHONE
+    Debug.Log("iPhone");
+    iphoneP = true;
+  #endif
+  
+  #if UNITY_ANDROID
+  	Debug.Log("Android")
+  	androidP = true;
+  #endif
+}*/
+
 function Start () {
 	if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
 		pathChar = "\\"[0];
@@ -50,7 +73,9 @@ function OnGUI () {
 function OpenFile (pathToFile : String) {
 	message = "You selected file: " + pathToFile.Substring (pathToFile.LastIndexOf (pathChar) + 1);
 	// Save file path
-	myFilePath = pathToFile.Substring (pathToFile.LastIndexOf (pathChar) + 1);
+	myFilePath = pathToFile;
+	myFilePath = myFilePath.ToString();
+	//myFilePath = pathToFile.Substring (pathToFile.LastIndexOf (pathChar) + 1);
 	openMP3();
 	Fade();
 }
@@ -91,23 +116,90 @@ function FadeAlpha () {
 }
 
 function openMP3 () {
-	Debug.Log(myFilePath);
+	Debug.Log("file://"+myFilePath);
 	
-	// Start downloading at the given path
-	var www = new WWW (myFilePath);
-	// Wait for download to finish
-	yield www;
+	// If were running on standalone PC, use OGG to get audio clip
+	if (pcP){
+		// GetAudioClip implementation (newer):
+		
+		// Start downloading
+		//var wwwPC = new WWW ("file://" + myFilePath);
+		var wwwPC = new WWW ("file://C:/Burn.ogg");
+		
+		// Wait for download to finish
+    	while( !wwwPC.isDone )
+       		yield wwwPC;
+		
+		Debug.Log(wwwPC.isDone);
+		Debug.Log(audio.clip.name);
+		Debug.Log(audio.clip.length);
+		
+		// Grab the audio clip
+		if (wwwPC.isDone){
+			audio.clip = wwwPC.GetAudioClip(true, true);
+		
+			var startTimer = Time.deltaTime; // Start a load timer
+			
+			// Play clip
+			while(!audio.isPlaying && audio.clip.isReadyToPlay){
+				audio.Play();
+			}
+		
+			// Output timer
+			if (audio.isPlaying){
+				stopTimer = Time.deltaTime;
+				var loadTimer = stopTimer - startTimer;
+				Debug.Log(loadTimer);
+			}
+		}
 	
-	audio.clip = www.audioClip;
+		/* OGG Streaming solution (depricated):
+		
+		// Start downloading
+		var downloadPC = new WWW (myFilePath);
+		
+		// Wait for download to finish
+		while (!downloadPC.isDone){
+			yield return null;
+		}
+		
+		// Create ogg vorbis file
+		var clipPC : AudioClip = downloadPC.oggVorbis;
+		
+		// Play clip
+		if (clipPC != null){
+			audio.clip = clipPC;
+			audio.Play();
+		}
+		*/
+		
+	}
 	
-	/*
-	while(!audio.isPlaying && audio.clip.isReadyToPlay){
-		audio.Play();
-	}*/
-}
-
-function Update(){
-	Debug.Log(audio.clip.isReadyToPlay);
-	if (!audio.isPlaying && audio.clip.isReadyToPlay)
-	        audio.Play();
+	// If were are running on iPhone, 
+	if (iphoneP){
+		// Start downloading at the given path
+		var wwwiOS = new WWW (myFilePath);
+		// Wait for download to finish
+		yield wwwiOS;
+		
+		audio.clip = wwwiOS.audioClip;
+		
+		while(!audio.isPlaying && audio.clip.isReadyToPlay){
+			audio.Play();
+		}
+	}
+	
+	// If were are running on Android, use WWW to get audio clip
+	if (androidP){
+		// Start downloading at the given path
+		var wwwDroid = new WWW (myFilePath);
+		// Wait for download to finish
+		yield wwwDroid;
+		
+		audio.clip = wwwDroid.audioClip;
+		
+		while(!audio.isPlaying && audio.clip.isReadyToPlay){
+			audio.Play();
+		}
+	}
 }
