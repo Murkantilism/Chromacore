@@ -11,6 +11,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 	float alpha = 1.0f;
 	char pathChar = '/';
 	
+	/*
 	bool pcP = false;
 	bool iphoneP = false;
 	bool androidP = false;
@@ -19,18 +20,21 @@ public class UniFileBrowserExample : MonoBehaviour {
 	private WWW wwwData;
 	// The instance of this class used to download
 	private static UniFileBrowserExample downloadManager = null;
+	*/
 	
 	void Start () {
+		/*
 		// Initialization of download manager
 		if(UniFileBrowserExample.downloadManager == null){
 			UniFileBrowserExample.downloadManager = FindObjectOfType(typeof(UniFileBrowserExample)) as UniFileBrowserExample;
-		}
+		}*/
 		
 		
 		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
 			pathChar = '\\';
 		}
 		
+		/*
 		// Determine Platform at compile time
 	  	#if UNITY_STANDALONE
 	   	 	Debug.Log("Standalone PC (Win/Mac/Lin)");
@@ -46,6 +50,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 	  		Debug.Log("Android")
 	  		androidP = true;
 	 	#endif
+	 	*/
 	}
 	
 	void OnGUI () {
@@ -65,7 +70,6 @@ public class UniFileBrowserExample : MonoBehaviour {
 			
 			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 95, 35), "Back")){
 					Application.LoadLevel("MainMenu");
-					audio.Stop();
 			}
 			
 			/*
@@ -90,6 +94,13 @@ public class UniFileBrowserExample : MonoBehaviour {
 		var fileIndex = pathToFile.LastIndexOf (pathChar);
 		message = "You selected file: " + pathToFile.Substring (fileIndex+1, pathToFile.Length-fileIndex-1);
 		
+		// Pass file path to Loading Screen, then load loading screen
+		LoadingScreen loadScreen = GetComponent<LoadingScreen>();
+		loadScreen.RecieveFilePath(pathToFile.ToString());
+		
+		Application.LoadLevel("LoadingScreen");
+		
+		/*
 		// Invoke the Download function to begin OGG download, wait, and play functions
 		if(pcP){
 			try{
@@ -97,7 +108,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 			}catch(Exception e){
 				Debug.Log(e.ToString());
 			}
-		}
+		}*/
 		
 		Fade();
 	}
@@ -138,6 +149,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 		message = "";
 	}
 	
+	/*
 	// Start download of the OGG, catch any errors along the way
 	public static void myDownloadCallback(byte[]data, string sError){
 		try{
@@ -191,5 +203,5 @@ public class UniFileBrowserExample : MonoBehaviour {
 	// Once Application is closed, delete download manager
 	void OnApplicationQuit(){
 		UniFileBrowserExample.downloadManager = null;
-	}
+	}*/
 }

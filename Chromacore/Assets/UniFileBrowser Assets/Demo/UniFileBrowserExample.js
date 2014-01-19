@@ -134,6 +134,7 @@ function openMP3 () {
 		Debug.Log(audio.clip.name);
 		Debug.Log(audio.clip.length);
 		
+		/*
 		// Grab the audio clip
 		if (wwwPC.isDone){
 			audio.clip = wwwPC.GetAudioClip(true, true);
@@ -151,7 +152,7 @@ function openMP3 () {
 				var loadTimer = stopTimer - startTimer;
 				Debug.Log(loadTimer);
 			}
-		}
+		}*/
 	
 		/* OGG Streaming solution (depricated):
 		
