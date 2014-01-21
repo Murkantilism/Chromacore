@@ -1,0 +1,126 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp-firstpass.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_STANDALONE_WIN
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_MONO
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_GENERICS
+-define:ENABLE_SUBSTANCE
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:UNITY_4_3_2
+-define:UNITY_4_3
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+-define:light
+Assets/Plugins/tk2d/Code/Camera/tk2dCamera.cs
+Assets/Plugins/tk2d/Code/Camera/tk2dCameraAnchor.cs
+Assets/Plugins/tk2d/Code/Camera/tk2dCameraUtil.cs
+Assets/Plugins/tk2d/Code/Fonts/tk2dFont.cs
+Assets/Plugins/tk2d/Code/Fonts/tk2dFontData.cs
+Assets/Plugins/tk2d/Code/Fonts/tk2dTextGeomGen.cs
+Assets/Plugins/tk2d/Code/Fonts/tk2dTextMesh.cs
+Assets/Plugins/tk2d/Code/Gui/tk2dButton.cs
+Assets/Plugins/tk2d/Code/Runtime/tk2dResource.cs
+Assets/Plugins/tk2d/Code/Runtime/tk2dSystem.cs
+Assets/Plugins/tk2d/Code/Runtime/tk2dUpdateManager.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dAnimatedSprite.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dBaseSprite.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dClippedSprite.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dPixelPerfectHelper.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dRuntimeSpriteCollection.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSlicedSprite.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSprite.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteAnimation.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteAnimator.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteAttachPoint.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteCollection.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteCollectionData.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteCollectionInterfaces.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteCollectionSize.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteFromTexture.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dSpriteGeomGen.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dStaticSpriteBatcher.cs
+Assets/Plugins/tk2d/Code/Sprites/tk2dTiledSprite.cs
+Assets/Plugins/tk2d/Code/tk2dUtil.cs
+Assets/Plugins/tk2dTileMap/Code/tk2dTileMap.cs
+Assets/Plugins/tk2dTileMap/Code/tk2dTileMapBuilderUtil.cs
+Assets/Plugins/tk2dTileMap/Code/tk2dTileMapChunks.cs
+Assets/Plugins/tk2dTileMap/Code/tk2dTileMapColliderBuilder.cs
+Assets/Plugins/tk2dTileMap/Code/tk2dTileMapColliderBuilder2D.cs
+Assets/Plugins/tk2dTileMap/Code/tk2dTileMapData.cs
+Assets/Plugins/tk2dTileMap/Code/tk2dTileMapMeshBuilder.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIBaseItemControl.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIDragItem.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIDropDownItem.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIDropDownMenu.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIHoverItem.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIMultiStateToggleButton.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIProgressBar.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIScrollableArea.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIScrollbar.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUISoundItem.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUITextInput.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIToggleButton.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIToggleButtonGroup.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIToggleControl.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUITweenItem.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIUpDownButton.cs
+Assets/Plugins/tk2dUI/Code/Controls/tk2dUIUpDownHoverButton.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUIAudioManager.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUICamera.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUIItem.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUILayout.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUILayoutContainer.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUILayoutContainerSizer.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUIManager.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUIMask.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUISpriteAnimator.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUITime.cs
+Assets/Plugins/tk2dUI/Code/Core/tk2dUITouch.cs
+"Assets/Standard Assets/Character Controllers/Sources/Scripts/MouseLook.cs"
+"Assets/Standard Assets/Scripts/Checkpoints.cs"
+"Assets/Standard Assets/Scripts/ColorSwap.cs"
+"Assets/Standard Assets/Scripts/EndOfLevel.cs"
+"Assets/Standard Assets/Scripts/General Scripts/ActivateTrigger.cs"
+"Assets/Standard Assets/Scripts/Glow_Animation.cs"
+"Assets/Standard Assets/Scripts/Inventory.cs"
+"Assets/Standard Assets/Scripts/LoadingScreen.cs"
+"Assets/Standard Assets/Scripts/Note Placement/AutomaticNotePlacer.cs"
+"Assets/Standard Assets/Scripts/Note Placement/xPositionCalculator.cs"
+"Assets/Standard Assets/Scripts/NoteCollect.cs"
+"Assets/Standard Assets/Scripts/ObstacleCollision.cs"
+"Assets/Standard Assets/Scripts/ObstacleDeath.cs"
+"Assets/Standard Assets/Scripts/Pause.cs"
+"Assets/Standard Assets/Scripts/Pickup.cs"
+"Assets/Standard Assets/Scripts/ScoringSystem.cs"
+"Assets/Standard Assets/Scripts/SongBrowser.cs"
+"Assets/Standard Assets/Scripts/Teli_Animation.cs"
+"Assets/Standard Assets/Scripts/Utility Scripts/CombineChildren.cs"
+"Assets/Standard Assets/Scripts/Utility Scripts/MeshCombineUtility.cs"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"

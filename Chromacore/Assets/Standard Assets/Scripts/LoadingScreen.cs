@@ -138,7 +138,15 @@ public class LoadingScreen : MonoBehaviour {
 	// and format it to work with WWW download
 	public void RecieveFilePath(string myFilePath){
 		Debug.Log(myFilePath);
-		
+
+		// Replace each backslash with a forward slash
+		myFilePath = myFilePath.Replace(@"\", "/");
+		// Append "file: //" at the beginning
+		myFilePath = "file: //" + myFilePath;
+
+		Debug.Log(myFilePath);
+
+
 		DontDestroyUs();
 		
 		// Load the level
@@ -166,13 +174,16 @@ public class LoadingScreen : MonoBehaviour {
 		// Invoke the Download function to begin OGG download, wait, and play functions
 		if(pcP){
 			try{
-				LoadingScreen.Download("file: //C:/Burn.ogg", myDownloadCallback);
+
+				LoadingScreen.Download(myFilePath, myDownloadCallback);
+				//LoadingScreen.Download("file: //C:/Burn.ogg", myDownloadCallback);
 			}catch(Exception e){
 				Debug.Log(e.ToString());
 			}
 		}else if(androidP){
 			try{
-				downloadManager.Download_Android("file: //C:/Burn.ogg");
+				downloadManager.Download_Android(myFilePath);
+				//downloadManager.Download_Android("file: //C:/Burn.ogg");
 			}catch(Exception e){
 				Debug.Log(e.ToString());
 			}
@@ -256,7 +267,7 @@ public class LoadingScreen : MonoBehaviour {
 		while(!audio.isPlaying && audio.clip.isReadyToPlay){
 			audio.Play();
 		}
-	}
+	}// Test comment please ignore
 	
 	
 	
