@@ -653,7 +653,7 @@ MonoBehaviour:
   _anchorPoint: 4
   anchorToNativeBounds: 0
   offset: {x: 0, y: 0}
-  tk2dCamera: {fileID: 65}
+  tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 37}
 --- !u!114 &55
 MonoBehaviour:
@@ -673,6 +673,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 156, y: 78}
   _anchor: 0
   _borderOnly: 0
@@ -742,6 +743,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 4
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 500
@@ -768,6 +770,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 615.538696, y: 241.387726}
   _anchor: 4
   _borderOnly: 0
@@ -791,7 +794,7 @@ MonoBehaviour:
   _anchorPoint: 4
   anchorToNativeBounds: 0
   offset: {x: 0, y: 0}
-  tk2dCamera: {fileID: 65}
+  tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 37}
 --- !u!114 &59
 MonoBehaviour:
@@ -827,6 +830,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 2
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 16
@@ -853,6 +857,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &61
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,6 +876,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &62
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,6 +895,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &63
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +914,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &64
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,7 +929,7 @@ MonoBehaviour:
   _anchorPoint: 8
   anchorToNativeBounds: 0
   offset: {x: 0, y: 0}
-  tk2dCamera: {fileID: 65}
+  tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 37}
 --- !u!114 &65
 MonoBehaviour:
@@ -935,30 +943,19 @@ MonoBehaviour:
   m_Name: 
   version: 1
   cameraSettings:
-    clearFlags: 1
-    backgroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
-    cullingMask:
-      serializedVersion: 2
-      m_Bits: 4294967295
     projection: 0
-    transparencySortMode: 2
     orthographicSize: 10
     orthographicPixelsPerMeter: 1
     orthographicOrigin: 0
     orthographicType: 0
+    transparencySortMode: 2
     fieldOfView: 60
-    nearClipPlane: .300000012
-    farClipPlane: 20
     rect:
       serializedVersion: 2
       x: 0
       y: 0
       width: 1
       height: 1
-    depth: 0
-    renderingPath: -1
-    targetTexture: {fileID: 0}
-    hdr: 0
   resolutionOverride:
   - name: 
     matchBy: 0

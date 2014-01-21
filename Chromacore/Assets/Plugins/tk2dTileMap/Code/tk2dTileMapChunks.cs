@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace tk2dRuntime.TileMap
 {
@@ -22,6 +23,9 @@ namespace tk2dRuntime.TileMap
 		public Mesh mesh;
 		public MeshCollider meshCollider;
 		public Mesh colliderMesh;
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+		public List<EdgeCollider2D> edgeColliders = new List<EdgeCollider2D>();
+#endif
 		public SpriteChunk() { spriteIds = new int[0]; }
 		
 		public bool Dirty
@@ -37,16 +41,21 @@ namespace tk2dRuntime.TileMap
 		
 		public bool HasGameData
 		{
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			get { return gameObject != null || mesh != null || meshCollider != null ||  colliderMesh != null || edgeColliders.Count > 0; }
+#else
 			get { return gameObject != null || mesh != null || meshCollider != null ||  colliderMesh != null; }
+#endif
 		}
 		
 		public void DestroyGameData(tk2dTileMap tileMap)
 		{
 			if (mesh != null) tileMap.DestroyMesh(mesh);
-			if (gameObject != null) GameObject.DestroyImmediate(gameObject);
+			if (gameObject != null) tk2dUtil.DestroyImmediate(gameObject);
+
 			gameObject = null;
 			mesh = null;
-			
+
 			DestroyColliderData(tileMap);
 		}
 		
@@ -56,9 +65,17 @@ namespace tk2dRuntime.TileMap
 				tileMap.DestroyMesh(colliderMesh);
 			if (meshCollider != null && meshCollider.sharedMesh != null && meshCollider.sharedMesh != colliderMesh) 
 				tileMap.DestroyMesh(meshCollider.sharedMesh);
-			if (meshCollider != null) GameObject.DestroyImmediate(meshCollider);
+			if (meshCollider != null) tk2dUtil.DestroyImmediate(meshCollider);
 			meshCollider = null;
 			colliderMesh = null;
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			if (edgeColliders.Count > 0) {
+				for (int i = 0; i < edgeColliders.Count; ++i) {
+					tk2dUtil.DestroyImmediate(edgeColliders[i]);
+				}
+				edgeColliders.Clear();
+			}
+#endif
 		}
 	}
 	
@@ -378,6 +395,15 @@ namespace tk2dRuntime.TileMap
 				CreateChunk(chunk);
 				chunk.spriteIds[offset] = value;
 				chunk.Dirty = true;
+			}
+		}
+
+		public void DestroyGameData(tk2dTileMap tilemap) {
+			foreach (SpriteChunk sc in spriteChannel.chunks) {
+				if (sc.HasGameData) {
+					sc.DestroyColliderData(tilemap);
+					sc.DestroyGameData(tilemap);
+				}
 			}
 		}
 

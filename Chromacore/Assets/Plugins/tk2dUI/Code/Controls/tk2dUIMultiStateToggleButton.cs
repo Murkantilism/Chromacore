@@ -115,7 +115,7 @@ public class tk2dUIMultiStateToggleButton : tk2dUIBaseItemControl
             {
                 if (n != index)
                 {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
                     if (states[n].active)
                     {
                         states[n].SetActiveRecursively(false);
@@ -130,7 +130,7 @@ public class tk2dUIMultiStateToggleButton : tk2dUIBaseItemControl
                 }
                 else
                 {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
                     if (!states[n].active)
                     {
                         states[n].SetActiveRecursively(true);

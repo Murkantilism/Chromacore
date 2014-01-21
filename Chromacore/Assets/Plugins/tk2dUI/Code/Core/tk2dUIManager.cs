@@ -54,7 +54,9 @@ public class tk2dUIManager : MonoBehaviour
 
     public Camera GetUICameraForControl( GameObject go ) {
         int layer = 1 << go.layer;
-        foreach (tk2dUICamera camera in allCameras) {
+        int cameraCount = allCameras.Count;
+        for (int i = 0; i < cameraCount; ++i) {
+            tk2dUICamera camera = allCameras[i];
             if ((camera.FilteredMask & layer) != 0) {
                 return camera.HostCamera;
             }
@@ -224,9 +226,12 @@ public class tk2dUIManager : MonoBehaviour
 
     void SortCameras() {
         sortedCameras.Clear();
-        foreach (tk2dUICamera c in allCameras) {
-            if (c != null) {
-                sortedCameras.Add( c );
+
+        int cameraCount = allCameras.Count;
+        for (int i = 0; i < cameraCount; ++i) {
+            tk2dUICamera camera = allCameras[i];
+            if (camera != null) {
+                sortedCameras.Add( camera );
             }
         }
 
@@ -239,6 +244,12 @@ public class tk2dUIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+
+            if (instance.transform.childCount != 0) {
+                Debug.LogError("You should not attach anything to the tk2dUIManager object. " +
+                    "The tk2dUIManager will not get destroyed between scene switches and any children will persist as well.");
+            }
+
             if (Application.isPlaying) {
                 DontDestroyOnLoad( gameObject );
             }
@@ -249,6 +260,14 @@ public class tk2dUIManager : MonoBehaviour
             if (instance != this)
             {
                 Debug.Log("Discarding unnecessary tk2dUIManager instance.");
+
+                if (uiCamera != null) {
+                    HookUpLegacyCamera(uiCamera);
+                    uiCamera = null;
+                }
+
+                Destroy(this);
+
                 return;
             }
         } 
@@ -257,14 +276,18 @@ public class tk2dUIManager : MonoBehaviour
         Setup();
     }
 
-    void Start() {
-        if (uiCamera != null && uiCamera.GetComponent<tk2dUICamera>() == null) {
-            Debug.Log("It is no longer necessary to hook up a camera to the tk2dUIManager. You can simply attach a tk2dUICamera script to the cameras that interact with UI.");
-
+    void HookUpLegacyCamera(Camera cam) {
+        if (cam.GetComponent<tk2dUICamera>() == null) {
             // Handle registration properly
-            tk2dUICamera cam = uiCamera.gameObject.AddComponent<tk2dUICamera>();
-            cam.AssignRaycastLayerMask( raycastLayerMask );
-            
+            tk2dUICamera newUICam = cam.gameObject.AddComponent<tk2dUICamera>();
+            newUICam.AssignRaycastLayerMask( raycastLayerMask );
+        }
+    }
+
+    void Start() {
+        if (uiCamera != null) {
+            Debug.Log("It is no longer necessary to hook up a camera to the tk2dUIManager. You can simply attach a tk2dUICamera script to the cameras that interact with UI.");
+            HookUpLegacyCamera(uiCamera);
             uiCamera = null;
         }
 
@@ -627,7 +650,9 @@ public class tk2dUIManager : MonoBehaviour
     }
 
     tk2dUIItem RaycastForUIItem( Vector2 screenPos ) {
-        foreach (tk2dUICamera currCamera in sortedCameras) {
+        int cameraCount = sortedCameras.Count;
+        for (int i = 0; i < cameraCount; ++i) {
+            tk2dUICamera currCamera = sortedCameras[i];
             ray = currCamera.HostCamera.ScreenPointToRay( screenPos );
             if (Physics.Raycast( ray, out hit, currCamera.HostCamera.farClipPlane, currCamera.FilteredMask )) {
                 return hit.collider.GetComponent<tk2dUIItem>();

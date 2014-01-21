@@ -146,6 +146,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 250, y: 120}
   _anchor: 4
   _borderOnly: 0
@@ -367,6 +368,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 4
+    renderLayer: 0
     scale: {x: 5, y: 5, z: 5}
     kerning: 0
     maxChars: 10

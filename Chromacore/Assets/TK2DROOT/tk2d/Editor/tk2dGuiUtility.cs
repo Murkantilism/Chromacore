@@ -227,6 +227,27 @@ public static class tk2dGuiUtility
 		EditorGUI.indentLevel--;
 	}
 
+	public static void LookLikeControls() {
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
+		EditorGUIUtility.LookLikeControls();
+#endif
+	}
+	public static void LookLikeControls(float labelWidth) {
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
+		EditorGUIUtility.LookLikeControls(labelWidth);
+#endif
+	}
+	public static void LookLikeControls(float labelWidth, float fieldWidth) {
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
+		EditorGUIUtility.LookLikeControls(labelWidth, fieldWidth);
+#endif
+	}
+	public static void LookLikeInspector() {
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
+		EditorGUIUtility.LookLikeInspector();
+#endif
+	}
+
 	public static string PlatformPopup(tk2dSystem system, string label, string platform)
 	{
 		if (system == null)

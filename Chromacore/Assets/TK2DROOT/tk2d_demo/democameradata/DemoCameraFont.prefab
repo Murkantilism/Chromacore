@@ -53,11 +53,18 @@ MonoBehaviour:
   useTk2dCamera: 1
   targetHeight: 1
   targetOrthoSize: .5
+  sizeDef:
+    type: 1
+    orthoSize: 10
+    pixelsPerMeter: 1
+    width: 960
+    height: 640
   gradientCount: 1
   manageMaterial: 1
   loadable: 0
   charPadX: 0
   data: {fileID: 11400000, guid: 3082bbcb45b417041963b6b8562266c1, type: 2}
+  version: 1
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6

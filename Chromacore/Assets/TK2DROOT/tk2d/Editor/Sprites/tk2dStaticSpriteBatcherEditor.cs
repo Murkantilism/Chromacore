@@ -8,6 +8,12 @@ class tk2dStaticSpriteBatcherEditor : Editor
 {
 	tk2dStaticSpriteBatcher batcher { get { return (tk2dStaticSpriteBatcher)target; } }
 	
+	// Like GetComponentsInChildren, but doesn't include self
+	T[] GetComponentsInChildrenExcludeSelf<T>(Transform root) where T : Component {
+		List<T> allTransforms = new List<T>( root.GetComponentsInChildren<T>() );
+		return (from t in allTransforms where t.transform != root select t).ToArray();
+	}
+
 	void DrawEditorGUI()
 	{
 		if (GUILayout.Button("Commit"))
@@ -32,7 +38,21 @@ class tk2dStaticSpriteBatcherEditor : Editor
 				EditorUtility.DisplayDialog("StaticSpriteBatcher", "Error: No child objects found", "Ok");
 				return;
 			}
-		
+
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			MeshCollider[] childMeshColliders = GetComponentsInChildrenExcludeSelf<MeshCollider>(batcher.transform);
+			BoxCollider[] childBoxColliders = GetComponentsInChildrenExcludeSelf<BoxCollider>(batcher.transform);
+			BoxCollider2D[] childBoxCollider2Ds = GetComponentsInChildrenExcludeSelf<BoxCollider2D>(batcher.transform);
+			EdgeCollider2D[] childEdgeCollider2Ds = GetComponentsInChildrenExcludeSelf<EdgeCollider2D>(batcher.transform);
+			PolygonCollider2D[] childPolygonCollider2Ds = GetComponentsInChildrenExcludeSelf<PolygonCollider2D>(batcher.transform);
+
+			if ((childMeshColliders.Length > 0 || childBoxColliders.Length > 0) && (childBoxCollider2Ds.Length > 0 || childEdgeCollider2Ds.Length > 0 || childPolygonCollider2Ds.Length > 0)) {
+				EditorUtility.DisplayDialog("StaticSpriteBatcher", "Error: Can't mix 2D and 3D colliders", "Ok");
+				return;
+			}
+#endif
+
 			Dictionary<Transform, int> batchedSpriteLookup = new Dictionary<Transform, int>();
 			batchedSpriteLookup[batcher.transform] = -1;
 
@@ -269,6 +289,7 @@ class tk2dStaticSpriteBatcherEditor : Editor
 			foreach (var bs in batcher.batchedSprites)
 			{
 				GameObject go = new GameObject(bs.name);
+				go.layer = batcher.gameObject.layer;
 
 				parents[id++] = go.transform;
 				children.Add(go.transform);

@@ -228,7 +228,7 @@ namespace tk2dEditor.SpriteCollectionBuilder
 					if (bmFontPath.Length == 0 || texturePath.Length == 0) continue; // not found
 
 					// load the assets
-					font.bmFont = AssetDatabase.LoadAssetAtPath(bmFontPath, typeof(UnityEngine.Object));
+					font.bmFont = AssetDatabase.LoadAssetAtPath(bmFontPath, typeof(UnityEngine.TextAsset)) as TextAsset;
 					font.texture = AssetDatabase.LoadAssetAtPath(texturePath, typeof(Texture2D)) as Texture2D;
 				}
 

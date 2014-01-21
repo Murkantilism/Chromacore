@@ -71,7 +71,7 @@ public class tk2dSpriteCollectionSize
 		}
 		else if (cameraSettings.projection == tk2dCameraSettings.ProjectionType.Perspective) {
 			s.type = Type.PixelsPerMeter;
-			s.pixelsPerMeter = 20; // some random value
+			s.pixelsPerMeter = 100; // some random value
 		}
 		return s;
 	}
@@ -80,7 +80,7 @@ public class tk2dSpriteCollectionSize
 	/// A default setting
 	/// </summary>
 	public static tk2dSpriteCollectionSize Default() {
-		return PixelsPerMeter(20);
+		return PixelsPerMeter(100);
 	}
 
 	// Copy from legacy settings
@@ -114,7 +114,7 @@ public class tk2dSpriteCollectionSize
 
 	// resolution, used to derive above values
 	public float orthoSize = 10;
-	public float pixelsPerMeter = 20;
+	public float pixelsPerMeter = 100;
 	public float width = 960;
 	public float height = 640;
 

@@ -167,10 +167,6 @@ public class tk2dPreferencesEditor : EditorWindow
 
 	GUIContent label_enableSpriteHandles = new GUIContent("Enable Sprite Controls", "Enable controls for sprite resizing, rotation etc.");
 	GUIContent label_enableMoveHandles = new GUIContent("Drag sprite to move", "Allow dragging sprite in all modes. When turned off, this is only available when the Unity move/rotate/scale is not visible.");
-	
-#if (UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
-	GUIContent label_proSkin = new GUIContent("Pro Skin", "Select this to use the Dark skin.");
-#endif	
 
 	Vector2 scroll = Vector2.zero;
 
@@ -182,7 +178,7 @@ public class tk2dPreferencesEditor : EditorWindow
 	{
 		tk2dPreferences prefs = tk2dPreferences.inst;
 		scroll = GUILayout.BeginScrollView(scroll, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-		EditorGUIUtility.LookLikeControls(150.0f);
+		tk2dGuiUtility.LookLikeControls(150.0f);
 		
 		prefs.displayTextureThumbs = EditorGUILayout.Toggle(label_spriteThumbnails, prefs.displayTextureThumbs);
 

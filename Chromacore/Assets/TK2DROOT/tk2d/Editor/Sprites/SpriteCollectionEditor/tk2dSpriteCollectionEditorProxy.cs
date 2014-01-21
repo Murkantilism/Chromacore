@@ -95,6 +95,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 
 			target.assetName = source.assetName;
 			target.loadable = source.loadable;
+			target.atlasFormat = source.atlasFormat;
 
 			target.maxTextureSize = source.maxTextureSize;
 			target.forceTextureSize = source.forceTextureSize;
@@ -115,11 +116,13 @@ namespace tk2dEditor.SpriteCollectionEditor
 			CopyArray(ref target.altMaterials, source.altMaterials);
 			CopyArray(ref target.atlasMaterials, source.atlasMaterials);
 			CopyArray(ref target.atlasTextures, source.atlasTextures);
+			CopyArray(ref target.atlasTextureFiles, source.atlasTextureFiles);
 			
 			target.sizeDef.CopyFrom( source.sizeDef );
 			target.globalScale = source.globalScale;
 			target.globalTextureRescale = source.globalTextureRescale;
 			target.physicsDepth = source.physicsDepth;
+			target.physicsEngine = source.physicsEngine;
 			target.disableTrimming = source.disableTrimming;
 			target.normalGenerationMode = source.normalGenerationMode;
 			target.padAmount = source.padAmount;
@@ -234,6 +237,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 			{
 				platformsToDelete = new List<tk2dSpriteCollectionPlatform>(obj.platforms);
 				atlasTextures = new Texture2D[0]; // clear all references
+				atlasTextureFiles = new TextAsset[0];
 				atlasMaterials = new Material[0];
 			}
 			else if (this.HasPlatformData && !obj.HasPlatformData)
@@ -243,6 +247,8 @@ namespace tk2dEditor.SpriteCollectionEditor
 					tk2dEditorUtility.DeleteAsset(material);
 				foreach (Texture2D texture in obj.atlasTextures)
 					tk2dEditorUtility.DeleteAsset(texture);
+				foreach (TextAsset textureFile in obj.atlasTextureFiles)
+					tk2dEditorUtility.DeleteAsset(textureFile);
 			}
 			else if (obj.HasPlatformData && this.HasPlatformData)
 			{
@@ -273,6 +279,8 @@ namespace tk2dEditor.SpriteCollectionEditor
 					tk2dEditorUtility.DeleteAsset(material);
 				foreach (Texture2D texture in sc.atlasTextures)
 					tk2dEditorUtility.DeleteAsset(texture);
+				foreach (TextAsset textureFiles in sc.atlasTextureFiles)
+					tk2dEditorUtility.DeleteAsset(textureFiles);
 				foreach (tk2dSpriteCollectionFont font in sc.fonts)
 				{
 					tk2dEditorUtility.DeleteAsset(font.editorData);
@@ -291,11 +299,13 @@ namespace tk2dEditor.SpriteCollectionEditor
 			altMaterials = new Material[0];
 			atlasMaterials = new Material[0];
 			atlasTextures = new Texture2D[0];
+			atlasTextureFiles = new TextAsset[0];
 			spriteCollection = null;
 
 			obj.altMaterials = new Material[0];
 			obj.atlasMaterials = new Material[0];
 			obj.atlasTextures = new Texture2D[0];
+			obj.atlasTextureFiles = new TextAsset[0];
 			obj.spriteCollection = null;
 		}
 
@@ -320,6 +330,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 			}
 			target.assetName = source.assetName;
 			target.loadable = source.loadable;
+			target.atlasFormat = source.atlasFormat;
 			
 			target.maxTextureSize = source.maxTextureSize;
 			target.forceTextureSize = source.forceTextureSize;
@@ -340,11 +351,13 @@ namespace tk2dEditor.SpriteCollectionEditor
 			CopyArray(ref target.altMaterials, source.altMaterials);
 			CopyArray(ref target.atlasMaterials, source.atlasMaterials);
 			CopyArray(ref target.atlasTextures, source.atlasTextures);
+			CopyArray(ref target.atlasTextureFiles, source.atlasTextureFiles);
 
 			target.sizeDef.CopyFrom( source.sizeDef );
 			target.globalScale = source.globalScale;
 			target.globalTextureRescale = source.globalTextureRescale;
 			target.physicsDepth = source.physicsDepth;
+			target.physicsEngine = source.physicsEngine;
 			target.disableTrimming = source.disableTrimming;
 			target.normalGenerationMode = source.normalGenerationMode;
 			target.padAmount = source.padAmount; 
@@ -575,6 +588,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 		public Material[] altMaterials;
 		public Material[] atlasMaterials;
 		public Texture2D[] atlasTextures;
+		public TextAsset[] atlasTextureFiles;
 		
 		public tk2dSpriteCollectionSize sizeDef = new tk2dSpriteCollectionSize();
 
@@ -591,6 +605,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 		public bool mipmapEnabled = true;
 		public int anisoLevel = 1;
 
+		public tk2dSpriteDefinition.PhysicsEngine physicsEngine;
 		public float physicsDepth;
 		public bool disableTrimming;
 		
@@ -602,6 +617,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 		public int padAmount;
 		public bool autoUpdate;
 		public bool loadable;
+		public tk2dSpriteCollection.AtlasFormat atlasFormat;
 		
 		public float editorDisplayScale;
 	}

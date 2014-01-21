@@ -466,7 +466,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 		
 		public void Draw(List<SpriteCollectionEditorEntry> entries)
 		{
-			EditorGUIUtility.LookLikeControls(110.0f, 100.0f);
+			tk2dGuiUtility.LookLikeControls(110.0f, 100.0f);
 			
 			GUILayout.BeginVertical(GUILayout.ExpandWidth(false));
 			if (entries == null || entries.Count == 0)

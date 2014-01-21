@@ -746,11 +746,11 @@ MonoBehaviour:
   _color: {r: .179104507, g: .179104507, b: .179104507, a: 1}
   _scale: {x: 2, y: 2, z: 2}
   _spriteId: 17
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &67
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,11 +765,11 @@ MonoBehaviour:
   _color: {r: .141791046, g: .141791046, b: .141791046, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 4
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &68
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,11 +792,27 @@ MonoBehaviour:
   _maxChars: 27
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: gradients
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 7
+    renderLayer: 0
+    scale: {x: .300000012, y: .300000012, z: 1}
+    kerning: 0
+    maxChars: 27
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &69
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,11 +835,27 @@ MonoBehaviour:
   _maxChars: 19
   _inlineStyling: 1
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: easy ^4to ^2script
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 3
+    anchor: 7
+    renderLayer: 0
+    scale: {x: .800000012, y: .800000012, z: 2}
+    kerning: 0
+    maxChars: 19
+    inlineStyling: 1
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &70
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,11 +878,27 @@ MonoBehaviour:
   _maxChars: 27
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: gradients
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 7
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 27
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &71
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,11 +921,27 @@ MonoBehaviour:
   _maxChars: 27
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: gradients
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 2
+    anchor: 7
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 27
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &72
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,11 +964,27 @@ MonoBehaviour:
   _maxChars: 27
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: gradients
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 5
+    anchor: 7
+    renderLayer: 0
+    scale: {x: .5, y: .5, z: 1}
+    kerning: 0
+    maxChars: 27
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &73
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,11 +1007,27 @@ MonoBehaviour:
   _maxChars: 27
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: gradients
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 1
+    anchor: 7
+    renderLayer: 0
+    scale: {x: 1.29999995, y: 1.29999995, z: 1}
+    kerning: 0
+    maxChars: 27
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &74
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,11 +1050,27 @@ MonoBehaviour:
   _maxChars: 27
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: gradients
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 7
+    anchor: 7
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 27
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &75
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,11 +1093,27 @@ MonoBehaviour:
   _maxChars: 14
   _inlineStyling: 1
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: Inline ^3Styling
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 2
+    anchor: 7
+    renderLayer: 0
+    scale: {x: 2, y: 2, z: 2}
+    kerning: 0
+    maxChars: 14
+    inlineStyling: 1
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &76
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,11 +1136,27 @@ MonoBehaviour:
   _maxChars: 27
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: gradients
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 1
+    textureGradient: 6
+    anchor: 7
+    renderLayer: 0
+    scale: {x: 2, y: 2, z: 2}
+    kerning: 0
+    maxChars: 27
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!196 &77
 NavMeshSettings:
   m_ObjectHideFlags: 0

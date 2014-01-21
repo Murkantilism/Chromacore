@@ -344,12 +344,45 @@ public class tk2dTextMesh : MonoBehaviour, tk2dRuntime.ISpriteCollectionForceBui
 	/// It is similar to offsetting in z - the sprite stays at the original position
 	/// This corresponds to the renderer.sortingOrder property in Unity 4.3
 	/// </summary>
-	public int SortingOrder { get { return data.renderLayer; } set { if (data.renderLayer != value) { data.renderLayer = value; SetNeedUpdate(UpdateFlags.UpdateText); } } }
+	public int SortingOrder { 
+		get { 
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			return data.renderLayer; 
+#else
+			return CachedRenderer.sortingOrder;
+#endif
+		}
+		set { 
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			if (data.renderLayer != value) { 
+				data.renderLayer = value; SetNeedUpdate(UpdateFlags.UpdateText);
+			} 
+#else
+			if (CachedRenderer.sortingOrder != value) {
+				data.renderLayer = value; // for awake
+				CachedRenderer.sortingOrder = value;
+#if UNITY_EDITOR
+				UnityEditor.EditorUtility.SetDirty(CachedRenderer);
+#endif
+			}
+#endif
+		} 
+	}
 
 	void InitInstance()
 	{
 		if (_fontInst == null && data.font != null)
 			_fontInst = data.font.inst;
+	}
+
+	Renderer _cachedRenderer = null;
+	Renderer CachedRenderer {
+		get {
+			if (_cachedRenderer == null) {
+				_cachedRenderer = renderer;
+			}
+			return _cachedRenderer;
+		}
 	}
 
 	// Use this for initialization
@@ -456,7 +489,7 @@ public class tk2dTextMesh : MonoBehaviour, tk2dRuntime.ISpriteCollectionForceBui
 		return numChars;
 	}
 
-	[System.Obsolete]
+	[System.Obsolete("Use GetEstimatedMeshBoundsForString().size instead")]
 	public Vector2 GetMeshDimensionsForString(string str) {
 		return tk2dTextGeomGen.GetMeshDimensionsForString(str, tk2dTextGeomGen.Data( data, _fontInst, _formattedText ));
 	}

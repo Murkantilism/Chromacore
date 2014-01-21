@@ -78,12 +78,16 @@ MonoBehaviour:
     regionH: 0
     flipped: 0
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 0
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   - name: lowerleg
     boundsData:
     - {x: .00156250037, y: -.167187497, z: 0}
@@ -115,12 +119,16 @@ MonoBehaviour:
     regionH: 0
     flipped: 0
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 0
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   - name: mouth
     boundsData:
     - {x: .0328125022, y: .090625003, z: 0}
@@ -152,12 +160,16 @@ MonoBehaviour:
     regionH: 0
     flipped: 1
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 0
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   - name: upperleg
     boundsData:
     - {x: 0, y: -.1640625, z: 0}
@@ -189,18 +201,25 @@ MonoBehaviour:
     regionH: 0
     flipped: 0
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 0
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   premultipliedAlpha: 1
   material: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 8a2dd588da2bb8e44a189a90333944d7, type: 2}
   textures:
   - {fileID: 2800000, guid: 657c06b4a37f4bb45a24cc96727be5b8, type: 1}
+  pngTextures: []
+  textureFilterMode: 1
+  textureMipMaps: 0
   allowMultipleAtlases: 0
   spriteCollectionGUID: 1fe2f34d6bac2b440944f04ac87d9e8a
   spriteCollectionName: DemoSpiderSpriteCollection
@@ -208,7 +227,7 @@ MonoBehaviour:
   loadable: 0
   invOrthoSize: 1
   halfTargetHeight: 320
-  buildKey: 975260909
+  buildKey: 1976229422
   dataGuid: 822f1f9eedf119f4eaca33509ba7b549
   managedSpriteCollection: 0
   hasPlatformData: 0

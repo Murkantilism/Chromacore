@@ -8,6 +8,9 @@ class tk2dSpriteEditor : Editor
 {
 	// Serialized properties are going to be far too much hassle
 	private tk2dBaseSprite[] targetSprites = new tk2dBaseSprite[0];
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+	private Renderer[] renderers = new Renderer[0];
+#endif
 
     public override void OnInspectorGUI()
     {
@@ -39,7 +42,7 @@ class tk2dSpriteEditor : Editor
 			EditorGUI.BeginChangeCheck ();
 			Rect resizeRect = tk2dSceneHelper.RectControl (999888, localRect, t);
 			if (EditorGUI.EndChangeCheck ()) {
-				Undo.RegisterUndo (new Object[] {t, spr}, "Resize");
+				tk2dUndo.RecordObjects(new Object[] {t, spr}, "Resize");
 				spr.ReshapeBounds(new Vector3(resizeRect.xMin, resizeRect.yMin) - new Vector3(localRect.xMin, localRect.yMin),
 					new Vector3(resizeRect.xMax, resizeRect.yMax) - new Vector3(localRect.xMax, localRect.yMax));
 				EditorUtility.SetDirty(spr);
@@ -50,7 +53,7 @@ class tk2dSpriteEditor : Editor
 			EditorGUI.BeginChangeCheck();
 			float theta = tk2dSceneHelper.RectRotateControl (888999, localRect, t, new List<int>());
 			if (EditorGUI.EndChangeCheck()) {
-				Undo.RegisterUndo (t, "Rotate");
+				tk2dUndo.RecordObject (t, "Rotate");
 				if (Mathf.Abs(theta) > Mathf.Epsilon) {
 					t.Rotate(t.forward, theta, Space.World);
 				}
@@ -82,6 +85,16 @@ class tk2dSpriteEditor : Editor
     protected void OnEnable()
     {
     	targetSprites = GetTargetsOfType<tk2dBaseSprite>( targets );
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+    	List<Renderer> rs = new List<Renderer>();
+    	foreach (var v in targetSprites) {
+    		if (v != null && v.renderer != null) {
+    			rs.Add(v.renderer);
+    		}
+    	}
+    	renderers = rs.ToArray();
+#endif
     }
 	
 	void OnDestroy()
@@ -96,7 +109,7 @@ class tk2dSpriteEditor : Editor
 	// Callback and delegate
 	void SpriteChangedCallbackImpl(tk2dSpriteCollectionData spriteCollection, int spriteId, object data)
 	{
-		Undo.RegisterUndo(targetSprites, "Sprite Change");
+		tk2dUndo.RecordObjects(targetSprites, "Sprite Change");
 		
 		foreach (tk2dBaseSprite s in targetSprites) {
 			s.SetSprite(spriteCollection, spriteId);
@@ -155,24 +168,48 @@ class tk2dSpriteEditor : Editor
 
             Color newColor = EditorGUILayout.ColorField("Color", targetSprites[0].color);
             if (newColor != targetSprites[0].color) {
-            	Undo.RegisterUndo(targetSprites, "Sprite Color");
+            	tk2dUndo.RecordObjects(targetSprites, "Sprite Color");
             	foreach (tk2dBaseSprite s in targetSprites) {
             		s.color = newColor;
             	}
             }
 
+            GUILayout.Space(8);
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
 			int sortingOrder = EditorGUILayout.IntField("Sorting Order In Layer", targetSprites[0].SortingOrder);
 			if (sortingOrder != targetSprites[0].SortingOrder) {
-            	Undo.RegisterUndo(targetSprites, "Sorting Order In Layer");
+            	tk2dUndo.RecordObjects(targetSprites, "Sorting Order In Layer");
             	foreach (tk2dBaseSprite s in targetSprites) {
             		s.SortingOrder = sortingOrder;
             	}
 			}
+#else
+			if (renderers.Length > 0) {
+	            string sortingLayerName = tk2dEditorUtility.SortingLayerNamePopup("Sorting Layer", renderers[0].sortingLayerName);
+	            if (sortingLayerName != renderers[0].sortingLayerName) {
+	            	tk2dUndo.RecordObjects(renderers, "Sorting Layer");
+	            	foreach (Renderer r in renderers) {
+	            		r.sortingLayerName = sortingLayerName;
+	            	}
+	            }
+
+				int sortingOrder = EditorGUILayout.IntField("Order In Layer", targetSprites[0].SortingOrder);
+				if (sortingOrder != targetSprites[0].SortingOrder) {
+	            	tk2dUndo.RecordObjects(targetSprites, "Order In Layer");
+	            	tk2dUndo.RecordObjects(renderers, "Order In Layer");
+	            	foreach (tk2dBaseSprite s in targetSprites) {
+	            		s.SortingOrder = sortingOrder;
+	            	}
+				}
+			}
+#endif
+            GUILayout.Space(8);
+
 
 			Vector3 newScale = EditorGUILayout.Vector3Field("Scale", targetSprites[0].scale);
 			if (newScale != targetSprites[0].scale)
 			{
-				Undo.RegisterUndo(targetSprites, "Sprite Scale");
+				tk2dUndo.RecordObjects(targetSprites, "Sprite Scale");
 				foreach (tk2dBaseSprite s in targetSprites) {
 					s.scale = newScale;
 					s.EditMode__CreateCollider();
@@ -183,7 +220,7 @@ class tk2dSpriteEditor : Editor
 			
 			if (GUILayout.Button("HFlip", EditorStyles.miniButton))
 			{
-				Undo.RegisterUndo(targetSprites, "Sprite HFlip");
+				tk2dUndo.RecordObjects(targetSprites, "Sprite HFlip");
 				foreach (tk2dBaseSprite sprite in targetSprites) {
 					sprite.EditMode__CreateCollider();
 					Vector3 scale = sprite.scale;
@@ -194,7 +231,7 @@ class tk2dSpriteEditor : Editor
 			}
 			if (GUILayout.Button("VFlip", EditorStyles.miniButton))
 			{
-				Undo.RegisterUndo(targetSprites, "Sprite VFlip");
+				tk2dUndo.RecordObjects(targetSprites, "Sprite VFlip");
 				foreach (tk2dBaseSprite sprite in targetSprites) {
 					Vector3 s = sprite.scale;
 					s.y *= -1.0f;
@@ -209,7 +246,7 @@ class tk2dSpriteEditor : Editor
 			
 			if (GUILayout.Button(new GUIContent("Reset Scale", "Set scale to 1"), EditorStyles.miniButton))
 			{
-				Undo.RegisterUndo(targetSprites, "Sprite Reset Scale");
+				tk2dUndo.RecordObjects(targetSprites, "Sprite Reset Scale");
 				foreach (tk2dBaseSprite sprite in targetSprites) {
 					Vector3 s = sprite.scale;
 					s.x = Mathf.Sign(s.x);
@@ -222,7 +259,6 @@ class tk2dSpriteEditor : Editor
 			
 			if (GUILayout.Button(new GUIContent("Bake Scale", "Transfer scale from transform.scale -> sprite"), EditorStyles.miniButton))
 			{
-				Undo.RegisterSceneUndo("Bake Scale");
 				foreach (tk2dBaseSprite sprite in targetSprites) {
 					tk2dScaleUtility.Bake(sprite.transform);
 				}
@@ -233,7 +269,7 @@ class tk2dSpriteEditor : Editor
 			if ( GUILayout.Button(pixelPerfectButton, EditorStyles.miniButton ))
 			{
 				if (tk2dPixelPerfectHelper.inst) tk2dPixelPerfectHelper.inst.Setup();
-				Undo.RegisterUndo(targetSprites, "Sprite Pixel Perfect");
+				tk2dUndo.RecordObjects(targetSprites, "Sprite Pixel Perfect");
 				foreach (tk2dBaseSprite sprite in targetSprites) {
 					sprite.MakePixelPerfect();
 				}
@@ -252,10 +288,8 @@ class tk2dSpriteEditor : Editor
 		if (GUI.changed)
 		{
 			foreach (tk2dBaseSprite sprite in targetSprites) {
-#if !(UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
 			if (PrefabUtility.GetPrefabType(sprite) == PrefabType.Prefab)
 				needUpdatePrefabs = true;
-#endif
 				EditorUtility.SetDirty(sprite);
 			}
 		}
@@ -263,7 +297,6 @@ class tk2dSpriteEditor : Editor
 		// This is a prefab, and changes need to be propagated. This isn't supported in Unity 3.4
 		if (needUpdatePrefabs)
 		{
-#if !(UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
 			// Rebuild prefab instances
 			tk2dBaseSprite[] allSprites = Resources.FindObjectsOfTypeAll(typeof(tk2dBaseSprite)) as tk2dBaseSprite[];
 			foreach (var spr in allSprites)
@@ -289,26 +322,31 @@ class tk2dSpriteEditor : Editor
 					}
 				}
 			}
-#endif
 		}
 	}
 
-	void PerformActionOnSelection(string actionName, System.Action<GameObject> action) {
-		Undo.RegisterSceneUndo(actionName);
-		foreach (tk2dBaseSprite sprite in targetSprites) {
-			action(sprite.gameObject);
+	protected void WarnSpriteRenderType(tk2dSpriteDefinition sprite) {
+		if (sprite.positions.Length != 4 || sprite.complexGeometry) {
+			EditorGUILayout.HelpBox("Sprite type incompatible with Render Mesh setting.\nPlease use Default Render Mesh.", MessageType.Error);
 		}
 	}
 
 	static void PerformActionOnGlobalSelection(string actionName, System.Action<GameObject> action) {
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
 		Undo.RegisterSceneUndo(actionName);
+#else
+		int undoGroup = Undo.GetCurrentGroup();
+#endif
 		foreach (GameObject go in Selection.gameObjects) {
 			if (go.GetComponent<tk2dBaseSprite>() != null) {
 				action(go);
 			}
 		}
-	}
 
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+		Undo.CollapseUndoOperations(undoGroup);
+#endif
+	}
 
 	static void ConvertSpriteType(GameObject go, System.Type targetType) {
 		tk2dBaseSprite spr = go.GetComponent<tk2dBaseSprite>();
@@ -322,7 +360,24 @@ class tk2dSpriteEditor : Editor
 			else if (targetType == typeof(tk2dSlicedSprite)) batchedSprite.type = tk2dBatchedSprite.Type.SlicedSprite;
 			else if (targetType == typeof(tk2dClippedSprite)) batchedSprite.type = tk2dBatchedSprite.Type.ClippedSprite;
 
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			if (spr.collider != null) {
+				Object.DestroyImmediate(spr.collider);
+			}
 			Object.DestroyImmediate(spr, true);
+#else
+			{
+				Collider[] colliders = spr.GetComponents<Collider>();
+				foreach (Collider c in colliders) {
+					Undo.DestroyObjectImmediate(c);
+				}
+				Collider2D[] collider2Ds = spr.GetComponents<Collider2D>();
+				foreach (Collider2D c in collider2Ds) {
+					Undo.DestroyObjectImmediate(c);
+				}
+			}
+			Undo.DestroyObjectImmediate(spr);
+#endif
 
 			bool sourceHasDimensions = sourceType == typeof(tk2dSlicedSprite) || sourceType == typeof(tk2dTiledSprite);
 			bool targetHasDimensions = targetType == typeof(tk2dSlicedSprite) || targetType == typeof(tk2dTiledSprite);
@@ -341,7 +396,39 @@ class tk2dSpriteEditor : Editor
 			}
 
 			tk2dStaticSpriteBatcherEditor.RestoreBatchedSprite(go, batchedSprite);
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			{ 
+				tk2dBaseSprite tmpSprite = go.GetComponent<tk2dBaseSprite>();
+				if (tmpSprite != null) {
+					Undo.RegisterCreatedObjectUndo( tmpSprite, "Convert Sprite Type" );
+				}
+			}
+#endif
 		}
+	}
+
+	// This is used by derived classes only
+	protected bool DrawCreateBoxColliderCheckbox(bool value) {
+		tk2dBaseSprite sprite = target as tk2dBaseSprite;
+		bool newCreateBoxCollider = EditorGUILayout.Toggle("Create Box Collider", value);
+		if (newCreateBoxCollider != value) {
+			tk2dUndo.RecordObjects(targetSprites, "Create Box Collider");
+			if (!newCreateBoxCollider) {
+				var boxCollider = sprite.GetComponent<BoxCollider>();
+				if (boxCollider != null) {
+					DestroyImmediate(boxCollider);
+				}
+				sprite.boxCollider = null;
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+				var boxCollider2D = sprite.GetComponent<BoxCollider2D>();
+				if (boxCollider2D != null) {
+					DestroyImmediate(boxCollider2D);
+				}
+				sprite.boxCollider2D = null;
+#endif
+			}
+		}
+		return newCreateBoxCollider;
 	}
 
 	[MenuItem("CONTEXT/tk2dBaseSprite/Convert to Sprite")]

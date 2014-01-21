@@ -138,7 +138,7 @@ namespace tk2dEditor.SpriteAnimationEditor
 			if (_animator == null) {
 				GameObject go = new GameObject("@SpriteAnimator");
 				go.hideFlags = HideFlags.HideAndDontSave;
-				#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+				#if UNITY_3_5
 					go.active = false;
 				#else
 					go.SetActive(false);
@@ -523,7 +523,7 @@ namespace tk2dEditor.SpriteAnimationEditor
 		Vector2 inspectorScrollbar = Vector2.zero;
 		void DrawInspector()
 		{
-			EditorGUIUtility.LookLikeControls(80.0f, 40.0f);
+			tk2dGuiUtility.LookLikeControls(80.0f, 40.0f);
 			
 			inspectorScrollbar = GUILayout.BeginScrollView(inspectorScrollbar, GUILayout.ExpandHeight(true), GUILayout.Width(inspectorWidth));
 

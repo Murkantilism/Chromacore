@@ -146,7 +146,7 @@ public class tk2dUIDropDownMenu : MonoBehaviour
             itemList.Add(itemStr);
         }
         index = startingIndex;
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
         //disable all items in template, do make it so Unity 4.x works nicely
         dropDownItemTemplate.gameObject.SetActiveRecursively(false);
 #else
@@ -176,7 +176,7 @@ public class tk2dUIDropDownMenu : MonoBehaviour
         {
             for (int n = ItemList.Count; n < dropDownItems.Count; n++)
             {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
                 dropDownItems[n].gameObject.SetActiveRecursively(false);
 #else
                 dropDownItems[n].gameObject.SetActive(false);
@@ -254,7 +254,7 @@ public class tk2dUIDropDownMenu : MonoBehaviour
 
         itemUpDownHoverBtn.OnToggleOver += DropDownItemHoverBtnToggle;
 
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
         go.SetActiveRecursively(false);
 #endif
 
@@ -290,7 +290,7 @@ public class tk2dUIDropDownMenu : MonoBehaviour
         int count = Mathf.Min( ItemList.Count, dropDownItems.Count );
         for(int i = 0; i < count; ++i)
         {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
             dropDownItems[i].gameObject.SetActiveRecursively(true);
             dropDownItems[i].upDownHoverBtn.SetState(); //deals with how active recursive needs to work in Unity 3.x
 #else
@@ -312,7 +312,7 @@ public class tk2dUIDropDownMenu : MonoBehaviour
         isExpanded = false;
         foreach (tk2dUIDropDownItem item in dropDownItems)
         {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
             item.gameObject.SetActiveRecursively(false);
 #else
             item.gameObject.SetActive(false);

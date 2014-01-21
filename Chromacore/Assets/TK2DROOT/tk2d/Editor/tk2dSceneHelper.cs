@@ -43,7 +43,7 @@ public static class tk2dSceneHelper {
 		Ray mouseRay = HandleUtility.GUIPointToWorldRay(ev.mousePosition);
 		rect = PositiveRect(rect);
 
-		if (ev.type == EventType.MouseDown && ev.button == 0 && !ev.control && !ev.alt && !ev.command) {
+		if (ev.type == EventType.MouseDown && ev.button == 0 && !ev.control && !ev.alt && !ev.command && !ev.shift) {
 			float hitD = 0.0f;
 			dragPlane = new Plane(t.forward, t.position);
 			if (dragPlane.Raycast(mouseRay, out hitD)) {
@@ -82,7 +82,7 @@ public static class tk2dSceneHelper {
 							offset = Vector3.Project (offset, (x > y) ? t.right : t.up);
 						}
 
-						Undo.RegisterUndo(dragObjCachedTransforms.ToArray(), "Move");
+						tk2dUndo.RecordObjects(dragObjCachedTransforms.ToArray(), "Move");
 
 						for (int i = 0; i < Selection.gameObjects.Length; ++i) {
 							Selection.gameObjects[i].transform.position = dragObjStartPos[i] + offset;
@@ -182,13 +182,15 @@ public static class tk2dSceneHelper {
 		int handleSize = (int)style.fixedWidth;
 		bool selected = GUIUtility.hotControl == id;
 		Rect handleRect = new Rect(guiPoint.x - handleSize / 2, guiPoint.y - handleSize / 2, handleSize, handleSize);
-		EditorGUIUtility.AddCursorRect(handleRect, cursor);
+		if (GUIUtility.hotControl == id || (GUIUtility.hotControl != id && !ev.shift)) {
+			EditorGUIUtility.AddCursorRect(handleRect, cursor);
+		}
 		
-		if (ev.type == EventType.Repaint) {
+		if ((GUIUtility.hotControl == id || (GUIUtility.hotControl != id && !ev.shift)) && ev.type == EventType.Repaint) {
 			style.Draw(handleRect, selected, false, false, false);
 		}
 		
-		if (ev.type == EventType.MouseDown && ev.button == 0 && handleRect.Contains(ev.mousePosition)) {
+		if (ev.type == EventType.MouseDown && ev.button == 0 && handleRect.Contains(ev.mousePosition) && !ev.shift) {
 			constrainRect = constrainRectTemp;
 			constrainRectMatrix = constrainRectMatrixTemp;
 			GUIUtility.hotControl = id;

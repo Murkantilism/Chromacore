@@ -106,6 +106,7 @@ GameObject:
   - 33: {fileID: 22}
   - 23: {fileID: 19}
   - 114: {fileID: 28}
+  - 114: {fileID: 30}
   m_Layer: 0
   m_Name: AnimatedSprite
   m_TagString: Untagged
@@ -323,11 +324,28 @@ MonoBehaviour:
   _maxChars: 251
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: "This Sprite Collection is intentionally set up\r\nwith a small maximum
+      texture size (256) for this\r\ndemo. This forces it to split to 4 atlases automatically."
+    color: {r: 0, g: 0, b: 0, a: .533333361}
+    color2: {r: 0, g: .378353029, b: .432835817, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 1
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 251
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &27
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,11 +369,28 @@ MonoBehaviour:
   _maxChars: 251
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: "This Sprite Collection is intentionally set up\r\nwith a small maximum
+      texture size (256) for this\r\ndemo. This forces it to split to 4 atlases automatically."
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 0, g: .378353029, b: .432835817, a: 1}
+    useGradient: 1
+    textureGradient: 0
+    anchor: 1
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 251
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &28
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,11 +405,12 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 0
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
+  _animator: {fileID: 30}
   anim: {fileID: 11400000, guid: 68cc4da10d501f9439d1507a1a2c46c1, type: 2}
   clipId: 0
   playAutomatically: 1
@@ -394,3 +430,16 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!114 &30
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 1}
+  m_Name: 
+  library: {fileID: 11400000, guid: 68cc4da10d501f9439d1507a1a2c46c1, type: 2}
+  defaultClipId: 0
+  playAutomatically: 1

@@ -139,12 +139,12 @@ public class tk2dCameraAnchor : MonoBehaviour
 		Vector3 position = myTransform.localPosition;
 
 		// we're ignoring perspective tk2dCameras for now
-		tk2dCamera = (AnchorTk2dCamera != null && AnchorTk2dCamera.CameraSettings.projection != tk2dCameraSettings.ProjectionType.Perspective) ? AnchorTk2dCamera : null;
+		tk2dCamera currentCamera = (AnchorTk2dCamera != null && AnchorTk2dCamera.CameraSettings.projection != tk2dCameraSettings.ProjectionType.Perspective) ? AnchorTk2dCamera : null;
 
 		Rect rect = new Rect();
-		if (tk2dCamera != null) {
-			rect = anchorToNativeBounds ? tk2dCamera.NativeScreenExtents : tk2dCamera.ScreenExtents;
-			pixelScale = tk2dCamera.GetSizeAtDistance( 1 ); 
+		if (currentCamera != null) {
+			rect = anchorToNativeBounds ? currentCamera.NativeScreenExtents : currentCamera.ScreenExtents;
+			pixelScale = currentCamera.GetSizeAtDistance( 1 ); 
 		}
 		else {
 			rect.Set(0, 0, AnchorCamera.pixelWidth, AnchorCamera.pixelHeight);
@@ -174,7 +174,7 @@ public class tk2dCameraAnchor : MonoBehaviour
 		}
 		
 		Vector3 screenAnchoredPosition = anchoredPosition + new Vector3(pixelScale * offset.x, pixelScale * offset.y, 0);
-		if (tk2dCamera == null) { // not a tk2dCamera, we need to transform
+		if (currentCamera == null) { // not a tk2dCamera, we need to transform
 			Vector3 worldAnchoredPosition = AnchorCamera.ScreenToWorldPoint( screenAnchoredPosition );
 			if (myTransform.position != worldAnchoredPosition) {
 				myTransform.position = worldAnchoredPosition;

@@ -8,6 +8,34 @@ public interface ITileMapEditorHost
 	void Build(bool force);
 }
 
+[InitializeOnLoad]
+public static class tk2dTileMapEditorUtility {
+	static tk2dTileMapEditorUtility() {
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+		System.Reflection.FieldInfo undoCallback = typeof(EditorApplication).GetField("undoRedoPerformed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+		if (undoCallback != null) {
+			undoCallback.SetValue(null, (EditorApplication.CallbackFunction)OnUndoRedo);
+		}
+		else {
+			Debug.LogError("tk2d Undo/Redo callback failed. Undo/Redo not supported in this version of Unity.");
+		}
+#else
+		Undo.undoRedoPerformed += OnUndoRedo;
+#endif
+	}
+
+	static void OnUndoRedo() {
+		foreach (GameObject go in Selection.gameObjects) {
+			tk2dUtil.UndoEnabled = false;
+			tk2dTileMap tilemap = go.GetComponent<tk2dTileMap>();
+			if (tilemap != null) {
+				tilemap.ForceBuild();
+			}
+			tk2dUtil.UndoEnabled = true;
+		}
+	}
+}
+
 [CustomEditor(typeof(tk2dTileMap))]
 public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 {
@@ -179,7 +207,7 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 	{
 		// Sanitize prefabs
 		if (tileMap.data.tilePrefabs == null)
-			tileMap.data.tilePrefabs = new Object[0];
+			tileMap.data.tilePrefabs = new GameObject[0];
 		
 		if (tileMap.data.tilePrefabs.Length != SpriteCollection.Count)
 		{
@@ -228,7 +256,7 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 		
 		if (selectedDataTile >= 0 && selectedDataTile < tileMap.data.tilePrefabs.Length)
 		{
-			tileMap.data.tilePrefabs[selectedDataTile] = EditorGUILayout.ObjectField("Prefab", tileMap.data.tilePrefabs[selectedDataTile], typeof(Object), false);
+			tileMap.data.tilePrefabs[selectedDataTile] = EditorGUILayout.ObjectField("Prefab", tileMap.data.tilePrefabs[selectedDataTile], typeof(GameObject), true) as GameObject;
 		}
 		
 		// Add all additional tilemap data
@@ -347,8 +375,17 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 					tileMap.data.Layers[layer].z = Mathf.Max(0, tileMap.data.Layers[layer].z);
 				
 				tileMap.data.Layers[layer].unityLayer = EditorGUILayout.LayerField("Layer", tileMap.data.Layers[layer].unityLayer);
-				
-				tileMap.data.Layers[layer].physicMaterial = (PhysicMaterial)EditorGUILayout.ObjectField("Physic Material", tileMap.data.Layers[layer].physicMaterial, typeof(PhysicMaterial), false);
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+				bool using2DPhysics = (tileMap.SpriteCollectionInst != null && tileMap.SpriteCollectionInst.FirstValidDefinition != null && tileMap.SpriteCollectionInst.FirstValidDefinition.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics2D);
+				if (using2DPhysics) {
+					tileMap.data.Layers[layer].physicsMaterial2D = (PhysicsMaterial2D)EditorGUILayout.ObjectField("Physics Material (2D)", tileMap.data.Layers[layer].physicsMaterial2D, typeof(PhysicsMaterial2D), false);
+				}
+				else 
+#endif				
+				{
+					tileMap.data.Layers[layer].physicMaterial = (PhysicMaterial)EditorGUILayout.ObjectField("Physic Material", tileMap.data.Layers[layer].physicMaterial, typeof(PhysicMaterial), false);
+				}
 
 				if (tk2dGuiUtility.EndChangeCheck())
 					Build(true);
@@ -428,7 +465,11 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 		GUILayout.BeginHorizontal();
 		tk2dSpriteCollectionData newSpriteCollection = tk2dSpriteGuiUtility.SpriteCollectionList("Sprite Collection", tileMap.Editor__SpriteCollection);
 		if (newSpriteCollection != tileMap.Editor__SpriteCollection) {
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
 			Undo.RegisterSceneUndo("Set TileMap Sprite Collection");
+#else
+			Undo.RegisterCompleteObjectUndo(tileMap, "Set TileMap Sprite Collection");
+#endif
 
 			tileMap.Editor__SpriteCollection = newSpriteCollection;
 			newSpriteCollection.InitMaterialIds();
@@ -455,7 +496,11 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 		tk2dTileMapData newData = (tk2dTileMapData)EditorGUILayout.ObjectField("Tile Map Data", tileMap.data, typeof(tk2dTileMapData), false);
 		if (newData != tileMap.data)
 		{
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
 			Undo.RegisterSceneUndo("Assign TileMap Data");
+#else
+			Undo.RegisterCompleteObjectUndo(tileMap, "Assign TileMap Data");
+#endif
 			tileMap.data = newData;
 			LoadTileMapData();
 		}
@@ -470,7 +515,11 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 				string assetPath = EditorUtility.SaveFilePanelInProject("Save Tile Map Data", "tileMapData", "asset", "");
 				if (assetPath.Length > 0)
 				{
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
 					Undo.RegisterSceneUndo("Create TileMap Data");
+#else
+					Undo.RegisterCompleteObjectUndo(tileMap, "Create TileMap Data");
+#endif
 					tk2dTileMapData tileMapData = ScriptableObject.CreateInstance<tk2dTileMapData>();
 					AssetDatabase.CreateAsset(tileMapData, assetPath);
 					tileMap.data = tileMapData;
@@ -486,7 +535,11 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 		tk2dTileMapEditorData newEditorData = (tk2dTileMapEditorData)EditorGUILayout.ObjectField("Editor Data", editorData, typeof(tk2dTileMapEditorData), false);
 		if (newEditorData != editorData)
 		{
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
 			Undo.RegisterSceneUndo("Assign TileMap Editor Data");
+#else
+			Undo.RegisterCompleteObjectUndo(tileMap, "Assign TileMap Editor Data");
+#endif
 			string assetPath = AssetDatabase.GetAssetPath(newEditorData);
 			if (assetPath.Length > 0)
 			{
@@ -506,7 +559,11 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 				string assetPath = EditorUtility.SaveFilePanelInProject("Save Tile Map Editor Data", "tileMapEditorData", "asset", "");
 				if (assetPath.Length > 0)
 				{
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
 					Undo.RegisterSceneUndo("Create TileMap Editor Data");
+#else
+					Undo.RegisterCompleteObjectUndo(tileMap, "Create TileMap Editor Data");
+#endif
 					tk2dTileMapEditorData tileMapEditorData = ScriptableObject.CreateInstance<tk2dTileMapEditorData>();
 					AssetDatabase.CreateAsset(tileMapEditorData, assetPath);
 					tileMap.editorDataGUID = AssetDatabase.AssetPathToGUID(assetPath);
@@ -776,7 +833,7 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 		{
 			if (GUILayout.Button("Create Color Channel"))
 			{
-				Undo.RegisterUndo(tileMap, "Created Color Channel");
+				tk2dUndo.RegisterCompleteObjectUndo(tileMap, "Created Color Channel");
 				tileMap.CreateColorChannel();
 				tileMap.BeginEditMode();
 			}
@@ -791,6 +848,7 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 		EditorGUILayout.PrefixLabel("Clear to Color");
 		if (GUILayout.Button("Clear", GUILayout.ExpandWidth(false)))
 		{
+			tk2dUndo.RegisterCompleteObjectUndo(tileMap, "Created Color Channel");
 			tileMap.ColorChannel.Clear(tk2dTileMapToolbar.colorBrushColor);
 			Build(true);
 		}
@@ -801,8 +859,7 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 			EditorGUILayout.Separator();
 			if (GUILayout.Button("Delete Color Channel"))
 			{
-				Undo.RegisterUndo(tileMap, "Deleted Color Channel");
-				
+				tk2dUndo.RegisterCompleteObjectUndo(tileMap, "Deleted Color Channel");
 				tileMap.DeleteColorChannel();
 				tileMap.BeginEditMode();
 
@@ -1067,23 +1124,19 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 			GUILayout.BeginHorizontal();
 			if (GUILayout.Button("Edit"))
 			{
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
 				Undo.RegisterSceneUndo("Tilemap Enter Edit Mode");
+#else
+				tk2dUtil.BeginGroup("Tilemap Enter Edit Mode");
+				Undo.RegisterCompleteObjectUndo(tileMap, "Tilemap Enter Edit Mode");
+#endif
 				tileMap.BeginEditMode();
 				InitEditor();
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+				tk2dUtil.EndGroup();
+#endif
+
 				Repaint();
-			}
-			if (GUILayout.Button("All", GUILayout.ExpandWidth(false)))
-			{
-				tk2dTileMap[] allTileMaps = Resources.FindObjectsOfTypeAll(typeof(tk2dTileMap)) as tk2dTileMap[];
-				foreach (var tm in allTileMaps)
-				{
-					if (!EditorUtility.IsPersistent(tm) && !tm.AllowEdit)
-					{
-						tm.BeginEditMode();
-						EditorUtility.SetDirty(tm);
-					}
-				}
-				InitEditor();
 			}
 			GUILayout.EndHorizontal();
 			return;
@@ -1093,21 +1146,18 @@ public class tk2dTileMapEditor : Editor, ITileMapEditorHost
 		GUILayout.BeginHorizontal();
 		if (GUILayout.Button("Commit"))
 		{
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
 			Undo.RegisterSceneUndo("Tilemap Leave Edit Mode");
+#else
+			tk2dUtil.BeginGroup("Tilemap Leave Edit Mode");
+			Undo.RegisterCompleteObjectUndo(tileMap, "Tilemap Leave Edit Mode");
+#endif
 			tileMap.EndEditMode();
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			tk2dUtil.EndGroup();
+#endif
+
 			Repaint();
-		}
-		if (GUILayout.Button("All", GUILayout.ExpandWidth(false)))
-		{
-			tk2dTileMap[] allTileMaps = Resources.FindObjectsOfTypeAll(typeof(tk2dTileMap)) as tk2dTileMap[];
-			foreach (var tm in allTileMaps)
-			{
-				if (!EditorUtility.IsPersistent(tm) && tm.AllowEdit)
-				{
-					tm.EndEditMode();
-					EditorUtility.SetDirty(tm);
-				}
-			}
 		}
 		GUILayout.EndHorizontal();
 		EditorGUILayout.Separator();

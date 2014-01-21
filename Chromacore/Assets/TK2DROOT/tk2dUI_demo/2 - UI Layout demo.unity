@@ -394,30 +394,19 @@ MonoBehaviour:
   m_Name: 
   version: 1
   cameraSettings:
-    clearFlags: 2
-    backgroundColor: {r: .192156866, g: .301960796, b: .474509805, a: 1}
-    cullingMask:
-      serializedVersion: 2
-      m_Bits: 4294967295
     projection: 0
-    transparencySortMode: 2
     orthographicSize: 1
     orthographicPixelsPerMeter: 20
     orthographicOrigin: 1
     orthographicType: 1
+    transparencySortMode: 2
     fieldOfView: 60
-    nearClipPlane: .300000012
-    farClipPlane: 50
     rect:
       serializedVersion: 2
       x: 0
       y: 0
       width: 1
       height: 1
-    depth: 0
-    renderingPath: -1
-    targetTexture: {fileID: 0}
-    hdr: 0
   resolutionOverride:
   - name: Override
     matchBy: 2
@@ -3357,6 +3346,7 @@ MonoBehaviour:
   isPasswordField: 0
   passwordChar: '*'
   layoutItem: {fileID: 912137431}
+  SendMessageOnTextChangeMethodName: 
 --- !u!114 &912137431
 MonoBehaviour:
   m_ObjectHideFlags: 0

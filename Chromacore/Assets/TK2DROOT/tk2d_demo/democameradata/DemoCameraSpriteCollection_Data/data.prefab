@@ -78,12 +78,16 @@ MonoBehaviour:
     regionH: 0
     flipped: 0
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 1
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   - name: heart_full
     boundsData:
     - {x: .5, y: 0, z: 0}
@@ -115,12 +119,16 @@ MonoBehaviour:
     regionH: 0
     flipped: 0
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 1
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   - name: heart_half
     boundsData:
     - {x: .5, y: 0, z: 0}
@@ -152,12 +160,16 @@ MonoBehaviour:
     regionH: 0
     flipped: 1
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 1
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   - name: window
     boundsData:
     - {x: .5, y: 0, z: 0}
@@ -189,26 +201,33 @@ MonoBehaviour:
     regionH: 0
     flipped: 0
     complexGeometry: 0
+    physicsEngine: 0
     colliderType: 1
     colliderVertices: []
     colliderIndicesFwd: 
     colliderIndicesBack: 
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   premultipliedAlpha: 1
   material: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 45d35519481f70649a530df6dcddd423, type: 2}
   textures:
   - {fileID: 2800000, guid: 6a5c20ae58dae9d44b7cdade69bd0bbc, type: 1}
+  pngTextures: []
+  textureFilterMode: 1
+  textureMipMaps: 0
   allowMultipleAtlases: 0
   spriteCollectionGUID: ff338294f6bf0b345850bad080ef85dc
   spriteCollectionName: DemoCameraSpriteCollection
   assetName: 
   loadable: 0
-  invOrthoSize: 1
-  halfTargetHeight: 1
-  buildKey: 2056318724
+  invOrthoSize: 2
+  halfTargetHeight: .5
+  buildKey: 609190801
   dataGuid: 4864518b0693631458553f73aaa86021
   managedSpriteCollection: 0
   hasPlatformData: 0

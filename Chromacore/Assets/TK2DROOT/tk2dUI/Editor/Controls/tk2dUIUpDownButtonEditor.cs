@@ -15,7 +15,7 @@ public class tk2dUIUpDownButtonEditor : tk2dUIBaseItemControlEditor
         upDownButton.upStateGO = tk2dUICustomEditorGUILayout.SceneObjectField("Up State GameObject", upDownButton.upStateGO,target);
         upDownButton.downStateGO = tk2dUICustomEditorGUILayout.SceneObjectField("Down State GameObject", upDownButton.downStateGO,target);
 
-        EditorGUIUtility.LookLikeControls(200);
+        tk2dGuiUtility.LookLikeControls(200);
 
         bool newUseOnReleaseInsteadOfOnUp = EditorGUILayout.Toggle("Use OnRelease Instead of OnUp", upDownButton.UseOnReleaseInsteadOfOnUp);
         if (newUseOnReleaseInsteadOfOnUp != upDownButton.UseOnReleaseInsteadOfOnUp)

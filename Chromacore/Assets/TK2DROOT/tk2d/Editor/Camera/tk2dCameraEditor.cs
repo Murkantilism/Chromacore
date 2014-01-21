@@ -315,7 +315,6 @@ public class tk2dCameraEditor : Editor
 		SerializedProperty m_Depth = cam.FindProperty("m_Depth");
 		SerializedProperty m_RenderingPath = cam.FindProperty("m_RenderingPath");
 		SerializedProperty m_HDR = cam.FindProperty("m_HDR");
-		TransparencySortMode transparencySortMode = target.camera.transparencySortMode;
 
 		if (complete) {
 			EditorGUILayout.PropertyField( m_ClearFlags );
@@ -326,6 +325,7 @@ public class tk2dCameraEditor : Editor
 
 		tk2dCameraSettings cameraSettings = target.CameraSettings;
 		tk2dCameraSettings inheritedSettings = target.SettingsRoot.CameraSettings;
+		TransparencySortMode transparencySortMode = inheritedSettings.transparencySortMode;
 
 		GUI.enabled &= allowProjectionParameters;
 		inheritedSettings.projection = (tk2dCameraSettings.ProjectionType)EditorGUILayout.EnumPopup("Projection", inheritedSettings.projection);
@@ -371,8 +371,10 @@ public class tk2dCameraEditor : Editor
 		cam.ApplyModifiedProperties();
 		so.ApplyModifiedProperties();
 
-		if (transparencySortMode != target.camera.transparencySortMode) {
-			target.camera.transparencySortMode = transparencySortMode;
+		if (transparencySortMode != inheritedSettings.transparencySortMode) {
+			inheritedSettings.transparencySortMode = transparencySortMode;
+			target.camera.transparencySortMode = transparencySortMode; // Change immediately in the editor
+			EditorUtility.SetDirty(target);
 			EditorUtility.SetDirty(target.camera);
 		}
 	}
@@ -398,7 +400,7 @@ public class tk2dCameraEditor : Editor
 	void DrawOverrideGUI(tk2dCamera _camera) {
 		var frameBorderStyle = EditorStyles.textField;
 
-		EditorGUIUtility.LookLikeControls(64);
+		tk2dGuiUtility.LookLikeControls(64);
 
 		tk2dCamera _target = _camera.SettingsRoot;
 		if (_target.CameraSettings.projection == tk2dCameraSettings.ProjectionType.Perspective) {
@@ -564,6 +566,8 @@ public class tk2dCameraEditor : Editor
 			sceneGUIHandler.Destroy();
 			sceneGUIHandler = null;
 		}
+
+		tk2dEditorSkin.Done();
 	}
 
 	static Vector3[] viewportBoxPoints = new Vector3[] {
@@ -629,7 +633,7 @@ public class tk2dCameraEditor : Editor
 		}
 
 		GameObject go = tk2dEditorUtility.CreateGameObjectInScene("tk2dCamera");
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		go.active = false;
 #else
 		go.SetActive(false);
@@ -648,7 +652,7 @@ public class tk2dCameraEditor : Editor
 			go.AddComponent<AudioListener>();
 		}
 
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		go.active = true;
 #else
 		go.SetActive(true);

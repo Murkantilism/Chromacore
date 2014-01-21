@@ -48,7 +48,7 @@ public class tk2dUILayoutContainerSizerEditor : tk2dUILayoutContainerEditor {
 
 	public override void OnInspectorGUI() {
 		var sizer = (tk2dUILayoutContainerSizer)target;
-		EditorGUIUtility.LookLikeControls();
+		tk2dGuiUtility.LookLikeControls();
 
 		GUILayout.Space(8);
 

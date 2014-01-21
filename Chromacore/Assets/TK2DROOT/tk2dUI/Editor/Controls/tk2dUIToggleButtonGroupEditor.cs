@@ -16,7 +16,7 @@ public class tk2dUIToggleButtonGroupEditor : Editor
 
     public override void  OnInspectorGUI()
     {
-        EditorGUIUtility.LookLikeInspector();
+        tk2dGuiUtility.LookLikeInspector();
         tk2dUIToggleButtonGroup toggleBtnGroup = (tk2dUIToggleButtonGroup)target;
 
         serializedObj.Update();

@@ -18,6 +18,8 @@ namespace tk2dRuntime.TileMap
 			Vector3 tileSize = tileMap.data.tileSize;
 			int spriteCount = tileMap.SpriteCollectionInst.spriteDefinitions.Length;
 			Object[] tilePrefabs = tileMap.data.tilePrefabs;
+			tk2dSpriteDefinition firstSprite = tileMap.SpriteCollectionInst.FirstValidDefinition;
+			bool buildNormals = (firstSprite != null && firstSprite.normals != null && firstSprite.normals.Length > 0);
 			
 			Color32 clearColor = (useColor && tileMap.ColorChannel != null)?tileMap.ColorChannel.clearColor:Color.white;
 					
@@ -107,7 +109,7 @@ namespace tk2dRuntime.TileMap
 			}
 			
 			if (chunk.mesh == null)
-				chunk.mesh = new Mesh();
+				chunk.mesh = tk2dUtil.CreateMesh();
 
 			chunk.mesh.vertices = meshVertices.ToArray();
 			chunk.mesh.uv = meshUvs.ToArray();
@@ -120,7 +122,7 @@ namespace tk2dRuntime.TileMap
 			{
 				if (indices.Count > 0)
 				{
-					materials.Add(tileMap.SpriteCollectionInst.materials[materialId]);
+					materials.Add(tileMap.SpriteCollectionInst.materialInsts[materialId]);
 					subMeshCount++;
 				}
 				materialId++;
@@ -141,6 +143,9 @@ namespace tk2dRuntime.TileMap
 			}
 			
 			chunk.mesh.RecalculateBounds();
+			if (buildNormals) {
+				chunk.mesh.RecalculateNormals();
+			}
 
 			var meshFilter = chunk.gameObject.GetComponent<MeshFilter>();
 			meshFilter.sharedMesh = chunk.mesh;

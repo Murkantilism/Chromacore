@@ -167,6 +167,7 @@ public class tk2dFontData : MonoBehaviour
 	{
 		if (hasPlatformData && platformSpecificData)
 		{
+			// Sprite collection unloads its own data
 			platformSpecificData = null;
 		}
 		

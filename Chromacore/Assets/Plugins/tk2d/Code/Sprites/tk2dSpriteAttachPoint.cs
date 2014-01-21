@@ -95,7 +95,7 @@ public class tk2dSpriteAttachPoint : MonoBehaviour {
 			for (int i = 0; i < attachPoints.Count; ++i) {
 				if (attachPoints[i] != null) {
 					GameObject go = attachPoints[i].gameObject;
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 					if (attachPointUpdated[i] && !go.active) {
 						go.SetActiveRecursively(true);
 					}

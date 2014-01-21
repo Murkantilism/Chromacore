@@ -36,7 +36,7 @@ public class tk2dUIMaskEditor : Editor {
 				Vector2 newDim = new Vector2(resizeRect.width, resizeRect.height);
 				newDim.x = Mathf.Abs(newDim.x);
 				newDim.y = Mathf.Abs(newDim.y);
-				Undo.RegisterUndo (new Object[] {t, mask}, "Resize");
+				tk2dUndo.RecordObjects (new Object[] {t, mask}, "Resize");
 				if (newDim != mask.size) {
 					mask.size = newDim;
 					mask.Build();
@@ -56,8 +56,8 @@ public class tk2dUIMaskEditor : Editor {
 			EditorGUI.BeginChangeCheck();
 			float theta = tk2dSceneHelper.RectRotateControl (888999, localRect, t, new List<int>());
 			if (EditorGUI.EndChangeCheck()) {
-				Undo.RegisterUndo (t, "Rotate");
 				if (Mathf.Abs(theta) > Mathf.Epsilon) {
+					tk2dUndo.RecordObject (t, "Rotate");
 					t.Rotate(t.forward, theta, Space.World);
 				}
 			}

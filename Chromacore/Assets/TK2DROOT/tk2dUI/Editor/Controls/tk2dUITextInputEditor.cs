@@ -8,7 +8,7 @@ public class tk2dUITextInputEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        EditorGUIUtility.LookLikeInspector();
+        tk2dGuiUtility.LookLikeInspector();
         base.OnInspectorGUI();
 
 		tk2dUITextInput textInput = (tk2dUITextInput)target;
@@ -37,7 +37,7 @@ public class tk2dUITextInputEditor : Editor
         float newFieldLength = tk2dUIControlsHelperEditor.DrawLengthHandles("Field Length", textInput.fieldLength, textInput.inputLabel.transform.position, right, Color.red, -.1f, .25f, 0);
         if (newFieldLength != textInput.fieldLength)
         {
-            Undo.RegisterUndo(textInput, "Field length changed");
+            tk2dUndo.RecordObject(textInput, "Field length changed");
             textInput.fieldLength = newFieldLength;
             wasChange = true;
         }

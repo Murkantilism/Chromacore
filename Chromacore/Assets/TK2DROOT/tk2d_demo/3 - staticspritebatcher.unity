@@ -256,105 +256,443 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d4775e89280fa044835889590a966f0, type: 1}
   m_Name: 
-  version: 2
+  version: 3
   batchedSprites:
-  - name: rock5
+  - type: 1
+    name: rock5
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -.23033759, y: 0, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock5
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -.23033759
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock5
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: .400912434, y: -.257774353, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock5
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: .400912434
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -.257774353
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock5
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 1.03216243, y: -.381057978, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock5
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 1.03216243
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -.381057978
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock5
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: .716537476, y: -.381057978, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock5
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: .716537476
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -.381057978
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock5
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 1.34778738, y: -.381057978, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock5
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 1.34778738
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -.381057978
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock5
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: .0852874219, y: -.123283386, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock2
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: .0852874219
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -.123283386
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock2
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -1.17721248, y: 0, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock1
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.17721248
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock1
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -1.49283743, y: 0, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock3
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.49283743
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock3
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -.861587524, y: 0, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock5
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -.861587524
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock5
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 1.66341233, y: -.381057978, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: rock4
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 1.66341233
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -.381057978
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: rock4
     parentId: -1
     spriteId: 21
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -.545962572, y: 0, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: chest
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -.545962572
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: chest
     parentId: -1
     spriteId: 20
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 1.34778738, y: -.246566534, z: -.185115457}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 1.34778738
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -.246566534
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: -.185115457
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  allTextMeshData: []
+  spriteCollection: {fileID: 0}
+  flags: 1
   _scale: {x: 1, y: 1, z: 1}
 --- !u!114 &22
 MonoBehaviour:
@@ -378,11 +716,27 @@ MonoBehaviour:
   _maxChars: 39
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: Select StaticSpriteBatcher, click Edit
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 1
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 39
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!196 &23
 NavMeshSettings:
   m_ObjectHideFlags: 0

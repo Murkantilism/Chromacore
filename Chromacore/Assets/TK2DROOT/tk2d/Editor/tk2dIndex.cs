@@ -144,7 +144,7 @@ public class tk2dIndex : ScriptableObject
 			}
 		}
 
-		if (sc.spriteCollectionPlatforms.Length > 0) {
+		if (sc.spriteCollectionPlatforms != null && sc.spriteCollectionPlatforms.Length > 0) {
 			indexEntry.spriteNames = new string[] { "dummy" };
 			indexEntry.spriteTextureGUIDs = new string[] { "" };
 			indexEntry.spriteTextureTimeStamps = new string[] { "0" };

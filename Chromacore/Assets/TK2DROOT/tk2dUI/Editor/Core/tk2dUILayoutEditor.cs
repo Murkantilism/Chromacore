@@ -58,7 +58,7 @@ public class tk2dUILayoutEditor : Editor {
 			Vector3 dMin = new Vector3(r1.xMin - r0.xMin, r1.yMin - r0.yMin);
 			Vector3 dMax = new Vector3(r1.xMax - r0.xMax, r1.yMax - r0.yMax);
 			Object[] deps = EditorUtility.CollectDeepHierarchy(new Object[] {My});
-			Undo.RegisterUndo(deps, "Resize");
+			tk2dUndo.RecordObjects(deps, "Resize");
 			My.Reshape(dMin, dMax, updateChildren);
 			foreach (var dep in deps)
 				EditorUtility.SetDirty(dep);
@@ -194,7 +194,7 @@ public class tk2dUILayoutEditor : Editor {
 			}
 			else {
 				Object[] deps = EditorUtility.CollectDeepHierarchy(new Object[] {My});
-				Undo.RegisterUndo(deps, "Resize");
+				tk2dUndo.RecordObjects(deps, "Resize");
 
 				Vector3[] minMax = new Vector3[] {Vector3.one * float.MaxValue, Vector3.one * -float.MaxValue};
 				GetChildRendererBounds(My.transform.worldToLocalMatrix, minMax, My.transform);

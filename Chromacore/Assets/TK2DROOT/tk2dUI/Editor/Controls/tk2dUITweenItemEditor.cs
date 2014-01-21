@@ -9,7 +9,7 @@ public class tk2dUITweenItemEditor : tk2dUIBaseItemControlEditor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        EditorGUIUtility.LookLikeControls(200);
+        tk2dGuiUtility.LookLikeControls(200);
         tk2dUITweenItem btnClickScaler = (tk2dUITweenItem)target;
 
         btnClickScaler.onDownScale = EditorGUILayout.Vector3Field("On Down Scale", btnClickScaler.onDownScale);

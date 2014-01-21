@@ -11,7 +11,7 @@ public class tk2dUIBaseItemControlEditor : Editor
     protected bool hasBtnCheckBeenDone = false;
     public override void OnInspectorGUI()
     {
-        EditorGUIUtility.LookLikeInspector();
+        tk2dGuiUtility.LookLikeInspector();
         tk2dUIBaseItemControl baseButtonControl = (tk2dUIBaseItemControl)target;
 
         baseButtonControl.uiItem = tk2dUICustomEditorGUILayout.SceneObjectField("UIItem", baseButtonControl.uiItem,target);

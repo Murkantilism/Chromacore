@@ -8,7 +8,7 @@ public class tk2dUIScrollableAreaEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        EditorGUIUtility.LookLikeInspector();
+        tk2dGuiUtility.LookLikeInspector();
         base.OnInspectorGUI();
 
 		tk2dUIScrollableArea scrollableArea = (tk2dUIScrollableArea)target;
@@ -18,7 +18,7 @@ public class tk2dUIScrollableAreaEditor : Editor
 
         GUILayout.Label("Tools", EditorStyles.boldLabel);
         if (GUILayout.Button("Calculate content length")) {
-            Undo.RegisterUndo(scrollableArea, "Content length changed");
+            tk2dUndo.RecordObject(scrollableArea, "Content length changed");
             Bounds b = tk2dUIItemBoundsHelper.GetRendererBoundsInChildren( scrollableArea.contentContainer.transform, scrollableArea.contentContainer.transform );
             b.Encapsulate(Vector3.zero);
             float contentSize = (scrollableArea.scrollAxes == tk2dUIScrollableArea.Axes.XAxis) ? b.size.x : b.size.y;
@@ -51,7 +51,7 @@ public class tk2dUIScrollableAreaEditor : Editor
         float newVisibleAreaLength = tk2dUIControlsHelperEditor.DrawLengthHandles("Visible Area Length", scrollableArea.VisibleAreaLength,scrollableArea.contentContainer.transform.position, isYAxis? -up:right, Color.red,isYAxis?.2f:-.2f, 0, .05f);
         if (newVisibleAreaLength != scrollableArea.VisibleAreaLength)
         {
-            Undo.RegisterUndo(scrollableArea, "Visible area changed");
+            tk2dUndo.RecordObject(scrollableArea, "Visible area changed");
             scrollableArea.VisibleAreaLength = newVisibleAreaLength;
             wasChange = true;
         }
@@ -59,7 +59,7 @@ public class tk2dUIScrollableAreaEditor : Editor
         float newContentLength = tk2dUIControlsHelperEditor.DrawLengthHandles("Content Length", scrollableArea.ContentLength, scrollableArea.contentContainer.transform.position, isYAxis ? -up : right, Color.blue, isYAxis ? .2f : -.2f, isYAxis?.4f:-.4f, .1f);
         if (newContentLength != scrollableArea.ContentLength)
         {
-            Undo.RegisterUndo(scrollableArea, "Content length changed");
+            tk2dUndo.RecordObject(scrollableArea, "Content length changed");
             scrollableArea.ContentLength = newContentLength;
             wasChange = true;
         }

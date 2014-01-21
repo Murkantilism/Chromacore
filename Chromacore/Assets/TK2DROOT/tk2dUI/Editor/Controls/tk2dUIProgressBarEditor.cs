@@ -8,7 +8,7 @@ public class tk2dUIProgressBarEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        EditorGUIUtility.LookLikeInspector();
+        tk2dGuiUtility.LookLikeInspector();
         bool markAsDirty = false;
         tk2dUIProgressBar progressBar = (tk2dUIProgressBar)target;
 

@@ -645,9 +645,11 @@ public class tk2dStaticSpriteBatcher : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		
 		renderer.sharedMaterials = materials.ToArray();
 	}
-	
+
 	void BuildPhysicsMesh()
 	{
+		// Check if the Generate Colliders flag is cleared
+		// Delete existing colliders and return otherwise
 		MeshCollider meshCollider = GetComponent<MeshCollider>();
 		if (meshCollider != null)
 		{
@@ -665,6 +667,19 @@ public class tk2dStaticSpriteBatcher : MonoBehaviour, tk2dRuntime.ISpriteCollect
 			}
 		}
 
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+		EdgeCollider2D[] edgeColliders = GetComponents<EdgeCollider2D>();
+		if (!CheckFlag(Flags.GenerateCollider)) {
+			foreach (EdgeCollider2D ec in edgeColliders) {
+	#if UNITY_EDITOR
+					DestroyImmediate(ec);
+	#else
+					Destroy(ec);
+	#endif
+			}
+		}
+#endif
+
 		if (!CheckFlag(Flags.GenerateCollider)) {
 			return;
 		}
@@ -672,14 +687,16 @@ public class tk2dStaticSpriteBatcher : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		bool flattenDepth = CheckFlag(Flags.FlattenDepth);
 		int numIndices = 0;
 		int numVertices = 0;
+		int numEdgeColliders = 0;
+		bool physics3D = true;
 		
-		// first pass, count required vertices and indices
+		// first pass, count required vertices, indices and edges
 		foreach (var bs in batchedSprites) 
 		{
 			if (!bs.IsDrawn) // when the first non-drawn child is found, it signals the end of the drawn list
 				break;
 
-			var spriteDef = bs.GetSpriteDefinition();
+			tk2dSpriteDefinition spriteDef = bs.GetSpriteDefinition();
 
 			bool buildSpriteDefinitionMesh = false;
 			bool buildBox = false;
@@ -710,28 +727,206 @@ public class tk2dStaticSpriteBatcher : MonoBehaviour, tk2dRuntime.ISpriteCollect
 			{
 				numIndices += spriteDef.colliderIndicesFwd.Length;
 				numVertices += spriteDef.colliderVertices.Length;
+				numEdgeColliders += spriteDef.edgeCollider2D.Length;
+				numEdgeColliders += spriteDef.polygonCollider2D.Length;
 			}
 			else if (buildBox)
 			{
 				numIndices += 6 * 6;
 				numVertices += 8;
+				numEdgeColliders++;
+			}
+
+			if (spriteDef.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics2D) {
+				physics3D = false;
 			}
 		}
 		
-		if (numIndices == 0)
+		// Destroy existing collider if not required
+		if ((physics3D && numIndices == 0) || (!physics3D && numEdgeColliders == 0))
 		{
-			if (colliderMesh)
+			if (colliderMesh != null)
 			{
-#if UNITY_EDTIOR
+#if UNITY_EDITOR
+				DestroyImmediate(colliderMesh);
+#else
+				Destroy(colliderMesh);
+#endif
+				colliderMesh = null;
+			}
+			if (meshCollider != null) {
+#if UNITY_EDITOR
+				DestroyImmediate(meshCollider);
+#else
+				Destroy(meshCollider);
+#endif
+			}			
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			foreach (EdgeCollider2D ec in edgeColliders) {
+#if UNITY_EDITOR
+				DestroyImmediate(ec);
+#else
+				Destroy(ec);
+#endif
+			}
+#endif
+
+			return;
+		}
+
+		// Sanitize for chosen physics engine
+		if (physics3D) {
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			foreach (EdgeCollider2D ec in edgeColliders) {
+#if UNITY_EDITOR
+				DestroyImmediate(ec);
+#else
+				Destroy(ec);
+#endif
+			}
+#endif
+		}
+		else {
+			if (colliderMesh != null) {
+#if UNITY_EDITOR
 				DestroyImmediate(colliderMesh);
 #else
 				Destroy(colliderMesh);
 #endif
 			}
-			
-			return;
+			if (meshCollider != null) {
+#if UNITY_EDITOR
+				DestroyImmediate(meshCollider);
+#else
+				Destroy(meshCollider);
+#endif
+			}			
 		}
 		
+		// Delegate to appropriate builder function
+		if (physics3D) {
+			BuildPhysicsMesh3D(meshCollider, flattenDepth, numVertices, numIndices);
+		}
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+		else {
+			BuildPhysicsMesh2D(edgeColliders, numEdgeColliders);
+		}
+#endif
+	}
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+	void BuildPhysicsMesh2D(EdgeCollider2D[] edgeColliders, int numEdgeColliders) {
+		
+		// Delete surplus
+		for (int i = numEdgeColliders; i < edgeColliders.Length; ++i) {
+#if UNITY_EDITOR
+			DestroyImmediate(edgeColliders[i]);
+#else
+			Destroy(edgeColliders[i]);
+#endif
+		}
+
+		Vector2[] boxPos = new Vector2[5];
+
+		// Fill in missing, only do this if necessary
+		if (numEdgeColliders > edgeColliders.Length) {
+			EdgeCollider2D[] allEdgeColliders = new EdgeCollider2D[numEdgeColliders];
+			int numToFill = Mathf.Min(numEdgeColliders, edgeColliders.Length);
+			for (int i = 0; i < numToFill; ++i) {
+				allEdgeColliders[i] = edgeColliders[i];
+			}
+			for (int i = numToFill; i < numEdgeColliders; ++i) {
+				allEdgeColliders[i] = gameObject.AddComponent<EdgeCollider2D>();
+			}
+			edgeColliders = allEdgeColliders;
+		}
+
+		// second pass, build composite mesh
+		Matrix4x4 scaleMatrix = Matrix4x4.identity;
+		scaleMatrix.m00 = _scale.x;
+		scaleMatrix.m11 = _scale.y;
+		scaleMatrix.m22 = _scale.z;
+
+		int currEdgeCollider = 0;
+		foreach (tk2dBatchedSprite bs in batchedSprites) 
+		{
+			if (!bs.IsDrawn) // when the first non-drawn child is found, it signals the end of the drawn list
+				break;
+
+			tk2dSpriteDefinition spriteDef = bs.GetSpriteDefinition();
+
+			bool buildSpriteDefinitionMesh = false;
+			bool buildBox = false;
+			Vector3 boxOrigin = Vector3.zero;
+			Vector3 boxExtents = Vector3.zero;
+			switch (bs.type)
+			{
+			case tk2dBatchedSprite.Type.Sprite:
+				if (spriteDef != null && spriteDef.colliderType == tk2dSpriteDefinition.ColliderType.Mesh)
+				{
+					buildSpriteDefinitionMesh = true;
+				}
+				if (spriteDef != null && spriteDef.colliderType == tk2dSpriteDefinition.ColliderType.Box)
+				{
+					buildBox = true;
+					boxOrigin = spriteDef.colliderVertices[0];
+					boxExtents = spriteDef.colliderVertices[1];
+				}
+				break;
+			case tk2dBatchedSprite.Type.ClippedSprite:
+			case tk2dBatchedSprite.Type.SlicedSprite:
+			case tk2dBatchedSprite.Type.TiledSprite:
+				buildBox = bs.CheckFlag(tk2dBatchedSprite.Flags.Sprite_CreateBoxCollider);
+				if (buildBox)
+				{
+					boxOrigin = bs.CachedBoundsCenter;
+					boxExtents = bs.CachedBoundsExtents;
+				}
+				break;
+			case tk2dBatchedSprite.Type.TextMesh:
+				break;
+			}
+
+			Matrix4x4 mat = scaleMatrix * bs.relativeMatrix;
+			if (buildSpriteDefinitionMesh)
+			{
+				foreach (tk2dCollider2DData dat in spriteDef.edgeCollider2D) {
+					Vector2[] vertices = new Vector2[ dat.points.Length ];
+					for (int i = 0; i < dat.points.Length; ++i) {
+						vertices[i] =  mat.MultiplyPoint( dat.points[i] );
+					}
+					edgeColliders[currEdgeCollider].points = vertices;
+				}
+
+				foreach (tk2dCollider2DData dat in spriteDef.polygonCollider2D) {
+					Vector2[] vertices = new Vector2[ dat.points.Length + 1 ];
+					for (int i = 0; i < dat.points.Length; ++i) {
+						vertices[i] = mat.MultiplyPoint( dat.points[i] );
+					}
+					vertices[dat.points.Length] = vertices[0]; // manual wrap around for poly collider
+					edgeColliders[currEdgeCollider].points = vertices;
+				}
+
+				currEdgeCollider++;
+			}
+			else if (buildBox)
+			{
+				Vector3 min = boxOrigin - boxExtents;
+				Vector3 max = boxOrigin + boxExtents;
+				boxPos[0] = mat.MultiplyPoint( new Vector2(min.x, min.y) );
+				boxPos[1] = mat.MultiplyPoint( new Vector2(max.x, min.y) );
+				boxPos[2] = mat.MultiplyPoint( new Vector2(max.x, max.y) );
+				boxPos[3] = mat.MultiplyPoint( new Vector2(min.x, max.y) );
+				boxPos[4] = boxPos[0];
+				edgeColliders[currEdgeCollider].points = boxPos;
+				currEdgeCollider++;
+			}
+		}
+	}
+#endif
+
+	void BuildPhysicsMesh3D(MeshCollider meshCollider, bool flattenDepth, int numVertices, int numIndices) {
 		if (meshCollider == null)
 		{
 			meshCollider = gameObject.AddComponent<MeshCollider>();

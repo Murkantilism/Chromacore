@@ -8,7 +8,7 @@ public class tk2dUIDropDownMenuEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        EditorGUIUtility.LookLikeInspector();
+        tk2dGuiUtility.LookLikeInspector();
         base.OnInspectorGUI();
 
 		tk2dUIDropDownMenu dropdownMenu = (tk2dUIDropDownMenu)target;
@@ -43,7 +43,7 @@ public class tk2dUIDropDownMenuEditor : Editor
 			float newDropDownButtonHeight = tk2dUIControlsHelperEditor.DrawLengthHandles("Dropdown Button Height", dropdownMenu.height, dropdownMenu.transform.position+(up*(dropdownMenu.height/2)), -up, Color.red,.15f, .3f, .05f);
 			if (newDropDownButtonHeight != dropdownMenu.height)
 			{
-				Undo.RegisterUndo(dropdownMenu, "Dropdown Button Height Changed");
+				tk2dUndo.RecordObject(dropdownMenu, "Dropdown Button Height Changed");
 				dropdownMenu.height = newDropDownButtonHeight;
 				wasChange = true;
 			}
@@ -63,7 +63,7 @@ public class tk2dUIDropDownMenuEditor : Editor
 				float newDropDownItemTemplateHeight = tk2dUIControlsHelperEditor.DrawLengthHandles("Dropdown Item Template Height", dropdownItemTemplate.height, dropdownMenu.transform.position - (up * (dropdownMenu.height/2)), -up, Color.blue, .15f, .4f, .05f);
 				if (newDropDownItemTemplateHeight != dropdownItemTemplate.height)
 				{
-					Undo.RegisterUndo(dropdownItemTemplate, "Dropdown Template Height Changed");
+					tk2dUndo.RecordObject(dropdownItemTemplate, "Dropdown Template Height Changed");
 					dropdownItemTemplate.height = newDropDownItemTemplateHeight;
 					EditorUtility.SetDirty(dropdownItemTemplate);
 				}

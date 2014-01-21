@@ -365,7 +365,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 			GUILayout.EndVertical();
 
 			// Inspector
-			EditorGUIUtility.LookLikeControls(100.0f, 100.0f);
+			tk2dGuiUtility.LookLikeControls(100.0f, 100.0f);
 			inspectorScrollBar = GUILayout.BeginScrollView(inspectorScrollBar, GUILayout.ExpandHeight(true), GUILayout.Width(host.InspectorWidth));
 
 			// Header

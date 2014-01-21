@@ -14,13 +14,13 @@ public struct tk2dUITouch
     public Vector2 deltaPosition { get; private set; }
     public float deltaTime { get; private set; }
 
-    public tk2dUITouch(TouchPhase phase, int fingerID, Vector2 position, Vector2 deltaPosition, float deltaTime) : this()
+    public tk2dUITouch(TouchPhase _phase, int _fingerId, Vector2 _position, Vector2 _deltaPosition, float _deltaTime) : this()
     {
-        this.phase = phase;
-        this.fingerId = fingerId;
-        this.position = position;
-        this.deltaPosition = deltaPosition;
-        this.deltaTime = deltaTime;
+        this.phase = _phase;
+        this.fingerId = _fingerId;
+        this.position = _position;
+        this.deltaPosition = _deltaPosition;
+        this.deltaTime = _deltaTime;
     }
 
     public tk2dUITouch(Touch touch) : this()

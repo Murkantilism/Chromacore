@@ -42,12 +42,12 @@ namespace tk2dEditor.SpriteCollectionEditor
 			GUILayout.EndVertical();
 			
 			// Inspector
-			EditorGUIUtility.LookLikeControls(100.0f, 100.0f);
+			tk2dGuiUtility.LookLikeControls(100.0f, 100.0f);
 			fontEditorScrollBar = GUILayout.BeginScrollView(fontEditorScrollBar, GUILayout.ExpandHeight(true), GUILayout.Width(host.InspectorWidth));
 			
 			// Header
 			GUILayout.BeginVertical(tk2dEditorSkin.SC_InspectorHeaderBG, GUILayout.ExpandWidth(true));
-			Object newBmFont = EditorGUILayout.ObjectField("BM Font", font.bmFont, typeof(Object), false);
+			TextAsset newBmFont = EditorGUILayout.ObjectField("BM Font", font.bmFont, typeof(TextAsset), false) as TextAsset;
 			if (newBmFont != font.bmFont)
 			{
 				font.texture = null;
@@ -142,13 +142,8 @@ namespace tk2dEditor.SpriteCollectionEditor
 							GameObject go = new GameObject();
 							go.AddComponent<tk2dFontData>();
 					        tk2dEditorUtility.SetGameObjectActive(go, false);
-	#if (UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
-							Object p = EditorUtility.CreateEmptyPrefab(dataObjectPath);
-							EditorUtility.ReplacePrefab(go, p);
-	#else
 							Object p = PrefabUtility.CreateEmptyPrefab(dataObjectPath);
 							PrefabUtility.ReplacePrefab(go, p);
-	#endif
 							GameObject.DestroyImmediate(go);
 							AssetDatabase.SaveAssets();
 							font.data = AssetDatabase.LoadAssetAtPath(dataObjectPath, typeof(tk2dFontData)) as tk2dFontData;
@@ -162,13 +157,8 @@ namespace tk2dEditor.SpriteCollectionEditor
 							f.data = font.data;
 					        tk2dEditorUtility.SetGameObjectActive(go, false);
 				
-				#if (UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
-							Object p = EditorUtility.CreateEmptyPrefab(editorDataPath);
-							EditorUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-				#else
 							Object p = PrefabUtility.CreateEmptyPrefab(editorDataPath);
 							PrefabUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-				#endif
 							GameObject.DestroyImmediate(go);
 							
 							tk2dFont loadedFont = AssetDatabase.LoadAssetAtPath(editorDataPath, typeof(tk2dFont)) as tk2dFont;

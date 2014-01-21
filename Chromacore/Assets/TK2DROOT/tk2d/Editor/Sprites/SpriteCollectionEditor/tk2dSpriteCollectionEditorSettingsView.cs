@@ -348,16 +348,25 @@ namespace tk2dEditor.SpriteCollectionEditor
 		{
 			BeginHeader("Texture Settings");
 
-			SpriteCollection.filterMode = (FilterMode)EditorGUILayout.EnumPopup("Filter Mode", SpriteCollection.filterMode);
-			SpriteCollection.textureCompression = (tk2dSpriteCollection.TextureCompression)EditorGUILayout.EnumPopup("Compression", SpriteCollection.textureCompression);
-			SpriteCollection.userDefinedTextureSettings = EditorGUILayout.Toggle("User Defined", SpriteCollection.userDefinedTextureSettings);
-			if (SpriteCollection.userDefinedTextureSettings) GUI.enabled = false;
-			EditorGUI.indentLevel++;
-			SpriteCollection.wrapMode = (TextureWrapMode)EditorGUILayout.EnumPopup("Wrap Mode", SpriteCollection.wrapMode);
-			SpriteCollection.anisoLevel = (int)EditorGUILayout.IntSlider("Aniso Level", SpriteCollection.anisoLevel, 0, 9);
-			SpriteCollection.mipmapEnabled = EditorGUILayout.Toggle("Mip Maps", SpriteCollection.mipmapEnabled);
-			EditorGUI.indentLevel--;
-			GUI.enabled = true;
+			SpriteCollection.atlasFormat = (tk2dSpriteCollection.AtlasFormat)EditorGUILayout.EnumPopup("Atlas Format", SpriteCollection.atlasFormat);
+			if (SpriteCollection.atlasFormat == tk2dSpriteCollection.AtlasFormat.UnityTexture) {
+				SpriteCollection.filterMode = (FilterMode)EditorGUILayout.EnumPopup("Filter Mode", SpriteCollection.filterMode);
+				SpriteCollection.textureCompression = (tk2dSpriteCollection.TextureCompression)EditorGUILayout.EnumPopup("Compression", SpriteCollection.textureCompression);
+				SpriteCollection.userDefinedTextureSettings = EditorGUILayout.Toggle("User Defined", SpriteCollection.userDefinedTextureSettings);
+				if (SpriteCollection.userDefinedTextureSettings) GUI.enabled = false;
+				EditorGUI.indentLevel++;
+				SpriteCollection.wrapMode = (TextureWrapMode)EditorGUILayout.EnumPopup("Wrap Mode", SpriteCollection.wrapMode);
+				SpriteCollection.anisoLevel = (int)EditorGUILayout.IntSlider("Aniso Level", SpriteCollection.anisoLevel, 0, 9);
+				SpriteCollection.mipmapEnabled = EditorGUILayout.Toggle("Mip Maps", SpriteCollection.mipmapEnabled);
+				EditorGUI.indentLevel--;
+				GUI.enabled = true;
+			}
+			else if (SpriteCollection.atlasFormat == tk2dSpriteCollection.AtlasFormat.Png) {
+				tk2dGuiUtility.InfoBox("Png atlases will decrease on disk game asset sizes, at the expense of increased load times.",
+					tk2dGuiUtility.WarningLevel.Warning);
+				SpriteCollection.filterMode = (FilterMode)EditorGUILayout.EnumPopup("Filter Mode", SpriteCollection.filterMode);
+				SpriteCollection.mipmapEnabled = EditorGUILayout.Toggle("Mip Maps", SpriteCollection.mipmapEnabled);
+			}
 
 			int curRescaleSelection = 0;
 			if (SpriteCollection.globalTextureRescale > 0.4 && SpriteCollection.globalTextureRescale < 0.6)
@@ -391,9 +400,27 @@ namespace tk2dEditor.SpriteCollectionEditor
 			}
 
 			SpriteCollection.premultipliedAlpha = EditorGUILayout.Toggle("Premultiplied Alpha", SpriteCollection.premultipliedAlpha);
-			SpriteCollection.physicsDepth = EditorGUILayout.FloatField("Collider depth", SpriteCollection.physicsDepth);
 			SpriteCollection.disableTrimming = EditorGUILayout.Toggle("Disable Trimming", SpriteCollection.disableTrimming);
 			SpriteCollection.normalGenerationMode = (tk2dSpriteCollection.NormalGenerationMode)EditorGUILayout.EnumPopup("Normal Generation", SpriteCollection.normalGenerationMode);
+
+			EndHeader();
+		}
+		
+		void DrawPhysicsSettings()
+		{
+			BeginHeader("Physics Settings");
+
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			GUI.enabled = false;
+			SpriteCollection.physicsEngine = tk2dSpriteDefinition.PhysicsEngine.Physics3D;
+#endif
+			SpriteCollection.physicsEngine = (tk2dSpriteDefinition.PhysicsEngine)EditorGUILayout.EnumPopup("Physics Engine", SpriteCollection.physicsEngine);
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			GUI.enabled = false;
+#endif
+			GUI.enabled = SpriteCollection.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics3D;
+			SpriteCollection.physicsDepth = EditorGUILayout.FloatField("Collider depth", SpriteCollection.physicsDepth);
+			GUI.enabled = true;
 
 			EndHeader();
 		}
@@ -469,6 +496,16 @@ namespace tk2dEditor.SpriteCollectionEditor
 				EditorGUILayout.LabelField("Atlas Wastage", SpriteCollection.atlasWastage.ToString("0.00") + "%");
 			}
 
+			if (SpriteCollection.atlasFormat == tk2dSpriteCollection.AtlasFormat.Png) {
+				int totalAtlasSize = 0;
+				foreach (TextAsset ta in SpriteCollection.atlasTextureFiles) {
+					if (ta != null) {
+						totalAtlasSize += ta.bytes.Length;
+					}
+				}
+				EditorGUILayout.LabelField("Atlas File Size", EditorUtility.FormatBytes(totalAtlasSize));
+			}
+
 			GUIContent remDuplicates = new GUIContent("Remove Duplicates", "Remove duplicate textures after trimming and other processing.");
 			SpriteCollection.removeDuplicates = EditorGUILayout.Toggle(remDuplicates, SpriteCollection.removeDuplicates);
 
@@ -503,7 +540,7 @@ namespace tk2dEditor.SpriteCollectionEditor
 			
 			
 			int inspectorWidth = host.InspectorWidth;
-			EditorGUIUtility.LookLikeControls(130.0f, 40.0f);
+			tk2dGuiUtility.LookLikeControls(130.0f, 40.0f);
 			
 			settingsScrollbar = GUILayout.BeginScrollView(settingsScrollbar, GUILayout.ExpandHeight(true), GUILayout.Width(inspectorWidth));
 	
@@ -515,6 +552,8 @@ namespace tk2dEditor.SpriteCollectionEditor
 			GUILayout.BeginVertical(tk2dEditorSkin.SC_InspectorBG, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
 			DrawSpriteCollectionSettings();
+
+			DrawPhysicsSettings();
 
 			DrawTextureSettings();
 

@@ -76,6 +76,7 @@ MonoBehaviour:
     spriteCollection: {fileID: 0}
   managedSpriteCollection: 0
   loadable: 0
+  atlasFormat: 0
   maxTextureSize: 1024
   forceTextureSize: 0
   forcedTextureWidth: 1024
@@ -104,6 +105,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -143,6 +145,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -182,6 +185,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -221,6 +225,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -260,6 +265,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 2
     extraPadding: 0
     source: 0
@@ -299,6 +305,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -338,6 +345,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -377,6 +385,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -416,6 +425,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -455,6 +465,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -494,6 +505,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -533,6 +545,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -572,6 +585,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -611,6 +625,7 @@ MonoBehaviour:
     dice: 1
     diceUnitX: 64
     diceUnitY: 512
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -650,6 +665,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -689,6 +705,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -728,6 +745,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -767,6 +785,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -806,6 +825,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -845,6 +865,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -884,6 +905,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -923,6 +945,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -962,6 +985,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1001,6 +1025,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1040,6 +1065,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 100
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1079,6 +1105,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1118,6 +1145,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1157,6 +1185,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1196,6 +1225,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1235,6 +1265,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1274,6 +1305,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1313,6 +1345,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1352,6 +1385,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1391,6 +1425,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1450,6 +1485,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1501,6 +1537,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1540,6 +1577,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1594,6 +1632,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1633,6 +1672,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1672,6 +1712,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1711,6 +1752,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1750,6 +1792,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1789,6 +1832,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1828,6 +1872,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1873,6 +1918,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1918,6 +1964,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1963,6 +2010,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -2008,6 +2056,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -2053,6 +2102,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -2090,6 +2140,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 32286741c6a400a44a969d7d318b1ca5, type: 2}
   atlasTextures:
   - {fileID: 2800000, guid: 8b590bbce5acef3498615fcb7abfec2f, type: 1}
+  atlasTextureFiles: []
   useTk2dCamera: 0
   targetHeight: 640
   targetOrthoSize: 1
@@ -2114,6 +2165,7 @@ MonoBehaviour:
   userDefinedTextureSettings: 1
   mipmapEnabled: 0
   anisoLevel: 1
+  physicsEngine: 0
   physicsDepth: .100000001
   disableTrimming: 0
   normalGenerationMode: 0

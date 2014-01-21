@@ -58,6 +58,7 @@ MonoBehaviour:
     spriteCollection: {fileID: 0}
   managedSpriteCollection: 0
   loadable: 0
+  atlasFormat: 0
   maxTextureSize: 1024
   forceTextureSize: 0
   forcedTextureWidth: 1024
@@ -68,6 +69,7 @@ MonoBehaviour:
   forceSquareAtlas: 0
   atlasWastage: 47.3632812
   allowMultipleAtlases: 0
+  removeDuplicates: 1
   textureParams:
   - name: heart_empty
     disableTrimming: 0
@@ -85,6 +87,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -107,6 +110,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: heart_full
     disableTrimming: 0
     additive: 0
@@ -123,6 +127,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -145,6 +150,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: heart_half
     disableTrimming: 0
     additive: 0
@@ -161,6 +167,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -183,6 +190,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: window
     disableTrimming: 0
     additive: 0
@@ -199,6 +207,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -221,6 +230,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   spriteCollection: {fileID: 11400000, guid: 4864518b0693631458553f73aaa86021, type: 2}
   premultipliedAlpha: 1
   altMaterials:
@@ -229,23 +239,33 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 45d35519481f70649a530df6dcddd423, type: 2}
   atlasTextures:
   - {fileID: 2800000, guid: 6a5c20ae58dae9d44b7cdade69bd0bbc, type: 1}
+  atlasTextureFiles: []
   useTk2dCamera: 1
   targetHeight: 1
   targetOrthoSize: .5
+  sizeDef:
+    type: 1
+    orthoSize: 10
+    pixelsPerMeter: 1
+    width: 960
+    height: 640
   globalScale: 1
+  globalTextureRescale: 1
+  attachPointTestSprites: []
   pixelPerfectPointSampled: 0
   filterMode: 1
   wrapMode: 1
   userDefinedTextureSettings: 0
   mipmapEnabled: 0
   anisoLevel: 1
+  physicsEngine: 0
   physicsDepth: .100000001
   disableTrimming: 0
   normalGenerationMode: 0
   padAmount: -1
   autoUpdate: 1
   editorDisplayScale: 1
-  version: 3
+  version: 4
   assetName: 
 --- !u!1002 &11400001
 EditorExtensionImpl:

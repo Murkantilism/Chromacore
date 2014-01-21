@@ -77,7 +77,7 @@ Mesh:
       m_Center: {x: .0312500596, y: 5.96046448e-08, z: 0}
       m_Extent: {x: 1.40625, y: 1.40625, z: 1}
   m_MeshCompression: 0
-  m_IndexBuffer: 0200010000000200030001000400030002000400050003000600050004000600070005000800070006000800090007000a00090008000a000b0009000c000b000a000c000d000b000e000d000c000e000f000d0010000f000e00100011000f00120011001000120013001100000013001200000001001300
+  m_IndexBuffer: 0200010000000200030001000400050002000200050003000600070004000400070005000800070006000800090007000a000b00080008000b0009000c000b000a000c000d000b000e000d000c000e000f000d0010000f000e00100011000f00120011001000120013001100000001001200120001001300
   m_Skin: []
   m_BindPose: []
   m_VertexData:
@@ -183,7 +183,7 @@ Mesh:
       m_Center: {x: -.0312500596, y: 5.96046448e-08, z: 0}
       m_Extent: {x: 1.40625, y: 1.40625, z: 1}
   m_MeshCompression: 0
-  m_IndexBuffer: 000001000200010003000200020003000400030005000400040005000600050007000600060007000800070009000800080009000a0009000b000a000a000b000c000b000d000c000c000d000e000d000f000e000e000f0010000f0011001000100011001200110013001200120013000000130001000000
+  m_IndexBuffer: 00000100020001000300020002000500040003000500020004000700060005000700040006000700080007000900080008000b000a0009000b0008000a000b000c000b000d000c000c000d000e000d000f000e000e000f0010000f0011001000100011001200110013001200120001000000130001001200
   m_Skin: []
   m_BindPose: []
   m_VertexData:
@@ -289,7 +289,7 @@ Mesh:
       m_Center: {x: -.0312500596, y: 5.96046448e-08, z: 0}
       m_Extent: {x: 1.40625, y: 1.40625, z: 1}
   m_MeshCompression: 0
-  m_IndexBuffer: 000001000200010003000200020003000400030005000400040005000600050007000600060007000800070009000800080009000a0009000b000a000a000b000c000b000d000c000c000d000e000d000f000e000e000f0010000f0011001000100011001200110013001200120013000000130001000000
+  m_IndexBuffer: 00000100020001000300020002000500040003000500020004000700060005000700040006000700080007000900080008000b000a0009000b0008000a000b000c000b000d000c000c000d000e000d000f000e000e000f0010000f0011001000100011001200110013001200120001000000130001001200
   m_Skin: []
   m_BindPose: []
   m_VertexData:
@@ -1987,7 +1987,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1999,7 +1999,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2011,7 +2011,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2023,7 +2023,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2035,7 +2035,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2047,7 +2047,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &148
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2059,7 +2059,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2071,7 +2071,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2083,7 +2083,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.0625, y: 4.125, z: 4}
-  m_Center: {x: .0312499702, y: 0, z: -.0100000007}
+  m_Center: {x: .0312499702, y: 0, z: 0}
 --- !u!65 &151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2095,7 +2095,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2107,7 +2107,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2119,7 +2119,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.03125, y: 2.0625, z: 2}
-  m_Center: {x: .0156249851, y: 0, z: -.00500000035}
+  m_Center: {x: .0156249851, y: 0, z: 0}
 --- !u!65 &154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2223,11 +2223,11 @@ MonoBehaviour:
   _color: {r: 0, g: 0, b: 0, a: 1}
   _scale: {x: 11, y: 11, z: 11}
   _spriteId: 37
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,11 +2242,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 37
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2271,11 +2271,11 @@ MonoBehaviour:
   _color: {r: 1, g: 0, b: 0, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 32
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2320,11 +2320,27 @@ MonoBehaviour:
   _maxChars: 6
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: RELOAD
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: .752941191, g: .656677902, b: .587589383, a: .847058833}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 7
+    renderLayer: 0
+    scale: {x: 10, y: 10, z: 10}
+    kerning: 0
+    maxChars: 6
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2335,33 +2351,119 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d4775e89280fa044835889590a966f0, type: 1}
   m_Name: 
-  version: 2
+  version: 3
   batchedSprites:
-  - name: sky
+  - type: 1
+    name: sky
     parentId: -1
     spriteId: 4
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 0, y: 0, z: 6.45664978}
     localScale: {x: 10, y: 10, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: Sprite
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 10
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 10
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 6.45664978
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: Sprite
     parentId: -1
     spriteId: 17
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 10.716754, y: -.967757702, z: 3.18804145}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: Sprite
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 10
+      e01: 0
+      e02: 0
+      e03: 10.716754
+      e10: 0
+      e11: 10
+      e12: 0
+      e13: -.967757702
+      e20: 0
+      e21: 0
+      e22: 10
+      e23: 3.18804145
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: Sprite
     parentId: -1
     spriteId: 18
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -8.87427235, y: 3.20157576, z: 3.18804145}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 10
+      e01: 0
+      e02: 0
+      e03: -8.87427235
+      e10: 0
+      e11: 10
+      e12: 0
+      e13: 3.20157576
+      e20: 0
+      e21: 0
+      e22: 10
+      e23: 3.18804145
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  allTextMeshData: []
+  spriteCollection: {fileID: 0}
+  flags: 1
   _scale: {x: 1, y: 1, z: 1}
 --- !u!114 &166
 MonoBehaviour:
@@ -2377,7 +2479,6 @@ MonoBehaviour:
   _color: {r: .544776082, g: .454027444, b: .203274652, a: 1}
   _scale: {x: -10, y: 10, z: 10}
   _spriteId: 34
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 140}
   meshColliderPositions:
@@ -2402,6 +2503,7 @@ MonoBehaviour:
   - {x: -1.43750012, y: .59375, z: -1}
   - {x: -1.43750012, y: .59375, z: 1}
   meshColliderMesh: {fileID: 29}
+  renderLayer: 0
 --- !u!114 &167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2416,7 +2518,6 @@ MonoBehaviour:
   _color: {r: .544776082, g: .454027444, b: .203274652, a: 1}
   _scale: {x: -10, y: 10, z: 10}
   _spriteId: 34
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 139}
   meshColliderPositions:
@@ -2441,6 +2542,7 @@ MonoBehaviour:
   - {x: -1.43750012, y: .59375, z: -1}
   - {x: -1.43750012, y: .59375, z: 1}
   meshColliderMesh: {fileID: 28}
+  renderLayer: 0
 --- !u!114 &168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,7 +2557,6 @@ MonoBehaviour:
   _color: {r: .544776082, g: .454027444, b: .203274652, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 34
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 138}
   meshColliderPositions:
@@ -2480,6 +2581,7 @@ MonoBehaviour:
   - {x: 1.43750012, y: .59375, z: -1}
   - {x: 1.43750012, y: .59375, z: 1}
   meshColliderMesh: {fileID: 27}
+  renderLayer: 0
 --- !u!114 &169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2494,11 +2596,11 @@ MonoBehaviour:
   _color: {r: .544776082, g: .454027444, b: .203274652, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 153}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2513,11 +2615,11 @@ MonoBehaviour:
   _color: {r: .544776082, g: .454027444, b: .203274652, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 152}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2532,11 +2634,11 @@ MonoBehaviour:
   _color: {r: .544776082, g: .454027444, b: .203274652, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 151}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2551,7 +2653,6 @@ MonoBehaviour:
   _color: {r: 1, g: .470149279, b: .470149279, a: 1}
   _scale: {x: 20, y: 20, z: 20}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 150}
   meshCollider: {fileID: 0}
   meshColliderPositions:
@@ -2582,6 +2683,7 @@ MonoBehaviour:
   - {x: 3.78125, y: .25000006, z: -2}
   - {x: 3.78125, y: .25000006, z: 2}
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,11 +2698,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 149}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2615,11 +2717,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 148}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2634,11 +2736,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 147}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2653,11 +2755,11 @@ MonoBehaviour:
   _color: {r: .544776082, g: .454027444, b: .203274652, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 146}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2672,11 +2774,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 145}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,57 +2789,227 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d4775e89280fa044835889590a966f0, type: 1}
   m_Name: 
-  version: 2
+  version: 3
   batchedSprites:
-  - name: platform
+  - type: 1
+    name: platform
     parentId: -1
     spriteId: 35
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: -.0184197798, w: .999830365}
     position: {x: -3.23581934, y: -5.28654337, z: 0}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: platform
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 9.99321365
+      e01: .368333101
+      e02: 0
+      e03: -3.23581934
+      e10: -.368333101
+      e11: 9.99321365
+      e12: -0
+      e13: -5.28654337
+      e20: -0
+      e21: 0
+      e22: 10
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: platform
     parentId: -1
     spriteId: 36
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: .207548663, w: .978224695}
     position: {x: 10.8913431, y: 7.38047791, z: 0}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: platform
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 9.13847065
+      e01: -4.06058455
+      e02: 0
+      e03: 10.8913431
+      e10: 4.06058455
+      e11: 9.13847065
+      e12: 0
+      e13: 7.38047791
+      e20: 0
+      e21: 0
+      e22: 10
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: platform
     parentId: -1
     spriteId: 36
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: -.180207655, w: .983628631}
     position: {x: 10.133338, y: -1.55395436, z: 0}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: ground
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 9.35050392
+      e01: 3.54514813
+      e02: 0
+      e03: 10.133338
+      e10: -3.54514813
+      e11: 9.35050392
+      e12: -0
+      e13: -1.55395436
+      e20: -0
+      e21: 0
+      e22: 10
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: ground
     parentId: -1
     spriteId: 33
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 1.7949295, y: -8.09610271, z: -.0979156494}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: ground
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 10
+      e01: 0
+      e02: 0
+      e03: 1.7949295
+      e10: 0
+      e11: 10
+      e12: 0
+      e13: -8.09610271
+      e20: 0
+      e21: 0
+      e22: 10
+      e23: -.0979156494
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: ground
     parentId: -1
     spriteId: 33
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -12.0999336, y: -8.2075901, z: -.142457485}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: ground
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 10
+      e01: 0
+      e02: 0
+      e03: -12.0999336
+      e10: 0
+      e11: 10
+      e12: 0
+      e13: -8.2075901
+      e20: 0
+      e21: 0
+      e22: 10
+      e23: -.142457485
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: ground
     parentId: -1
     spriteId: 33
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 15.5219841, y: -7.99175072, z: -.209915638}
     localScale: {x: 10, y: 10, z: 10}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 10
+      e01: 0
+      e02: 0
+      e03: 15.5219841
+      e10: 0
+      e11: 10
+      e12: 0
+      e13: -7.99175072
+      e20: 0
+      e21: 0
+      e22: 10
+      e23: -.209915638
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  allTextMeshData: []
+  spriteCollection: {fileID: 0}
+  flags: 1
   _scale: {x: 1, y: 1, z: 1}
 --- !u!114 &179
 MonoBehaviour:
@@ -2753,11 +3025,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 144}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2772,11 +3044,11 @@ MonoBehaviour:
   _color: {r: .559701502, g: .470954597, b: .304912001, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 143}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2791,11 +3063,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 10, y: 10, z: 10}
   _spriteId: 23
-  pixelPerfect: 0
   boxCollider: {fileID: 142}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!196 &182
 NavMeshSettings:
   m_ObjectHideFlags: 0

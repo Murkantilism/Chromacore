@@ -96,7 +96,7 @@ public class tk2dUIMethodBindingHelper {
     static bool displayHelp = false;
 
     public GameObject BeginMessageGUI(GameObject target) {
-        EditorGUIUtility.LookLikeControls();
+        tk2dGuiUtility.LookLikeControls();
         GUILayout.BeginHorizontal();
         GUILayout.Label("Send Message", EditorStyles.boldLabel);
         GUILayout.FlexibleSpace();

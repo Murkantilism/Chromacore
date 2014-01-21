@@ -2,6 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [System.Serializable]
+public class tk2dCollider2DData {
+	public Vector2[] points = new Vector2[0];	
+}
+
+[System.Serializable]
 /// <summary>
 /// Sprite Definition.
 /// </summary>
@@ -32,7 +37,16 @@ public class tk2dSpriteDefinition
 		/// </summary>
 		Mesh,
 	}
-	
+
+	/// <summary>
+	/// Physics engine.
+	/// </summary>
+	public enum PhysicsEngine
+	{
+		Physics3D,
+		Physics2D
+	}
+
 	/// <summary>
 	/// Name
 	/// </summary>
@@ -109,6 +123,11 @@ public class tk2dSpriteDefinition
 	public bool complexGeometry = false;
 	
 	/// <summary>
+	/// Physics engine
+	/// </summary>
+	public PhysicsEngine physicsEngine = PhysicsEngine.Physics3D;
+	
+	/// <summary>
 	/// Collider type
 	/// </summary>
 	public ColliderType colliderType = ColliderType.Unset;
@@ -122,7 +141,8 @@ public class tk2dSpriteDefinition
 	public int[] colliderIndicesBack;
 	public bool colliderConvex;
 	public bool colliderSmoothSphereCollisions;
-
+	public tk2dCollider2DData[] polygonCollider2D = new tk2dCollider2DData[0];
+	public tk2dCollider2DData[] edgeCollider2D = new tk2dCollider2DData[0];
 
 	[System.Serializable]
 	public class AttachPoint
@@ -212,11 +232,22 @@ public class tk2dSpriteCollectionData : MonoBehaviour
 	[System.NonSerialized]
 	public Material[] materialInsts;
 
-	
+	Texture2D[] textureInsts = new Texture2D[0];
+
+
 	/// <summary>
 	/// An array of all textures used by this sprite collection.
 	/// </summary>
 	public Texture[] textures;
+
+	/// <summary>
+	/// An array of PNG textures used by this sprite collection.
+	/// </summary>
+	public TextAsset[] pngTextures = new TextAsset[0];
+
+	// Used only for PNG textures
+	public FilterMode textureFilterMode = FilterMode.Bilinear;
+	public bool textureMipMaps = false;
 	
 	/// <summary>
 	/// Specifies if sprites span multiple atlases.
@@ -483,12 +514,30 @@ public class tk2dSpriteCollectionData : MonoBehaviour
 				}
 			}
 			else {
+				bool assignTextureInst = false;
+				if (pngTextures.Length > 0) {
+					assignTextureInst = true;
+					textureInsts = new Texture2D[pngTextures.Length];
+					for (int i = 0; i < pngTextures.Length; ++i) {
+						Texture2D tex = new Texture2D(4, 4, TextureFormat.ARGB32, textureMipMaps);
+						tex.LoadImage(pngTextures[i].bytes);
+						textureInsts[i] = tex;
+						tex.filterMode = textureFilterMode;
+	#if UNITY_EDITOR
+						tex.hideFlags = HideFlags.DontSave;
+	#endif
+					}
+				}
+
 				for (int i = 0; i < materials.Length; ++i)
 				{
 					materialInsts[i] = Instantiate(materials[i]) as Material;
 	#if UNITY_EDITOR
 					materialInsts[i].hideFlags = HideFlags.DontSave;
 	#endif
+					if (assignTextureInst) {
+						materialInsts[i].mainTexture = textureInsts[i];
+					}
 				}
 			}
 			for (int i = 0; i < spriteDefinitions.Length; ++i)
@@ -499,6 +548,9 @@ public class tk2dSpriteCollectionData : MonoBehaviour
 		}
 		else
 		{
+			for (int i = 0; i < materials.Length; ++i) {
+				materialInsts[i] = materials[i];
+			}
 			for (int i = 0; i < spriteDefinitions.Length; ++i)
 			{
 				tk2dSpriteDefinition def = spriteDefinitions[i];
@@ -530,12 +582,24 @@ public class tk2dSpriteCollectionData : MonoBehaviour
 
 	public void ResetPlatformData()
 	{
-		if (hasPlatformData && platformSpecificData)
+		if (platformSpecificData != null) {
+			platformSpecificData.DestroyTextureInsts();
+		}
+		DestroyTextureInsts();
+
+		if (platformSpecificData)
 		{
 			platformSpecificData = null;
 		}
 		
 		materialInsts = null;
+	}
+
+	void DestroyTextureInsts() {
+		foreach (Texture2D texture in textureInsts) {
+			Object.DestroyImmediate(texture);
+		}
+		textureInsts = new Texture2D[0];
 	}
 
 	/// <summary>
@@ -551,6 +615,8 @@ public class tk2dSpriteCollectionData : MonoBehaviour
 			Resources.UnloadAsset(texture);
 		}
 
+		theInst.DestroyTextureInsts();
+
 		// Debug.Log(Resources.FindObjectsOfTypeAll(typeof(Texture2D)).Length);
 	}
 
@@ -565,10 +631,15 @@ public class tk2dSpriteCollectionData : MonoBehaviour
 		}
 		else if (needMaterialInstance) // exclusive
 		{
-			foreach (Material material in materialInsts)
-			{
+			foreach (Material material in materialInsts) {
 				DestroyImmediate(material);
 			}
+			materialInsts = new Material[0];
+
+			foreach (Texture2D texture in textureInsts) {
+				Object.DestroyImmediate(texture);
+			}
+			textureInsts = new Texture2D[0];
 		}
 
 		ResetPlatformData();

@@ -211,6 +211,7 @@ GameObject:
   - 33: {fileID: 57}
   - 23: {fileID: 47}
   - 114: {fileID: 70}
+  - 114: {fileID: 75}
   m_Layer: 0
   m_Name: sheep
   m_TagString: Untagged
@@ -229,6 +230,7 @@ GameObject:
   - 33: {fileID: 58}
   - 23: {fileID: 48}
   - 114: {fileID: 71}
+  - 114: {fileID: 74}
   m_Layer: 0
   m_Name: sheep_shadow
   m_TagString: Untagged
@@ -732,11 +734,27 @@ MonoBehaviour:
   _maxChars: 29
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: PIXEL PERFECT sprites & text
+    color: {r: 1, g: .734265685, b: 0, a: 1}
+    color2: {r: 1, g: 0, b: 0, a: 1}
+    useGradient: 1
+    textureGradient: 0
+    anchor: 4
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 29
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &64
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,11 +777,27 @@ MonoBehaviour:
   _maxChars: 28
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: 1 gameobject for background
+    color: {r: .216783285, g: 1, b: 0, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 1
+    textureGradient: 0
+    anchor: 0
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 28
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &65
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,11 +820,27 @@ MonoBehaviour:
   _maxChars: 21
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: STATIC SPRITE BATCHER
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 0
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 21
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &66
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,57 +851,227 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d4775e89280fa044835889590a966f0, type: 1}
   m_Name: 
-  version: 2
+  version: 3
   batchedSprites:
-  - name: sky
+  - type: 1
+    name: sky
     parentId: -1
     spriteId: 4
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 0, y: 0, z: .523688078}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: sun
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: .523688078
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: sun
     parentId: -1
     spriteId: 3
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -1.02435458, y: .551989734, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: cloud
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.02435458
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: .551989734
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: cloud
     parentId: -1
     spriteId: 17
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -.187768191, y: .145093322, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: cloud
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -.187768191
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: .145093322
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: cloud
     parentId: -1
     spriteId: 17
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 1.46425772, y: -.0780528188, z: 0}
     localScale: {x: -1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: cloud
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: -1
+      e01: 0
+      e02: 0
+      e03: 1.46425772
+      e10: -0
+      e11: 1
+      e12: 0
+      e13: -.0780528188
+      e20: -0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: cloud
     parentId: -1
     spriteId: 18
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: .734002411, y: .432435393, z: 0}
     localScale: {x: 1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  - name: cloud
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: .734002411
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: .432435393
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - type: 1
+    name: cloud
     parentId: -1
     spriteId: 18
+    xRefId: -1
+    spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -1.2649883, y: .432435393, z: -.184223399}
     localScale: {x: -1, y: 1, z: 1}
     color: {r: 1, g: 1, b: 1, a: 1}
-    alwaysPixelPerfect: 0
-  spriteCollection: {fileID: 11400000, guid: b5aec6ebd1a8ffc458a2e46a3236acab, type: 2}
+    baseScale: {x: 1, y: 1, z: 1}
+    renderLayer: 0
+    internalData0: {x: 0, y: 0}
+    internalData1: {x: 0, y: 0}
+    internalData2: {x: 0, y: 0}
+    colliderData: {x: 0, y: 1}
+    formattedText: 
+    flags: 0
+    anchor: 0
+    relativeMatrix:
+      e00: -1
+      e01: 0
+      e02: 0
+      e03: -1.2649883
+      e10: -0
+      e11: 1
+      e12: 0
+      e13: .432435393
+      e20: -0
+      e21: 0
+      e22: 1
+      e23: -.184223399
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  allTextMeshData: []
+  spriteCollection: {fileID: 0}
+  flags: 1
   _scale: {x: 1, y: 1, z: 1}
 --- !u!114 &67
 MonoBehaviour:
@@ -875,11 +1095,27 @@ MonoBehaviour:
   _maxChars: 12
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: 2 DRAW CALLS
+    color: {r: 1, g: .313432813, b: .313432813, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 1
+    textureGradient: 0
+    anchor: 2
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 12
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &68
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,11 +1138,27 @@ MonoBehaviour:
   _maxChars: 12
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: DICED SPRITE
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 6
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 12
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &69
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,11 +1181,27 @@ MonoBehaviour:
   _maxChars: 15
   _inlineStyling: 0
   _formatting: 0
-  _formattedText: 
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: ANIMATED SPRITE
+    color: {r: .845631838, g: .350746274, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 1
+    textureGradient: 0
+    anchor: 8
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 15
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &70
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,11 +1216,12 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 14
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
+  _animator: {fileID: 75}
   anim: {fileID: 11400000, guid: 18a39674a9b14f54b97497254e83b349, type: 2}
   clipId: 1
   playAutomatically: 1
@@ -971,11 +1240,12 @@ MonoBehaviour:
   _color: {r: 0, g: 0, b: 0, a: .211764708}
   _scale: {x: 1, y: -1, z: 1}
   _spriteId: 14
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
+  _animator: {fileID: 74}
   anim: {fileID: 11400000, guid: 18a39674a9b14f54b97497254e83b349, type: 2}
   clipId: 1
   playAutomatically: 1
@@ -994,11 +1264,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 13
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!196 &73
 NavMeshSettings:
   m_ObjectHideFlags: 0
@@ -1014,3 +1284,29 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!114 &74
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 24}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 1}
+  m_Name: 
+  library: {fileID: 11400000, guid: 18a39674a9b14f54b97497254e83b349, type: 2}
+  defaultClipId: 1
+  playAutomatically: 1
+--- !u!114 &75
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 23}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 1}
+  m_Name: 
+  library: {fileID: 11400000, guid: 18a39674a9b14f54b97497254e83b349, type: 2}
+  defaultClipId: 1
+  playAutomatically: 1

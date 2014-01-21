@@ -31,7 +31,7 @@ public abstract class tk2dUIBaseItemControl : MonoBehaviour
     /// </summary>
     public static void ChangeGameObjectActiveState(GameObject go, bool isActive)
     {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
         go.SetActiveRecursively(isActive);
 #else
         go.SetActive(isActive);

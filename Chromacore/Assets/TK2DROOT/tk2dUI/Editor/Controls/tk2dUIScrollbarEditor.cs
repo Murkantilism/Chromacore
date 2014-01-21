@@ -10,7 +10,7 @@ public class tk2dUIScrollbarEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        EditorGUIUtility.LookLikeInspector();
+        tk2dGuiUtility.LookLikeInspector();
         base.OnInspectorGUI();
 
 		tk2dUIScrollbar scrollbar = (tk2dUIScrollbar)target;
@@ -40,7 +40,7 @@ public class tk2dUIScrollbarEditor : Editor
 		float newScrollbarLength = tk2dUIControlsHelperEditor.DrawLengthHandles("Scrollbar Length", scrollbar.scrollBarLength, scrollbar.transform.position, isYAxis ? -up : right, Color.red, isYAxis ? .2f : -.2f, 0, .05f);
         if (newScrollbarLength != scrollbar.scrollBarLength)
         {
-            Undo.RegisterUndo(scrollbar, "Scrollbar Length Changed");
+            tk2dUndo.RecordObject(scrollbar, "Scrollbar Length Changed");
             scrollbar.scrollBarLength = newScrollbarLength;
             wasChange = true;
         }
@@ -60,7 +60,7 @@ public class tk2dUIScrollbarEditor : Editor
             float newThumbLength = tk2dUIControlsHelperEditor.DrawLengthHandles("Thumb Length", scrollbar.thumbLength, thumbStartPos, isYAxis ? -up : right, Color.blue, isYAxis ? -.15f : -.15f,isYAxis ? -.1f:.2f, .1f);
             if (newThumbLength != scrollbar.thumbLength)
             {
-                Undo.RegisterUndo(scrollbar, "Thumb Length Changed");
+                tk2dUndo.RecordObject(scrollbar, "Thumb Length Changed");
                 scrollbar.thumbLength = newThumbLength;
                 wasChange = true;
             }

@@ -59,7 +59,7 @@ public class tk2dSpriteAnimatorEditor : Editor
 		{
 	        tk2dSpriteAnimator sprite = (tk2dSpriteAnimator)target;
 			
-			EditorGUIUtility.LookLikeInspector();
+			tk2dGuiUtility.LookLikeInspector();
 			EditorGUI.indentLevel = 1;
 
 			if (sprite.Library == null)
@@ -83,7 +83,7 @@ public class tk2dSpriteAnimatorEditor : Editor
 			int newAnimLib = EditorGUILayout.Popup("Anim Lib", selAnimLib, animLibNames);
 			if (newAnimLib != selAnimLib)
 			{
-				Undo.RegisterUndo(targetAnimators, "Sprite Anim Lib");
+				tk2dUndo.RecordObjects(targetAnimators, "Sprite Anim Lib");
 				foreach (tk2dSpriteAnimator animator in targetAnimators) {
 					animator.Library = animLibs[newAnimLib].GetAsset<tk2dSpriteAnimation>();
 					animator.DefaultClipId = 0;
@@ -131,7 +131,7 @@ public class tk2dSpriteAnimatorEditor : Editor
 				int newClipId = EditorGUILayout.IntPopup("Clip", sprite.DefaultClipId, clipNames.ToArray(), clipIds.ToArray());
 				if (newClipId != sprite.DefaultClipId)
 				{
-					Undo.RegisterUndo(targetAnimators, "Sprite Anim Clip");
+					tk2dUndo.RecordObjects(targetAnimators, "Sprite Anim Clip");
 					foreach (tk2dSpriteAnimator animator in targetAnimators) {
 						animator.DefaultClipId = newClipId;
 
@@ -147,7 +147,7 @@ public class tk2dSpriteAnimatorEditor : Editor
 			// Play automatically
 			bool newPlayAutomatically = EditorGUILayout.Toggle("Play automatically", sprite.playAutomatically);
 			if (newPlayAutomatically != sprite.playAutomatically) {
-				Undo.RegisterUndo(targetAnimators, "Sprite Anim Play Automatically");
+				tk2dUndo.RecordObjects(targetAnimators, "Sprite Anim Play Automatically");
 				foreach (tk2dSpriteAnimator animator in targetAnimators) {
 					animator.playAutomatically = newPlayAutomatically;
 				}

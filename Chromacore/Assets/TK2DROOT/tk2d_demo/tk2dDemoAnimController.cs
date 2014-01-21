@@ -13,7 +13,7 @@ public class tk2dDemoAnimController : MonoBehaviour
 		animator = GetComponent<tk2dSpriteAnimator>();
 		animator.AnimationEventTriggered += AnimationEventHandler;
 		
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		popupTextMesh.gameObject.active = false;
 #else
 		popupTextMesh.gameObject.SetActive(false);
@@ -31,7 +31,7 @@ public class tk2dDemoAnimController : MonoBehaviour
 		popupTextMesh.text = text;
 		popupTextMesh.Commit();
 		
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		popupTextMesh.gameObject.active = true;
 #else
 		popupTextMesh.gameObject.SetActive(true);
@@ -50,7 +50,7 @@ public class tk2dDemoAnimController : MonoBehaviour
 			yield return 0;
 		}
 
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		popupTextMesh.gameObject.active = false;
 #else
 		popupTextMesh.gameObject.SetActive(false);

@@ -813,14 +813,15 @@ MonoBehaviour:
   _color: {r: 0, g: 0, b: 0, a: .360784322}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 38
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 114.255119, y: 135.556931}
   _anchor: 4
   _borderOnly: 0
+  legacyMode: 0
   borderTop: .4375
   borderBottom: .4375
   borderLeft: .4375
@@ -840,11 +841,11 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 20
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &73
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,14 +860,15 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 40
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 130, y: 50}
   _anchor: 4
   _borderOnly: 0
+  legacyMode: 0
   borderTop: .4375
   borderBottom: .4375
   borderLeft: .4375
@@ -917,9 +919,26 @@ MonoBehaviour:
   _inlineStyling: 0
   _formatting: 0
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: replay
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 4
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 6
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &76
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,9 +971,35 @@ MonoBehaviour:
   _inlineStyling: 0
   _formatting: 0
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: '3141
+
+      50
+
+      0
+
+
+      3191
+
+'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 3
+    anchor: 0
+    renderLayer: 0
+    scale: {x: .5, y: .5, z: 1}
+    kerning: 0
+    maxChars: 11
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &77
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,9 +1030,33 @@ MonoBehaviour:
   _inlineStyling: 0
   _formatting: 0
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: 'SCORE
+
+      TIME
+
+      EXTRA
+
+
+      TOTAL'
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 3
+    anchor: 0
+    renderLayer: 0
+    scale: {x: .5, y: .5, z: 1}
+    kerning: 0
+    maxChars: 19
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &78
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,14 +1071,15 @@ MonoBehaviour:
   _color: {r: .365671635, g: .114613488, b: .114613488, a: .470588237}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 38
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 487, y: 165.215988}
   _anchor: 4
   _borderOnly: 0
+  legacyMode: 0
   borderTop: .4375
   borderBottom: .4375
   borderLeft: .4375
@@ -1029,14 +1099,15 @@ MonoBehaviour:
   _color: {r: .564705908, g: .564705908, b: .564705908, a: .470588237}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 38
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 487, y: 50}
   _anchor: 4
   _borderOnly: 0
+  legacyMode: 0
   borderTop: .4375
   borderBottom: .4375
   borderLeft: .4375
@@ -1065,9 +1136,26 @@ MonoBehaviour:
   _inlineStyling: 0
   _formatting: 0
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
+    text: GAME OVER
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 3
+    anchor: 4
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 9
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &81
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,9 +1179,26 @@ MonoBehaviour:
   _inlineStyling: 0
   _formatting: 0
   _wordWrapWidth: 0
-  pixelPerfect: 0
   spacing: 0
   lineSpacing: 0
+  data:
+    version: 1
+    font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
+    text: next
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
+    useGradient: 0
+    textureGradient: 0
+    anchor: 4
+    renderLayer: 0
+    scale: {x: 1, y: 1, z: 1}
+    kerning: 0
+    maxChars: 4
+    inlineStyling: 0
+    formatting: 0
+    wordWrapWidth: 0
+    spacing: 0
+    lineSpacing: 0
 --- !u!114 &82
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,14 +1235,15 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 40
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 130, y: 50}
   _anchor: 4
   _borderOnly: 0
+  legacyMode: 0
   borderTop: .4375
   borderBottom: .4375
   borderLeft: .4375
@@ -1157,14 +1263,15 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 38
-  pixelPerfect: 0
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 512, y: 310.562805}
   _anchor: 4
   _borderOnly: 0
+  legacyMode: 0
   borderTop: .4375
   borderBottom: .4375
   borderLeft: .4375

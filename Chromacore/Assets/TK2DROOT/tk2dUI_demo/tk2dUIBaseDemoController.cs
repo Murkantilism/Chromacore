@@ -139,7 +139,7 @@ public class tk2dUIBaseDemoController : MonoBehaviour {
 #region Window management
 
 	protected void DoSetActive( Transform t, bool state ) {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		t.gameObject.SetActiveRecursively(state);
 #else
 		t.gameObject.SetActive(state);
@@ -147,7 +147,7 @@ public class tk2dUIBaseDemoController : MonoBehaviour {
 	}
 
 	protected void ShowWindow(Transform t) {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		Vector3 v = t.position;
 		v.y = v.y % 1;
 		v.x = v.x % 1;
@@ -158,7 +158,7 @@ public class tk2dUIBaseDemoController : MonoBehaviour {
 	}
 
 	protected void HideWindow(Transform t) {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		Vector3 v = t.position;
 		v.y = (v.y % 1) + 100;
 		t.position = v;
@@ -173,7 +173,7 @@ public class tk2dUIBaseDemoController : MonoBehaviour {
 	// This isn't necessary in Unity 4.x, and we simply move everything back to the correct positions
 	// on startup.
 	protected void RemoveUnity3HackFromWindow(Transform t) {
-#if !(UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9)
+#if !(UNITY_3_5)
 		Vector3 v = t.position;
 		v.y = v.y % 1;
 		v.x = v.x % 2;

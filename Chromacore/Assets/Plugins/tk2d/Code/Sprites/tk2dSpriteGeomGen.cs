@@ -337,7 +337,8 @@ public static class tk2dSpriteGeomGen
 		int numTilesX = (int)Mathf.Ceil( (dimensions.x * spriteDef.texelSize.x) / spriteDef.untrimmedBoundsData[1].x );
 		int numTilesY = (int)Mathf.Ceil( (dimensions.y * spriteDef.texelSize.y) / spriteDef.untrimmedBoundsData[1].y );
 		Vector2 totalMeshSize = new Vector2( dimensions.x * spriteDef.texelSize.x * scale.x, dimensions.y * spriteDef.texelSize.y * scale.y );
-		
+		Vector2 texelEpsilon = Vector2.Scale(spriteDef.texelSize, scale) * 0.1f;
+
 		// Anchor tweaks
 		Vector3 anchorOffset = Vector3.zero;
 		switch (anchor)
@@ -373,15 +374,15 @@ public static class tk2dSpriteGeomGen
 			for (int x = 0; x < numTilesX; ++x) {
 				float xClipFrac = 1;
 				float yClipFrac = 1;
-				if (Mathf.Abs(p.x + bounds.x) > Mathf.Abs(totalMeshSize.x) ) {
+				if (Mathf.Abs(p.x + bounds.x) > Mathf.Abs(totalMeshSize.x) + texelEpsilon.x ) {
 					xClipFrac = ((totalMeshSize.x % bounds.x) / bounds.x);
 				}
-				if (Mathf.Abs(p.y + bounds.y) > Mathf.Abs(totalMeshSize.y)) {
+				if (Mathf.Abs(p.y + bounds.y) > Mathf.Abs(totalMeshSize.y) + texelEpsilon.y) {
 					yClipFrac = ((totalMeshSize.y % bounds.y) / bounds.y);
 				}
 				
 				Vector3 geomOffset = p + anchorOffset;
-				
+
 				if (xClipFrac != 1 || yClipFrac != 1) {
 					Vector2 fracBottomLeft = Vector2.zero;
 					Vector2 fracTopRight = new Vector2(xClipFrac, yClipFrac);
@@ -515,5 +516,24 @@ public static class tk2dSpriteGeomGen
 		
 		for (int i = 0; i < srcIndices.Length; ++i)
 			indices[indicesOffset + i] = vStart + srcIndices[i];
+	}
+
+	// Interpolates normal / tangent data across sprite
+	public static void SetSpriteVertexNormals(Vector3[] pos, Vector3 pMin, Vector3 pMax, Vector3[] spriteDefNormals, Vector4[] spriteDefTangents, Vector3[] normals, Vector4[] tangents) {
+		Vector3 d = pMax - pMin;
+		int n = pos.Length;
+		for (int i = 0; i < n; ++i) {
+			Vector3 p = pos[i];
+			float tx = (p.x - pMin.x) / d.x;
+			float ty = (p.y - pMin.y) / d.y;
+			float s0 = (1-tx)*(1-ty);
+			float s1 = tx*(1-ty);
+			float s2 = (1-tx)*ty;
+			float s3 = tx*ty;
+			if (spriteDefNormals != null && spriteDefNormals.Length == 4 && i < normals.Length)
+				normals[i] = spriteDefNormals[0] * s0 + spriteDefNormals[1] * s1 + spriteDefNormals[2] * s2 + spriteDefNormals[3] * s3;
+			if (spriteDefTangents != null && spriteDefTangents.Length == 4 && i < tangents.Length)
+				tangents[i] = spriteDefTangents[0] * s0 + spriteDefTangents[1] * s1 + spriteDefTangents[2] * s2 + spriteDefTangents[3] * s3;
+		}
 	}
 }

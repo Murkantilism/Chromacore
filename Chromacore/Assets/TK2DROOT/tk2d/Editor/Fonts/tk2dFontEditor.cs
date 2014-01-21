@@ -92,13 +92,9 @@ public class tk2dFontEditor : Editor
 				go.AddComponent<tk2dFontData>();
 				tk2dEditorUtility.SetGameObjectActive(go, false);
 				
-#if (UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
-				Object p = EditorUtility.CreateEmptyPrefab(bmFontPath);
-				EditorUtility.ReplacePrefab(go, p);
-#else
 				Object p = PrefabUtility.CreateEmptyPrefab(bmFontPath);
 				PrefabUtility.ReplacePrefab(go, p);
-#endif
+
 				GameObject.DestroyImmediate(go);
 				AssetDatabase.SaveAssets();
 				
@@ -161,6 +157,9 @@ public class tk2dFontEditor : Editor
 	{
 		if (texture.format == TextureFormat.ARGB32 
 			|| texture.format == TextureFormat.ARGB4444 
+#if !UNITY_3_5 && !UNITY_4_0
+			|| texture.format == TextureFormat.RGBA4444 
+#endif
 			|| texture.format == TextureFormat.Alpha8 
 			|| texture.format == TextureFormat.RGB24 
 			|| texture.format == TextureFormat.RGB565 
@@ -217,13 +216,8 @@ public class tk2dFontEditor : Editor
 			}
 			tk2dEditorUtility.SetGameObjectActive(go, false);
 
-#if (UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
-			Object p = EditorUtility.CreateEmptyPrefab(path);
-			EditorUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-#else
 			Object p = PrefabUtility.CreateEmptyPrefab(path);
 			PrefabUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-#endif
 			GameObject.DestroyImmediate(go);
 			
 			// Select object

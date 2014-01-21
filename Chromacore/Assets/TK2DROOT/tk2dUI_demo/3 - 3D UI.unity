@@ -1425,6 +1425,7 @@ MonoBehaviour:
     orthographicPixelsPerMeter: 20
     orthographicOrigin: 1
     orthographicType: 1
+    transparencySortMode: 0
     fieldOfView: 60
     rect:
       serializedVersion: 2

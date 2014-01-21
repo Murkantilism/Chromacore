@@ -33,7 +33,7 @@ public class tk2dUIDemo3Controller : tk2dUIBaseDemoController {
 	}
 
 	void ShowOverlay() {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		overlayInterface.gameObject.SetActiveRecursively(true);
 #else
 		overlayInterface.gameObject.SetActive(true);
@@ -52,7 +52,7 @@ public class tk2dUIDemo3Controller : tk2dUIBaseDemoController {
 	}
 
 	void HideOverlay() {
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 		overlayInterface.gameObject.SetActiveRecursively(false);
 #else
 		overlayInterface.gameObject.SetActive(false);

@@ -39,6 +39,18 @@ public static class tk2dScaleUtility
 	
 	public static void Bake(Transform rootObject)
 	{
+		List<UnityEngine.Object> undoObjects = new List<UnityEngine.Object>();
+		undoObjects.AddRange( rootObject.GetComponentsInChildren<Transform>() );
+		undoObjects.AddRange( rootObject.GetComponentsInChildren<tk2dTextMesh>() );
+		undoObjects.AddRange( rootObject.GetComponentsInChildren<tk2dBaseSprite>() );
+		MeshFilter[] meshFilters = rootObject.GetComponentsInChildren<MeshFilter>();
+		foreach (MeshFilter mf in meshFilters) {
+			if (mf.sharedMesh != null) {
+				undoObjects.Add( mf.sharedMesh );
+			}
+		}
+		tk2dUndo.RecordObjects(undoObjects.ToArray(), "Bake Scale");
+
 		BakeRecursive(rootObject, Vector3.one);
 	}
 }

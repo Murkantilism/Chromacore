@@ -69,7 +69,7 @@ public class tk2dTileMapDemoPlayer : MonoBehaviour {
 				if (!textInitialized) {
 					textMeshLabel.text = "score";
 					textMeshLabel.Commit();
-					textMesh.text = "0";
+					textMesh.text = score.ToString();
 					textMesh.Commit();
 					textInitialized = true;
 				}
@@ -86,8 +86,16 @@ public class tk2dTileMapDemoPlayer : MonoBehaviour {
 	void FixedUpdate () {
 		if (AllowAddForce && moveX != 0) {
 			forceWait = addForceLimit;
-			rigidbody.AddForce(new Vector3(moveX * amount, amount, 0) * Time.deltaTime, ForceMode.Impulse);
-			rigidbody.AddTorque(new Vector3(0,0,-moveX * torque) * Time.deltaTime, ForceMode.Impulse);
+			if (rigidbody != null) {
+				rigidbody.AddForce(new Vector3(moveX * amount, amount, 0) * Time.deltaTime, ForceMode.Impulse);
+				rigidbody.AddTorque(new Vector3(0,0,-moveX * torque) * Time.deltaTime, ForceMode.Impulse);
+			}
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			else if (rigidbody2D != null) {
+				rigidbody2D.AddForce(new Vector2(moveX * amount, amount) * Time.deltaTime * 50);
+				rigidbody2D.AddTorque(-moveX * torque * Time.deltaTime * 20);
+			}
+#endif
 			moveX = 0;
 		}
 	}
@@ -100,4 +108,15 @@ public class tk2dTileMapDemoPlayer : MonoBehaviour {
 		textMesh.text = score.ToString();
 		textMesh.Commit();
 	}
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+	void OnTriggerEnter2D(Collider2D other) {
+		Destroy( other.gameObject );
+
+		score++;
+		
+		textMesh.text = score.ToString();
+		textMesh.Commit();
+	}
+#endif
 }

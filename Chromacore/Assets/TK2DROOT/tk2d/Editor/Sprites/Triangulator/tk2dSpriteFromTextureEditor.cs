@@ -6,14 +6,14 @@ class tk2dSpriteFromTextureEditor : Editor {
 
 	public override void OnInspectorGUI() {
 		tk2dSpriteFromTexture target = (tk2dSpriteFromTexture)this.target;
-		EditorGUIUtility.LookLikeInspector();
+		tk2dGuiUtility.LookLikeInspector();
 
 		EditorGUI.BeginChangeCheck();
 
 		Texture texture = EditorGUILayout.ObjectField("Texture", target.texture, typeof(Texture), false) as Texture;
 
 		if (texture == null) {
-			EditorGUIUtility.LookLikeControls();
+			tk2dGuiUtility.LookLikeControls();
 			tk2dGuiUtility.InfoBox("Drag a texture into the texture slot above.", tk2dGuiUtility.WarningLevel.Error);
 		}
 
@@ -27,7 +27,7 @@ class tk2dSpriteFromTextureEditor : Editor {
 		}
 
 		if (EditorGUI.EndChangeCheck()) {
-			Undo.RegisterUndo( target, "Sprite From Texture" );
+			tk2dUndo.RecordObject( target, "Sprite From Texture" );
 			target.Create( spriteCollectionSize, texture, anchor );
 		}
 	}

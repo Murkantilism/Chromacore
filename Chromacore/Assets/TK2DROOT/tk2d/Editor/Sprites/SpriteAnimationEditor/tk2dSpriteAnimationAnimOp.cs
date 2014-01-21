@@ -218,7 +218,7 @@ namespace tk2dEditor.SpriteAnimationEditor
 			List<int> frameCounts = new List<int>();
 
 			int lineNumber = 1;
-			string[] lines = spriteNames.Split('\n');
+			string[] lines = spriteNames.Replace("\r\n", "\n").Split('\n');
 			foreach (string line in lines)
 			{
 				if (line.Trim().Length != 0)

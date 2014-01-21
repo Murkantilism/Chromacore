@@ -343,6 +343,24 @@ public class tk2dTileMapSceneGUI
 	void RectangleDragBegin() {
 	}
 
+	int RectangleDragSize() {
+		if (!pencilDragActive)
+			return 0;
+
+		if (tk2dTileMapToolbar.mainMode == tk2dTileMapToolbar.MainMode.Brush || tk2dTileMapToolbar.mainMode == tk2dTileMapToolbar.MainMode.BrushRandom) {
+			return WorkingBrush.tiles.Length;
+		}
+		if (tk2dTileMapToolbar.mainMode == tk2dTileMapToolbar.MainMode.Erase || tk2dTileMapToolbar.mainMode == tk2dTileMapToolbar.MainMode.Cut) {
+			int x0 = Mathf.Min(cursorX, cursorX0);
+			int x1 = Mathf.Max(cursorX, cursorX0);
+			int y0 = Mathf.Min(cursorY, cursorY0);
+			int y1 = Mathf.Max(cursorY, cursorY0);
+			return (x1 - x0) * (y1 - y0);
+		}
+
+		return 0;
+	}
+
 	void RectangleDragEnd() {
 		if (!pencilDragActive)
 			return;
@@ -533,7 +551,6 @@ public class tk2dTileMapSceneGUI
 		if (tk2dTileMapToolbar.scratchpadOpen && scratchpadGUI.workingHere) {
 			if (scratchpadGUI.doMouseDown) {
 				GUIUtility.hotControl = controlID;
-				Undo.RegisterUndo(editorData, "Edit scratchpad");
 				randomSeed = Random.Range(0, int.MaxValue);
 
 				cursorX0 = cursorX;
@@ -549,6 +566,7 @@ public class tk2dTileMapSceneGUI
 				PencilDrag();
 			}
 			if (scratchpadGUI.doMouseUp) {
+				tk2dUndo.RecordObject(editorData, "Edit scratchpad");
 				RectangleDragEnd();
 
 				cursorX0 = cursorX;
@@ -594,7 +612,6 @@ public class tk2dTileMapSceneGUI
 						if (editorData.editMode == tk2dTileMapEditorData.EditMode.Paint)
 						{
 							GUIUtility.hotControl = controlID;
-							Undo.RegisterUndo(tileMap, "Edit tile map");
 							randomSeed = Random.Range(0, int.MaxValue);
 
 							PencilDrag();
@@ -602,8 +619,8 @@ public class tk2dTileMapSceneGUI
 						}
 						if (editorData.editMode == tk2dTileMapEditorData.EditMode.Color) {
 							GUIUtility.hotControl = controlID;
-							Undo.RegisterUndo(tileMap, "Paint tile map");
 							if (tk2dTileMapToolbar.colorBlendMode != tk2dTileMapToolbar.ColorBlendMode.Eyedropper) {
+								tk2dUndo.RecordObject(tileMap, "Paint tile map");
 								PaintColorBrush((float)vertexCursorX, (float)vertexCursorY);
 								host.BuildIncremental();
 							}
@@ -620,6 +637,7 @@ public class tk2dTileMapSceneGUI
 					}
 					if (editorData.editMode == tk2dTileMapEditorData.EditMode.Color) {
 						if (tk2dTileMapToolbar.colorBlendMode != tk2dTileMapToolbar.ColorBlendMode.Eyedropper) {
+							tk2dUndo.RecordObject(tileMap, "Paint tile map");
 							PaintColorBrush((float)vertexCursorX, (float)vertexCursorY);
 							host.BuildIncremental();
 						}
@@ -634,6 +652,12 @@ public class tk2dTileMapSceneGUI
 					GUIUtility.hotControl = 0;
 
 					if (editorData.editMode == tk2dTileMapEditorData.EditMode.Paint) {
+						if (RectangleDragSize() > 50) {
+							tk2dUndo.RegisterCompleteObjectUndo(tileMap, "Edit tile map");
+						}
+						else {
+							tk2dUndo.RecordObject(tileMap, "Edit tile map");
+						}
 						RectangleDragEnd();
 					}
 					if (editorData.editMode == tk2dTileMapEditorData.EditMode.Color) {
@@ -989,6 +1013,14 @@ public class tk2dTileMapSceneGUI
 				int thisRowXOffset = ((y & 1) == 1) ? xoffset : 0;
 				for (int x = 0; x < gridWidth; ++x) {
 					int spriteId = srcTiles[rng.Next(srcTiles.Length)].spriteId;
+
+					if (rot90)
+						tk2dRuntime.TileMap.BuilderUtil.SetRawTileFlag(ref spriteId, tk2dTileFlags.Rot90, true);
+					if (flipH)
+						tk2dRuntime.TileMap.BuilderUtil.InvertRawTileFlag(ref spriteId, tk2dTileFlags.FlipX);
+					if (flipV)
+						tk2dRuntime.TileMap.BuilderUtil.InvertRawTileFlag(ref spriteId, tk2dTileFlags.FlipY);
+
 					workBrush.tiles[idx++] = new tk2dSparseTile(
 						rectX1 + x + thisRowXOffset, rectY1 + y, editorData.layer, spriteId);
 				}

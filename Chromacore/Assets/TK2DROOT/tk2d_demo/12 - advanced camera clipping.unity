@@ -571,7 +571,7 @@ MonoBehaviour:
   _anchorPoint: 4
   anchorToNativeBounds: 0
   offset: {x: 0, y: 0}
-  tk2dCamera: {fileID: 65}
+  tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 37}
 --- !u!114 &55
 MonoBehaviour:
@@ -591,6 +591,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 165, y: 89}
   _anchor: 0
   _borderOnly: 0
@@ -634,6 +635,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 4
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 10
@@ -676,6 +678,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 2
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 16
@@ -702,6 +705,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &61
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,6 +724,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &62
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,6 +743,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &63
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +762,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!114 &64
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,7 +777,7 @@ MonoBehaviour:
   _anchorPoint: 8
   anchorToNativeBounds: 0
   offset: {x: -4, y: 0}
-  tk2dCamera: {fileID: 65}
+  tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 37}
 --- !u!114 &65
 MonoBehaviour:
@@ -784,30 +791,19 @@ MonoBehaviour:
   m_Name: 
   version: 1
   cameraSettings:
-    clearFlags: 2
-    backgroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
-    cullingMask:
-      serializedVersion: 2
-      m_Bits: 1
     projection: 0
-    transparencySortMode: 2
     orthographicSize: 10
     orthographicPixelsPerMeter: 1
     orthographicOrigin: 0
     orthographicType: 0
+    transparencySortMode: 2
     fieldOfView: 60
-    nearClipPlane: .300000012
-    farClipPlane: 1000
     rect:
       serializedVersion: 2
       x: 0
       y: 0
       width: 1
       height: 1
-    depth: 0
-    renderingPath: -1
-    targetTexture: {fileID: 0}
-    hdr: 0
   resolutionOverride:
   - name: Wildcard Override
     matchBy: 2
@@ -917,6 +913,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 300, y: 120}
   _anchor: 4
   _borderOnly: 0
@@ -1020,6 +1017,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!1 &94921275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1090,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!1 &134811222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1179,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 16
@@ -1276,6 +1276,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 41
@@ -1372,6 +1373,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 60
@@ -1497,6 +1499,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 560, y: 150}
   _anchor: 6
   _borderOnly: 0
@@ -1594,6 +1597,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 13
@@ -1674,6 +1678,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!1 &544807230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,6 +1755,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 560, y: 150}
   _anchor: 6
   _borderOnly: 0
@@ -1847,6 +1853,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 2
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 8
@@ -1943,6 +1950,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 15
@@ -2039,6 +2047,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 84
@@ -2123,6 +2132,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 560, y: 150}
   _anchor: 6
   _borderOnly: 0
@@ -2208,6 +2218,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 560, y: 150}
   _anchor: 6
   _borderOnly: 0
@@ -2371,6 +2382,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 64
@@ -2513,6 +2525,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
 --- !u!1 &1317261846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2644,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 4
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 75
@@ -2727,6 +2741,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 2
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 8
@@ -2811,6 +2826,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 560, y: 150}
   _anchor: 6
   _borderOnly: 0
@@ -2908,6 +2924,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 20
@@ -2991,6 +3008,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 600, y: 600}
   _anchor: 6
   _borderOnly: 0
@@ -3167,30 +3185,19 @@ MonoBehaviour:
   m_Name: 
   version: 1
   cameraSettings:
-    clearFlags: 4
-    backgroundColor: {r: 1, g: 0, b: 0, a: .0196078438}
-    cullingMask:
-      serializedVersion: 2
-      m_Bits: 2
     projection: 0
-    transparencySortMode: 2
     orthographicSize: 10
     orthographicPixelsPerMeter: 1
     orthographicOrigin: 0
     orthographicType: 0
+    transparencySortMode: 2
     fieldOfView: 60
-    nearClipPlane: .300000012
-    farClipPlane: 1000
     rect:
       serializedVersion: 2
       x: .220703125
       y: .09765625
       width: .57421875
       height: .76953125
-    depth: 1
-    renderingPath: -1
-    targetTexture: {fileID: 0}
-    hdr: 0
   resolutionOverride: []
   inheritSettings: {fileID: 65}
   nativeResolutionWidth: 960
@@ -3289,6 +3296,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 19
@@ -3385,6 +3393,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 2
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 8
@@ -3481,6 +3490,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 2
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 8
@@ -3577,6 +3587,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 2
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 8
@@ -3658,6 +3669,7 @@ MonoBehaviour:
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
+  renderLayer: 0
   _dimensions: {x: 600, y: 50}
   _anchor: 6
   _borderOnly: 0
@@ -3757,6 +3769,7 @@ MonoBehaviour:
     useGradient: 0
     textureGradient: 0
     anchor: 0
+    renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
     maxChars: 110

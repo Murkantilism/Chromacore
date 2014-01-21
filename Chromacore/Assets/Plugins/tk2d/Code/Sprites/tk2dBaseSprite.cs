@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [AddComponentMenu("2D Toolkit/Backend/tk2dBaseSprite")]
 /// <summary>
@@ -57,6 +58,12 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	[SerializeField] protected Color _color = Color.white;
 	[SerializeField] protected Vector3 _scale = new Vector3(1.0f, 1.0f, 1.0f);
 	[SerializeField] protected int _spriteId = 0;
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+	public BoxCollider2D boxCollider2D = null;
+	public List<PolygonCollider2D> polygonCollider2D = new List<PolygonCollider2D>(1);
+	public List<EdgeCollider2D> edgeCollider2D = new List<EdgeCollider2D>(1);
+#endif
 	
 	/// <summary>
 	/// Internal cached version of the box collider created for this sprite, if present.
@@ -134,6 +141,16 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		}
 	}
 	
+	Renderer _cachedRenderer = null;
+	Renderer CachedRenderer {
+		get {
+			if (_cachedRenderer == null) {
+				_cachedRenderer = renderer;
+			}
+			return _cachedRenderer;
+		}
+	}
+
 	[SerializeField] protected int renderLayer = 0;
 	/// <summary>
 	/// Gets or sets the sorting order
@@ -142,8 +159,28 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	/// This corresponds to the renderer.sortingOrder property in Unity 4.3
 	/// </summary>
 	public int SortingOrder {
-		get { return renderLayer; }
-		set { if (renderLayer != value) { renderLayer = value; InitInstance(); UpdateVertices(); } }
+		get { 
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			return renderLayer; 
+#else
+			return CachedRenderer.sortingOrder;
+#endif
+		}
+		set { 
+#if (UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			if (renderLayer != value) { 
+				renderLayer = value; InitInstance(); UpdateVertices(); 
+			} 
+#else
+			if (CachedRenderer.sortingOrder != value) {
+				renderLayer = value; // for awake
+				CachedRenderer.sortingOrder = value;
+#if UNITY_EDITOR
+				UnityEditor.EditorUtility.SetDirty(CachedRenderer);
+#endif
+			}
+#endif
+		}
 	}
 
 	/// <summary>
@@ -482,103 +519,246 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	
 	protected virtual void UpdateCollider()
 	{
-		var sprite = collectionInst.spriteDefinitions[_spriteId];
-		
-		if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box && boxCollider == null)
-		{
-			// Has the user created a box collider?
-			boxCollider = gameObject.GetComponent<BoxCollider>();
-			
-			if (boxCollider == null)
-			{
-				// create box collider at runtime. this won't get removed from the object
-				boxCollider = gameObject.AddComponent<BoxCollider>();
-			}
-		}
+		tk2dSpriteDefinition sprite = collectionInst.spriteDefinitions[_spriteId];
 
-		
-		if (boxCollider != null)
-		{
-			if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box)
+		if (sprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics3D) {
+			if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box && boxCollider == null)
 			{
-				boxCollider.center = new Vector3(sprite.colliderVertices[0].x * _scale.x, sprite.colliderVertices[0].y * _scale.y, sprite.colliderVertices[0].z * _scale.z);
-				boxCollider.size = new Vector3(2 * sprite.colliderVertices[1].x * _scale.x, 2 * sprite.colliderVertices[1].y * _scale.y, 2 * sprite.colliderVertices[1].z * _scale.z);
-			}
-			else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Unset)
-			{
-				// Don't do anything here, for backwards compatibility
-			}
-			else // in all cases, if the collider doesn't match is requested, null it out
-			{
-				if (boxCollider != null)
+				// Has the user created a box collider?
+				boxCollider = gameObject.GetComponent<BoxCollider>();
+				
+				if (boxCollider == null)
 				{
-					// move the box far far away, boxes with zero extents still collide
-					boxCollider.center = new Vector3(0, 0, -100000.0f);
-					boxCollider.size = Vector3.zero;
+					// create box collider at runtime. this won't get removed from the object
+					boxCollider = gameObject.AddComponent<BoxCollider>();
 				}
 			}
+
+			
+			if (boxCollider != null)
+			{
+				if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box)
+				{
+					boxCollider.center = new Vector3(sprite.colliderVertices[0].x * _scale.x, sprite.colliderVertices[0].y * _scale.y, sprite.colliderVertices[0].z * _scale.z);
+					boxCollider.size = new Vector3(2 * sprite.colliderVertices[1].x * _scale.x, 2 * sprite.colliderVertices[1].y * _scale.y, 2 * sprite.colliderVertices[1].z * _scale.z);
+				}
+				else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Unset)
+				{
+					// Don't do anything here, for backwards compatibility
+				}
+				else // in all cases, if the collider doesn't match is requested, null it out
+				{
+					if (boxCollider != null)
+					{
+						// move the box far far away, boxes with zero extents still collide
+						boxCollider.center = new Vector3(0, 0, -100000.0f);
+						boxCollider.size = Vector3.zero;
+					}
+				}
+			}
+		}
+		else if (sprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics2D) {
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+				if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box)
+				{
+					if (boxCollider2D == null) {
+						// Has the user created a box collider?
+						boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+						if (boxCollider2D == null)
+						{
+							// create box collider at runtime. this won't get removed from the object
+							boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
+						}
+					}
+
+					// Turn off existing polygon colliders
+					if (polygonCollider2D.Count > 0) {
+						foreach (PolygonCollider2D polyCollider in polygonCollider2D) {
+							if (polyCollider != null && polyCollider.enabled) {
+								polyCollider.enabled = false;
+							}
+						}
+					}
+					// Turn off existing edge colliders
+					if (edgeCollider2D.Count > 0) {
+						foreach (EdgeCollider2D edgeCollider in edgeCollider2D) {
+							if (edgeCollider != null && edgeCollider.enabled) {
+								edgeCollider.enabled = false;
+							}
+						}
+					}
+
+					if (!boxCollider2D.enabled) {
+						boxCollider2D.enabled = true;
+					}
+					boxCollider2D.center = new Vector2(sprite.colliderVertices[0].x * _scale.x, sprite.colliderVertices[0].y * _scale.y);
+					boxCollider2D.size = new Vector2(Mathf.Abs(2 * sprite.colliderVertices[1].x * _scale.x), Mathf.Abs(2 * sprite.colliderVertices[1].y * _scale.y));
+				}
+				else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Mesh)
+				{
+					// Turn of existing box collider
+					if (boxCollider2D != null && boxCollider2D.enabled) {
+						boxCollider2D.enabled = false;
+					}
+
+					// Make sure none in our array are null (manually deleted, etc)
+					// This doesn't handle the case where the user has deleted something manually from the polygonCOllider2D list
+					int numPolyColliders = sprite.polygonCollider2D.Length;
+					for (int i = 0; i < polygonCollider2D.Count; ++i) {
+						if (polygonCollider2D[i] == null) {
+							polygonCollider2D[i] = gameObject.AddComponent<PolygonCollider2D>();
+						}
+					}
+					while (polygonCollider2D.Count < numPolyColliders) {
+						polygonCollider2D.Add( gameObject.AddComponent<PolygonCollider2D>() );
+					}
+					for (int i = 0; i < numPolyColliders; ++i) {
+						if (!polygonCollider2D[i].enabled) {
+							polygonCollider2D[i].enabled = true;
+						}
+						if (_scale.x != 1 || _scale.y != 1) {
+							Vector2[] sourcePoints = sprite.polygonCollider2D[i].points;
+							Vector2[] scaledPoints = new Vector2[sourcePoints.Length];
+							for (int j = 0; j < sourcePoints.Length; ++j) {
+								scaledPoints[j] = Vector2.Scale( sourcePoints[j], _scale );
+							}
+							polygonCollider2D[i].points = scaledPoints;
+						}
+						else {
+							polygonCollider2D[i].points = sprite.polygonCollider2D[i].points;
+						}
+					}
+					for (int i = numPolyColliders; i < polygonCollider2D.Count; ++i) {
+						if (polygonCollider2D[i].enabled) {
+							polygonCollider2D[i].enabled = false;
+						}
+					}
+
+					// Make sure none in our array are null (manually deleted, etc)
+					// This doesn't handle the case where the user has deleted something manually from the polygonCOllider2D list
+					int numEdgeColliders = sprite.edgeCollider2D.Length;
+					for (int i = 0; i < edgeCollider2D.Count; ++i) {
+						if (edgeCollider2D[i] == null) {
+							edgeCollider2D[i] = gameObject.AddComponent<EdgeCollider2D>();
+						}
+					}
+					while (edgeCollider2D.Count < numEdgeColliders) {
+						edgeCollider2D.Add( gameObject.AddComponent<EdgeCollider2D>() );
+					}
+					for (int i = 0; i < numEdgeColliders; ++i) {
+						if (!edgeCollider2D[i].enabled) {
+							edgeCollider2D[i].enabled = true;
+						}
+						if (_scale.x != 1 || _scale.y != 1) {
+							Vector2[] sourcePoints = sprite.edgeCollider2D[i].points;
+							Vector2[] scaledPoints = new Vector2[sourcePoints.Length];
+							for (int j = 0; j < sourcePoints.Length; ++j) {
+								scaledPoints[j] = Vector2.Scale( sourcePoints[j], _scale );
+							}
+							edgeCollider2D[i].points = scaledPoints;
+						}
+						else {
+							edgeCollider2D[i].points = sprite.edgeCollider2D[i].points;
+						}
+					}
+					for (int i = numEdgeColliders; i < edgeCollider2D.Count; ++i) {
+						if (edgeCollider2D[i].enabled) {
+							edgeCollider2D[i].enabled = false;
+						}
+					}
+				}
+				else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.None) {
+					// Turn of existing box collider
+					if (boxCollider2D != null && boxCollider2D.enabled) {
+						boxCollider2D.enabled = false;
+					}
+					// Turn off existing polygon colliders
+					if (polygonCollider2D.Count > 0) {
+						foreach (PolygonCollider2D polyCollider in polygonCollider2D) {
+							if (polyCollider != null && polyCollider.enabled) {
+								polyCollider.enabled = false;
+							}
+						}
+					}
+					// Turn off existing edge colliders
+					if (edgeCollider2D.Count > 0) {
+						foreach (EdgeCollider2D edgeCollider in edgeCollider2D) {
+							if (edgeCollider != null && edgeCollider.enabled) {
+								edgeCollider.enabled = false;
+							}
+						}
+					}
+				}
+#endif			
 		}
 	}
 	
 	// This is separate to UpdateCollider, as UpdateCollider can only work with BoxColliders, and will NOT create colliders
 	protected virtual void CreateCollider()
 	{
-		var sprite = collectionInst.spriteDefinitions[_spriteId];
+		tk2dSpriteDefinition sprite = collectionInst.spriteDefinitions[_spriteId];
 		if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Unset)
 		{
 			// do not attempt to create or modify anything if it is Unset
 			return;
 		}
 
-		// User has created a collider
-		if (collider != null)
-		{
-			boxCollider = GetComponent<BoxCollider>();
-			meshCollider = GetComponent<MeshCollider>();
-		}
-		
-		if ((NeedBoxCollider() || sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box) && meshCollider == null)
-		{
-			if (boxCollider == null)
+		if (sprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics3D) {
+			// User has created a collider
+			if (collider != null)
 			{
-				boxCollider = gameObject.AddComponent<BoxCollider>();
+				boxCollider = GetComponent<BoxCollider>();
+				meshCollider = GetComponent<MeshCollider>();
 			}
-		}
-		else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Mesh && boxCollider == null)
-		{
-			// this should not be updated again (apart from scale changes in the editor, where we force regeneration of colliders)
-			if (meshCollider == null)
-				meshCollider = gameObject.AddComponent<MeshCollider>();
-			if (meshColliderMesh == null)
-				meshColliderMesh = new Mesh();
 			
-			meshColliderMesh.Clear();
-			
-			meshColliderPositions = new Vector3[sprite.colliderVertices.Length];
-			for (int i = 0; i < meshColliderPositions.Length; ++i)
-				meshColliderPositions[i] = new Vector3(sprite.colliderVertices[i].x * _scale.x, sprite.colliderVertices[i].y * _scale.y, sprite.colliderVertices[i].z * _scale.z);
-			meshColliderMesh.vertices = meshColliderPositions;
-			
-			float s = _scale.x * _scale.y * _scale.z;
-			
-			meshColliderMesh.triangles = (s >= 0.0f)?sprite.colliderIndicesFwd:sprite.colliderIndicesBack;
-			meshCollider.sharedMesh = meshColliderMesh;
-			meshCollider.convex = sprite.colliderConvex;
-			meshCollider.smoothSphereCollisions = sprite.colliderSmoothSphereCollisions;
-			
-			// this is required so our mesh pivot is at the right point
-			if (rigidbody) rigidbody.centerOfMass = Vector3.zero;
-		}
-		else if (sprite.colliderType != tk2dSpriteDefinition.ColliderType.None)
-		{
-			// This warning is not applicable in the editor
-			if (Application.isPlaying)
+			if ((NeedBoxCollider() || sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box) && meshCollider == null)
 			{
-				Debug.LogError("Invalid mesh collider on sprite, please remove and try again.");
+				if (boxCollider == null)
+				{
+					boxCollider = gameObject.AddComponent<BoxCollider>();
+				}
 			}
+			else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Mesh && boxCollider == null)
+			{
+				// this should not be updated again (apart from scale changes in the editor, where we force regeneration of colliders)
+				if (meshCollider == null)
+					meshCollider = gameObject.AddComponent<MeshCollider>();
+				if (meshColliderMesh == null)
+					meshColliderMesh = new Mesh();
+				
+				meshColliderMesh.Clear();
+				
+				meshColliderPositions = new Vector3[sprite.colliderVertices.Length];
+				for (int i = 0; i < meshColliderPositions.Length; ++i)
+					meshColliderPositions[i] = new Vector3(sprite.colliderVertices[i].x * _scale.x, sprite.colliderVertices[i].y * _scale.y, sprite.colliderVertices[i].z * _scale.z);
+				meshColliderMesh.vertices = meshColliderPositions;
+				
+				float s = _scale.x * _scale.y * _scale.z;
+				
+				meshColliderMesh.triangles = (s >= 0.0f)?sprite.colliderIndicesFwd:sprite.colliderIndicesBack;
+				meshCollider.sharedMesh = meshColliderMesh;
+				meshCollider.convex = sprite.colliderConvex;
+				meshCollider.smoothSphereCollisions = sprite.colliderSmoothSphereCollisions;
+				
+				// this is required so our mesh pivot is at the right point
+				if (rigidbody) rigidbody.centerOfMass = Vector3.zero;
+			}
+			else if (sprite.colliderType != tk2dSpriteDefinition.ColliderType.None)
+			{
+				// This warning is not applicable in the editor
+				if (Application.isPlaying)
+				{
+					Debug.LogError("Invalid mesh collider on sprite '" + name + "', please remove and try again.");
+				}
+			}
+			
+			UpdateCollider();
 		}
-		
-		UpdateCollider();
+		else if (sprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics2D) {
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			UpdateCollider();
+#endif
+		}
 	}
 	
 #if UNITY_EDITOR
@@ -591,7 +771,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 			return;
 		}
 		
-		var sprite = collectionInst.spriteDefinitions[_spriteId];
+		tk2dSpriteDefinition sprite = collectionInst.spriteDefinitions[_spriteId];
 		if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Unset)
 			return;
 		
@@ -601,24 +781,78 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		boxCollider = gameObject.GetComponent<BoxCollider>();
 		meshCollider = gameObject.GetComponent<MeshCollider>();
 
-		if ((NeedBoxCollider() || sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box) && meshCollider == null)
-		{
-			if (meshCollider != null) {
-				DestroyImmediate(meshCollider, true);
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+		boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+#endif
+
+		// Sanitize colliders - get rid of unused / incorrect ones in editor
+		if (sprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics3D) {
+			// Delete colliders from wrong physics engine
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			if (boxCollider2D != null) {
+				DestroyImmediate(boxCollider2D, true);
+			}
+			foreach (PolygonCollider2D c2d in polygonCollider2D) {
+				if (c2d != null) {
+					DestroyImmediate(c2d, true);
+				}
+			}
+			polygonCollider2D.Clear();
+			foreach (EdgeCollider2D e2d in edgeCollider2D) {
+				if (e2d != null) {
+					DestroyImmediate(e2d, true);
+				}
+			}
+			edgeCollider2D.Clear();
+	#endif
+
+			// Delete mismatched collider
+			if ((NeedBoxCollider() || sprite.colliderType == tk2dSpriteDefinition.ColliderType.Box) && meshCollider == null)
+			{
+				if (meshCollider != null) {
+					DestroyImmediate(meshCollider, true);
+				}
+			}
+			else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Mesh) {
+				if (boxCollider != null) {
+					DestroyImmediate(boxCollider, true);
+				}
+			}
+			else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.None) {
+				if (meshCollider != null) {
+					DestroyImmediate(meshCollider, true);
+				}
+				if (boxCollider != null) {
+					DestroyImmediate(boxCollider, true);
+				}
 			}
 		}
-		else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Mesh) {
+		else if (sprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics2D) {
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			// Delete colliders from wrong physics engine
 			if (boxCollider != null) {
 				DestroyImmediate(boxCollider, true);
 			}
-		}
-		else if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.None) {
 			if (meshCollider != null) {
 				DestroyImmediate(meshCollider, true);
 			}
-			if (boxCollider != null) {
-				DestroyImmediate(boxCollider, true);
+			foreach (PolygonCollider2D c2d in polygonCollider2D) {
+				if (c2d != null) {
+					DestroyImmediate(c2d, true);
+				}
 			}
+			polygonCollider2D.Clear();
+			foreach (EdgeCollider2D e2d in edgeCollider2D) {
+				if (e2d != null) {
+					DestroyImmediate(e2d, true);
+				}
+			}
+			edgeCollider2D.Clear();
+			if (boxCollider2D != null) {
+				DestroyImmediate(boxCollider2D, true);
+				boxCollider2D = null;
+			}
+#endif
 		}
 
 		CreateCollider();
@@ -637,8 +871,42 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		{
 			collectionInst = collection.inst;
 		}
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+		CachedRenderer.sortingOrder = renderLayer;
+#endif		
 	}
-	
+
+	// Used by derived classes only
+	public void CreateSimpleBoxCollider() {
+		if (CurrentSprite == null) {
+			return;
+		}
+		if (CurrentSprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics3D) {
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			boxCollider2D = GetComponent<BoxCollider2D>();
+			if (boxCollider2D != null) {
+				Object.DestroyImmediate(boxCollider2D, true);
+			}
+#endif
+			boxCollider = GetComponent<BoxCollider>();
+			if (boxCollider == null) {
+				boxCollider = gameObject.AddComponent<BoxCollider>();
+			}
+		}
+		else if (CurrentSprite.physicsEngine == tk2dSpriteDefinition.PhysicsEngine.Physics2D) {
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+			boxCollider = GetComponent<BoxCollider>();
+			if (boxCollider != null) {
+				Object.DestroyImmediate(boxCollider, true);
+			}
+			boxCollider2D = GetComponent<BoxCollider2D>();
+			if (boxCollider2D == null) {
+				boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
+			}
+#endif
+		}
+	}	
 	
 	// tk2dRuntime.ISpriteCollectionEditor
 	public bool UsesSpriteCollection(tk2dSpriteCollectionData spriteCollection)
@@ -654,10 +922,10 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		collectionInst = collection.inst;
 		if (spriteId < 0 || spriteId >= collectionInst.spriteDefinitions.Length)
     		spriteId = 0;
-		Build();
 #if UNITY_EDITOR
 		EditMode__CreateCollider();
 #endif
+		Build();
 		if (SpriteChanged != null) {
 			SpriteChanged(this);
 		}

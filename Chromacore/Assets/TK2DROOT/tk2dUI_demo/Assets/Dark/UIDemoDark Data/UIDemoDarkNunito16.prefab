@@ -44,6 +44,9 @@ MonoBehaviour:
   dupeCaps: 0
   flipTextureY: 0
   proxyFont: 1
+  useTk2dCamera: 0
+  targetHeight: 640
+  targetOrthoSize: 1
   sizeDef:
     type: 1
     orthoSize: 10

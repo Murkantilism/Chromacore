@@ -79,7 +79,7 @@ public static class tk2dUIItemBoundsHelper {
 
         BoxCollider boxCollider = collider as BoxCollider;
         if (boxCollider != null) {
-            Undo.RegisterUndo(boxCollider, "Fit Collider");
+            tk2dUndo.RecordObject(boxCollider, "Fit Collider");
             b.size = new Vector3(b.size.x, b.size.y, boxCollider.size.z);
             b.center = new Vector3(b.center.x, b.center.y, boxCollider.center.z);
             boxCollider.size = b.size;
@@ -88,7 +88,7 @@ public static class tk2dUIItemBoundsHelper {
 
         SphereCollider sphereCollider = collider as SphereCollider;
         if (sphereCollider != null) {
-            Undo.RegisterUndo(sphereCollider, "Fit Collider");
+            tk2dUndo.RecordObject(sphereCollider, "Fit Collider");
             sphereCollider.center = new Vector3(b.center.x, b.center.y, 0);
             sphereCollider.radius = 0.5f * Mathf.Max( b.size.x, b.size.y );
         }
@@ -108,7 +108,11 @@ public static class tk2dUIItemBoundsHelper {
     		return;
     	}
 
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
     	Undo.RegisterSceneUndo("Fix Selected Item Bounds");
+#else
+        int undoGroup = Undo.GetCurrentGroup();
+#endif
 
     	HashSet<tk2dUIItem> items = new HashSet<tk2dUIItem>();
     	foreach (GameObject go in Selection.gameObjects) {
@@ -121,6 +125,10 @@ public static class tk2dUIItemBoundsHelper {
     	foreach (tk2dUIItem item in items) {
             FixColliderBounds(item);
     	}
+
+#if !(UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2)
+        Undo.CollapseUndoOperations(undoGroup);
+#endif
     }
 }
 

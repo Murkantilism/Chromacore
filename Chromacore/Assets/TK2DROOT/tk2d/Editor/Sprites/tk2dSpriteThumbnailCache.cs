@@ -72,7 +72,7 @@ public static class tk2dSpriteThumbnailCache
 
 		if (Event.current.type == EventType.Repaint)
 		{
-			if (def.material != null) {
+			if (def.materialInst != null) {
 				Mesh tmpMesh = new Mesh();
 				tmpMesh.vertices = def.positions;
 				tmpMesh.uv = def.uvs;
@@ -80,7 +80,7 @@ public static class tk2dSpriteThumbnailCache
 				tmpMesh.RecalculateBounds();
 				tmpMesh.RecalculateNormals();
 
-				mat.mainTexture = def.material.mainTexture;
+				mat.mainTexture = def.materialInst.mainTexture;
 				mat.SetColor("_Tint", tint);
 				mat.SetVector("_Clip", clipRegion);
 
@@ -112,7 +112,7 @@ public static class tk2dSpriteThumbnailCache
 
 		if (Event.current.type == EventType.Repaint && visible)
 		{
-			if (def.material != null) {
+			if (def.materialInst != null) {
 				Mesh tmpMesh = new Mesh();
 				tmpMesh.vertices = def.positions;
 				tmpMesh.uv = def.uvs;
@@ -123,7 +123,7 @@ public static class tk2dSpriteThumbnailCache
 				Vector3 t = def.untrimmedBoundsData[1] * 0.5f - def.untrimmedBoundsData[0];
 				float tq = def.untrimmedBoundsData[1].y;
 
-				mat.mainTexture = def.material.mainTexture;
+				mat.mainTexture = def.materialInst.mainTexture;
 				mat.SetColor("_Tint", tint);
 				mat.SetVector("_Clip", clipRegion);
 
@@ -163,7 +163,9 @@ public static class tk2dSpriteThumbnailCache
 			tmpMesh.RecalculateBounds();
 			tmpMesh.RecalculateNormals();
 
-			mat.mainTexture = def.material.mainTexture;
+			if (def.materialInst != null) {
+				mat.mainTexture = def.materialInst.mainTexture;
+			}
 			mat.SetColor("_Tint", tint);
 			mat.SetVector("_Clip", clipRegion);
 

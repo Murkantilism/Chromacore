@@ -335,7 +335,7 @@ public class tk2dButton : MonoBehaviour
 			
 			// Button may have been deactivated in ButtonPressed / Up event
 			// Don't wait in that case
-#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5 || UNITY_3_6 || UNITY_3_7 || UNITY_3_8 || UNITY_3_9
+#if UNITY_3_5
 			if (gameObject.active)
 #else
 			if (gameObject.activeInHierarchy)

@@ -88,6 +88,7 @@ MonoBehaviour:
     spriteCollection: {fileID: 0}
   managedSpriteCollection: 0
   loadable: 0
+  atlasFormat: 0
   maxTextureSize: 1024
   forceTextureSize: 0
   forcedTextureWidth: 1024
@@ -116,6 +117,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -155,6 +157,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -194,6 +197,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -233,6 +237,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -272,6 +277,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -311,6 +317,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -350,6 +357,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -389,6 +397,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -428,6 +437,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -467,6 +477,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -506,6 +517,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 2
     extraPadding: 0
     source: 0
@@ -545,6 +557,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -584,6 +597,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 64
+    diceFilter: 0
     pad: 2
     extraPadding: 0
     source: 0
@@ -616,6 +630,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d572e11b9f81d4a99a0a2811137dbfb3, type: 2}
   atlasTextures:
   - {fileID: 2800000, guid: 6649ca7d0f45f4abb9e124a030611e2e, type: 1}
+  atlasTextureFiles: []
   useTk2dCamera: 0
   targetHeight: 640
   targetOrthoSize: 10
@@ -634,6 +649,7 @@ MonoBehaviour:
   userDefinedTextureSettings: 0
   mipmapEnabled: 0
   anisoLevel: 1
+  physicsEngine: 0
   physicsDepth: .100000001
   disableTrimming: 0
   normalGenerationMode: 0

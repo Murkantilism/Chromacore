@@ -84,13 +84,8 @@ public class tk2dSpriteCollectionEditor : Editor
         spriteCollection.version = tk2dSpriteCollection.CURRENT_VERSION;
         tk2dEditorUtility.SetGameObjectActive(go, false);
 
-#if (UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
-		Object p = EditorUtility.CreateEmptyPrefab(path);
-        EditorUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-#else
 		Object p = PrefabUtility.CreateEmptyPrefab(path);
         PrefabUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-#endif
 		
         GameObject.DestroyImmediate(go);
 
@@ -117,13 +112,8 @@ public class tk2dSpriteCollectionEditor : Editor
             }
 	        tk2dEditorUtility.SetGameObjectActive(go, false);
 
-#if (UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4)
-			Object p = EditorUtility.CreateEmptyPrefab(path);
-            EditorUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-#else
 			Object p = PrefabUtility.CreateEmptyPrefab(path);
             PrefabUtility.ReplacePrefab(go, p, ReplacePrefabOptions.ConnectToPrefab);
-#endif
 			
             GameObject.DestroyImmediate(go);
 

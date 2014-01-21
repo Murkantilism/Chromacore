@@ -76,6 +76,7 @@ MonoBehaviour:
     spriteCollection: {fileID: 0}
   managedSpriteCollection: 0
   loadable: 0
+  atlasFormat: 0
   maxTextureSize: 256
   forceTextureSize: 0
   forcedTextureWidth: 1024
@@ -84,8 +85,9 @@ MonoBehaviour:
   atlasWidth: 256
   atlasHeight: 256
   forceSquareAtlas: 0
-  atlasWastage: 12.2177124
+  atlasWastage: 12.2192383
   allowMultipleAtlases: 1
+  removeDuplicates: 1
   textureParams:
   - name: explosion_44FR/0
     disableTrimming: 0
@@ -103,6 +105,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -125,6 +128,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/1
     disableTrimming: 0
     additive: 0
@@ -141,6 +145,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -163,6 +168,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/2
     disableTrimming: 0
     additive: 0
@@ -179,6 +185,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -201,6 +208,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/3
     disableTrimming: 0
     additive: 0
@@ -217,6 +225,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -239,6 +248,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/4
     disableTrimming: 0
     additive: 0
@@ -255,6 +265,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -277,6 +288,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/5
     disableTrimming: 0
     additive: 0
@@ -293,6 +305,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -315,6 +328,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/6
     disableTrimming: 0
     additive: 0
@@ -331,6 +345,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -353,6 +368,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/7
     disableTrimming: 0
     additive: 0
@@ -369,6 +385,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -391,6 +408,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/8
     disableTrimming: 0
     additive: 0
@@ -407,6 +425,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -429,6 +448,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/9
     disableTrimming: 0
     additive: 0
@@ -445,6 +465,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -467,6 +488,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/10
     disableTrimming: 0
     additive: 0
@@ -483,6 +505,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -505,6 +528,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/11
     disableTrimming: 0
     additive: 0
@@ -521,6 +545,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -543,6 +568,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/12
     disableTrimming: 0
     additive: 0
@@ -559,6 +585,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -581,6 +608,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/13
     disableTrimming: 0
     additive: 0
@@ -597,6 +625,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -619,6 +648,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/14
     disableTrimming: 0
     additive: 0
@@ -635,6 +665,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -657,6 +688,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/15
     disableTrimming: 0
     additive: 0
@@ -673,6 +705,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -695,6 +728,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/16
     disableTrimming: 0
     additive: 0
@@ -711,6 +745,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -733,6 +768,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/17
     disableTrimming: 0
     additive: 0
@@ -749,6 +785,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -771,6 +808,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/18
     disableTrimming: 0
     additive: 0
@@ -787,6 +825,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -809,6 +848,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/19
     disableTrimming: 0
     additive: 0
@@ -825,6 +865,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -847,6 +888,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/20
     disableTrimming: 0
     additive: 0
@@ -863,6 +905,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -885,6 +928,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/21
     disableTrimming: 0
     additive: 0
@@ -901,6 +945,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -923,6 +968,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/22
     disableTrimming: 0
     additive: 0
@@ -939,6 +985,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -961,6 +1008,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/23
     disableTrimming: 0
     additive: 0
@@ -977,6 +1025,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -999,6 +1048,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/24
     disableTrimming: 0
     additive: 0
@@ -1015,6 +1065,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1037,6 +1088,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/25
     disableTrimming: 0
     additive: 0
@@ -1053,6 +1105,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1075,6 +1128,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/26
     disableTrimming: 0
     additive: 0
@@ -1091,6 +1145,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1113,6 +1168,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/27
     disableTrimming: 0
     additive: 0
@@ -1129,6 +1185,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1151,6 +1208,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/28
     disableTrimming: 0
     additive: 0
@@ -1167,6 +1225,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1189,6 +1248,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/29
     disableTrimming: 0
     additive: 0
@@ -1205,6 +1265,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1227,6 +1288,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/30
     disableTrimming: 0
     additive: 0
@@ -1243,6 +1305,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1265,6 +1328,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/31
     disableTrimming: 0
     additive: 0
@@ -1281,6 +1345,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1303,6 +1368,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/32
     disableTrimming: 0
     additive: 0
@@ -1319,6 +1385,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1341,6 +1408,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/33
     disableTrimming: 0
     additive: 0
@@ -1357,6 +1425,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1379,6 +1448,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/34
     disableTrimming: 0
     additive: 0
@@ -1395,6 +1465,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1417,6 +1488,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/35
     disableTrimming: 0
     additive: 0
@@ -1433,6 +1505,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1455,6 +1528,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/36
     disableTrimming: 0
     additive: 0
@@ -1471,6 +1545,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1493,6 +1568,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/37
     disableTrimming: 0
     additive: 0
@@ -1509,6 +1585,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1531,6 +1608,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/38
     disableTrimming: 0
     additive: 0
@@ -1547,6 +1625,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1569,6 +1648,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/39
     disableTrimming: 0
     additive: 0
@@ -1585,6 +1665,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1607,6 +1688,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/40
     disableTrimming: 0
     additive: 0
@@ -1623,6 +1705,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1645,6 +1728,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/41
     disableTrimming: 0
     additive: 0
@@ -1661,6 +1745,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1683,6 +1768,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/42
     disableTrimming: 0
     additive: 0
@@ -1699,6 +1785,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1721,6 +1808,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   - name: explosion_44FR/43
     disableTrimming: 0
     additive: 0
@@ -1737,6 +1825,7 @@ MonoBehaviour:
     dice: 0
     diceUnitX: 64
     diceUnitY: 0
+    diceFilter: 0
     pad: 0
     extraPadding: 0
     source: 0
@@ -1759,6 +1848,7 @@ MonoBehaviour:
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
+    attachPoints: []
   spriteCollection: {fileID: 11400000, guid: e40f26e01721f87448061d44beed20dd, type: 2}
   premultipliedAlpha: 1
   altMaterials: []
@@ -1772,23 +1862,33 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 781c2c74baf34e643bf7fdc51b2276ea, type: 1}
   - {fileID: 2800000, guid: a57fd406b36fc6d44b38c2a82b620ccc, type: 1}
   - {fileID: 2800000, guid: 83ed0f7a30dec5040bc629f357183e4a, type: 1}
+  atlasTextureFiles: []
   useTk2dCamera: 0
   targetHeight: 640
   targetOrthoSize: 1
+  sizeDef:
+    type: 0
+    orthoSize: 1
+    pixelsPerMeter: 100
+    width: 960
+    height: 640
   globalScale: 1
+  globalTextureRescale: 1
+  attachPointTestSprites: []
   pixelPerfectPointSampled: 0
   filterMode: 1
   wrapMode: 1
   userDefinedTextureSettings: 1
   mipmapEnabled: 0
   anisoLevel: 1
+  physicsEngine: 0
   physicsDepth: .100000001
   disableTrimming: 0
   normalGenerationMode: 0
   padAmount: -1
   autoUpdate: 1
   editorDisplayScale: 1
-  version: 3
+  version: 4
   assetName: 
 --- !u!1002 &11400001
 EditorExtensionImpl:
