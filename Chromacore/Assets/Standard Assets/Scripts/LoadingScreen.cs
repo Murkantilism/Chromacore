@@ -9,6 +9,7 @@ public class LoadingScreen : MonoBehaviour {
 	public tk2dSprite animSeqOne;
 	public tk2dSprite animSeqTwo;
 	public tk2dSprite animSeqThree;
+	public GUIText errorText;
 	
 	int animOneID;
 	int animTwoID;
@@ -19,9 +20,6 @@ public class LoadingScreen : MonoBehaviour {
 	bool loadSeqOne;
 	bool loadSeqTwo = false;
 	bool loadSeqThree = false;
-	
-	float fadeAlphaOne;
-	float fadeAlphaTwo;
 	
 	// Used to invoke startAnimation only once
 	bool invokeMeP = true;
@@ -35,10 +33,16 @@ public class LoadingScreen : MonoBehaviour {
 	private WWW wwwData;
 	// The instance of this class used to download
 	private static LoadingScreen downloadManager = null;
+
+	// Should we move on to the loading screen?
+	public bool shouldLoadP = false;
 	
 	// Use this for initialization
 	void Start () {
-		
+		errorText = GameObject.Find("Error Text").guiText;
+		shouldLoadP = false;
+		errorText.enabled = false;
+
 		// Initialization of download manager
 		if(LoadingScreen.downloadManager == null){
 			LoadingScreen.downloadManager = FindObjectOfType(typeof(LoadingScreen)) as LoadingScreen;
@@ -137,12 +141,34 @@ public class LoadingScreen : MonoBehaviour {
 	// Recieve the file path from UniFileBrowserExample.cs
 	// and format it to work with WWW download
 	public void RecieveFilePath(string myFilePath){
+		// Make sure error text object is found and assigned
+		// because it is not preserved between scenes.
+		errorText = GameObject.Find("Error Text").guiText;
+
 		Debug.Log(myFilePath);
+
+		// If the file path string is too long (greater than 78 characters)
+		if (myFilePath.Length - 78 > 0){
+			// Show error message
+			errorText.enabled = true;
+
+			// Write error message based on length of string
+			if(myFilePath.Length - 78 < 4){
+				errorText.text = "Sorry, your file's name is " + (myFilePath.Length - 78) + " characters \n too long. Please shorten and try again.";
+			}
+
+			if(myFilePath.Length - 78 >= 4){
+				errorText.text = "Sorry, your file's name is many characters \n too long. Please shorten and try again.";
+			}
+		}else{
+			errorText.enabled = false;
+			shouldLoadP = true;
+		}
 
 		// Replace each backslash with a forward slash
 		myFilePath = myFilePath.Replace(@"\", "/");
-		// Append "file: //" at the beginning
-		myFilePath = "file: //" + myFilePath;
+		// Append "file: //" at the beginning and the extension
+		myFilePath = @"file: //" + myFilePath;
 
 		Debug.Log(myFilePath);
 
@@ -150,7 +176,9 @@ public class LoadingScreen : MonoBehaviour {
 		DontDestroyUs();
 		
 		// Load the level
-		Load(myFilePath);
+		if(shouldLoadP == true){
+			Load(myFilePath);
+		}
 	}
 	
 	// Preserve the needed game objects
@@ -174,8 +202,8 @@ public class LoadingScreen : MonoBehaviour {
 		// Invoke the Download function to begin OGG download, wait, and play functions
 		if(pcP){
 			try{
-
-				LoadingScreen.Download(myFilePath, myDownloadCallback);
+				Debug.Log(myFilePath);
+				LoadingScreen.Download(@myFilePath, myDownloadCallback);
 				//LoadingScreen.Download("file: //C:/Burn.ogg", myDownloadCallback);
 			}catch(Exception e){
 				Debug.Log(e.ToString());

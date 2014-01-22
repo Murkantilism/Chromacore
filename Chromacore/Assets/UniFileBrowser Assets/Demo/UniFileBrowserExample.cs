@@ -97,8 +97,10 @@ public class UniFileBrowserExample : MonoBehaviour {
 		// Pass file path to Loading Screen, then load loading screen
 		LoadingScreen loadScreen = GetComponent<LoadingScreen>();
 		loadScreen.RecieveFilePath(pathToFile.ToString());
-		
-		Application.LoadLevel("LoadingScreen");
+
+		if (loadScreen.shouldLoadP == true){
+			Application.LoadLevel("LoadingScreen");
+		}
 		
 		/*
 		// Invoke the Download function to begin OGG download, wait, and play functions
