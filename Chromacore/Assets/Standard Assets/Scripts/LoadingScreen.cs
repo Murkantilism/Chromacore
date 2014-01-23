@@ -191,19 +191,12 @@ public class LoadingScreen : MonoBehaviour {
 	// Take care of all the heavy computations before the level
 	// Save results into data structures with DontDestroyOnLoad
 	void Load(string myFilePath){
-		// Invoke the Download function to begin OGG download, wait, and play functions
-		if(pcP || androidP){
+		// Invoke the Download function to begin OGG/MP3 download, wait, and play functions
+		if(pcP || androidP || iphoneP){
 			try{
 				Debug.Log(myFilePath);
 				LoadingScreen.Download(@myFilePath, myDownloadCallback);
 				//LoadingScreen.Download("file: //C:/Burn.ogg", myDownloadCallback);
-			}catch(Exception e){
-				Debug.Log(e.ToString());
-			}
-		}else if(iphoneP){
-			try{
-				downloadManager.Download_iphone(myFilePath);
-				//downloadManager.Download_iphone("file: //C:/Burn.ogg");
 			}catch(Exception e){
 				Debug.Log(e.ToString());
 			}
@@ -270,19 +263,4 @@ public class LoadingScreen : MonoBehaviour {
 	void OnApplicationQuit(){
 		LoadingScreen.downloadManager = null;
 	}
-	
-	
-	/****************************************************************
-	 * 				      Music Loading Code for iPhone				*
-	 ****************************************************************/
-	void Download_iphone(string myFilePath){
-		return;
-	}
-	
-	
-	
-	
-	
-	
-	
 }
