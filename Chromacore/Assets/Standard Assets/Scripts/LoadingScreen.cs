@@ -85,14 +85,6 @@ public class LoadingScreen : MonoBehaviour {
 		InvokeRepeating("loadAnimation", 0, 2);
 		loadSeqOne = true;
 		loadingText = GameObject.Find("LoadingText").guiText;
-		
-		//animOneID = animSeqOne.GetSpriteIdByName("2run_plain__000_002");
-		//animTwoID = animSeqTwo.GetSpriteIdByName("2run_plain__000_004");
-		//animThreeID = animSeqThree.GetSpriteIdByName("2run_plain__000_006");
-		
-		//animSeqOne.SetSprite(TeliRun, animOneID);
-		//animSeqTwo.SetSprite(TeliRun, animTwoID);
-		//animSeqThree.SetSprite(TeliRun, animThreeID);
 	}
 	
 	// Play the loading animation
@@ -200,7 +192,7 @@ public class LoadingScreen : MonoBehaviour {
 	// Save results into data structures with DontDestroyOnLoad
 	void Load(string myFilePath){
 		// Invoke the Download function to begin OGG download, wait, and play functions
-		if(pcP){
+		if(pcP || androidP){
 			try{
 				Debug.Log(myFilePath);
 				LoadingScreen.Download(@myFilePath, myDownloadCallback);
@@ -208,10 +200,10 @@ public class LoadingScreen : MonoBehaviour {
 			}catch(Exception e){
 				Debug.Log(e.ToString());
 			}
-		}else if(androidP){
+		}else if(iphoneP){
 			try{
-				downloadManager.Download_Android(myFilePath);
-				//downloadManager.Download_Android("file: //C:/Burn.ogg");
+				downloadManager.Download_iphone(myFilePath);
+				//downloadManager.Download_iphone("file: //C:/Burn.ogg");
 			}catch(Exception e){
 				Debug.Log(e.ToString());
 			}
@@ -281,34 +273,11 @@ public class LoadingScreen : MonoBehaviour {
 	
 	
 	/****************************************************************
-	 * 				      Music Loading Code for Android			*
-	 ****************************************************************/
-	IEnumerator Download_Android(string myFilePath){
-		// Start downloading at the given path
-		WWW wwwDroid = new WWW (myFilePath);
-		
-		// Wait for download to finish
-		yield return wwwDroid;
-		
-		audio.clip = wwwDroid.audioClip;
-		
-		while(!audio.isPlaying && audio.clip.isReadyToPlay){
-			audio.Play();
-		}
-	}// Test comment please ignore
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/****************************************************************
 	 * 				      Music Loading Code for iPhone				*
 	 ****************************************************************/
-	
+	void Download_iphone(string myFilePath){
+		return;
+	}
 	
 	
 	
