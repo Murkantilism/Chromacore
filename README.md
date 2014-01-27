@@ -13,7 +13,7 @@ Android & iOS: Coming Soon
 
 PC/Mac/Linux: Coming Soon
 
-Depricated web prototyp available here: http://www.ccs.neu.edu/home/ozkaynak/Chromacore/Chromacore_buildIndex.html?ref=live
+Depricated web prototype available here: http://www.ccs.neu.edu/home/ozkaynak/Chromacore/Chromacore_buildIndex.html?ref=live
 
 ## In-Game Screenshot
 
