@@ -39,7 +39,7 @@ public class Teli_Animation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Jump Animation
-		if (Input.GetKey(KeyCode.Space)){
+		if (Input.GetAxis("Jump") != 0){
 			// Only play the clip if it is not already playing.
 			// Calling play will restart the clip if it is already playing
 			if (!anim.IsPlaying("Jump")){
@@ -48,7 +48,7 @@ public class Teli_Animation : MonoBehaviour {
 		}
 		
 		// If the Player presses the punch button
-		if (Input.GetKey(KeyCode.A)){
+		if (Input.GetAxis("Punch") != 0){
 			// And the charcter isn't currently punching
 			if(!anim.IsPlaying("Punch")){
 				anim.Play("Punch");
