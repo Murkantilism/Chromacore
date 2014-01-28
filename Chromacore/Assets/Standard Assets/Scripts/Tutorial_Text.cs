@@ -24,7 +24,7 @@ public class Tutorial_Text : MonoBehaviour {
 		#if UNITY_ANDROID
 		// If joystick input exists, show joystick specific tutorial text
 		try{
-			if (Input.GetButton("joystick button 3") == true || Input.GetButton("joystick button 4") == true){
+			if ((Input.GetJoystickNames().Length > 0)){
 				tutorialTextJump.text = "Press Y to jump";
 				tutorialTextPunch.text = "Press X to punch";
 			}

@@ -54,6 +54,30 @@ public class Teli_Animation : MonoBehaviour {
 				anim.Play("Punch");
 			}
 		}
+
+		// Touch screen support:
+
+		// Detect the number of fingers touching screen
+		int fingerCount = 0;
+		foreach(Touch touch in Input.touches){
+			if(touch.phase == TouchPhase.Began && touch.phase != TouchPhase.Canceled){
+				fingerCount++;
+			}
+		}
+
+		// If one finger is touching, jump
+		// If two are touching, punch
+		if (fingerCount > 0){
+			if (fingerCount == 1){
+				if (!anim.IsPlaying("Jump")){
+					anim.Play("Jump");
+				}
+			}else if (fingerCount == 2){
+				if(!anim.IsPlaying("Punch")){
+					anim.Play("Punch");
+				}
+			}
+		}
 		
 		// If none of the other animations are playing
 		if (!anim.IsPlaying("Run") & !anim.IsPlaying("Jump") & !anim.IsPlaying("Run_Glow") & !anim.IsPlaying("Punch") & !anim.IsPlaying("Death")){
