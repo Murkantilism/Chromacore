@@ -18,6 +18,12 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// State variable to check if player is running (running by default)
 	public bool runningP = true;
+
+	// Check if game is paused
+	bool gamePaused = false;
+
+	// Used to wait 1 sec after game is resumed before checking death condition again
+	bool waitResume = false;
 	
 	// The background music track (used to reset after death)
 	public AudioSource backgroundTrack;
@@ -27,7 +33,7 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// The latest timestamp to reset music track at right checkpoint
 	float checkpoint_timestamp;
-	
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -96,17 +102,32 @@ public class Teli_Animation : MonoBehaviour {
 		// Wait to invoke death animation function until a few
 		// seconds after game has begun.
 		Invoke("DeathAnimation", 3);
-		
-		
+	}
+
+	// Used to recieve message from Pause.cs to make sure
+	// Teli doesn't die after game is resumed
+	void PauseMovement(bool paused){
+		// Set the gamePaused boolean to the value passed
+		gamePaused = paused;
+		waitResume = true;
+		Debug.Log(gamePaused);
+		Invoke("WaitResume", 1);
+	}
+
+	// After the game has been resumed, wait 1 second before checking
+	// the death condition again
+	void WaitResume(){
+		waitResume = false;
 	}
 	
 	// Handles death by Edges (death by obstacles is 
 	// handled in ObstacleDeath() function)
 	void DeathAnimation(){
-		// If Teli's X-position stops increasing or the Y position is below level
-		if (teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < -5){
-			//Debug.Log(teliCharacter.velocity.x);
+		// If Teli's X-position stops increasing or the Y position is below the level
+		// AND the game is not currently paused...
+		if ((teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < -5) && gamePaused == false && waitResume == false){
 			Debug.Log("DEATH");
+			Debug.Log(gamePaused);
 			// And the death animation isn't already playing
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation

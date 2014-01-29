@@ -3,7 +3,11 @@ using System;
 using System.Collections;
 
 public class LoadingScreen : MonoBehaviour {
-	
+	public GUIText debugText;
+	public GUIText debugText1;
+	public GUIText debugText2;
+	public GUIText debugText3;
+
 	// Loading screen animation variables
 	public GUIText loadingText;
 	public tk2dSprite animSeqOne;
@@ -186,6 +190,11 @@ public class LoadingScreen : MonoBehaviour {
 		
 		GameObject runSeq3 = GameObject.Find("Run Seq 3");
 		DontDestroyOnLoad(runSeq3);
+
+		DontDestroyOnLoad(debugText);
+		DontDestroyOnLoad(debugText1);
+		DontDestroyOnLoad(debugText2);
+		DontDestroyOnLoad(debugText3);
 	}
 	
 	// Take care of all the heavy computations before the level
@@ -195,6 +204,7 @@ public class LoadingScreen : MonoBehaviour {
 		if(pcP || androidP || iphoneP){
 			try{
 				Debug.Log(myFilePath);
+				debugText.text = myFilePath;
 				LoadingScreen.Download(@myFilePath, myDownloadCallback);
 				//LoadingScreen.Download("file: //C:/Burn.ogg", myDownloadCallback);
 			}catch(Exception e){
@@ -222,8 +232,10 @@ public class LoadingScreen : MonoBehaviour {
 	// A coroutine used to wait for the download to finish before proceeding
 	private IEnumerator WaitForDownload(DownloadCallback fn){
 		Debug.Log("Yielding...");
+		debugText2.text = "Yielding...";
 		yield return wwwData;
 		Debug.Log("Yielded...DONE");
+		debugText3.text = "Yielded...DONE";
 		fn(wwwData.bytes, wwwData.error);
 	}
 	
@@ -232,6 +244,7 @@ public class LoadingScreen : MonoBehaviour {
 		try{
 			wwwData = new WWW(filePath);
 			Debug.Log("Starting download...");
+			debugText1.text = "Starting download...";
 			StartCoroutine("WaitForDownload", fn);
 		}catch(Exception e){
 			Debug.Log(e.ToString());
@@ -264,3 +277,4 @@ public class LoadingScreen : MonoBehaviour {
 		LoadingScreen.downloadManager = null;
 	}
 }
+

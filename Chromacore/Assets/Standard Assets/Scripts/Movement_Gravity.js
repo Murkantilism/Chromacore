@@ -52,7 +52,7 @@ class Movement_Gravity extends MonoBehaviour{
 		// Apply gravity
 		moveDirection.y -= gravity * Time.deltaTime;
 		
-		// Move the controller if we are not dead
+		// Move the controller if we are not dead and the game is not paused
 		if (notdeadp == true){
 			controller.Move(moveDirection * Time.deltaTime);
 		}

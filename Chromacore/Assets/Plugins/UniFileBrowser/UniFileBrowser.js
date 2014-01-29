@@ -155,6 +155,21 @@ function Reset () {
 #endif
 
 function Awake () {
+	// Determine Platform at compile time, show volumes
+	// only on PC standalone, not needed on mobile???
+  	#if UNITY_STANDALONE
+   	 	showVolumes = true;
+  	#endif
+  
+  	#if UNITY_IPHONE
+    	showVolumes = false;
+  	#endif
+  
+  	#if UNITY_ANDROID
+  		showVolumes = false;
+ 	#endif
+	
+	
 	enabled = false;
 	if (!guiSkin) {
 		Debug.LogError ("UniFileBrowser GUI skin missing");

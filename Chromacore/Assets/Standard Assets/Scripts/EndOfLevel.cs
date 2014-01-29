@@ -84,6 +84,6 @@ public class EndOfLevel : MonoBehaviour {
 	
 	// Reset entire game by reloading level after 15 seconds
 	void Reset(){
-		Application.LoadLevel(0);
+		Application.LoadLevel("LevelSelect");
 	}
 }
