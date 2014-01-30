@@ -9,6 +9,11 @@ public class Pause : MonoBehaviour {
 	public AudioSource backgroundTrack;
 	public GameObject teli;
 
+	// Used for swipe input
+	float swipespeed = 0.05f;
+	float inputX;
+	float inputY;
+
 	// Use this for initialization
 	void Start () {
 		// Get teli game object
@@ -21,12 +26,20 @@ public class Pause : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		// Check for pause
+		// Check for pause on PC
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			paused = true;
 			Time.timeScale = 0;
 			backgroundTrack.Pause();
 			teli.SendMessage("PauseMovement", true);
+		}
+
+		// Check for pause on mobile
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
+			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+			inputX += touchDeltaPosition.x * swipespeed;
+			inputY += touchDeltaPosition.y * swipespeed;
+			Debug.Log("X, Y: " + inputX + ", " + inputY);
 		}
 	}
 	
