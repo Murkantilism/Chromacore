@@ -37,9 +37,9 @@ public class Pause : MonoBehaviour {
 
 		// Check for pause on mobile by checking for swipe and less
 		// than 2 fingers.
-		if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase == TouchPhase.Moved){
+		if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase != TouchPhase.Stationary && Input.GetTouch(0).phase == TouchPhase.Moved){
 			// Calculate the swipe vector and speed
-			speedVec = new Vector2(myTouch.deltaPosition.x * myTouch.deltaTime, myTouch.deltaPosition.y * myTouch.deltaTime);
+			speedVec = new Vector2(myTouch.deltaPosition.x, myTouch.deltaPosition.y);
 			swipespeed = speedVec.magnitude;
 			Debug.Log("Swipe speed: " + speedVec.magnitude);
 
