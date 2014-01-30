@@ -36,10 +36,15 @@ public class Pause : MonoBehaviour {
 
 		// Check for pause on mobile
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
-			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-			inputX += touchDeltaPosition.x * swipespeed;
-			inputY += touchDeltaPosition.y * swipespeed;
-			Debug.Log("X, Y: " + inputX + ", " + inputY);
+			paused = true;
+			Time.timeScale = 0;
+			backgroundTrack.Pause();
+			teli.SendMessage("PauseMovement", true);
+			Debug.Log("SWIPER NO SWIPING");
+			//Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+			//inputX += touchDeltaPosition.x * swipespeed;
+			//inputY += touchDeltaPosition.y * swipespeed;
+			//Debug.Log("X, Y: " + inputX + ", " + inputY);
 		}
 	}
 	

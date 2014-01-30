@@ -73,7 +73,9 @@ public class Teli_Animation : MonoBehaviour {
 
 		// If one finger is touching, jump
 		// If two are touching, punch
-		if (fingerCount > 0){
+		// First check to make sure non-zero fingers are touching,
+		// and the finger touch is not a swipe
+		if (fingerCount > 0 && Input.GetTouch(0).phase != TouchPhase.Moved){
 			if (fingerCount == 1){
 				if (!anim.IsPlaying("Jump")){
 					anim.Play("Jump");
