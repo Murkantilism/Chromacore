@@ -77,7 +77,6 @@ public class LoadingScreen : MonoBehaviour {
 				invokeMeP = false;
 			}
 		}
-			
 	}
 	
 	/****************************************************************
@@ -93,39 +92,41 @@ public class LoadingScreen : MonoBehaviour {
 	
 	// Play the loading animation
 	void loadAnimation(){
-		// Play the first loading sequence
-		if(loadSeqOne){
-			loadingText.text = "Loading.";
+		if(Application.loadedLevelName != "CustomLevel"){
+			// Play the first loading sequence
+			if(loadSeqOne){
+				loadingText.text = "Loading.";
+				
+				animSeqOne.renderer.enabled = true;
+				animSeqTwo.renderer.enabled = false;
+				animSeqThree.renderer.enabled = false;
+				
+				loadSeqOne = false;
+				loadSeqTwo = true;
 			
-			animSeqOne.renderer.enabled = true;
-			animSeqTwo.renderer.enabled = false;
-			animSeqThree.renderer.enabled = false;
-			
-			loadSeqOne = false;
-			loadSeqTwo = true;
-		
-		// Switch to second loading sequence
-		}else if(loadSeqTwo){
-			loadingText.text = "Loading..";
+			// Switch to second loading sequence
+			}else if(loadSeqTwo){
+				loadingText.text = "Loading..";
 
-			animSeqOne.renderer.enabled = false;
-			animSeqTwo.renderer.enabled = true;
-			animSeqThree.renderer.enabled = false;
+				animSeqOne.renderer.enabled = false;
+				animSeqTwo.renderer.enabled = true;
+				animSeqThree.renderer.enabled = false;
+				
+				loadSeqTwo = false;
+				loadSeqThree = true;
 			
-			loadSeqTwo = false;
-			loadSeqThree = true;
-		
-		// Switch to last loading sequence
-		}else if(loadSeqThree){
-			loadingText.text = "Loading...";
-			
-			animSeqOne.renderer.enabled = false;
-			animSeqTwo.renderer.enabled = false;
-			animSeqThree.renderer.enabled = true;
-			
-			loadSeqThree = false;
-			loadSeqOne = true;
-		// Lastly, switch back to sequence one
+			// Switch to last loading sequence
+			}else if(loadSeqThree){
+				loadingText.text = "Loading...";
+				
+				animSeqOne.renderer.enabled = false;
+				animSeqTwo.renderer.enabled = false;
+				animSeqThree.renderer.enabled = true;
+				
+				loadSeqThree = false;
+				loadSeqOne = true;
+			// Lastly, switch back to sequence one
+			}
 		}
 	}
 	
@@ -163,8 +164,13 @@ public class LoadingScreen : MonoBehaviour {
 
 		// Replace each backslash with a forward slash
 		myFilePath = myFilePath.Replace(@"\", "/");
-		// Append "file: //" at the beginning and the extension
-		myFilePath = @"file: //" + myFilePath;
+		// If Android append "file: /" at the beginning and the extension
+		// If PC or iOS append "file: /" at the beginning and the extension
+		if (androidP){
+			myFilePath = @"file: /" + myFilePath;
+		}else{
+			myFilePath = @"file: //" + myFilePath;
+		}
 
 		Debug.Log(myFilePath);
 
@@ -259,7 +265,9 @@ public class LoadingScreen : MonoBehaviour {
 	public IEnumerator PlayOGG(){
 		// Put OGG into audio clip
 		audio.clip = wwwData.GetAudioClip(true);
-		
+
+		debugText3.text = audio.clip.isReadyToPlay.ToString();
+
 		// If the audio isn't already playing & the clip is ready, load
 		// the auto generated CustomLevel scene
 		if(!audio.isPlaying && audio.clip.isReadyToPlay){
