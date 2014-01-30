@@ -9,12 +9,6 @@ public class Pause : MonoBehaviour {
 	public AudioSource backgroundTrack;
 	public GameObject teli;
 
-	// Used for swipe input
-	float swipespeed;
-	float swipeTresh = 1.2f;
-	Vector2 speedVec = Vector2.zero;
-	Touch myTouch = Input.touches[0];
-
 	// Use this for initialization
 	void Start () {
 		// Get teli game object
@@ -38,19 +32,11 @@ public class Pause : MonoBehaviour {
 		// Check for pause on mobile by checking for swipe and less
 		// than 2 fingers.
 		if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase != TouchPhase.Stationary && Input.GetTouch(0).phase == TouchPhase.Moved){
-			// Calculate the swipe vector and speed
-			speedVec = new Vector2(myTouch.deltaPosition.x, myTouch.deltaPosition.y);
-			swipespeed = speedVec.magnitude;
-			Debug.Log("Swipe speed: " + speedVec.magnitude);
-
-			// Compare against threshold
-			if (swipespeed > swipeTresh){
-				paused = true;
-				Time.timeScale = 0;
-				backgroundTrack.Pause();
-				teli.SendMessage("PauseMovement", true);
-				Debug.Log("SWIPER NO SWIPING");
-			}
+			paused = true;
+			Time.timeScale = 0;
+			backgroundTrack.Pause();
+			teli.SendMessage("PauseMovement", true);
+			Debug.Log("SWIPER NO SWIPING");
 		}
 	}
 	
