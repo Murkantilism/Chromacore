@@ -35,7 +35,7 @@ public class Pause : MonoBehaviour {
 		}
 
 		// Check for pause on mobile
-		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
+		if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase == TouchPhase.Moved){
 			paused = true;
 			Time.timeScale = 0;
 			backgroundTrack.Pause();
