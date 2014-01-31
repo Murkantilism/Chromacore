@@ -12,6 +12,7 @@ public class Pause : MonoBehaviour {
 	Vector2 swipeStart;
 	Vector2 swipeEnd;
 	Vector2 swipeThresh = new Vector2(20, 20);
+	Vector2 swipeCeiling = new Vector2(600, 600);
 
 	// Use this for initialization
 	void Start () {
@@ -48,7 +49,8 @@ public class Pause : MonoBehaviour {
 		// check that the finger(s) are in movement.
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Stationary && Input.GetTouch(0).phase == TouchPhase.Moved){
 			// Check if they are within the swipe threshold to actually trigger pause
-			if (CalcSwipeLength().x > swipeThresh.x && CalcSwipeLength().y > swipeThresh.y){
+			if (CalcSwipeLength().x > swipeThresh.x && CalcSwipeLength().y > swipeThresh.y &&
+			    CalcSwipeLength().x > swipeCeiling.x && CalcSwipeLength().y > swipeCeiling.y){
 				Debug.Log(CalcSwipeLength());
 				paused = true;
 				Time.timeScale = 0;
