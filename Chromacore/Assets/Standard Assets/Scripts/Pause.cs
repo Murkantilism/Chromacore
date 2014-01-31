@@ -50,7 +50,7 @@ public class Pause : MonoBehaviour {
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Stationary && Input.GetTouch(0).phase == TouchPhase.Moved){
 			// Check if they are within the swipe threshold to actually trigger pause
 			if (CalcSwipeLength().x > swipeThresh.x && CalcSwipeLength().y > swipeThresh.y &&
-			    CalcSwipeLength().x > swipeCeiling.x && CalcSwipeLength().y > swipeCeiling.y){
+			    CalcSwipeLength().x < swipeCeiling.x && CalcSwipeLength().y < swipeCeiling.y){
 				Debug.Log(CalcSwipeLength());
 				paused = true;
 				Time.timeScale = 0;
