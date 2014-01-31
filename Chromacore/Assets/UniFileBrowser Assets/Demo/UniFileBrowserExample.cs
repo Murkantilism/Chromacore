@@ -59,7 +59,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 			return;
 		}else{
 			// Only load the File Browser in the Song Browser scene
-			if (GUI.Button (new Rect(Screen.width/2, Screen.height/2, 95, 35), "Browse")) {
+			if (GUI.Button (new Rect(Screen.width/2, Screen.height/2, 200, 100), "Browse")) {
 				if (UniFileBrowser.use.allowMultiSelect) {
 					UniFileBrowser.use.OpenFileWindow (OpenFiles);
 				}
@@ -68,7 +68,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 				}
 			}
 			
-			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 95, 35), "Back")){
+			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Back")){
 					Application.LoadLevel("MainMenu");
 			}
 			

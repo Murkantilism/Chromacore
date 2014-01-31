@@ -156,7 +156,7 @@ function Reset () {
 
 function Awake () {
 	// Determine Platform at compile time, show volumes
-	// only on PC standalone, not needed on mobile???
+	// only on PC standalone, not needed on mobile
   	#if UNITY_STANDALONE
    	 	showVolumes = true;
   	#endif
@@ -168,13 +168,6 @@ function Awake () {
   	#if UNITY_ANDROID
   		showVolumes = false;
  	#endif
-	
-	
-	// Resize file browser to entire screen
-	minWindowWidth = Screen.width;
-	minWindowHeight = Screen.height;
-	fileWindowRect.x = 0;
-	fileWindowRect.y = 0;
 	
 	enabled = false;
 	if (!guiSkin) {
@@ -325,6 +318,13 @@ private function UpdateRects () {
 	fileAreaRect.width = fileBoxRect.width - xIndent*2;
 	fileAreaRect.height = fileBoxRect.height - yIndent*2;
 	viewRect = Rect(fileAreaRect.x, fileAreaRect.y, fileAreaRect.width - (scrollbarWidth + xIndent), fileDisplayList.Length * linePixelHeight);
+	
+	// Sets the file browser to fullscreen
+	fileWindowRect.width = Screen.width;
+	fileWindowRect.height = Screen.height;
+	// Set position (position based on upper left corner)
+	fileWindowRect.x = 0;
+	fileWindowRect.y = 0;
 }
 
 function OnGUI () {
