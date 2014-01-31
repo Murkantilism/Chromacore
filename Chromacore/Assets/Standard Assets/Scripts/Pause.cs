@@ -9,6 +9,10 @@ public class Pause : MonoBehaviour {
 	public AudioSource backgroundTrack;
 	public GameObject teli;
 
+	Vector2 swipeStart;
+	Vector2 swipeEnd;
+	Vector2 swipeThresh = new Vector2(0, 0);
+
 	// Use this for initialization
 	void Start () {
 		// Get teli game object
@@ -29,15 +33,35 @@ public class Pause : MonoBehaviour {
 			teli.SendMessage("PauseMovement", true);
 		}
 
-		// Check for pause on mobile by checking for swipe and less
-		// than 2 fingers.
-		if (Input.touchCount > 0 && Input.touchCount < 2 && Input.GetTouch(0).phase != TouchPhase.Stationary && Input.GetTouch(0).phase == TouchPhase.Moved){
-			paused = true;
-			Time.timeScale = 0;
-			backgroundTrack.Pause();
-			teli.SendMessage("PauseMovement", true);
-			Debug.Log("SWIPER NO SWIPING");
+
+		// At the start of a swipe, save the position
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
+			swipeStart = Input.GetTouch(0).position;
 		}
+		// At the end of a swipe, save the position
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended){
+			swipeEnd = Input.GetTouch(0).position;
+			CalcSwipeLength();
+		}
+
+		// Check for pause on mobile : Check that finger(s) are not stationary,
+		// check that the finger(s) are in movement.
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Stationary && Input.GetTouch(0).phase == TouchPhase.Moved){
+			// Check if they are within the swipe threshold to actually trigger pause
+			if (CalcSwipeLength().x > swipeThresh.x && CalcSwipeLength().y > swipeThresh.y){
+				Debug.Log(CalcSwipeLength());
+				paused = true;
+				Time.timeScale = 0;
+				backgroundTrack.Pause();
+				teli.SendMessage("PauseMovement", true);
+				Debug.Log("SWIPER NO SWIPING");
+			}
+		}
+	}
+
+	// Calculate the length of a swipe
+	Vector2 CalcSwipeLength(){
+		return new Vector2(Mathf.Abs((swipeEnd.x - swipeStart.x)), Mathf.Abs(swipeEnd.y - swipeStart.y));
 	}
 	
 	// show menu when paused

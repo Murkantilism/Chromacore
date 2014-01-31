@@ -170,6 +170,12 @@ function Awake () {
  	#endif
 	
 	
+	// Resize file browser to entire screen
+	minWindowWidth = Screen.width;
+	minWindowHeight = Screen.height;
+	fileWindowRect.x = 0;
+	fileWindowRect.y = 0;
+	
 	enabled = false;
 	if (!guiSkin) {
 		Debug.LogError ("UniFileBrowser GUI skin missing");
