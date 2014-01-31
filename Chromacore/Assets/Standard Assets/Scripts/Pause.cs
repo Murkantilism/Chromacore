@@ -11,7 +11,7 @@ public class Pause : MonoBehaviour {
 
 	Vector2 swipeStart;
 	Vector2 swipeEnd;
-	Vector2 swipeThresh = new Vector2(0, 0);
+	Vector2 swipeThresh = new Vector2(20, 20);
 
 	// Use this for initialization
 	void Start () {
