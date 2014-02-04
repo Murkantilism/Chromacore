@@ -219,13 +219,13 @@ public class LoadingScreen : MonoBehaviour {
 		}
 	}
 	
-	// Start download of the OGG, catch any errors along the way
+	// Start download of the audio file, catch any errors along the way
 	public static void myDownloadCallback(byte[]data, string sError){
 		try{
 			if(sError != null){
 				Debug.Log(sError);
 			}else{
-				downloadManager.StartCoroutine(downloadManager.PlayOGG());
+				downloadManager.StartCoroutine(downloadManager.PlayAudioFile());
 			}
 		}catch(Exception e){
 			Debug.Log(e.ToString());
@@ -243,9 +243,13 @@ public class LoadingScreen : MonoBehaviour {
 		Debug.Log("Yielded...DONE");
 		debugText3.text = "Yielded...DONE";
 		fn(wwwData.bytes, wwwData.error);
+		if (androidP){
+			debugText1.text = "Got here boss!";
+			PlayAudioFile();
+		}
 	}
 	
-	// Start download of OGG via WWW and the given file path
+	// Start download of audio file via WWW and the given file path
 	private void StartDownload(string filePath, DownloadCallback fn){
 		try{
 			wwwData = new WWW(filePath);
@@ -261,9 +265,11 @@ public class LoadingScreen : MonoBehaviour {
 		downloadManager.StartDownload(filePath, fn);
 	}
 	
-	// Grab the downloaded OGG file, put it into an audio clip, and play
-	public IEnumerator PlayOGG(){
-		// Put OGG into audio clip
+	// Grab the downloaded audio file, put it into an audio clip, and play
+	public IEnumerator PlayAudioFile(){
+		debugText2.text = "Here too sir!";
+
+		// Put file into audio clip
 		audio.clip = wwwData.GetAudioClip(true);
 
 		debugText3.text = audio.clip.isReadyToPlay.ToString();

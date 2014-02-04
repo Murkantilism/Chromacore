@@ -10,7 +10,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 	string message = "";
 	float alpha = 1.0f;
 	char pathChar = '/';
-	
+
 	/*
 	bool pcP = false;
 	bool iphoneP = false;
@@ -33,33 +33,18 @@ public class UniFileBrowserExample : MonoBehaviour {
 		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
 			pathChar = '\\';
 		}
-		
-		/*
-		// Determine Platform at compile time
-	  	#if UNITY_STANDALONE
-	   	 	Debug.Log("Standalone PC (Win/Mac/Lin)");
-	    	pcP = true;
-	  	#endif
-	  
-	  	#if UNITY_IPHONE
-	    	Debug.Log("iPhone");
-	    	iphoneP = true;
-	  	#endif
-	  
-	  	#if UNITY_ANDROID
-	  		Debug.Log("Android")
-	  		androidP = true;
-	 	#endif
-	 	*/
 	}
 	
 	void OnGUI () {
+		GUIStyle buttonStyle = new GUIStyle("button");
+		buttonStyle.fontSize = 25;
+		
 		// Only load the File Browser in the Song Browser scene
 		if (Application.loadedLevelName != "SongBrowser"){
 			return;
 		}else{
 			// Only load the File Browser in the Song Browser scene
-			if (GUI.Button (new Rect(Screen.width/2, Screen.height/2, 200, 100), "Browse")) {
+			if (GUI.Button (new Rect(Screen.width/2, Screen.height/2, 200, 100), "Browse", buttonStyle)) {
 				if (UniFileBrowser.use.allowMultiSelect) {
 					UniFileBrowser.use.OpenFileWindow (OpenFiles);
 				}
@@ -68,7 +53,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 				}
 			}
 			
-			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Back")){
+			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Back", buttonStyle)){
 					Application.LoadLevel("MainMenu");
 			}
 			
@@ -101,16 +86,6 @@ public class UniFileBrowserExample : MonoBehaviour {
 		if (loadScreen.shouldLoadP == true){
 			Application.LoadLevel("LoadingScreen");
 		}
-		
-		/*
-		// Invoke the Download function to begin OGG download, wait, and play functions
-		if(pcP){
-			try{
-				UniFileBrowserExample.Download("file: //C:/Burn.ogg", myDownloadCallback);
-			}catch(Exception e){
-				Debug.Log(e.ToString());
-			}
-		}*/
 		
 		Fade();
 	}
@@ -150,60 +125,4 @@ public class UniFileBrowserExample : MonoBehaviour {
 		}
 		message = "";
 	}
-	
-	/*
-	// Start download of the OGG, catch any errors along the way
-	public static void myDownloadCallback(byte[]data, string sError){
-		try{
-			if(sError != null){
-				Debug.Log(sError);
-			}else{
-				downloadManager.PlayOGG();
-			}
-		}catch(Exception e){
-			Debug.Log(e.ToString());
-		}
-	}
-	
-	// A delete, not to be confused with myDownloadCallback above
-	public delegate void DownloadCallback(byte[] data, string sError);
-	
-	// A coroutine used to wait for the download to finish before proceeding
-	private IEnumerator WaitForDownload(DownloadCallback fn){
-		Debug.Log("Yielding...");
-		yield return wwwData;
-		Debug.Log("Yielded...DONE");
-		fn(wwwData.bytes, wwwData.error);
-	}
-	
-	// Start download of OGG via WWW and the given file path
-	private void StartDownload(string filePath, DownloadCallback fn){
-		try{
-			wwwData = new WWW(filePath);
-			Debug.Log("Starting download...");
-			StartCoroutine("WaitForDownload", fn);
-		}catch(Exception e){
-			Debug.Log(e.ToString());
-		}
-	}
-	
-	public static void Download(string filePath, DownloadCallback fn){
-		downloadManager.StartDownload(filePath, fn);
-	}
-	
-	// Grab the downloaded OGG file, put it into an audio clip, and play
-	public void PlayOGG(){
-		// Put OGG into audio clip
-		audio.clip = wwwData.GetAudioClip(true);
-		
-		// If the audio isn't already playing & the clip is ready, play
-		if(!audio.isPlaying && audio.clip.isReadyToPlay){
-			audio.Play();
-		}
-	}
-	
-	// Once Application is closed, delete download manager
-	void OnApplicationQuit(){
-		UniFileBrowserExample.downloadManager = null;
-	}*/
 }

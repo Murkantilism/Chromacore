@@ -68,6 +68,8 @@ public class Pause : MonoBehaviour {
 	
 	// show menu when paused
 	void OnGUI() {
+		GUIStyle buttonStyle = new GUIStyle("button");
+		buttonStyle.fontSize = 25;
 		GUI.skin = guiSkin;
 		
 		if (paused) {
@@ -75,7 +77,7 @@ public class Pause : MonoBehaviour {
 			blackPauseTexture.color = new Color(0, 0, 0, 1);
 
 			// Resume button
-			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Resume")){
+			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Resume", buttonStyle)){
 				// If unpaused, set black pause GUI texture
 				blackPauseTexture.color = new Color(0, 0, 0, 0);
 				paused = false;
@@ -85,7 +87,7 @@ public class Pause : MonoBehaviour {
 			}
 
 			// Quit button
-			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 + Screen.height/4, 200, 100), "Quit to Main Menu")){
+			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 + Screen.height/4, 200, 100), "Quit to \nMain Menu", buttonStyle)){
 				Application.LoadLevel("MainMenu");
 				paused = false;
 				Time.timeScale = 1;
