@@ -126,6 +126,9 @@ private var buttonPositionY : int;
 private var multi : boolean;
 private var windowOffset : int;
 
+private var androidP : boolean;
+private var iphoneP : boolean;
+
 #if UNITY_EDITOR
 function Reset () {
 	var paths = AssetDatabase.GetAllAssetPaths();
@@ -162,10 +165,12 @@ function Awake () {
   	#endif
   
   	#if UNITY_IPHONE
+  		iphoneP = true;
     	showVolumes = false;
   	#endif
   
   	#if UNITY_ANDROID
+  		androidP = true;
   		showVolumes = false;
  	#endif
 	
@@ -202,6 +207,28 @@ function Awake () {
 		Debug.LogError ("The GUISkin for UniFileBrowser must contain a style called \"listScrollview\"");
 		return;
 	}
+	
+	// To improve usability on touch screen mobile platforms, increase size of:
+	// - The vertical scroll bar (and it's background bar)
+	// - The text for files and folders
+	// - The pop-up menu list of folders
+	if (androidP || iphoneP){
+		guiSkin.GetStyle("verticalscrollbar").fixedWidth = 30;
+		guiSkin.GetStyle("verticalscrollbarthumb").fixedWidth = 30;
+		scrollViewStyle.fontSize = 20;
+		guiSkin.GetStyle("popupList").fontSize = 20;
+		guiSkin.GetStyle("popupButton").fontSize = 20;
+		guiSkin.GetStyle("popupBox").fontSize = 20;
+	}else{
+		// Otherwise set them to smaller sizes for PC standalone
+		guiSkin.GetStyle("verticalscrollbar").fixedWidth = 15;
+		guiSkin.GetStyle("verticalscrollbarthumb").fixedWidth = 15;
+		scrollViewStyle.fontSize = 15;
+		guiSkin.GetStyle("popupList").fontSize = 15;
+		guiSkin.GetStyle("popupButton").fontSize = 15;
+		guiSkin.GetStyle("popupBox").fontSize = 15;
+	}
+	
 	scrollViewStyleSelected = new GUIStyle (scrollViewStyle);
 	scrollViewStyleSelected.normal.background = highlightTexture as Texture2D;
 	scrollViewStyleSelected.normal.textColor = highlightTextColor;
