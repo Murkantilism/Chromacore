@@ -37,6 +37,21 @@ public class LoadingScreen : MonoBehaviour {
 	private WWW wwwData;
 	// The instance of this class used to download
 	private static LoadingScreen downloadManager = null;
+	public static LoadingScreen m_downloadManager{
+		get{
+			// Singleton Instance initialization of download manager
+			if(LoadingScreen.downloadManager == null){
+				//LoadingScreen.downloadManager = GameObject.FindGameObjectWithTag("FileBrowser") as LoadingScreen;
+				LoadingScreen.downloadManager = FindObjectOfType(typeof(LoadingScreen)) as LoadingScreen;
+				
+				// If here exists to GameObject of this type, create one
+				if(LoadingScreen.downloadManager == null){
+					LoadingScreen.downloadManager = new GameObject("LoadingScreen Singleton").AddComponent<LoadingScreen>();
+				}
+			}
+			return downloadManager;
+		}
+	}
 
 	// Should we move on to the loading screen?
 	public bool shouldLoadP = false;
@@ -46,11 +61,6 @@ public class LoadingScreen : MonoBehaviour {
 		errorText = GameObject.Find("Error Text").guiText;
 		shouldLoadP = false;
 		errorText.enabled = false;
-
-		// Initialization of download manager
-		if(LoadingScreen.downloadManager == null){
-			LoadingScreen.downloadManager = FindObjectOfType(typeof(LoadingScreen)) as LoadingScreen;
-		}
 		
 		// Determine Platform at compile time
 	  	#if UNITY_STANDALONE
@@ -185,6 +195,9 @@ public class LoadingScreen : MonoBehaviour {
 	
 	// Preserve the needed game objects
 	void DontDestroyUs(){
+		GameObject fileBrowserMngr = GameObject.Find("FileBrowserManager");
+		DontDestroyOnLoad(fileBrowserMngr);
+
 		GameObject loadingscreen = GameObject.Find("LoadingScreen");
 		DontDestroyOnLoad(loadingscreen);
 		
@@ -219,20 +232,21 @@ public class LoadingScreen : MonoBehaviour {
 		}
 	}
 	
-	// Start download of the audio file, catch any errors along the way
+	// Start playing the audio file, catch any errors along the way
 	public static void myDownloadCallback(byte[]data, string sError){
 		try{
 			if(sError != null){
 				Debug.Log(sError);
 			}else{
-				downloadManager.StartCoroutine(downloadManager.PlayAudioFile());
+				m_downloadManager.StartCoroutine(m_downloadManager.PlayAudioFile());
+				//downloadManager.StartCoroutine(downloadManager.PlayAudioFile());
 			}
 		}catch(Exception e){
 			Debug.Log(e.ToString());
 		}
 	}
 	
-	// A delete, not to be confused with myDownloadCallback above
+	// A delegate, not to be confused with myDownloadCallback above
 	public delegate void DownloadCallback(byte[] data, string sError);
 	
 	// A coroutine used to wait for the download to finish before proceeding
@@ -262,7 +276,8 @@ public class LoadingScreen : MonoBehaviour {
 	}
 	
 	public static void Download(string filePath, DownloadCallback fn){
-		downloadManager.StartDownload(filePath, fn);
+		m_downloadManager.StartDownload(filePath, fn);
+		//downloadManager.StartDownload(filePath, fn);
 	}
 	
 	// Grab the downloaded audio file, put it into an audio clip, and play
