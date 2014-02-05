@@ -213,12 +213,12 @@ function Awake () {
 	// - The text for files and folders
 	// - The pop-up menu list of folders
 	if (androidP || iphoneP){
-		guiSkin.GetStyle("verticalscrollbar").fixedWidth = 30;
-		guiSkin.GetStyle("verticalscrollbarthumb").fixedWidth = 30;
-		scrollViewStyle.fontSize = 20;
-		guiSkin.GetStyle("popupList").fontSize = 20;
-		guiSkin.GetStyle("popupButton").fontSize = 20;
-		guiSkin.GetStyle("popupBox").fontSize = 20;
+		guiSkin.GetStyle("verticalscrollbar").fixedWidth = 36;
+		guiSkin.GetStyle("verticalscrollbarthumb").fixedWidth = 36;
+		scrollViewStyle.fontSize = 24;
+		guiSkin.GetStyle("popupList").fontSize = 22;
+		guiSkin.GetStyle("popupButton").fontSize = 22;
+		guiSkin.GetStyle("popupBox").fontSize = 22;
 	}else{
 		// Otherwise set them to smaller sizes for PC standalone
 		guiSkin.GetStyle("verticalscrollbar").fixedWidth = 15;
