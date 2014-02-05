@@ -11,25 +11,7 @@ public class UniFileBrowserExample : MonoBehaviour {
 	float alpha = 1.0f;
 	char pathChar = '/';
 
-	/*
-	bool pcP = false;
-	bool iphoneP = false;
-	bool androidP = false;
-	
-	// The WWW data
-	private WWW wwwData;
-	// The instance of this class used to download
-	private static UniFileBrowserExample downloadManager = null;
-	*/
-	
 	void Start () {
-		/*
-		// Initialization of download manager
-		if(UniFileBrowserExample.downloadManager == null){
-			UniFileBrowserExample.downloadManager = FindObjectOfType(typeof(UniFileBrowserExample)) as UniFileBrowserExample;
-		}*/
-		
-		
 		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
 			pathChar = '\\';
 		}

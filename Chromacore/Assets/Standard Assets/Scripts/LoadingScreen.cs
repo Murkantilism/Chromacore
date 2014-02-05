@@ -177,7 +177,7 @@ public class LoadingScreen : MonoBehaviour {
 		// If Android append "file: /" at the beginning and the extension
 		// If PC or iOS append "file: /" at the beginning and the extension
 		if (androidP){
-			myFilePath = @"file: /" + myFilePath;
+			myFilePath = @"file: //" + myFilePath;
 		}else{
 			myFilePath = @"file: //" + myFilePath;
 		}

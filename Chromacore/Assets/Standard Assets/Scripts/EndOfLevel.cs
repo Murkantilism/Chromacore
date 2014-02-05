@@ -8,6 +8,8 @@ public class EndOfLevel : MonoBehaviour {
 	public GUIText fadeToBlackThanksText;
 	// Text credits developers
 	public GUIText creditsDEVS;
+	// Text credits prototype developers
+	public GUIText creditsProtoDEVS;
 	// Text credits Northeastern
 	public GUIText creditsNEU;
 	
@@ -28,6 +30,7 @@ public class EndOfLevel : MonoBehaviour {
 		fadeToBlackThanksText.color = new Color(255, 255, 255, text_alphaFadeValue);
 		// Set credits invisible & white at beginning
 		creditsDEVS.color = new Color(255, 255, 255, text_alphaFadeValue);
+		creditsProtoDEVS.color = new Color(255, 255, 255, text_alphaFadeValue);
 		creditsNEU.color = new Color(255, 255, 255, text_alphaFadeValue);
 		
 		
@@ -72,6 +75,7 @@ public class EndOfLevel : MonoBehaviour {
 		
 		fadeToBlackThanksText.color = new Color(255, 255, 255, text_alphaFadeValue);
 		creditsDEVS.color =  new Color(255, 255, 255, text_alphaFadeValue);
+		creditsProtoDEVS.color = new Color(255, 255, 255, text_alphaFadeValue);
 		creditsNEU.color =  new Color(255, 255, 255, text_alphaFadeValue);
 	}
 	
@@ -79,7 +83,8 @@ public class EndOfLevel : MonoBehaviour {
 	void SetTextPosition(){
 		fadeToBlackThanksText.pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 30f);
 		creditsDEVS.pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 30f - 70f);
-		creditsNEU.pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 30f - 120f);
+		creditsProtoDEVS.pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 30f - 120f);
+		creditsNEU.pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 30f - 160f);
 	}
 	
 	// Reset entire game by reloading level after 15 seconds

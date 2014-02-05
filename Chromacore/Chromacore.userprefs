@@ -6,7 +6,7 @@
       <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="77" Column="52" />
       <File FileName="Assets\UniFileBrowser Assets\Demo\UniFileBrowserExample.cs" Line="49" Column="52" />
       <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect.js" Line="5" Column="25" />
-      <File FileName="Assets\Plugins\UniFileBrowser\UniFileBrowser.js" Line="219" Column="47" />
+      <File FileName="Assets\Plugins\UniFileBrowser\UniFileBrowser.js" Line="223" Column="59" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
