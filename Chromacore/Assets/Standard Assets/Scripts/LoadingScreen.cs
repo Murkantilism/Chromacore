@@ -177,7 +177,7 @@ public class LoadingScreen : MonoBehaviour {
 		// If Android append "file: /" at the beginning and the extension
 		// If PC or iOS append "file: /" at the beginning and the extension
 		if (androidP){
-			myFilePath = @"file: //" + myFilePath;
+			myFilePath = @"file: /" + myFilePath;
 		}else{
 			myFilePath = @"file: //" + myFilePath;
 		}
@@ -223,7 +223,7 @@ public class LoadingScreen : MonoBehaviour {
 		if(pcP || androidP || iphoneP){
 			try{
 				Debug.Log(myFilePath);
-				debugText.text = myFilePath;
+				debugText.text = myFilePath; // Used for debugging on Android
 				LoadingScreen.Download(@myFilePath, myDownloadCallback);
 				//LoadingScreen.Download("file: //C:/Burn.ogg", myDownloadCallback);
 			}catch(Exception e){
@@ -252,13 +252,13 @@ public class LoadingScreen : MonoBehaviour {
 	// A coroutine used to wait for the download to finish before proceeding
 	private IEnumerator WaitForDownload(DownloadCallback fn){
 		Debug.Log("Yielding...");
-		debugText2.text = "Yielding...";
 		yield return wwwData;
 		Debug.Log("Yielded...DONE");
-		debugText3.text = "Yielded...DONE";
+		debugText2.text = wwwData.error; // Used for debugging on Android
+		debugText3.text = wwwData.progress.ToString(); // Used for debugging on Android
 		fn(wwwData.bytes, wwwData.error);
 		if (androidP){
-			debugText1.text = "Got here boss!";
+			debugText1.text = wwwData.bytesDownloaded.ToString(); // Used for debugging on Android
 			PlayAudioFile();
 		}
 	}
@@ -267,8 +267,8 @@ public class LoadingScreen : MonoBehaviour {
 	private void StartDownload(string filePath, DownloadCallback fn){
 		try{
 			wwwData = new WWW(filePath);
+			debugText.text = wwwData.url;
 			Debug.Log("Starting download...");
-			debugText1.text = "Starting download...";
 			StartCoroutine("WaitForDownload", fn);
 		}catch(Exception e){
 			Debug.Log(e.ToString());
@@ -285,7 +285,7 @@ public class LoadingScreen : MonoBehaviour {
 		debugText2.text = "Here too sir!";
 
 		// Put file into audio clip
-		audio.clip = wwwData.GetAudioClip(true);
+		audio.clip = wwwData.GetAudioClip(true, false);
 
 		debugText3.text = audio.clip.isReadyToPlay.ToString();
 

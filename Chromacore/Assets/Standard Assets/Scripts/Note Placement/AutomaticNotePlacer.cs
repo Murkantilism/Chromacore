@@ -21,33 +21,46 @@ public class AutomaticNotePlacer : MonoBehaviour {
 	
 	// A List of Notes
 	public List<GameObject> Notes;
-	
+
 	// Called once x-position calculations are finished
 	void CalculationDone(){
 		// Grab the List of X-Positions from the Calculator script
 		myXPositions = xPosCalc.myXPositions;
 		
-		// Call SortNotes
-		SortNotes();
+		Start();
 	}
-	
+
+	// Use this for initialization
+	void Start () {
+		// Grab and sort array of Notes
+		NotesArray = GameObject.FindGameObjectsWithTag("Note");
+		SortNotes();
+		
+		// Convert array to List (in order to place Notes easily)
+		Notes = NotesArray.OfType<GameObject>().ToList();
+		Debug.Log("After List Conversion: " + Notes.Count);
+	}
+
 	// Sort the List of Notes in numerical order
 	void SortNotes(){
 		// For each note in the List of Notes
-		foreach (GameObject note in Notes){
+		foreach (GameObject note in NotesArray){
 			// Slice off the first four characters from every name of each Note gameobject
 			// Ex: "Note34" becomes "34" - making numerical sorting possible
 			note.name = note.name.Substring(4);
-			Debug.Log(note);
 		}
-		
-		// Call the built-in List sorting to actually sort
-		Notes.Sort();
-		
+
+		// Actually sort the notes
+		Array.Sort(NotesArray, sortList);
+
 		// Call PlaceNotes
 		PlaceNotes();
 	}
-	
+
+	int sortList(GameObject a, GameObject b){
+		return int.Parse(a.name) - int.Parse(b.name);
+	}
+
 	// Assign each note in this array of Notes a corresponding x-position
 	void PlaceNotes(){
 		// For every Note in Notes
@@ -56,16 +69,8 @@ public class AutomaticNotePlacer : MonoBehaviour {
 			// then assign the x-postion to each note in Notes,
 			// leaving the y & z positions alone.
 			Notes[i].transform.position = new Vector3(float.Parse(myXPositions[i]), Notes[i].transform.position.y, Notes[i].transform.position.z);
+			//Debug.Log(Notes[i].transform.position.ToString());
 		}
-	}
-	
-	// Use this for initialization
-	void Start () {
-		// Grab array of Notes
-		NotesArray = GameObject.FindGameObjectsWithTag("Note");
-		
-		// Convert array to List (in order to Sort easily)
-		Notes = NotesArray.OfType<GameObject>().ToList();
 	}
 	
 	// Update is called once per frame
