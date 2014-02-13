@@ -40,6 +40,9 @@ public class Teli_Animation : MonoBehaviour {
 		anim = GetComponent<tk2dSpriteAnimator>();
 		
 		Notes = GameObject.FindGameObjectsWithTag("Note");
+
+		// Reset once on start to sync music and movement properly
+		Reset();
 	}
 		
 	// Update is called once per frame

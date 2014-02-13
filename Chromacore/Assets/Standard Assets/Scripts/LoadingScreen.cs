@@ -33,6 +33,9 @@ public class LoadingScreen : MonoBehaviour {
 	bool iphoneP = false;
 	bool androidP = false;
 	
+	AudioAnalysis audAnalysis;
+	bool levelGenerationCompleteP;
+	
 	// The WWW data
 	private WWW wwwData;
 	// The instance of this class used to download
@@ -282,16 +285,47 @@ public class LoadingScreen : MonoBehaviour {
 	
 	// Grab the downloaded audio file, put it into an audio clip, and play
 	public IEnumerator PlayAudioFile(){
-		debugText2.text = "Here too sir!";
-
 		// Put file into audio clip
 		audio.clip = wwwData.GetAudioClip(true, false);
+
+
+		// |||| Ronny's code starts here ||||
+		float[] samples = new float[audio.clip.samples * audio.clip.channels];
+		audio.clip.GetData(samples, 0);
+
+		Debug.Log(audio.clip.samples);
+		Debug.Log(audio.clip.channels);
+
+		Debug.Log(samples[0].ToString());
+		Debug.Log(samples[50].ToString());
+		Debug.Log(samples[100].ToString());
+		Debug.Log(samples[1000].ToString());
+		Debug.Log(samples[2000].ToString());
+		Debug.Log(samples[5000].ToString());
+		Debug.Log(samples[10000].ToString());
+		Debug.Log(samples[20000].ToString());
+
+
+		int i = 0;
+		//while(i < samples.Length){
+		//	Debug.Log(samples[i].ToString());
+		//	Debug.Log(samples[i]);
+		//	++i;
+		//}
+
+		// |||| Ronny's code ends here ||||
+
+		// Before the audio file is played, call the audio analysis script
+		//audAnalysis = gameObject.GetComponent("AudioAnalysis") as AudioAnalysis;
+		//audAnalysis.StartAnalysis(audio.clip);
+
+		debugText2.text = "Here too sir!";
 
 		debugText3.text = audio.clip.isReadyToPlay.ToString();
 
 		// If the audio isn't already playing & the clip is ready, load
 		// the auto generated CustomLevel scene
-		if(!audio.isPlaying && audio.clip.isReadyToPlay){
+		if(!audio.isPlaying && audio.clip.isReadyToPlay && levelGenerationCompleteP){
 			// Wait at least six seconds before loading
 			yield return new WaitForSeconds(6);
 			// Load when ready
@@ -300,10 +334,24 @@ public class LoadingScreen : MonoBehaviour {
 			audio.Play();
 		}
 	}
+
+	// Invoked when AudioAnalysis.cs is done
+	public void AudioAnalysisComplete(bool analysisComplete){
+
+	}
+
+	// Invoked when GenerateLevel.cs is done
+	public void LevelGenerationComplete(bool levelCompleted){
+		// Once the custom level is generated, finish loading
+		if (levelCompleted){
+			levelGenerationCompleteP = true;
+		}else{
+			levelGenerationCompleteP = false;
+		}
+	}
 	
 	// Once Application is closed, delete download manager
 	void OnApplicationQuit(){
 		LoadingScreen.downloadManager = null;
 	}
 }
-

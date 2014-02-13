@@ -47,7 +47,11 @@ public class AutomaticNotePlacer : MonoBehaviour {
 		foreach (GameObject note in NotesArray){
 			// Slice off the first four characters from every name of each Note gameobject
 			// Ex: "Note34" becomes "34" - making numerical sorting possible
-			note.name = note.name.Substring(4);
+			try{ 
+				note.name = note.name.Substring(4);
+			}catch(Exception e){
+				Debug.Log(e.ToString());
+			}
 		}
 
 		// Actually sort the notes
@@ -68,7 +72,11 @@ public class AutomaticNotePlacer : MonoBehaviour {
 			// Convert the xPos in the List from string to float,
 			// then assign the x-postion to each note in Notes,
 			// leaving the y & z positions alone.
-			Notes[i].transform.position = new Vector3(float.Parse(myXPositions[i]), Notes[i].transform.position.y, Notes[i].transform.position.z);
+			try{
+				Notes[i].transform.position = new Vector3(float.Parse(myXPositions[i]), Notes[i].transform.position.y, Notes[i].transform.position.z);
+			}catch (Exception e){
+				Debug.Log(e.ToString());
+			}
 			//Debug.Log(Notes[i].transform.position.ToString());
 		}
 	}
