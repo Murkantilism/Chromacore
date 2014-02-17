@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Teli_Animation : MonoBehaviour {
 	// Spawn point at beginning of level
 	public GameObject spawn;
+	public GameObject originalSpawn;
 	
 	// The main character's Charcter Controller	
 	public CharacterController teliCharacter;
@@ -40,9 +41,6 @@ public class Teli_Animation : MonoBehaviour {
 		anim = GetComponent<tk2dSpriteAnimator>();
 		
 		Notes = GameObject.FindGameObjectsWithTag("Note");
-
-		// Reset once on start to sync music and movement properly
-		Reset();
 	}
 		
 	// Update is called once per frame
@@ -124,7 +122,7 @@ public class Teli_Animation : MonoBehaviour {
 	void WaitResume(){
 		waitResume = false;
 	}
-	
+
 	// Handles death by Edges (death by obstacles is 
 	// handled in ObstacleDeath() function)
 	void DeathAnimation(){

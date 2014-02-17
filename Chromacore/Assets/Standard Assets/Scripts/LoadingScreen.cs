@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 
@@ -290,6 +290,7 @@ public class LoadingScreen : MonoBehaviour {
 
 
 		// |||| Ronny's code starts here ||||
+		/*
 		float[] samples = new float[audio.clip.samples * audio.clip.channels];
 		audio.clip.GetData(samples, 0);
 
@@ -311,7 +312,7 @@ public class LoadingScreen : MonoBehaviour {
 		//	Debug.Log(samples[i].ToString());
 		//	Debug.Log(samples[i]);
 		//	++i;
-		//}
+		//}*/
 
 		// |||| Ronny's code ends here ||||
 

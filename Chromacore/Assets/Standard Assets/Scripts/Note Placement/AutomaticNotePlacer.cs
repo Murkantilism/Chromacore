@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class AutomaticNotePlacer : MonoBehaviour {
 	// Purpose: To automatically place Note objects at the 
 	// X postions calculated by xPositionCalcular.cs
@@ -21,6 +22,9 @@ public class AutomaticNotePlacer : MonoBehaviour {
 	
 	// A List of Notes
 	public List<GameObject> Notes;
+
+	// Do we need to reset the Notes (For editor purposes ONLY!)
+	public bool editorResetP = false;
 
 	// Called once x-position calculations are finished
 	void CalculationDone(){
@@ -43,6 +47,19 @@ public class AutomaticNotePlacer : MonoBehaviour {
 
 	// Sort the List of Notes in numerical order
 	void SortNotes(){
+		// If we need to reset first, add "Note " prefix
+		if (editorResetP == true){
+			foreach (GameObject note in NotesArray){
+				try{ 
+					note.name = note.name.Insert(0, "Note");
+				}catch(Exception e){
+					Debug.Log(e.ToString());
+				}
+			}
+			// Once the reset is done, set it to false
+			editorResetP = false;
+		}
+
 		// For each note in the List of Notes
 		foreach (GameObject note in NotesArray){
 			// Slice off the first four characters from every name of each Note gameobject

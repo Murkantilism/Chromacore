@@ -28,7 +28,7 @@ public class Checkpoints : MonoBehaviour {
 	// When checkpoint is found, set spawn point to checkpoint's position
 	void OnTriggerEnter(Collider col){
 		if(col.gameObject.tag == "Checkpoint"){
-			// Add 5 to the checkpoint's y position to ensure Teli isn't spawned below level
+			// Add 1 to the checkpoint's y position to ensure Teli isn't spawned below level
 			col.transform.position = new Vector3(col.transform.position.x, col.transform.position.y + 1, col.transform.position.z);
 			spawnPoint.transform.position = col.transform.position;
 			checkpoint_timestamp = calcTimestamp();

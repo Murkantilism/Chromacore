@@ -5,7 +5,7 @@ class Movement_Gravity extends MonoBehaviour{
 	var speed : float = 6.0;
 	var jumpSpeed : float = 8.0;
 	var gravity : float = 20.0;
-
+	
 	private var moveDirection : Vector3 = Vector3.zero;
 
 	// Are we not dead?
