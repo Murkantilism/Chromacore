@@ -170,7 +170,8 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// Hanlde Glow Animation
 	void GlowAnimation(){
-		if(!anim.IsPlaying("Run_Glow")){
+		// If the glow and punch animations aren't already playing
+		if(!anim.IsPlaying("Run_Glow") && !anim.IsPlaying("Punch")){
 			anim.Stop();
 			anim.Play("Run_Glow");
 		}
