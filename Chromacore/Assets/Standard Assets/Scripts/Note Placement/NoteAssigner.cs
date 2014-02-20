@@ -31,7 +31,7 @@ public class NoteAssigner : MonoBehaviour {
 		Debug.Log("After List Conversion: " + Notes.Count);
 
 		// Grab a list of pick-up mp3 files
-		pickupMP3s = Resources.LoadAll<AudioClip>("Level4/Level4_Pickup_Tracks");
+		pickupMP3s = Resources.LoadAll<AudioClip>("Level5/Level5_pickupTracks");
 		//pickupMP3s = Resources.LoadAll("Level4/Level4_Pickup_Tracks") as AudioClip[];
 	}
 

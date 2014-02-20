@@ -130,6 +130,7 @@
      <Compile Include="Assets\Standard Assets\Scripts\Level Auto-Generation\GenerateLevel.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\LoadingScreen.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\Note Placement\CreateNotes.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\NoteCollect.cs" />
