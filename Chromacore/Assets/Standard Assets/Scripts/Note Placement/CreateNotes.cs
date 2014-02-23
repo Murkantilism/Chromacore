@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Give a number of Notes, automatically instantiate Notes
+// Given a number of Notes, automatically instantiate Notes
 [ExecuteInEditMode]
 public class CreateNotes : MonoBehaviour {
 	public int numNotes = 0;

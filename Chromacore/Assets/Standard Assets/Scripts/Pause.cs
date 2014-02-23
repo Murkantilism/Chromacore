@@ -56,7 +56,6 @@ public class Pause : MonoBehaviour {
 				Time.timeScale = 0;
 				backgroundTrack.Pause();
 				teli.SendMessage("PauseMovement", true);
-				Debug.Log("SWIPER NO SWIPING");
 			}
 		}
 	}
