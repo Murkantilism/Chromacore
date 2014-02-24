@@ -6,7 +6,7 @@
       <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="112" Column="27" />
       <File FileName="Assets\Standard Assets\Scripts\Pickup.cs" Line="22" Column="3" />
       <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="84" Column="22" />
-      <File FileName="Assets\Standard Assets\Scripts\TutorialFreeze.cs" Line="40" Column="3" />
+      <File FileName="Assets\Standard Assets\Scripts\TutorialFreeze.cs" Line="46" Column="17" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="62" Column="44" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" Line="82" Column="1" />
     </Files>
