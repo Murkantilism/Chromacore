@@ -52,10 +52,11 @@ public class xPositionCalculator : MonoBehaviour {
 		// Read the timestamp file based on the current level
 		// To identify the current level, we subtract 1 from the Application level count
 		if (Application.isEditor){
-			ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level5_timestamps.txt");
-		}else{
-			ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
-		}
+			//EDITME
+			ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level6_timestamps.txt");
+		}//else{
+		//	ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
+		//}
 
 		// For each timestamp, calcualte the X positions and write 
 		// the result to the output text file.
