@@ -25,16 +25,60 @@ public class Pause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		// Check for pause on PC
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			paused = true;
-			Time.timeScale = 0;
-			backgroundTrack.Pause();
-			teli.SendMessage("PauseMovement", true);
+			TriggerPause();
 		}
 
+		// Check for swipe on mobile. Ignore more or less than 1 finger input
+		/*if (Input.touches.Length != 1){
+			return;
+		}*/
 
+		int fingerCnt = 0; // Initialize finger counter
+
+		// For each touch that is detected
+		foreach(Touch touch in Input.touches){
+
+			// Set the starting Vector to starting position
+			if(touch.phase == TouchPhase.Began){
+				swipeStart = touch.position;
+			}
+
+			// If the touch hasn't ended yet, increment counter
+			if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled){
+				fingerCnt++;
+
+				// If one finger is touching and the touch is still going or has ended
+				if(fingerCnt == 1 && touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended){
+					// Subtract starting position from the current touch position, or if the
+					// touch has ended from the last touch position, and normalize the vector
+					Vector2 touchFacing  = (swipeStart - touch.position).normalized;
+
+					if(Vector2.Dot(touchFacing, Vector2.up) > 0.8 && Vector2.Distance(swipeStart, touch.position) > 20){
+						// This is swipe Down
+						TriggerPause();
+					}
+
+					if(Vector2.Dot(touchFacing, -Vector2.up) > 0.8 && Vector2.Distance(swipeStart, touch.position) > 20){
+						// This is swipe Up
+						TriggerPause();
+					}
+
+					if(Vector2.Dot(touchFacing, Vector2.right) > 0.8 && Vector2.Distance(swipeStart, touch.position) > 20){
+						// This is swipe Left
+						TriggerPause();
+					}
+
+					if(Vector2.Dot(touchFacing, -Vector2.right) > 0.8 && Vector2.Distance(swipeStart, touch.position) > 20){
+						// This is swipe Right
+						TriggerPause();
+					}
+				}
+			}
+		}
+
+		/*
 		// At the start of a swipe, save the position
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
 			swipeStart = Input.GetTouch(0).position;
@@ -52,18 +96,23 @@ public class Pause : MonoBehaviour {
 			if (CalcSwipeLength().x > swipeThresh.x && CalcSwipeLength().y > swipeThresh.y &&
 			    CalcSwipeLength().x < swipeCeiling.x && CalcSwipeLength().y < swipeCeiling.y){
 				Debug.Log(CalcSwipeLength());
-				paused = true;
-				Time.timeScale = 0;
-				backgroundTrack.Pause();
-				teli.SendMessage("PauseMovement", true);
+				TriggerPause();
 			}
-		}
+		}*/
 	}
 
+	void TriggerPause(){
+		paused = true;
+		Time.timeScale = 0;
+		backgroundTrack.Pause();
+		teli.SendMessage("PauseMovement", true);
+	}
+
+	/*
 	// Calculate the length of a swipe
 	Vector2 CalcSwipeLength(){
 		return new Vector2(Mathf.Abs((swipeEnd.x - swipeStart.x)), Mathf.Abs(swipeEnd.y - swipeStart.y));
-	}
+	}*/
 	
 	// show menu when paused
 	void OnGUI() {
