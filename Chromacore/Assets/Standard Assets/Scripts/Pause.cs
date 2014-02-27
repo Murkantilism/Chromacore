@@ -30,6 +30,11 @@ public class Pause : MonoBehaviour {
 			TriggerPause();
 		}
 
+		// Check for Pause in general
+		if (Input.GetAxis("Pause") != 0){
+			TriggerPause();
+		}
+
 		// Check for swipe on mobile. Ignore more or less than 1 finger input
 		/*if (Input.touches.Length != 1){
 			return;
@@ -49,6 +54,14 @@ public class Pause : MonoBehaviour {
 			if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled){
 				fingerCnt++;
 
+				// If there are 3 fingers on screen, pause
+				if(fingerCnt != 3){
+					return;
+				}else if(fingerCnt == 3){
+					TriggerPause();
+				}
+
+				/*
 				// If one finger is touching and the touch is still going or has ended
 				if(fingerCnt == 1 && touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended){
 					// Subtract starting position from the current touch position, or if the
@@ -74,7 +87,7 @@ public class Pause : MonoBehaviour {
 						// This is swipe Right
 						TriggerPause();
 					}
-				}
+				}*/
 			}
 		}
 
