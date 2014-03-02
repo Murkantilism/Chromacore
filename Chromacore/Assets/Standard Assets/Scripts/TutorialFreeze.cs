@@ -26,7 +26,7 @@ public class TutorialFreeze : MonoBehaviour {
 		teli = GameObject.Find("Teli");
 		// Get teli's child object (to access Teli_Animation.cs)
 		teli = teli.transform.FindChild("AnimatedSprite").gameObject;
-		backgroundTrack = GameObject.Find("Main Camera").audio;
+		backgroundTrack = GameObject.Find("Main Camera").transform.Find("Listener").audio;
 
 		pressAnyKeyText = GameObject.Find("tutorialResumeText").guiText;
 		pressAnyKeyText.enabled = false;

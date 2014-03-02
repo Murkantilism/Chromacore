@@ -9,6 +9,8 @@ using System.Collections.Generic;
 // An automation tool used to assign pick-up mp3s to their respective Notes
 public class NoteAssigner : MonoBehaviour {
 
+	public bool triggerNoteAssigner = false;
+
 	// An array of Notes
 	public GameObject[] NotesArray;
 	
@@ -32,40 +34,44 @@ public class NoteAssigner : MonoBehaviour {
 
 		// Grab a list of pick-up mp3 files
 		//EDITME
-		pickupMP3s = Resources.LoadAll<AudioClip>("Level6/Level6_pickupTracks");
+		pickupMP3s = Resources.LoadAll<AudioClip>("Level4/Level4_pickupTracks");
 	}
 
 	// Sort the List of Notes in numerical order
 	void SortNotes(){
-		// If we need to reset first, add "Note " prefix
-		if (editorResetP == true){
+		if(triggerNoteAssigner == true){
+			// If we need to reset first, add "Note " prefix
+			if (editorResetP == true){
+				foreach (GameObject note in NotesArray){
+					try{ 
+						note.name = note.name.Insert(0, "Note");
+					}catch(Exception e){
+						Debug.Log(e.ToString());
+					}
+				}
+				// Once the reset is done, set it to false
+				editorResetP = false;
+			}
+			
+			// For each note in the List of Notes
 			foreach (GameObject note in NotesArray){
+				// Slice off the first four characters from every name of each Note gameobject
+				// Ex: "Note34" becomes "34" - making numerical sorting possible
 				try{ 
-					note.name = note.name.Insert(0, "Note");
+					note.name = note.name.Substring(4);
 				}catch(Exception e){
 					Debug.Log(e.ToString());
 				}
 			}
-			// Once the reset is done, set it to false
-			editorResetP = false;
+			
+			// Actually sort the notes
+			Array.Sort(NotesArray, sortList);
+			
+			// Call PlaceNotes
+			AssignNotes();
+
+			triggerNoteAssigner = false;
 		}
-		
-		// For each note in the List of Notes
-		foreach (GameObject note in NotesArray){
-			// Slice off the first four characters from every name of each Note gameobject
-			// Ex: "Note34" becomes "34" - making numerical sorting possible
-			try{ 
-				note.name = note.name.Substring(4);
-			}catch(Exception e){
-				Debug.Log(e.ToString());
-			}
-		}
-		
-		// Actually sort the notes
-		Array.Sort(NotesArray, sortList);
-		
-		// Call PlaceNotes
-		AssignNotes();
 	}
 
 	int sortList(GameObject a, GameObject b){

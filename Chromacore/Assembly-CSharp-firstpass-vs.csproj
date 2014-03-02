@@ -140,6 +140,7 @@
      <Compile Include="Assets\Standard Assets\Scripts\ObstacleDeath.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Pause.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Pickup.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\RemovePause.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\ScoringSystem.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\SongBrowser.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Teli_Animation.cs" />

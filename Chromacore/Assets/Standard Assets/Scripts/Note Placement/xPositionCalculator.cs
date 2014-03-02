@@ -9,7 +9,9 @@ using System.Collections.Generic;
 public class xPositionCalculator : MonoBehaviour {
 	// Purpose: To calculate the exact X postion of Notes based on timestamps
 	// @author: Deniz Ozkaynak
-	
+
+	public bool triggerXPOSCalc = false;
+
 	// Teli's starting X position
 	float teliStartXPOS = -62.20014f;
 	
@@ -44,36 +46,36 @@ public class xPositionCalculator : MonoBehaviour {
 	// note should go, and output the result to a new text file.
 	// Formula: (Vecocity * Timestamp) + Teli's Starting X Pos
 	void calcXPOS(){
-		// The x-position for this timestamp
-		float xPOS;
-		// float version of timestamp
-		float f_timestamp;
-		
-		// Read the timestamp file based on the current level
-		// To identify the current level, we subtract 1 from the Application level count
-		if (Application.isEditor){
-			//EDITME
-			ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level6_timestamps.txt");
-		}//else{
-		//	ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
-		//}
+		if(triggerXPOSCalc == true){
+			// The x-position for this timestamp
+			float xPOS;
+			// float version of timestamp
+			float f_timestamp;
+			
+			// Read the timestamp file based on the current level
+			// To identify the current level, we subtract 1 from the Application level count
+			if (Application.isEditor){
+				//EDITME
+				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level2_timestamps.txt");
+			}//else{
+			//	ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
+			//}
 
-		// For each timestamp, calcualte the X positions and write 
-		// the result to the output text file.
-		foreach (string timestamp in myTimestamps){
-			// Convert timestamp to a float
-			f_timestamp = float.Parse(timestamp);
-			// Calculate X position
-			xPOS = (calcVelocity() * f_timestamp + teliStartXPOS);
-			// Add each x-position to List of X-positions
-			myXPositions.Add(xPOS.ToString());
+			// For each timestamp, calcualte the X positions and write 
+			// the result to the output text file.
+			foreach (string timestamp in myTimestamps){
+				// Convert timestamp to a float
+				f_timestamp = float.Parse(timestamp);
+				// Calculate X position
+				xPOS = (calcVelocity() * f_timestamp + teliStartXPOS);
+				// Add each x-position to List of X-positions
+				myXPositions.Add(xPOS.ToString());
+			}
+			// Send a message to automatic note placer that x-positions are ready
+			autoNotePlacer.SendMessage("CalculationDone");
+
+			triggerXPOSCalc = false;
 		}
-		// Send a message to automatic note placer that x-positions are ready
-		autoNotePlacer.SendMessage("CalculationDone");
-		
-		//foreach (string x in myXPositions){
-		//	return;
-		//}
 	}
 	
 	// Use this for initialization

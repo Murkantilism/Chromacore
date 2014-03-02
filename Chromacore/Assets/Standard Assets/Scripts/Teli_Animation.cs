@@ -41,6 +41,8 @@ public class Teli_Animation : MonoBehaviour {
 		anim = GetComponent<tk2dSpriteAnimator>();
 		
 		Notes = GameObject.FindGameObjectsWithTag("Note");
+
+		backgroundTrack = GameObject.Find("Main Camera").transform.Find("Listener").audio;
 	}
 		
 	// Update is called once per frame
