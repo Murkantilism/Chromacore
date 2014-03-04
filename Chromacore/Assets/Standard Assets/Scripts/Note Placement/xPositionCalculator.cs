@@ -15,12 +15,28 @@ public class xPositionCalculator : MonoBehaviour {
 	// Teli's starting X position
 	float teliStartXPOS = -62.20014f;
 	
-	// Test note X position (used to calculate Teli's velocity)
-	float testNoteXPOS = 19.72372f;
+	// Default Test note X position (used to calculate Teli's velocity)
+	//float testNoteXPOS = 19.72372f;
+
+	// Level 4 test note x pos
+	//float testNoteXPOS = 18.46568f;
+
+	// Level 5 test note x pos
+	float testNoteXPOS = 62.75334f;
 	
 	// Time to get to test note in seconds (value calculated from
 	// Unity Debug.Log(Time.timeSinceLevelLoad) on collion with test note)
-	float timeToTestNote = 17.24f;
+	// DEFAULT time to test note
+	//float timeToTestNote = 17.24f;
+
+	// Level 2 time to test note:
+	//float timeToTestNote = 16.28f;
+
+	// Level 4 time to test note:
+	//float timeToTestNote = 14.66f;
+
+	// Level 5 time to test note:
+	float timeToTestNote = 23.9f;
 	
 	public List<string> myTimestamps;
 	
@@ -32,7 +48,17 @@ public class xPositionCalculator : MonoBehaviour {
 	// Formula: Distance / Timef
 	//        : (Test Note X Pos - Teli's Starting X Pos) / Time to Note
 	float calcVelocity(){
-		return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
+		if (Application.loadedLevelName == "LevelFour"){
+			testNoteXPOS = 18.46568f;
+			timeToTestNote = 14.66f;
+			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
+		}if (Application.loadedLevelName == "LevelFive"){
+			testNoteXPOS = 62.75334f;
+			timeToTestNote = 23.90f;
+			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
+		}else{
+			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
+		}
 	}
 	
 	// Open the given text file
@@ -56,7 +82,7 @@ public class xPositionCalculator : MonoBehaviour {
 			// To identify the current level, we subtract 1 from the Application level count
 			if (Application.isEditor){
 				//EDITME
-				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level2_timestamps.txt");
+				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level5_timestamps.txt");
 			}//else{
 			//	ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
 			//}

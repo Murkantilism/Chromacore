@@ -14,6 +14,8 @@ public class AutomaticNotePlacer : MonoBehaviour {
 
 	public bool triggerAutomaticNotePlacer = false;
 
+	public bool sliceNotes = false;
+
 	// Access the X-position calculator script
 	public xPositionCalculator xPosCalc;
 	
@@ -29,11 +31,12 @@ public class AutomaticNotePlacer : MonoBehaviour {
 	// Do we need to reset the Notes (For editor purposes ONLY!)
 	public bool editorResetP = false;
 
+	public bool calcDone = false;
+
 	// Called once x-position calculations are finished
 	void CalculationDone(){
-		// Grab the List of X-Positions from the Calculator script
-		myXPositions = xPosCalc.myXPositions;
-		
+		calcDone = true;
+
 		Start();
 	}
 
@@ -41,6 +44,7 @@ public class AutomaticNotePlacer : MonoBehaviour {
 	void Start () {
 		// Grab and sort array of Notes
 		NotesArray = GameObject.FindGameObjectsWithTag("Note");
+
 		SortNotes();
 		
 		// Convert array to List (in order to place Notes easily)
@@ -48,16 +52,18 @@ public class AutomaticNotePlacer : MonoBehaviour {
 		Debug.Log("After List Conversion: " + Notes.Count);
 
 		// If we are reseting, assume the list of x-positions is good
-		if(editorResetP == true){
+		if(calcDone == true || editorResetP == true){
 			// Grab the List of X-Positions from the Calculator script
 			myXPositions = xPosCalc.myXPositions;
 		}
+
+		PlaceNotes();
 	}
 
 	// Sort the List of Notes in numerical order
 	void SortNotes(){
 		if(triggerAutomaticNotePlacer == true){
-			// If we need to reset first, add "Note " prefix
+			// If we need to reset first, add "Note" prefix
 			if (editorResetP == true){
 				foreach (GameObject note in NotesArray){
 					try{ 
@@ -70,22 +76,23 @@ public class AutomaticNotePlacer : MonoBehaviour {
 				editorResetP = false;
 			}
 
-			// For each note in the List of Notes
-			foreach (GameObject note in NotesArray){
-				// Slice off the first four characters from every name of each Note gameobject
-				// Ex: "Note34" becomes "34" - making numerical sorting possible
-				try{ 
-					note.name = note.name.Substring(4);
-				}catch(Exception e){
-					Debug.Log(e.ToString());
+			// If we need to slice the Notes
+			if(sliceNotes == true){
+				// For each note in the List of Notes
+				foreach (GameObject note in NotesArray){
+					// Slice off the first four characters from every name of each Note gameobject
+					// Ex: "Note34" becomes "34" - making numerical sorting possible
+					try{ 
+						note.name = note.name.Substring(4);
+					}catch(Exception e){
+						Debug.Log(e.ToString());
+					}
 				}
+				sliceNotes = false;
 			}
 
 			// Actually sort the notes
 			Array.Sort(NotesArray, sortList);
-
-			// Call PlaceNotes
-			PlaceNotes();
 
 			triggerAutomaticNotePlacer = false;
 		}

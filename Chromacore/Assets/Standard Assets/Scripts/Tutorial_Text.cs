@@ -15,7 +15,7 @@ public class Tutorial_Text : MonoBehaviour {
 		#if UNITY_STANDALONE
 		tutorialTextJump.text = "Press 'space' to jump";
 		tutorialTextPunch.text = "Press 'A' to punch";
-		tutorialTextPause = "Press 'ESC' to pause";
+		tutorialTextPause.text = "Press 'ESC' to pause";
 		#endif
 		
 		#if UNITY_IPHONE

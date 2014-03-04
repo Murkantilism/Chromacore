@@ -24,7 +24,7 @@ public class CreatePlatforms : MonoBehaviour {
 		#if UNITY_EDITOR
 		if (instantiationDoneP == false){
 			for (int i = 0; i < numPlatforms; i++){
-				GameObject temp = Instantiate(platform, new Vector3(startVector.x + (i * 20), startVector.y, startVector.z), Quaternion.identity) as GameObject;
+				GameObject temp = Instantiate(platform, new Vector3(startVector.x + (i * 10), startVector.y, startVector.z), Quaternion.identity) as GameObject;
 				temp.name = "Platform" + (i + startCount);
 				temp.transform.parent = parentPlatform.transform;
 			}

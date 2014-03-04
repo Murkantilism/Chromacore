@@ -1,16 +1,31 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\level2_timestamps.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\CreatePlatforms.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" Line="38" Column="3" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="36" Column="11" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="56" Column="28" />
+      <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\TutorialFreeze.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="59" Column="87" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\level2_timestamps.txt" Line="22" Column="8" />
+      <File FileName="Assets\Standard Assets\Scripts\Checkpoints.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\level5_timestamps.txt" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\TestNote.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\CreatePlatforms.cs" Line="27" Column="79" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="Standard Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Note Placement" expanded="True">
+                  <Node name="CreatePlatforms.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
