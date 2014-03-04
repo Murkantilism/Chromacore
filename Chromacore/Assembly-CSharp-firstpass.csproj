@@ -122,6 +122,7 @@
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Checkpoints.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\ColorSwap.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\Editor Tools\CreateObstacles.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\EndOfLevel.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Glow_Animation.cs" />
