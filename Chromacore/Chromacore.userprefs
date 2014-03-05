@@ -1,24 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\levelSelect.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Editor Tools\CreateObstacles.cs" Line="27" Column="43" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="85" Column="105" />
+      <File FileName="Assets\Standard Assets\Scripts\Editor Tools\CreateObstacles.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\TutorialFreeze.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\CreatePlatforms.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect.js" Line="51" Column="42" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="Standard Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Note Placement" expanded="True">
+                  <Node name="xPositionCalculator.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
           <Node name="Assembly-UnityScript-firstpass" expanded="True">
             <Node name="Standard Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Menus" expanded="True">
-                  <Node name="levelSelect.js" selected="True" />
-                </Node>
+                <Node name="Menus" expanded="True" />
               </Node>
             </Node>
           </Node>
