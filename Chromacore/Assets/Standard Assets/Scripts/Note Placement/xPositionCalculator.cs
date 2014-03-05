@@ -22,7 +22,10 @@ public class xPositionCalculator : MonoBehaviour {
 	//float testNoteXPOS = 18.46568f;
 
 	// Level 5 test note x pos
-	float testNoteXPOS = 62.75334f;
+	//float testNoteXPOS = 62.75334f;
+
+	// Level 6 test note x pos
+	float testNoteXPOS = -21.05437f;
 	
 	// Time to get to test note in seconds (value calculated from
 	// Unity Debug.Log(Time.timeSinceLevelLoad) on collion with test note)
@@ -36,7 +39,10 @@ public class xPositionCalculator : MonoBehaviour {
 	//float timeToTestNote = 14.66f;
 
 	// Level 5 time to test note:
-	float timeToTestNote = 23.9f;
+	//float timeToTestNote = 23.9f;
+
+	// Level 6 time to test note:
+	float timeToTestNote = 8.3f;
 	
 	public List<string> myTimestamps;
 	
@@ -52,9 +58,13 @@ public class xPositionCalculator : MonoBehaviour {
 			testNoteXPOS = 18.46568f;
 			timeToTestNote = 14.66f;
 			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
-		}if (Application.loadedLevelName == "LevelFive"){
+		}else if (Application.loadedLevelName == "LevelFive"){
 			testNoteXPOS = 62.75334f;
 			timeToTestNote = 23.90f;
+			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
+		}else if (Application.loadedLevelName == "LevelSix"){
+			testNoteXPOS = -21.05437f;
+			timeToTestNote = 8.3f;
 			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
 		}else{
 			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
