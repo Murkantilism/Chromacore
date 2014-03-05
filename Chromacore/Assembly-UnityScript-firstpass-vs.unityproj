@@ -55,6 +55,7 @@
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <Compile Include="Assets\Standard Assets\Scripts\General Scripts\DragRigidbody.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\levelSelect.js" />
+     <Compile Include="Assets\Standard Assets\Scripts\Menus\levelSelect2.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\mainMenu.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\pauseScript.js" />
      <Compile Include="Assets\Standard Assets\Scripts\MouseOrbit.js" />

@@ -13,6 +13,7 @@ public class levelSelect extends MonoBehaviour {
 	var levelEight = false;
 	var levelNine = false;
 	var levelTen = false;
+	var moreLevels = false;
 
 	function OnMouseEnter(){
 		// Change the color of the text
@@ -46,6 +47,8 @@ public class levelSelect extends MonoBehaviour {
 			Application.LoadLevel("LevelNine");
 		}else if(levelTen){
 			Application.LoadLevel("LevelTen");
+		}else if(moreLevels){
+			Application.LoadLevel("LevelSelect2");
 		}
 	}
 
