@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs">
     <Files>
@@ -8,6 +9,12 @@
       <File FileName="Assets\Standard Assets\Scripts\TutorialFreeze.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\CreatePlatforms.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\level6_timestamps.txt" Line="61" Column="8" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Scripts/LoadingScreen.cs">
+    <Files>
+      <File FileName="Assets/Standard Assets/Scripts/LoadingScreen.cs" Line="289" Column="29" />
+>>>>>>> 9f1d9aea16aa2e1e48d0ca710e3c65f46a205099
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,9 +22,14 @@
           <Node name="Assembly-CSharp-firstpass" expanded="True">
             <Node name="Standard Assets" expanded="True">
               <Node name="Scripts" expanded="True">
+<<<<<<< HEAD
                 <Node name="Note Placement" expanded="True">
                   <Node name="xPositionCalculator.cs" selected="True" />
                 </Node>
+=======
+                <Node name="Note Placement" expanded="True" />
+                <Node name="LoadingScreen.cs" selected="True" />
+>>>>>>> 9f1d9aea16aa2e1e48d0ca710e3c65f46a205099
               </Node>
             </Node>
           </Node>

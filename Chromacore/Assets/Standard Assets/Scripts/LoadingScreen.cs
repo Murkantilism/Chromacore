@@ -290,35 +290,44 @@ public class LoadingScreen : MonoBehaviour {
 
 
 		// |||| Ronny's code starts here ||||
-		/*
-		float[] samples = new float[audio.clip.samples * audio.clip.channels];
+		int numSamples = audio.clip.samples;
+		float[] samples = new float[numSamples * audio.clip.channels];
 		audio.clip.GetData(samples, 0);
-
-		Debug.Log(audio.clip.samples);
-		Debug.Log(audio.clip.channels);
-
-		Debug.Log(samples[0].ToString());
-		Debug.Log(samples[50].ToString());
-		Debug.Log(samples[100].ToString());
-		Debug.Log(samples[1000].ToString());
-		Debug.Log(samples[2000].ToString());
-		Debug.Log(samples[5000].ToString());
-		Debug.Log(samples[10000].ToString());
-		Debug.Log(samples[20000].ToString());
-
-
 		int i = 0;
-		//while(i < samples.Length){
-		//	Debug.Log(samples[i].ToString());
-		//	Debug.Log(samples[i]);
-		//	++i;
-		//}*/
+		double maxValue = 0;
+		int trackData = 0;
+		int checklength = (samples.Length / 2);
+		Debug.Log (checklength.ToString ());
+		float sampleRate = ((samples.Length/2)/audio.clip.length);
+		int sampleRateInt = (int)sampleRate;
+		Debug.Log (sampleRateInt.ToString ());
+		Debug.Log (audio.clip.length.ToString ());
+		
+		for (i = 0; i<numSamples; i+=audio.clip.channels*22050) {
+			if(i % (sampleRateInt*10) == 0){
+				maxValue = 0;
+			}
+			float absValue = Mathf.Abs (samples [i]);
+			double absValueDouble = absValue;
+			if (absValue == 0) {
+				continue;
+			}
+			
+			
+			if (absValue > maxValue) {
+				maxValue = absValueDouble;
+				trackData++;
+				float timeStamp = i/sampleRateInt;
+				Math.Round(timeStamp, 3);
+				Debug.Log ("PCM DATA: " + absValueDouble.ToString ());
+				Debug.Log ("Timestamp: " + timeStamp.ToString());
+				Debug.Log ("Array Index: " + i.ToString ());
+			}
+		}
+		Debug.Log ("Number of pickup coins: " + trackData.ToString ());
 
 		// |||| Ronny's code ends here ||||
 
-		// Before the audio file is played, call the audio analysis script
-		//audAnalysis = gameObject.GetComponent("AudioAnalysis") as AudioAnalysis;
-		//audAnalysis.StartAnalysis(audio.clip);
 
 		debugText2.text = "Here too sir!";
 
