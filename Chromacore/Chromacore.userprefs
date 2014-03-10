@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\level6_timestamps.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="94" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="66" Column="29" />
       <File FileName="Assets\Standard Assets\Scripts\Editor Tools\CreateObstacles.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" Line="150" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\TutorialFreeze.cs" Line="1" Column="1" />
@@ -16,7 +16,7 @@
             <Node name="Standard Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="Note Placement" expanded="True">
-                  <Node name="level6_timestamps.txt" selected="True" />
+                  <Node name="xPositionCalculator.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
