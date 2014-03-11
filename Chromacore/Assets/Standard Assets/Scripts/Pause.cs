@@ -46,11 +46,19 @@ public class Pause : MonoBehaviour {
 		teli.SendMessage("PauseMovement", true);
 	}
 
-	// show menu when paused
+	// Show menu when paused
 	void OnGUI() {
 		GUIStyle buttonStyle = new GUIStyle("button");
 		buttonStyle.fontSize = 25;
 		GUI.skin = guiSkin;
+
+		// If we are not already paused
+		if (paused == false){
+			// Show a Pause GUI button
+			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Pause", buttonStyle)){
+				TriggerPause();
+			}
+		}
 		
 		if (paused == true) {
 			// If paused, set black pause GUI texture
