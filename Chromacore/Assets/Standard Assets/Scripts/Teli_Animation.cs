@@ -35,6 +35,11 @@ public class Teli_Animation : MonoBehaviour {
 	// The latest timestamp to reset music track at right checkpoint
 	float checkpoint_timestamp;
 
+	public GUISkin guiSkin;
+
+	// Are we on a mobile platform?
+	bool mobileP = false;
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -43,6 +48,20 @@ public class Teli_Animation : MonoBehaviour {
 		Notes = GameObject.FindGameObjectsWithTag("Note");
 
 		backgroundTrack = GameObject.Find("Main Camera").transform.Find("Listener").audio;
+
+		guiSkin = Resources.Load("customBtnSkin") as GUISkin;
+
+		#if UNITY_STANDALONE
+		mobileP = false;
+		#endif
+		
+		#if UNITY_IPHONE
+		mobileP = true;
+		#endif
+		
+		#if UNITY_ANDROID
+		mobileP = true;
+		#endif
 	}
 		
 	// Update is called once per frame
@@ -75,19 +94,18 @@ public class Teli_Animation : MonoBehaviour {
 		}
 
 		// If one finger is touching, jump
-		// If two are touching, punch
-		// First check to make sure non-zero fingers are touching,
-		// and the finger touch is not a swipe
+		// First check to make sure non-zero fingers are touching
 		if (fingerCount > 0 && Input.GetTouch(0).phase != TouchPhase.Moved){
 			if (fingerCount == 1){
 				if (!anim.IsPlaying("Jump")){
 					anim.Play("Jump");
 				}
-			}else if (fingerCount == 2){
+			// If two are touching, punch
+			}/*else if (fingerCount == 2){
 				if(!anim.IsPlaying("Punch")){
 					anim.Play("Punch");
 				}
-			}
+			}*/
 		}
 		
 		// If none of the other animations are playing
@@ -107,6 +125,23 @@ public class Teli_Animation : MonoBehaviour {
 		// Wait to invoke death animation function until a few
 		// seconds after game has begun.
 		Invoke("DeathAnimation", 3);
+	}
+
+	void OnGUI() {
+		GUI.skin = guiSkin;
+		GUIStyle buttonStyle = GUI.skin.button;
+		buttonStyle.fontSize = 60;
+		GUI.backgroundColor = Color.magenta;
+
+		// If we are on a mobile platform
+		if (mobileP == true){
+			// Draw a Punch GUI button
+			if (GUI.Button(new Rect(Screen.width/2 - Screen.width/2.75f, Screen.height/2 + Screen.height/4, 200, 100), "Punch", buttonStyle)){
+				if(!anim.IsPlaying("Punch")){
+					anim.Play("Punch");
+				}
+			}
+		}
 	}
 
 	// Used to recieve message from Pause.cs to make sure

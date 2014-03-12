@@ -8,11 +8,7 @@ public class Pause : MonoBehaviour {
 	public GUISkin guiSkin;
 	public AudioSource backgroundTrack;
 	public GameObject teli;
-
-	Vector2 swipeStart;
-	Vector2 swipeEnd;
-	Vector2 swipeThresh = new Vector2(20, 20);
-	Vector2 swipeCeiling = new Vector2(600, 600);
+	public bool mobileP = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +17,20 @@ public class Pause : MonoBehaviour {
 		// Get teli's child object (to access Teli_Animation.cs)
 		teli = teli.transform.FindChild("AnimatedSprite").gameObject;
 		backgroundTrack = GameObject.Find("Main Camera").transform.Find("Listener").audio;
+
+		guiSkin = Resources.Load("customBtnSkin") as GUISkin;
+
+		#if UNITY_STANDALONE
+		mobileP = false;
+		#endif
+		
+		#if UNITY_IPHONE
+		mobileP = true;
+		#endif
+		
+		#if UNITY_ANDROID
+		mobileP = true;
+		#endif
 	}
 	
 	// Update is called once per frame
@@ -48,13 +58,18 @@ public class Pause : MonoBehaviour {
 
 	// Show menu when paused
 	void OnGUI() {
-		GUIStyle buttonStyle = new GUIStyle("button");
-		buttonStyle.fontSize = 25;
-		GUI.skin = guiSkin;
+		GUI.backgroundColor = Color.magenta;
 
-		// If we are not already paused
-		if (paused == false){
-			// Show a Pause GUI button
+		GUI.skin = guiSkin;
+		GUIStyle buttonStyle = GUI.skin.button;
+		buttonStyle.fontSize = 60;
+
+		GUIStyle quitStyle = new GUIStyle("button");
+		quitStyle.fontSize = 40;
+
+		// If we are not already paused and on mobile
+		if (paused == false && mobileP == true){
+			// Draw a Pause GUI button
 			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Pause", buttonStyle)){
 				TriggerPause();
 			}
@@ -74,7 +89,7 @@ public class Pause : MonoBehaviour {
 			}
 
 			// Quit button
-			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 + Screen.height/4, 200, 100), "Quit to \nMain Menu", buttonStyle)){
+			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 + Screen.height/4, 200, 100), "Quit to \nMain Menu", quitStyle)){
 				Application.LoadLevel("MainMenu");
 				paused = false;
 				Time.timeScale = 1;

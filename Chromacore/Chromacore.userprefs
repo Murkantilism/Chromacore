@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Tutorial_Text.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="21" Column="64" />
-      <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="138" Column="30" />
+      <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="40" Column="34" />
+      <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="72" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

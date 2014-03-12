@@ -9,10 +9,10 @@ class Movement_Gravity extends MonoBehaviour{
 	private var moveDirection : Vector3 = Vector3.zero;
 
 	// Are we not dead?
-	var notdeadp = true;
+	var notdeadp : boolean = true;
 
 	// Used to recieve message from Teli_Animation.cs
-	function death(bool){
+	function death(bool : boolean){
 		// Set dead boolean to the boolean value passed to it by 
 		// either Reset() or ObstalceDeath() methods
 		notdeadp = bool;

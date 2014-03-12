@@ -23,9 +23,9 @@ public class Tutorial_Text : MonoBehaviour {
 		#endif
 		
 		#if UNITY_IPHONE
-		tutorialTextJump.text = "Tap screen to jump";
-		tutorialTextPunch.text = "2 fingers to punch";
-		tutorialTextPause.text = "3 fingers to pause";
+		tutorialTextJump.text = "Tap screen to Jump";
+		tutorialTextPunch.text = "Tap Punch button!";
+		tutorialTextPause.text = "Tap Pause button!";
 		tutorialTextNote_Music.text = "Notes will play \n part of music track";
 		tutorialTextNote_Background.text = "Notes will add \n color to background";
 		#endif
@@ -39,15 +39,16 @@ public class Tutorial_Text : MonoBehaviour {
 				tutorialTextPause.text = "Press B to pause";
 				tutorialTextNote_Music.text = "Notes will play \n part of music track";
 				tutorialTextNote_Background.text = "Notes will add \n color to background";
+			// Otherwise assume it's a touchscreen
+			}else{
+				tutorialTextJump.text = "Tap screen to jump";
+				tutorialTextPunch.text = "Tap Punch button!";
+				tutorialTextPause.text = "Tap Pause button!";
+				tutorialTextNote_Music.text = "Notes will play \n part of music track";
+				tutorialTextNote_Background.text = "Notes will add \n color to background";
 			}
-		// Otherwise assume it's a touchscreen
 		}catch(Exception e){
 			Debug.Log(e.ToString());
-			tutorialTextJump.text = "Tap screen to jump";
-			tutorialTextPunch.text = "2 fingers to punch";
-			tutorialTextPause.text = "3 fingers to pause";
-			tutorialTextNote_Music.text = "Notes will play \n part of music track";
-			tutorialTextNote_Background.text = "Notes will add \n color to background";
 		}
 		#endif
 	}
