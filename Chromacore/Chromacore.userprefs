@@ -1,10 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Tutorial_Text.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\levelSelect2.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="138" Column="30" />
-      <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="40" Column="34" />
-      <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="72" Column="11" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect.js" Line="51" Column="40" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="28" Column="42" />
+      <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect2.js" Line="49" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

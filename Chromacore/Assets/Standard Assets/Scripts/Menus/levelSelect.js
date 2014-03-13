@@ -28,25 +28,25 @@ public class levelSelect extends MonoBehaviour {
 	function OnMouseUp(){
 		// Load the level selected
 		if(levelOne){
-			Application.LoadLevel("LevelOne");
+			Application.LoadLevel("Level1");
 		}else if(levelTwo){
-			Application.LoadLevel("LevelTwo");
+			Application.LoadLevel("Level2");
 		}else if(levelThree){
-			Application.LoadLevel("LevelThree");
+			Application.LoadLevel("Level3");
 		}else if(levelFour){
-			Application.LoadLevel("LevelFour");
+			Application.LoadLevel("Level4");
 		}else if(levelFive){
-			Application.LoadLevel("LevelFive");
+			Application.LoadLevel("Level5");
 		}else if(levelSix){
-			Application.LoadLevel("LevelSix");
+			Application.LoadLevel("Level6");
 		}else if(levelSeven){
-			Application.LoadLevel("LevelSeven");
+			Application.LoadLevel("Level7");
 		}else if(levelEight){
-			Application.LoadLevel("LevelEight");
+			Application.LoadLevel("Level8");
 		}else if(levelNine){
-			Application.LoadLevel("LevelNine");
+			Application.LoadLevel("Level9");
 		}else if(levelTen){
-			Application.LoadLevel("LevelTen");
+			Application.LoadLevel("Level10");
 		}else if(moreLevels){
 			Application.LoadLevel("LevelSelect2");
 		}
