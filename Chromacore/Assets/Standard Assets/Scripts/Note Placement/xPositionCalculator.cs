@@ -25,7 +25,10 @@ public class xPositionCalculator : MonoBehaviour {
 	//float testNoteXPOS = 62.75334f;
 
 	// Level 6 test note x pos
-	float testNoteXPOS = -21.05437f;
+	//float testNoteXPOS = -21.05437f;
+
+	// Level 8 test note x pos
+	float testNoteXPOS = -10.48861f;
 	
 	// Time to get to test note in seconds (value calculated from
 	// Unity Debug.Log(Time.timeSinceLevelLoad) on collion with test note)
@@ -42,7 +45,10 @@ public class xPositionCalculator : MonoBehaviour {
 	//float timeToTestNote = 23.9f;
 
 	// Level 6 time to test note:
-	float timeToTestNote = 8.3f;
+	//float timeToTestNote = 8.3f;
+
+	// Level 8 time to test note
+	float timeToTestNote = 10.9f;
 	
 	public List<string> myTimestamps;
 	
@@ -92,7 +98,7 @@ public class xPositionCalculator : MonoBehaviour {
 			// To identify the current level, we subtract 1 from the Application level count
 			if (Application.isEditor){
 				//EDITME
-				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level7_timestamps.txt");
+				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level8_timestamps.txt");
 			}//else{
 			//	ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
 			//}

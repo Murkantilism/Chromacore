@@ -77,19 +77,19 @@ public class AutomaticNotePlacer : MonoBehaviour {
 			}
 
 			// If we need to slice the Notes
-			if(sliceNotes == true){
-				// For each note in the List of Notes
-				foreach (GameObject note in NotesArray){
-					// Slice off the first four characters from every name of each Note gameobject
-					// Ex: "Note34" becomes "34" - making numerical sorting possible
-					try{ 
-						note.name = note.name.Substring(4);
-					}catch(Exception e){
-						Debug.Log(e.ToString());
-					}
+			//if(sliceNotes == true){
+			// For each note in the List of Notes
+			foreach (GameObject note in NotesArray){
+				// Slice off the first four characters from every name of each Note gameobject
+				// Ex: "Note34" becomes "34" - making numerical sorting possible
+				try{
+					note.name = note.name.Substring(4);
+				}catch(Exception e){
+					Debug.Log(e.ToString());
 				}
-				sliceNotes = false;
 			}
+			//	sliceNotes = false;
+			//}
 
 			// Actually sort the notes
 			Array.Sort(NotesArray, sortList);
