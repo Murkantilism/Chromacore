@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\CreateNotes.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="51" Column="29" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="101" Column="87" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="37" Column="59" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\CreateNotes.cs" Line="23" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

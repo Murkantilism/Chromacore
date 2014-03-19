@@ -12,13 +12,15 @@ public class CreateNotes : MonoBehaviour {
 
 	public bool instantiationDoneP = false;
 
+	public int startCount = 0;
+
 	// Use this for initialization
 	void Start () {
 		#if UNITY_EDITOR
 		if (instantiationDoneP == false){
 			for (int i = 0; i < numNotes; i++){
 				GameObject temp = Instantiate(note, new Vector3(0, 5, -10), Quaternion.identity) as GameObject;
-				temp.name = "Note" + i;
+				temp.name = "Note" + (i + startCount);
 				temp.transform.parent = parentNote.transform;
 			}
 			instantiationDoneP = true;
