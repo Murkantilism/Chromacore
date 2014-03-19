@@ -28,7 +28,10 @@ public class xPositionCalculator : MonoBehaviour {
 	//float testNoteXPOS = -21.05437f;
 
 	// Level 8 test note x pos
-	float testNoteXPOS = -10.48861f;
+	//float testNoteXPOS = -10.48861f;
+
+	// Level 9 test note x pos
+	float testNoteXPOS = -13.9993f;
 	
 	// Time to get to test note in seconds (value calculated from
 	// Unity Debug.Log(Time.timeSinceLevelLoad) on collion with test note)
@@ -48,8 +51,11 @@ public class xPositionCalculator : MonoBehaviour {
 	//float timeToTestNote = 8.3f;
 
 	// Level 8 time to test note
-	float timeToTestNote = 10.9f;
-	
+	//float timeToTestNote = 10.9f;
+
+	// Level 9 time to test note
+	float timeToTestNote = 9.588708f;
+
 	public List<string> myTimestamps;
 	
 	public List<string> myXPositions;
