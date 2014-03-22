@@ -4,7 +4,7 @@
     <Files>
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="37" Column="53" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="37" Column="53" />
+      <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="37" Column="54" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\CreateNotes.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
