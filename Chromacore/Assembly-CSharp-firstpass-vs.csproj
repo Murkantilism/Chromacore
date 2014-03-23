@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\Android\GooglePlayDownloader.cs" />
      <Compile Include="Assets\Plugins\FMOD\Editor\FMODEditorExtension.cs" />
      <Compile Include="Assets\Plugins\FMOD\FMODAsset.cs" />
      <Compile Include="Assets\Plugins\FMOD\FMOD_Listener.cs" />
@@ -130,6 +131,7 @@
      <Compile Include="Assets\Standard Assets\Scripts\Level Auto-Generation\AudioAnalysis.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Level Auto-Generation\GenerateLevel.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\LoadingScreen.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\Menus\DownloadObbExample.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\CreateBackgrounds.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\CreateNotes.cs" />
@@ -152,11 +154,13 @@
      <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\MeshCombineUtility.cs" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level8_timestamps.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
+     <None Include="Assets\Plugins\Android\build.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level4_timestamps.txt" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level5_timestamps.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Goodies\TexturePacker\Exporter\2dtoolkit\exporter.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\SolidVertexColor.shader" />
+     <None Include="Assets\Plugins\Android\res\layout-v11\status_bar_ongoing_event_progress_bar.xml" />
      <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMask.shader" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level2_timestamps.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
@@ -167,27 +171,36 @@
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level3_timestamps.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\goodies\PackedTextMesh.shader" />
      <None Include="Assets\UniFileBrowser Assets\Documentation\UniFileBrowser 2.0 Upgrade Guide.txt" />
+     <None Include="Assets\Plugins\Android\res\values-v9\styles.xml" />
      <None Include="Assets\UniFileBrowser Assets\Documentation\UniFileBrowser changelog.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\Blend2TexVertexColor.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\main.xml" />
      <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMaskSolid.shader" />
+     <None Include="Assets\Plugins\Android\res\values-v11\styles.xml" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito24.fnt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\resources\BlendVertexColor.shader" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level7_timestamps.txt" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitCutoutVertexColor.shader" />
      <None Include="Assets\Art Assets\Brainflower\readme.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Editor\EditorUtility.shader" />
+     <None Include="Assets\README.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\status_bar_ongoing_event_progress_bar.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\CutoutVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d_demo\demobmfont\test.fnt" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level10_timestamps.txt" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Font\OldSansBlack\OldSansBlack.fnt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitBlendVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito16.fnt" />
+     <None Include="Assets\Plugins\Android\res\values\styles.xml" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito32.fnt" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level6_timestamps.txt" />
+     <None Include="Assets\Plugins\Android\res\values\strings.xml" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level1_timestamps.txt" />
+     <None Include="Assets\Plugins\Android\res\values\main-strings.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d_demo\democameradata\source\democamerafont.fnt" />
   </ItemGroup>
