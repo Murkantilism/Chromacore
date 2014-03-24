@@ -32,6 +32,8 @@ public class APKExpansionDownloader : MonoBehaviour {
 		// APK's present, load Main Menu
 		if (mainPath != null) {
 			Application.LoadLevel("MainMenu");
+		}else{
+			Application.LoadLevel ("level14");
 		}
 
 		// APK's missing, trigger download
@@ -60,9 +62,12 @@ public class APKExpansionDownloader : MonoBehaviour {
 			
 			if (www.error == null) {
 				Application.LoadLevel ("MainMenu");
+			}else{
+				Application.LoadLevel ("level14");
 			}
 		} else {
-			Application.LoadLevel ("MainMenu");  
+			Application.LoadLevel ("MainMenu");
+			Application.LoadLevel ("level14");
 		}
 	}
 }
