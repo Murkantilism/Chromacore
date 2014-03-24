@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DownloadObbExample : MonoBehaviour
 {
+	#if UNITY_ANDROID && !UNITY_EDITOR
 	private string expPath;
 	private string logtxt;
 	private bool alreadyLogged = false;
@@ -95,5 +96,5 @@ public class DownloadObbExample : MonoBehaviour
 			}
 		}
 	}
-	
+	#endif
 }

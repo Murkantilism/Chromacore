@@ -3,7 +3,7 @@ using System.Collections;
 using System.IO;
 using System;
 
-public class GooglePlayDownloader
+public class GooglePlayDownloader : MonoBehaviour
 {
 	private static AndroidJavaClass detectAndroidJNI;
 	public static bool RunningOnAndroid()
