@@ -23,6 +23,9 @@ public class Teli_Animation : MonoBehaviour {
 	// Check if game is paused
 	bool gamePaused = false;
 
+	// Check if Teli is punching
+	bool punchingP = false;
+
 	// Used to wait 1 sec after game is resumed before checking death condition again
 	bool waitResume = false;
 	
@@ -95,9 +98,10 @@ public class Teli_Animation : MonoBehaviour {
 
 		// If one finger is touching, jump
 		// First check to make sure non-zero fingers are touching
+		// and that Teli isn't already punching
 		if (fingerCount > 0 && Input.GetTouch(0).phase != TouchPhase.Moved){
 			if (fingerCount == 1){
-				if (!anim.IsPlaying("Jump")){
+				if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false){
 					anim.Play("Jump");
 				}
 			// If two are touching, punch
@@ -137,8 +141,10 @@ public class Teli_Animation : MonoBehaviour {
 		if (mobileP == true){
 			// Draw a Punch GUI button
 			if (GUI.Button(new Rect(Screen.width/2 - Screen.width/2.75f, Screen.height/2 + Screen.height/4, 200, 100), "Punch", buttonStyle)){
+				punchingP = true;
 				if(!anim.IsPlaying("Punch")){
 					anim.Play("Punch");
+					punchingP = false;
 				}
 			}
 		}

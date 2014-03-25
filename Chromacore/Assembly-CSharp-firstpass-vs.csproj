@@ -132,7 +132,7 @@
      <Compile Include="Assets\Standard Assets\Scripts\Level Auto-Generation\GenerateLevel.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\LoadingScreen.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\APKExpansionDownloader.cs" />
-     <Compile Include="Assets\Standard Assets\Scripts\Menus\DownloadObbExample.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\Menus\sceneLoader.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\AutomaticNotePlacer.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\CreateBackgrounds.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Note Placement\CreateNotes.cs" />
