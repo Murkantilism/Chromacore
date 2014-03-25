@@ -2,17 +2,15 @@
 using System.Collections;
 
 public class APKExpansionDownloader : MonoBehaviour {
-
+	#if UNITY_ANDROID
 	bool downloadStarted = false;
 	string mainPath;
 	string expPath;
 
 	// Use this for initialization
 	void Start () {
-		#if UNITY_ANDROID
 		CheckStorage();
 		CheckDownload();
-		#endif
 	}
 
 	// Check if this Android Device has available SD card storage
@@ -70,4 +68,5 @@ public class APKExpansionDownloader : MonoBehaviour {
 			Application.LoadLevel ("level14");
 		}
 	}
+	#endif
 }

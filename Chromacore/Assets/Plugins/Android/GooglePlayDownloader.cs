@@ -5,6 +5,7 @@ using System;
 
 public class GooglePlayDownloader : MonoBehaviour
 {
+	#if UNITY_ANDROID
 	private static AndroidJavaClass detectAndroidJNI;
 	public static bool RunningOnAndroid()
 	{
@@ -110,4 +111,5 @@ public class GooglePlayDownloader : MonoBehaviour
 			obb_version = package_info.Get<int>("versionCode");
 		}
 	}
+	#endif
 }

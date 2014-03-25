@@ -54,6 +54,7 @@ public class Pause : MonoBehaviour {
 		Time.timeScale = 0;
 		backgroundTrack.Pause();
 		teli.SendMessage("PauseMovement", true);
+		SendMessageUpwards("paused", true);
 	}
 
 	// Show menu when paused
@@ -85,6 +86,7 @@ public class Pause : MonoBehaviour {
 				paused = false;
 				backgroundTrack.Play();
 				teli.SendMessage("PauseMovement", false);
+				SendMessageUpwards("paused", false);
 				blackPauseTexture.color = new Color(0, 0, 0, 0);
 			}
 

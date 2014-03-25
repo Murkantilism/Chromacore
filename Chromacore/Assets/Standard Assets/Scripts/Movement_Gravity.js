@@ -10,12 +10,29 @@ class Movement_Gravity extends MonoBehaviour{
 
 	// Are we not dead?
 	var notdeadp : boolean = true;
+	
+	// Are we punching?
+	var punchingP : boolean = false;
+	
+	var pausedP : boolean = false;
+	
+	var validTouch : boolean = false;
 
 	// Used to recieve message from Teli_Animation.cs
 	function death(bool : boolean){
 		// Set dead boolean to the boolean value passed to it by 
 		// either Reset() or ObstalceDeath() methods
 		notdeadp = bool;
+	}
+	
+	// Used to recieve message from Teli_Animation.cs
+	function punching(bool : boolean){
+		punchingP = bool;
+	}
+	
+	// Used to recieve message from Pause.cs
+	function paused(bool : boolean){
+		pausedP = bool;
 	}
 
 	// Update is called once every frame
@@ -29,7 +46,7 @@ class Movement_Gravity extends MonoBehaviour{
 			moveDirection *= speed;
 			
 			// Jump on input
-			if (Input.GetButton ("Jump")) {
+			if (Input.GetButton ("Jump") && punchingP == false && pausedP == false) {
 				moveDirection.y = jumpSpeed;
 			}
 			
@@ -42,10 +59,17 @@ class Movement_Gravity extends MonoBehaviour{
 				if (touch.phase == TouchPhase.Began && touch.phase != TouchPhase.Canceled){
 					fingerCount++;
 				}
+				
+				// If the finger touch is in the top 3/4 of the screen, it's valid
+				if (touch.position.y > (Screen.height / 4)){
+					validTouch = true;
+				}else{
+					validTouch = false; // Otherwise, it's not
+				}// This is to avoid the Punch and Pause GUI buttons from triggering jump
 			}
 			
 			// If one finger is touching, jump
-			if (fingerCount == 1){
+			if (fingerCount == 1 && punchingP == false && pausedP == false && validTouch == true){
 				moveDirection.y = jumpSpeed;
 			}
 		}

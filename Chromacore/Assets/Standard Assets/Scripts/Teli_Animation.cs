@@ -73,7 +73,7 @@ public class Teli_Animation : MonoBehaviour {
 		if (Input.GetAxis("Jump") != 0){
 			// Only play the clip if it is not already playing.
 			// Calling play will restart the clip if it is already playing
-			if (!anim.IsPlaying("Jump")){
+			if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false){
 				anim.Play("Jump");
 			}
 		}
@@ -142,9 +142,11 @@ public class Teli_Animation : MonoBehaviour {
 			// Draw a Punch GUI button
 			if (GUI.Button(new Rect(Screen.width/2 - Screen.width/2.75f, Screen.height/2 + Screen.height/4, 200, 100), "Punch", buttonStyle)){
 				punchingP = true;
+				SendMessageUpwards("punching", true);
 				if(!anim.IsPlaying("Punch")){
 					anim.Play("Punch");
 					punchingP = false;
+					SendMessageUpwards("punching", false);
 				}
 			}
 		}

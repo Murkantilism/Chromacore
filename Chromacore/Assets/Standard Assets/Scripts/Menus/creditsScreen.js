@@ -10,6 +10,7 @@ var bj = false;
 var cheyenne = false;
 var casper = false;
 var joshua = false;
+var fmod = false;
 
 var defaultURL = "https://www.facebook.com/incendiaryindustries";
 
@@ -48,6 +49,8 @@ function OnMouseUp(){
 		Application.OpenURL(defaultURL);
 	}else if(joshua){
 		Application.OpenURL(defaultURL);
+	}else if(fmod){
+		Application.OpenURL("http://www.fmod.org/");
 	}
 }
 

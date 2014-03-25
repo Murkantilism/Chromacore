@@ -1,13 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Teli_Animation.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Movement_Gravity.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="104" Column="57" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\sceneLoader.cs" Line="9" Column="3" />
-      <File FileName="Assets\Plugins\Android\GooglePlayDownloader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\APKExpansionDownloader.cs" Line="1" Column="1" />
-      <File FileName="Assets\DownloadObbExample.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\creditsScreen.js" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\sceneLoader.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="145" Column="5" />
+      <File FileName="Assets\Standard Assets\Scripts\Movement_Gravity.js" Line="64" Column="47" />
+      <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="26" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
