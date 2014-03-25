@@ -14,8 +14,6 @@ class Movement_Gravity extends MonoBehaviour{
 	// Are we punching?
 	var punchingP : boolean = false;
 	
-	var pausedP : boolean = false;
-	
 	var validTouch : boolean = false;
 
 	// Used to recieve message from Teli_Animation.cs
@@ -29,11 +27,6 @@ class Movement_Gravity extends MonoBehaviour{
 	function punching(bool : boolean){
 		punchingP = bool;
 	}
-	
-	// Used to recieve message from Pause.cs
-	function paused(bool : boolean){
-		pausedP = bool;
-	}
 
 	// Update is called once every frame
 	function Update() {
@@ -46,7 +39,7 @@ class Movement_Gravity extends MonoBehaviour{
 			moveDirection *= speed;
 			
 			// Jump on input
-			if (Input.GetButton ("Jump") && punchingP == false && pausedP == false) {
+			if (Input.GetButton ("Jump") && punchingP == false) {
 				moveDirection.y = jumpSpeed;
 			}
 			
@@ -69,7 +62,7 @@ class Movement_Gravity extends MonoBehaviour{
 			}
 			
 			// If one finger is touching, jump
-			if (fingerCount == 1 && punchingP == false && pausedP == false && validTouch == true){
+			if (fingerCount == 1 && punchingP == false && validTouch == true){
 				moveDirection.y = jumpSpeed;
 			}
 		}

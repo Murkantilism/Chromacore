@@ -19,11 +19,24 @@ var height = 5.0;
 var heightDamping = 2.0;
 var rotationDamping = 3.0;
 
+var deadp : boolean = false;
+
 // Place the script in the Camera-Control group in the component menu
 @script AddComponentMenu("Camera-Control/Smooth Follow")
 
+// Used to recieve message from Teli_Animation.cs
+function death(bool : boolean){
+	deadp = bool;
+}
 
 function LateUpdate () {
+	// If Teli dies, freeze camera
+	if(deadp == true){
+		target = null;
+	}else{
+		target = GameObject.FindGameObjectWithTag("Player").transform;
+	}
+
 	// Early out if we don't have a target
 	if (!target)
 		return;
@@ -50,7 +63,7 @@ function LateUpdate () {
 	//transform.position -= currentRotation * Vector3.forward * distance;
 	transform.position -= Vector3.forward * distance;
 	transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5);
-
+	
 	// Set the height of the camera
 	transform.position.y = currentHeight;
 	

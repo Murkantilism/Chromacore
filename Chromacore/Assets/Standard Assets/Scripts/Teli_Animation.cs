@@ -10,6 +10,8 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// The main character's Charcter Controller	
 	public CharacterController teliCharacter;
+
+	public Camera mainCamera;
 	
 	// Value of character's Y velocity to begin falling animation at
 	private float fallAnimVel = -0.25f;
@@ -53,6 +55,8 @@ public class Teli_Animation : MonoBehaviour {
 		backgroundTrack = GameObject.Find("Main Camera").transform.Find("Listener").audio;
 
 		guiSkin = Resources.Load("customBtnSkin") as GUISkin;
+
+		mainCamera = GameObject.FindObjectOfType<Camera>() as Camera;
 
 		#if UNITY_STANDALONE
 		mobileP = false;
@@ -176,13 +180,20 @@ public class Teli_Animation : MonoBehaviour {
 		if ((teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < -5) && gamePaused == false && waitResume == false){
 			Debug.Log("DEATH");
 			Debug.Log(gamePaused);
-			// And the death animation isn't already playing
+
+			// If Teli is below the level
+			if (teliCharacter.transform.position.y < -5){
+				// Stop the camera following
+				mainCamera.SendMessage("death", true);
+			}
+
+			// If the death animation isn't already playing
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation
 				anim.Play("Death");
 			}
-			// Call reset function after 2 seconds
-			Invoke("Reset", 1);
+			// Call reset function after 1 second
+			Invoke("Reset", 2);
 		}
 	}
 	
@@ -196,6 +207,8 @@ public class Teli_Animation : MonoBehaviour {
 	void Reset(){
 		// Send a message to restart Teli's movement
 		SendMessageUpwards("death", true);
+		// Send a message to restart camera following
+		mainCamera.SendMessage("death", false);
 		// Reset score to last saved score
 		SendMessageUpwards("ResetScore");
 		// Reset position to spawn
