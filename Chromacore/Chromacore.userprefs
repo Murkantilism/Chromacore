@@ -1,11 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Teli_Animation.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\creditsScreen.js">
     <Files>
+      <File FileName="Assets\Standard Assets\Scripts\Menus\creditsScreen.js" Line="57" Column="19" />
       <File FileName="Assets\Standard Assets\Scripts\Menus\sceneLoader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="195" Column="42" />
-      <File FileName="Assets\Standard Assets\Scripts\Movement_Gravity.js" Line="51" Column="5" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="110" Column="83" />
+      <File FileName="Assets\Standard Assets\Scripts\Movement_Gravity.js" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\SmoothFollow.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

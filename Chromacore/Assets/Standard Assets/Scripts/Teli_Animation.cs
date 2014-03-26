@@ -45,6 +45,9 @@ public class Teli_Animation : MonoBehaviour {
 	// Are we on a mobile platform?
 	bool mobileP = false;
 
+	// Is this finger Touch valid?
+	bool validTouch = false;
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -98,22 +101,23 @@ public class Teli_Animation : MonoBehaviour {
 			if(touch.phase == TouchPhase.Began && touch.phase != TouchPhase.Canceled){
 				fingerCount++;
 			}
+
+			// If the finger touch is in the top 3/4 of the screen, it's valid
+			if (touch.position.y > (Screen.height / 4)){
+				validTouch = true;
+			}else{
+				validTouch = false; // Otherwise, it's not
+			}// This is to avoid the Punch and Pause GUI buttons from triggering jump anim.
 		}
 
-		// If one finger is touching, jump
-		// First check to make sure non-zero fingers are touching
-		// and that Teli isn't already punching
+		// Check to make sure non-zero fingers are touching & Teli isn't already punching
 		if (fingerCount > 0 && Input.GetTouch(0).phase != TouchPhase.Moved){
+			// If one finger is touching, jump
 			if (fingerCount == 1){
-				if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false){
+				if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false && validTouch == true){
 					anim.Play("Jump");
 				}
-			// If two are touching, punch
-			}/*else if (fingerCount == 2){
-				if(!anim.IsPlaying("Punch")){
-					anim.Play("Punch");
-				}
-			}*/
+			}
 		}
 		
 		// If none of the other animations are playing
