@@ -44,7 +44,7 @@ function OnMouseUp(){
 	}else if(bj){
 		Application.OpenURL(defaultURL);
 	}else if(cheyenne){
-		Application.OpenURL(defaultURL);
+		Application.OpenURL("https://www.behance.net/gallery/Portfolio/15502353");
 	}else if(casper){
 		Application.OpenURL(defaultURL);
 	}else if(joshua){
