@@ -9,9 +9,11 @@ Positive audiovisual feedback rewards players for successful gameplay, while neg
 
 ## Playable Game
 
-Android & iOS: Coming Soon
+Android: https://play.google.com/store/apps/details?id=com.Deniz_Ozkaynak.Chromacore
 
-PC/Mac/Linux: Coming Soon
+PC/Mac/Linux: http://www.desura.com/games/chromacore
+
+iOS: Coming Soon
 
 Depricated web prototype available here: http://www.ccs.neu.edu/home/ozkaynak/Chromacore/Chromacore_buildIndex.html?ref=live
 
