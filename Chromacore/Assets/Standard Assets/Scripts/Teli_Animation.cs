@@ -48,6 +48,12 @@ public class Teli_Animation : MonoBehaviour {
 	// Is this finger Touch valid?
 	bool validTouch = false;
 
+	// Is Teli dead?
+	bool deadp = false;
+
+	// Should we reset?
+	bool resetp = false;
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -72,6 +78,11 @@ public class Teli_Animation : MonoBehaviour {
 		#if UNITY_ANDROID
 		mobileP = true;
 		#endif
+
+		// Wait to invoke death animation function until a few
+		// seconds after game has begun.
+		InvokeRepeating("DeathAnimation", 3, 0.1f);
+		//DeathAnimation();
 	}
 		
 	// Update is called once per frame
@@ -133,10 +144,6 @@ public class Teli_Animation : MonoBehaviour {
 				anim.Play("Fall");
 			}
 		}
-		
-		// Wait to invoke death animation function until a few
-		// seconds after game has begun.
-		Invoke("DeathAnimation", 3);
 	}
 
 	void OnGUI() {
@@ -184,6 +191,7 @@ public class Teli_Animation : MonoBehaviour {
 		if ((teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < -5) && gamePaused == false && waitResume == false){
 			Debug.Log("DEATH");
 			Debug.Log(gamePaused);
+			deadp = true;
 
 			// If Teli is below the level
 			if (teliCharacter.transform.position.y < -5){
@@ -195,9 +203,15 @@ public class Teli_Animation : MonoBehaviour {
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation
 				anim.Play("Death");
+
 			}
-			// Call reset function after 1 second
-			Invoke("Reset", 2);
+
+			if (deadp == true){
+				deadp = false;
+				resetp = true;
+				// Call reset function after 2 seconds
+				Invoke("Reset", 2);
+			}
 		}
 	}
 	
@@ -209,24 +223,29 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// Reset Teli's position, the background track, and respawn Notes
 	void Reset(){
-		// Send a message to restart Teli's movement
-		SendMessageUpwards("death", true);
-		// Send a message to restart camera following
-		mainCamera.SendMessage("death", false);
-		// Reset score to last saved score
-		SendMessageUpwards("ResetScore");
-		// Reset position to spawn
-		teliCharacter.transform.position = spawn.transform.position;
-		// Reset music
-		backgroundTrack.Stop();
-		// Set music's start time to checkpoint's start time
-		backgroundTrack.time = checkpoint_timestamp;
-		// Restart music track
-		backgroundTrack.Play();
-		
-		// Reset the renderer of all Notes
-		for(int i = 0; i < Notes.Length; i++){
-			Notes[i].renderer.enabled = true;
+		Debug.Log("RESET");
+			if (resetp == true){
+			// Send a message to restart Teli's movement
+			SendMessageUpwards("death", true);
+			// Send a message to restart camera following
+			mainCamera.SendMessage("death", false);
+			// Reset score to last saved score
+			SendMessageUpwards("ResetScore");
+			// Reset position to spawn
+			teliCharacter.transform.position = spawn.transform.position;
+			// Reset music
+			backgroundTrack.Stop();
+			// Set music's start time to checkpoint's start time
+			backgroundTrack.time = checkpoint_timestamp;
+			// Restart music track
+			backgroundTrack.Play();
+			
+			// Reset the renderer of all Notes
+			for(int i = 0; i < Notes.Length; i++){
+				Notes[i].renderer.enabled = true;
+			}
+
+			resetp = false;
 		}
 	}
 	
@@ -244,6 +263,7 @@ public class Teli_Animation : MonoBehaviour {
 	void ObstacleDeath(){
 		if(!anim.IsPlaying("Punch")){
 			Debug.Log("DEATH - Wasn't punching");
+			deadp = true;
 			// And the death animation isn't already playing
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation
@@ -251,8 +271,12 @@ public class Teli_Animation : MonoBehaviour {
 				// Send a message to stop Teli's movement
 				SendMessageUpwards("death", false);
 			}
-			// Call reset function after 2 seconds
-			Invoke("Reset", 1);
+
+			if (deadp == true){
+				deadp = false;
+				// Call reset function after 2 seconds
+				Invoke("Reset", 2);
+			}
 		}
 	}
 }
