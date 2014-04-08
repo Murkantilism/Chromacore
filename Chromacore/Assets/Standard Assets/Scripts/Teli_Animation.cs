@@ -91,7 +91,7 @@ public class Teli_Animation : MonoBehaviour {
 		if (Input.GetAxis("Jump") != 0){
 			// Only play the clip if it is not already playing.
 			// Calling play will restart the clip if it is already playing
-			if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false){
+			if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false && deadp == false){
 				anim.Play("Jump");
 			}
 		}
@@ -99,7 +99,7 @@ public class Teli_Animation : MonoBehaviour {
 		// If the Player presses the punch button
 		if (Input.GetAxis("Punch") != 0){
 			// And the charcter isn't currently punching
-			if(!anim.IsPlaying("Punch")){
+			if(!anim.IsPlaying("Punch") && deadp == false){
 				anim.Play("Punch");
 			}
 		}
@@ -125,14 +125,14 @@ public class Teli_Animation : MonoBehaviour {
 		if (fingerCount > 0 && Input.GetTouch(0).phase != TouchPhase.Moved){
 			// If one finger is touching, jump
 			if (fingerCount == 1){
-				if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false && validTouch == true){
+				if (!anim.IsPlaying("Jump") && punchingP == false && !anim.IsPlaying("Punch") && gamePaused == false && validTouch == true && deadp == false){
 					anim.Play("Jump");
 				}
 			}
 		}
 		
 		// If none of the other animations are playing
-		if (!anim.IsPlaying("Run") & !anim.IsPlaying("Jump") & !anim.IsPlaying("Run_Glow") & !anim.IsPlaying("Punch") & !anim.IsPlaying("Death")){
+		if (!anim.IsPlaying("Run") & !anim.IsPlaying("Jump") & !anim.IsPlaying("Run_Glow") & !anim.IsPlaying("Punch") & !anim.IsPlaying("Death")  && deadp == false){
 			// Loop running animation
 			anim.Play("Run");
 		}
@@ -158,7 +158,7 @@ public class Teli_Animation : MonoBehaviour {
 			if (GUI.Button(new Rect(Screen.width/2 - Screen.width/2.75f, Screen.height/2 + Screen.height/4, 200, 100), "Punch", buttonStyle)){
 				punchingP = true;
 				SendMessageUpwards("punching", true);
-				if(!anim.IsPlaying("Punch")){
+				if(!anim.IsPlaying("Punch") && deadp == false){
 					anim.Play("Punch");
 					punchingP = false;
 					SendMessageUpwards("punching", false);
@@ -190,8 +190,8 @@ public class Teli_Animation : MonoBehaviour {
 		// AND the game is not currently paused...
 		if ((teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < -5) && gamePaused == false && waitResume == false){
 			Debug.Log("DEATH");
-			Debug.Log(gamePaused);
 			deadp = true;
+			resetp = true;
 
 			// If Teli is below the level
 			if (teliCharacter.transform.position.y < -5){
@@ -203,15 +203,11 @@ public class Teli_Animation : MonoBehaviour {
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation
 				anim.Play("Death");
-
+				SendMessageUpwards("death", true);
 			}
 
-			if (deadp == true){
-				deadp = false;
-				resetp = true;
-				// Call reset function after 2 seconds
-				Invoke("Reset", 2);
-			}
+			// Call reset function after 2 seconds
+			Invoke("Reset", 2);
 		}
 	}
 	
@@ -223,10 +219,11 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// Reset Teli's position, the background track, and respawn Notes
 	void Reset(){
-		Debug.Log("RESET");
-			if (resetp == true){
+		Debug.Log(resetp);
+		if (resetp == true){
+			Debug.Log("RESET");
 			// Send a message to restart Teli's movement
-			SendMessageUpwards("death", true);
+			SendMessageUpwards("death", false);
 			// Send a message to restart camera following
 			mainCamera.SendMessage("death", false);
 			// Reset score to last saved score
@@ -244,7 +241,7 @@ public class Teli_Animation : MonoBehaviour {
 			for(int i = 0; i < Notes.Length; i++){
 				Notes[i].renderer.enabled = true;
 			}
-
+			deadp = false;
 			resetp = false;
 		}
 	}
@@ -252,7 +249,7 @@ public class Teli_Animation : MonoBehaviour {
 	// Hanlde Glow Animation
 	void GlowAnimation(){
 		// If the glow and punch animations aren't already playing
-		if(!anim.IsPlaying("Run_Glow") && !anim.IsPlaying("Punch")){
+		if(!anim.IsPlaying("Run_Glow") && !anim.IsPlaying("Punch") && deadp == false){
 			anim.Stop();
 			anim.Play("Run_Glow");
 		}
@@ -264,19 +261,18 @@ public class Teli_Animation : MonoBehaviour {
 		if(!anim.IsPlaying("Punch")){
 			Debug.Log("DEATH - Wasn't punching");
 			deadp = true;
+			resetp = true;
+
 			// And the death animation isn't already playing
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation
 				anim.Play("Death");
 				// Send a message to stop Teli's movement
-				SendMessageUpwards("death", false);
+				SendMessageUpwards("death", true);
 			}
 
-			if (deadp == true){
-				deadp = false;
-				// Call reset function after 2 seconds
-				Invoke("Reset", 2);
-			}
+			// Call reset function after 2 seconds
+			Invoke("Reset", 2);
 		}
 	}
 }

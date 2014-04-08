@@ -8,8 +8,8 @@ class Movement_Gravity extends MonoBehaviour{
 	
 	private var moveDirection : Vector3 = Vector3.zero;
 
-	// Are we not dead?
-	var notdeadp : boolean = true;
+	// Are we dead?
+	var deadP : boolean = false;
 	
 	// Are we punching?
 	var punchingP : boolean = false;
@@ -20,7 +20,7 @@ class Movement_Gravity extends MonoBehaviour{
 	function death(bool : boolean){
 		// Set dead boolean to the boolean value passed to it by 
 		// either Reset() or ObstalceDeath() methods
-		notdeadp = bool;
+		deadP = bool;
 	}
 	
 	// Used to recieve message from Teli_Animation.cs
@@ -39,7 +39,7 @@ class Movement_Gravity extends MonoBehaviour{
 			moveDirection *= speed;
 			
 			// Jump on input
-			if (Input.GetButton ("Jump") && punchingP == false) {
+			if (Input.GetButton ("Jump") && punchingP == false && deadP == false) {
 				moveDirection.y = jumpSpeed;
 			}
 			
@@ -62,7 +62,7 @@ class Movement_Gravity extends MonoBehaviour{
 			}
 			
 			// If one finger is touching, jump
-			if (fingerCount == 1 && punchingP == false && validTouch == true){
+			if (fingerCount == 1 && punchingP == false && validTouch == true && deadP == false){
 				moveDirection.y = jumpSpeed;
 			}
 		}
@@ -70,7 +70,7 @@ class Movement_Gravity extends MonoBehaviour{
 		moveDirection.y -= gravity * Time.deltaTime;
 		
 		// Move the controller if we are not dead and the game is not paused
-		if (notdeadp == true){
+		if (deadP == false){
 			controller.Move(moveDirection * Time.deltaTime);
 		}
 	}
