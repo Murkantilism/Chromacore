@@ -34,7 +34,7 @@ public class NoteAssigner : MonoBehaviour {
 
 		// Grab a list of pick-up mp3 files
 		//EDITME
-		pickupMP3s = Resources.LoadAll<AudioClip>("Level12/Level12_pickupTracks");
+		pickupMP3s = Resources.LoadAll<AudioClip>("Level13/Level13_pickupTracks");
 	}
 
 	// Sort the List of Notes in numerical order

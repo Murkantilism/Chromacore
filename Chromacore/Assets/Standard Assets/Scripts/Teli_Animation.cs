@@ -54,7 +54,11 @@ public class Teli_Animation : MonoBehaviour {
 	// Should we reset?
 	bool resetp = false;
 
+	// The y threshold used for detecting if Teli is below level
 	int levelthresholdY = -5;
+
+	// Used to offset GUI buttons
+	private RectOffset rctOff;
 
 	// Use this for initialization
 	void Start () {
@@ -158,11 +162,12 @@ public class Teli_Animation : MonoBehaviour {
 		GUIStyle buttonStyle = GUI.skin.button;
 		buttonStyle.fontSize = 60;
 		GUI.backgroundColor = Color.magenta;
+		rctOff = GUI.skin.button.overflow;
 
 		// If we are on a mobile platform
 		if (mobileP == true){
 			// Draw a Punch GUI button
-			if (GUI.Button(new Rect(Screen.width/2 - Screen.width/2.75f, Screen.height/2 + Screen.height/4, 200, 100), "Punch", buttonStyle)){
+			if (GUI.Button(new Rect(Screen.width/2 - Screen.width/2.75f, Screen.height/2 + Screen.height/4, 270, 150), "Punch", buttonStyle)){
 				punchingP = true;
 				SendMessageUpwards("punching", true);
 				if(!anim.IsPlaying("Punch") && deadp == false){

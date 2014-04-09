@@ -94,6 +94,7 @@
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito16.fnt" />
      <None Include="Assets\Plugins\Android\res\values\styles.xml" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito32.fnt" />
+     <None Include="Assets\Standard Assets\Scripts\Note Placement\level13_timestamps.txt" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level12_timestamps.txt" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level6_timestamps.txt" />
      <None Include="Assets\Plugins\Android\res\values\strings.xml" />

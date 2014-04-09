@@ -70,7 +70,7 @@ public class Pause : MonoBehaviour {
 		// If we are not already paused and on mobile
 		if (paused == false && mobileP == true){
 			// Draw a Pause GUI button
-			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Pause", buttonStyle)){
+			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 270, 150), "Pause", buttonStyle)){
 				TriggerPause();
 			}
 		}
@@ -80,7 +80,7 @@ public class Pause : MonoBehaviour {
 			blackPauseTexture.color = new Color(0, 0, 0, 1);
 
 			// Resume button
-			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Resume", buttonStyle)){
+			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 270, 150), "Resume", buttonStyle)){
 				Time.timeScale = 1;
 				paused = false;
 				backgroundTrack.Play();
@@ -89,7 +89,7 @@ public class Pause : MonoBehaviour {
 			}
 
 			// Quit button
-			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 + Screen.height/4, 200, 100), "Quit to \nMain Menu", quitStyle)){
+			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 + Screen.height/4, 270, 150), "Quit to \nMain Menu", quitStyle)){
 				Application.LoadLevel("MainMenu");
 				paused = false;
 				Time.timeScale = 1;
