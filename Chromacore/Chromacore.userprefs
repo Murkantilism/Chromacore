@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Movement_Gravity.js">
     <Files>
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="37" Column="52" />
-      <File FileName="Assets\Standard Assets\Scripts\Movement_Gravity.js" Line="19" Column="51" />
+      <File FileName="Assets\Standard Assets\Scripts\Movement_Gravity.js" Line="92" Column="39" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="109" Column="120" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="201" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

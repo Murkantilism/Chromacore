@@ -11,6 +11,9 @@ class Movement_Gravity extends MonoBehaviour{
 	// Are we dead?
 	var deadP : boolean = false;
 	
+	// Is Teli falling to his death?
+	var fallingP : boolean = false;
+	
 	// Are we punching?
 	var punchingP : boolean = false;
 	
@@ -21,6 +24,12 @@ class Movement_Gravity extends MonoBehaviour{
 		// Set dead boolean to the boolean value passed to it by 
 		// either Reset() or ObstalceDeath() methods
 		deadP = bool;
+		
+	}
+	
+	// Used to recieve message from Teli_Animation.cs
+	function fallingDeath(bool : boolean){
+		fallingP = bool;
 	}
 	
 	// Used to recieve message from Teli_Animation.cs
@@ -68,10 +77,28 @@ class Movement_Gravity extends MonoBehaviour{
 		}
 		// Apply gravity
 		moveDirection.y -= gravity * Time.deltaTime;
-		
-		// Move the controller if we are not dead and the game is not paused
-		if (deadP == false){
+
+		// Move the controller if we are falling to our death
+		if(deadP == true && fallingP == true){
+			Debug.Log("deadP: " + deadP + " || fallingP: " + fallingP); 
 			controller.Move(moveDirection * Time.deltaTime);
 		}
+		
+		// If we are "regular" dead, don't move controller
+		if(deadP == true && fallingP == false){
+			Debug.Log("deadP: " + deadP + " || fallingP: " + fallingP); 
+			return;
+		}
+		
+		// And otherwise move the controller
+		controller.Move(moveDirection * Time.deltaTime);
+		
+		
+		/*
+		if (fallingP == true){
+			controller.Move(moveDirection * Time.deltaTime);
+		}else if (deadP == false && fallingP == false){
+			controller.Move(moveDirection * Time.deltaTime);
+		}*/
 	}
 }

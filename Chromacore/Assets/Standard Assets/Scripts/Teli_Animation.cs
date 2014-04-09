@@ -54,6 +54,8 @@ public class Teli_Animation : MonoBehaviour {
 	// Should we reset?
 	bool resetp = false;
 
+	int levelthresholdY = -5;
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -66,6 +68,10 @@ public class Teli_Animation : MonoBehaviour {
 		guiSkin = Resources.Load("customBtnSkin") as GUISkin;
 
 		mainCamera = GameObject.FindObjectOfType<Camera>() as Camera;
+
+		if(Application.loadedLevelName == "Level12"){
+			levelthresholdY = -15;
+		}
 
 		#if UNITY_STANDALONE
 		mobileP = false;
@@ -142,6 +148,7 @@ public class Teli_Animation : MonoBehaviour {
 			// And the falling animation isn't already playing
 			if (!anim.IsPlaying("Fall")){
 				anim.Play("Fall");
+				SendMessageUpwards("fallingDeath", true);
 			}
 		}
 	}
@@ -188,22 +195,25 @@ public class Teli_Animation : MonoBehaviour {
 	void DeathAnimation(){
 		// If Teli's X-position stops increasing or the Y position is below the level
 		// AND the game is not currently paused...
-		if ((teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < -5) && gamePaused == false && waitResume == false){
+		if ((teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < levelthresholdY) && gamePaused == false && waitResume == false){
 			Debug.Log("DEATH");
 			deadp = true;
 			resetp = true;
 
 			// If Teli is below the level
-			if (teliCharacter.transform.position.y < -5){
+			if (teliCharacter.transform.position.y < levelthresholdY){
+				// Send a message to Movement_Gravity that Teli is falling to his death
+				SendMessageUpwards("fallingDeath", true);
 				// Stop the camera following
 				mainCamera.SendMessage("death", true);
-			}
+			}else{
 
-			// If the death animation isn't already playing
-			if(!anim.IsPlaying("Death")){
-				// Play the death animation
-				anim.Play("Death");
-				SendMessageUpwards("death", true);
+				// If the death animation isn't already playing
+				if(!anim.IsPlaying("Death")){
+					// Play the death animation
+					anim.Play("Death");
+					SendMessageUpwards("death", true);
+				}
 			}
 
 			// Call reset function after 2 seconds
@@ -224,6 +234,8 @@ public class Teli_Animation : MonoBehaviour {
 			Debug.Log("RESET");
 			// Send a message to restart Teli's movement
 			SendMessageUpwards("death", false);
+			// Send a message to restart Teli's movement
+			SendMessageUpwards("fallingDeath", false);
 			// Send a message to restart camera following
 			mainCamera.SendMessage("death", false);
 			// Reset score to last saved score
@@ -269,6 +281,7 @@ public class Teli_Animation : MonoBehaviour {
 				anim.Play("Death");
 				// Send a message to stop Teli's movement
 				SendMessageUpwards("death", true);
+				SendMessageUpwards("fallingDeath", false);
 			}
 
 			// Call reset function after 2 seconds
