@@ -64,6 +64,7 @@
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level9_timestamps.txt" />
      <None Include="Assets\TK2DROOT\tk2d_demo\Credits.txt" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level3_timestamps.txt" />
+     <None Include="Assets\Standard Assets\Scripts\Note Placement\level14_timestamps.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\goodies\PackedTextMesh.shader" />
      <None Include="Assets\UniFileBrowser Assets\Documentation\UniFileBrowser 2.0 Upgrade Guide.txt" />
      <None Include="Assets\Plugins\Android\res\values-v9\styles.xml" />
