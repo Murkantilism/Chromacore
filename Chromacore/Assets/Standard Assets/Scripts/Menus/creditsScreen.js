@@ -11,11 +11,12 @@ var cheyenne = false;
 var casper = false;
 var joshua = false;
 var fmod = false;
+var mainCamera : GameObject;
 
 var defaultURL = "https://www.facebook.com/incendiaryindustries";
 
 function Start () {
-
+	mainCamera = GameObject.FindWithTag("MainCamera");
 }
 
 function OnMouseEnter(){
@@ -59,6 +60,7 @@ function OnGUI() {
 	buttonStyle.fontSize = 25;
 	
 	if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Back", buttonStyle)){
+		Destroy(mainCamera);
 		Application.LoadLevel("MainMenu");
 	}
 }

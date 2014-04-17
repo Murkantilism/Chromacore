@@ -15,6 +15,11 @@ public class levelSelect extends MonoBehaviour {
 	var levelTen = false;
 	var levelDEMO = false;
 	var moreLevels = false;
+	var mainCamera : GameObject;
+	
+	function Start(){
+		mainCamera = GameObject.FindWithTag("MainCamera");
+	}
 
 	function OnMouseEnter(){
 		// Change the color of the text
@@ -29,28 +34,40 @@ public class levelSelect extends MonoBehaviour {
 	function OnMouseUp(){
 		// Load the level selected
 		if(levelOne){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level1");
 		}else if(levelTwo){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level2");
 		}else if(levelThree){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level3");
 		}else if(levelFour){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level4");
 		}else if(levelFive){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level5");
 		}else if(levelSix){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level6");
 		}else if(levelSeven){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level7");
 		}else if(levelEight){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level8");
 		}else if(levelNine){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level9");
 		}else if(levelTen){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level10");
 		}else if(moreLevels){
+			DontDestroyOnLoad(mainCamera.transform);
 			Application.LoadLevel("LevelSelect2");
 		}else if(levelDEMO){
+			Destroy(mainCamera);
 			Application.LoadLevel("Level15");
 		}
 	}
@@ -60,6 +77,7 @@ public class levelSelect extends MonoBehaviour {
 		buttonStyle.fontSize = 25;
 		
 		if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Back", buttonStyle)){
+			Destroy(mainCamera);
 			Application.LoadLevel("MainMenu");
 		}
 	}
