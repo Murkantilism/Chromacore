@@ -13,6 +13,7 @@ public class levelSelect extends MonoBehaviour {
 	var levelEight = false;
 	var levelNine = false;
 	var levelTen = false;
+	var levelDEMO = false;
 	var moreLevels = false;
 
 	function OnMouseEnter(){
@@ -49,6 +50,8 @@ public class levelSelect extends MonoBehaviour {
 			Application.LoadLevel("Level10");
 		}else if(moreLevels){
 			Application.LoadLevel("LevelSelect2");
+		}else if(levelDEMO){
+			Application.LoadLevel("Level15");
 		}
 	}
 
