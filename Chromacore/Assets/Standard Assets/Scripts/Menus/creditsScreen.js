@@ -64,3 +64,11 @@ function OnGUI() {
 		Application.LoadLevel("MainMenu");
 	}
 }
+
+function Update(){
+	// If the backspace or espace key is hit, go back to main menu
+	if(Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Escape)){
+		Destroy(mainCamera);
+		Application.LoadLevel("MainMenu");
+	}
+}

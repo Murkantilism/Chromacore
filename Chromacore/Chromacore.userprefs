@@ -1,14 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\levelSelect2.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\levelSelectKeyboard.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Menus\mainMenu.js" Line="9" Column="25" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect.js" Line="37" Column="3" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="74" Column="3" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\menuPersistentMusic.cs" Line="20" Column="21" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\creditsScreen.js" Line="21" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect2.js" Line="42" Column="23" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\mainMenu.js" Line="83" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect.js" Line="49" Column="24" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelectKeyboard.js" Line="54" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
