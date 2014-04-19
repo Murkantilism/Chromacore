@@ -155,6 +155,7 @@
      <Compile Include="Assets\Standard Assets\Scripts\Tutorial_Text.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\CombineChildren.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\MeshCombineUtility.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\PrintScreen.cs" />
      <None Include="Assets\Standard Assets\Scripts\Note Placement\level8_timestamps.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Plugins\Android\build.xml" />

@@ -67,15 +67,19 @@ public class Pause : MonoBehaviour {
 		GUIStyle quitStyle = new GUIStyle("button");
 		quitStyle.fontSize = 40;
 
+		GUIStyle printStyle = new GUIStyle("label");
+		printStyle.fontSize = 40;
+
 		// If we are not already paused and on mobile
 		if (paused == false && mobileP == true){
-			// Draw a Pause GUI button
 			if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 270, 150), "Pause", buttonStyle)){
 				TriggerPause();
 			}
 		}
 		
 		if (paused == true) {
+			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 500, 200), "Press 'P' to save screenshot \n to application data path", printStyle);
+
 			// If paused, set black pause GUI texture
 			blackPauseTexture.color = new Color(0, 0, 0, 1);
 
