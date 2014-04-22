@@ -152,7 +152,7 @@ public class Teli_Animation : MonoBehaviour {
 			// And the falling animation isn't already playing
 			if (!anim.IsPlaying("Fall")){
 				anim.Play("Fall");
-				SendMessageUpwards("fallingDeath", true);
+				//SendMessageUpwards("fallingDeath", true); //FIXME (fixed): Jettison bug here <---
 			}
 		}
 	}

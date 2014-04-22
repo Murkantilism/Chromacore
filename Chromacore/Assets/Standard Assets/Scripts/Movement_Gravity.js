@@ -91,6 +91,7 @@ class Movement_Gravity extends MonoBehaviour{
 		}
 		
 		// And otherwise move the controller
+		
 		controller.Move(moveDirection * Time.deltaTime);
 		
 		

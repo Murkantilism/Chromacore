@@ -1,9 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\levelSelect.js">
     <Files>
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="107" Column="88" />
       <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="37" Column="53" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect.js" Line="33" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelectKeyboard.js" Line="67" Column="23" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="213" Column="28" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect2Keyboard.js" Line="41" Column="21" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\levelSelect2.js" Line="24" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
