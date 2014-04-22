@@ -17,18 +17,24 @@ public class levelSelect extends MonoBehaviour {
 	var moreLevels = false;
 	var mainCamera : GameObject;
 	
+	var levelSelectKeyboard : GameObject;
+	
 	function Start(){
 		mainCamera = GameObject.FindWithTag("MainCamera");
+
+		levelSelectKeyboard = GameObject.Find("levelSelectKeyboardSupport"); // First level selection screen
 	}
 
 	function OnMouseEnter(){
 		// Change the color of the text
 		renderer.material.color = Color.blue;
+		levelSelectKeyboard.SendMessage("mouseOver", true);
 	}
 
 	function OnMouseExit(){
 		// Change the color of the text back to the original color (white)
 		renderer.material.color = Color.white;
+		levelSelectKeyboard.SendMessage("mouseOver", false);
 	}
 
 	function OnMouseUp(){

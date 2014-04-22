@@ -30,8 +30,15 @@ public class levelSelect2Keyboard extends MonoBehaviour {
 	
 	var mainCamera : GameObject;
 	
+	var mouseOverp : boolean = false;
+	
 	function Start(){
 		mainCamera = GameObject.FindWithTag("MainCamera");
+		//mouseOverp = true;
+	}
+	
+	function mouseOver(bool : boolean){
+		mouseOverp = bool;
 	}
 	
 	function Update(){
@@ -52,83 +59,86 @@ public class levelSelect2Keyboard extends MonoBehaviour {
 			}
 		}
 		
+		// If the mouse isn't already navigating the menu,
 		// Change the color of the renderer and boolean value based on index
-		if(menuIndex == 0){
-			levelElevenText.renderer.material.color = Color.blue;
-			levelEleven = true;
-		}else{
-			levelElevenText.renderer.material.color = Color.white;
-			levelEleven = false;
-		}
-		if(menuIndex == 1){
-			levelTwelveText.renderer.material.color = Color.blue;
-			levelTwelve = true;
-		}else{
-			levelTwelveText.renderer.material.color = Color.white;
-			levelTwelve = false;
-		}
-		if(menuIndex == 2){
-			levelThirteenText.renderer.material.color = Color.blue;
-			levelThirteen = true;
-		}else{
-			levelThirteenText.renderer.material.color = Color.white;
-			levelThirteen = false;
-		}
-		if(menuIndex == 3){
-			levelFourteenText.renderer.material.color = Color.blue;
-			levelFourteen = true;
-		}else{
-			levelFourteenText.renderer.material.color = Color.white;
-			levelFourteen = false;
-		}
-		if(menuIndex == 4){
-			levelFifteenText.renderer.material.color = Color.blue;
-			levelFifteen = true;
-		}else{
-			levelFifteenText.renderer.material.color = Color.white;
-			levelFifteen = false;
-		}
-		if(menuIndex == 5){
-			levelSixteenText.renderer.material.color = Color.blue;
-			levelSixteen = true;
-		}else{
-			levelSixteenText.renderer.material.color = Color.white;
-			levelSixteen = false;
-		}
-		if(menuIndex == 6){
-			levelSeventeenText.renderer.material.color = Color.blue;
-			levelSeventeen = true;
-		}else{
-			levelSeventeenText.renderer.material.color = Color.white;
-			levelSeventeen = false;
-		}
-		if(menuIndex == 7){
-			levelEighteenText.renderer.material.color = Color.blue;
-			levelEighteen = true;
-		}else{
-			levelEighteenText.renderer.material.color = Color.white;
-			levelEighteen = false;
-		}
-		if(menuIndex == 8){
-			levelNineteenText.renderer.material.color = Color.blue;
-			levelNineteen = true;
-		}else{
-			levelNineteenText.renderer.material.color = Color.white;
-			levelNineteen = false;
-		}
-		if(menuIndex == 9){
-			levelTwentyText.renderer.material.color = Color.blue;
-			levelTwenty = true;
-		}else{
-			levelTwentyText.renderer.material.color = Color.white;
-			levelTwenty = false;
-		}
-		if(menuIndex == 10){
-			moreLevelsText.renderer.material.color = Color.blue;
-			moreLevels = true;
-		}else{
-			moreLevelsText.renderer.material.color = Color.white;
-			moreLevels = false;
+		if(mouseOverp == false){
+			if(menuIndex == 0){
+				levelElevenText.renderer.material.color = Color.blue;
+				levelEleven = true;
+			}else{
+				levelElevenText.renderer.material.color = Color.white;
+				levelEleven = false;
+			}
+			if(menuIndex == 1){
+				levelTwelveText.renderer.material.color = Color.blue;
+				levelTwelve = true;
+			}else{
+				levelTwelveText.renderer.material.color = Color.white;
+				levelTwelve = false;
+			}
+			if(menuIndex == 2){
+				levelThirteenText.renderer.material.color = Color.blue;
+				levelThirteen = true;
+			}else{
+				levelThirteenText.renderer.material.color = Color.white;
+				levelThirteen = false;
+			}
+			if(menuIndex == 3){
+				levelFourteenText.renderer.material.color = Color.blue;
+				levelFourteen = true;
+			}else{
+				levelFourteenText.renderer.material.color = Color.white;
+				levelFourteen = false;
+			}
+			if(menuIndex == 4){
+				levelFifteenText.renderer.material.color = Color.blue;
+				levelFifteen = true;
+			}else{
+				levelFifteenText.renderer.material.color = Color.white;
+				levelFifteen = false;
+			}
+			if(menuIndex == 5){
+				levelSixteenText.renderer.material.color = Color.blue;
+				levelSixteen = true;
+			}else{
+				levelSixteenText.renderer.material.color = Color.white;
+				levelSixteen = false;
+			}
+			if(menuIndex == 6){
+				levelSeventeenText.renderer.material.color = Color.blue;
+				levelSeventeen = true;
+			}else{
+				levelSeventeenText.renderer.material.color = Color.white;
+				levelSeventeen = false;
+			}
+			if(menuIndex == 7){
+				levelEighteenText.renderer.material.color = Color.blue;
+				levelEighteen = true;
+			}else{
+				levelEighteenText.renderer.material.color = Color.white;
+				levelEighteen = false;
+			}
+			if(menuIndex == 8){
+				levelNineteenText.renderer.material.color = Color.blue;
+				levelNineteen = true;
+			}else{
+				levelNineteenText.renderer.material.color = Color.white;
+				levelNineteen = false;
+			}
+			if(menuIndex == 9){
+				levelTwentyText.renderer.material.color = Color.blue;
+				levelTwenty = true;
+			}else{
+				levelTwentyText.renderer.material.color = Color.white;
+				levelTwenty = false;
+			}
+			if(menuIndex == 10){
+				moreLevelsText.renderer.material.color = Color.blue;
+				moreLevels = true;
+			}else{
+				moreLevelsText.renderer.material.color = Color.white;
+				moreLevels = false;
+			}
 		}
 		
 		// If the user hits Enter, Spacebar, or Keypad Enter, load the currently selected menu component
