@@ -60,7 +60,9 @@
      <Compile Include="Assets\Standard Assets\Scripts\Menus\levelSelect2Keyboard.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\levelSelectKeyboard.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\mainMenu.js" />
+     <Compile Include="Assets\Standard Assets\Scripts\Menus\mainMenuKeyboard.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\pauseScript.js" />
+     <Compile Include="Assets\Standard Assets\Scripts\Menus\shopMenu.js" />
      <Compile Include="Assets\Standard Assets\Scripts\MouseOrbit.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Movement_Gravity.js" />
      <Compile Include="Assets\Standard Assets\Scripts\SmoothFollow.js" />

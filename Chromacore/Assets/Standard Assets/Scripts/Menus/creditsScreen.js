@@ -11,6 +11,8 @@ var cheyenne = false;
 var casper = false;
 var joshua = false;
 var fmod = false;
+var kenny = false;
+var soomla = false;
 var mainCamera : GameObject;
 
 var defaultURL = "https://www.facebook.com/incendiaryindustries";
@@ -47,11 +49,15 @@ function OnMouseUp(){
 	}else if(cheyenne){
 		Application.OpenURL("https://www.behance.net/gallery/Portfolio/15502353");
 	}else if(casper){
-		Application.OpenURL(defaultURL);
+		Application.OpenURL("http://www.northeastern.edu/camd/artdesign/people/casper-harteveld/");
 	}else if(joshua){
-		Application.OpenURL(defaultURL);
+		Application.OpenURL("http://www.linkedin.com/pub/joshua-gross/1/a42/443");
 	}else if(fmod){
 		Application.OpenURL("http://www.fmod.org/");
+	}else if(kenny){
+		Application.OpenURL("http://kenney.itch.io/kenney-donation");
+	}else if(soomla){
+		Application.OpenURL("http://project.soom.la/");
 	}
 }
 
