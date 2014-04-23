@@ -49,6 +49,10 @@
      <Compile Include="Assets\Editor\BuildStreamedSceneAssetBundle.cs" />
      <Compile Include="Assets\Editor\FMODEventEmitterInspector.cs" />
      <Compile Include="Assets\Editor\FMODEventInspector.cs" />
+     <Compile Include="Assets\Soomla\Editor\SoomlaPostBuild.cs" />
+     <Compile Include="Assets\Soomla\Editor\SoomlaSettingsEditor.cs" />
+     <Compile Include="Assets\Soomla\Editor\android\ManifestTools.cs" />
+     <Compile Include="Assets\Soomla\Editor\android\SoomlaAndroidUtil.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Editor\Camera\tk2dCameraAnchorEditor.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Editor\Camera\tk2dCameraEditor.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Editor\Fonts\tk2dFontBuilder.cs" />
