@@ -43,8 +43,9 @@ public class ChromacoreStore : MonoBehaviour {
 			#if UNITY_ANDROID && !UNITY_EDITOR
 			StoreController.StopIabServiceInBg();
 			#endif
-			Destroy(mainCamera);
 			GameObject.Destroy(this);
+			Destroy(instance);
+			Destroy(mainCamera);
 			Application.LoadLevel("MainMenu");
 		}
 
