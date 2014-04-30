@@ -26,14 +26,14 @@ public class CreateBackgrounds : MonoBehaviour {
 		if (instantiationDoneP == false){
 			for (int i = 0; i < numBackgrounds; i++){
 				GameObject temp = Instantiate(background_bw, new Vector3(startVector.x + (i * 31.8278f), startVector.y, startVector.z), Quaternion.identity) as GameObject;
-				temp.name = "up_Background" + (i + startCount);
+				temp.name = "below_Background" + (i + startCount);
 				temp.transform.parent = parentBackground.transform;
 			}
 		}
 		if (instantiationDoneP == false){
 			for (int i = 0; i < numBackgrounds; i++){
-				GameObject temp = Instantiate(background_color, new Vector3(startVector.x + (i * 31.8278f), startVector.y, startVector.z), Quaternion.identity) as GameObject;
-				temp.name = "up_Background" + (i + startCount) + "_color";
+				GameObject temp = Instantiate(background_color, new Vector3(startVector.x + (i * 31.8278f), startVector.y, startVector.z + 0.3f), Quaternion.identity) as GameObject;
+				temp.name = "below_Background" + (i + startCount) + "_color";
 				temp.transform.parent = parentBackground.transform;
 			}
 			instantiationDoneP = true;

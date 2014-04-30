@@ -73,7 +73,7 @@ public class Teli_Animation : MonoBehaviour {
 
 		mainCamera = GameObject.FindObjectOfType<Camera>() as Camera;
 
-		if(Application.loadedLevelName == "Level12"){
+		if(Application.loadedLevelName == "Level12" || Application.loadedLevelName == "Level17"){
 			levelthresholdY = -15;
 		}
 
