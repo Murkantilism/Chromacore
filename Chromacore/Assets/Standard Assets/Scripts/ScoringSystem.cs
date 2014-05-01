@@ -31,6 +31,12 @@ public class ScoringSystem : MonoBehaviour {
 	// Concatonate the number of Notes seen & collected into 1 string
 	// and display the string with the GUI Text object.
 	void ScoreString(){
+		// If the number collected surpasses the number seen (which can
+		// happen sometimes when detection bugs) set them equal to eachother.
+		if(int.Parse(_numCollected) > int.Parse(_numSeen)){
+			_numCollected = _numSeen;
+		}
+
 		guiText.text = _numCollected + " / " + _numSeen;
 	}
 	
