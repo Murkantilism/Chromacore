@@ -1,16 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Soomla\Scripts\ChromacoreEventHandler1.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\shopMenu.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Menus\ChromacoreStoreAssets.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\shopMenu.js" Line="38" Column="3" />
-      <File FileName="Assets\Soomla\Scripts\ChromacoreStoreAssets.cs" Line="4" Column="1" />
-      <File FileName="Assets\Soomla\Scripts\ChromacoreStore.cs" Line="21" Column="3" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\shopMenu.js" Line="59" Column="51" />
+      <File FileName="Assets\Soomla\Scripts\ChromacoreStoreAssets.cs" Line="1" Column="1" />
+      <File FileName="Assets\Soomla\Scripts\ChromacoreStore.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\ChromacoreLocalStoreInfo.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\StoreController.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Pause.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\EndOfLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Soomla\Scripts\ChromacoreEventHandler1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Soomla\Scripts\ChromacoreEventHandler.cs" Line="52" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

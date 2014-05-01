@@ -30,6 +30,8 @@ public class Pickup : MonoBehaviour {
 		noteAnimation = GetComponent<tk2dSpriteAnimator>();
 		// Get the list of possible animations
 		listOfClips = noteAnimation.Library.clips;
+
+		particleEffect = GameObject.Find("NotePickupParticleEffect");
 		
 		AssignAnimation();
 	}
