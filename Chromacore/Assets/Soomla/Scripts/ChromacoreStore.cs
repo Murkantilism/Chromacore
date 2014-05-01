@@ -2,7 +2,7 @@
 using System.Collections;
 using Soomla;
 
-public class ChromacoreStore : MonoBehaviour {
+public class ChromacoreStore : StoreEvents {
 	private static ChromacoreStore instance = null;
 
 	private static ChromacoreEventHandler handler;
@@ -54,10 +54,5 @@ public class ChromacoreStore : MonoBehaviour {
 			StoreController.StartIabServiceInBg();
 			#endif
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

@@ -49,9 +49,12 @@
      <Compile Include="Assets\DownloadObbExample.cs" />
      <Compile Include="Assets\Soomla\Scripts\AndroidJNIHandler.cs" />
      <Compile Include="Assets\Soomla\Scripts\ChromacoreEventHandler.cs" />
+     <Compile Include="Assets\Soomla\Scripts\ChromacoreIStoreAssets.cs" />
      <Compile Include="Assets\Soomla\Scripts\ChromacoreLocalStoreInfo.cs" />
      <Compile Include="Assets\Soomla\Scripts\ChromacoreStore.cs" />
      <Compile Include="Assets\Soomla\Scripts\ChromacoreStoreAssets.cs" />
+     <Compile Include="Assets\Soomla\Scripts\HighwayController.cs" />
+     <Compile Include="Assets\Soomla\Scripts\HighwayEvents.cs" />
      <Compile Include="Assets\Soomla\Scripts\IOS_ErrorCodes.cs" />
      <Compile Include="Assets\Soomla\Scripts\IStoreAssets.cs" />
      <Compile Include="Assets\Soomla\Scripts\JSONObject.cs" />

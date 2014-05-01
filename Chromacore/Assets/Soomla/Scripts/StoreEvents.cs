@@ -148,6 +148,10 @@ namespace Soomla {
 
 			string[] marketItemsChanges = Regex.Split(message, "#SOOM#");
 			foreach (string mic in marketItemsChanges) {
+				if (string.IsNullOrEmpty(mic.Trim())) {
+					continue;
+				}
+
 				JSONObject micJSON = new JSONObject(mic);
 				string productId = micJSON["productId"].str;
 				string marketPrice = micJSON["market_price"].str;

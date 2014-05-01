@@ -8,7 +8,7 @@ using System.Reflection;
 [CustomEditor(typeof(SoomSettings))]
 public class SoomlaSettingsEditor : Editor
 {
-	
+
     bool showAndroidSettings = (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android);
     bool showIOSSettings = (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iPhone);
 
@@ -99,7 +99,7 @@ public class SoomlaSettingsEditor : Editor
 					msg = "Your defined keystore doesn't exist! You'll need to create a debug keystore or point to your keystore in 'Publishing Settings' from 'File -> Build Settings -> Player Settings...'";
 					break;
 				}
-				
+
 				EditorGUILayout.HelpBox(msg, MessageType.Error);
 			}
 		}
@@ -109,7 +109,7 @@ public class SoomlaSettingsEditor : Editor
     private void AboutGUI()
     {
         EditorGUILayout.HelpBox("SOOMLA SDK Info", MessageType.None);
-		SelectableLabelField(frameworkVersion, "1.3.0");
+		SelectableLabelField(frameworkVersion, "1.4.3");
 		SelectableLabelField(buildVersion, "1");
         EditorGUILayout.Space();
     }

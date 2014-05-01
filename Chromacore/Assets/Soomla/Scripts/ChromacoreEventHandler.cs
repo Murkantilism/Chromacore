@@ -1,9 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Soomla;
+using UnityEngine;
 
-public class ChromacoreEventHandler
+public class ChromacoreEventHandler : MonoBehaviour
 {
+	bool skullKidPurchasedp = false;
+	bool scarfPurchasedp = false;
+
+	GameObject shopMenu;
+
+	void Start(){
+		shopMenu = GameObject.Find("Shop Text");
+	}
 	
 	public ChromacoreEventHandler ()
 	{
@@ -31,7 +40,16 @@ public class ChromacoreEventHandler
 	}
 	
 	public void onMarketPurchase(PurchasableVirtualItem pvi, string purchaseToken) {
-		
+		if(pvi.ItemId == "skull_kid_skin"){
+			skullKidPurchasedp = true;
+		}
+
+		if(pvi.ItemId == "scarf_skin"){
+			scarfPurchasedp = true;
+		}
+
+		shopMenu.SendMessage("skullKid_skinBought", skullKidPurchasedp);
+		shopMenu.SendMessage("scarf_skinBought", scarfPurchasedp);
 	}
 	
 	public void onMarketRefund(PurchasableVirtualItem pvi) {

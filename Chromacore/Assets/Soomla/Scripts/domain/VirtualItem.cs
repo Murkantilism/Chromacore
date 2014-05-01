@@ -15,6 +15,7 @@
  */
 using UnityEngine;
 using System.Runtime.InteropServices;
+using System;
 
 namespace Soomla
 {
@@ -159,7 +160,7 @@ namespace Soomla
 			using(AndroidJavaClass jniStoreAssets = new AndroidJavaClass("com.soomla.unity.StoreAssets")) {
 				jniStoreAssets.CallStatic("save", type, viJSON);
 			}
-			AndroidJNI.PopLocalFrame(System.IntPtr.Zero);
+			AndroidJNI.PopLocalFrame(IntPtr.Zero);
 			#endif
 		}
 	}
