@@ -6,7 +6,8 @@ using System.Collections;
 public class Tutorial_Text : MonoBehaviour {
 	public TextMesh tutorialTextJump;
 	public TextMesh tutorialTextPunch;
-	public TextMesh tutorialTextPause;
+	public TextMesh tutorialTextPause_Enjoy;
+	public TextMesh tutorialTextNote_MissedNotes;
 	public TextMesh tutorialTextNote_Music;
 	public TextMesh tutorialTextNote_Background;
 
@@ -15,9 +16,10 @@ public class Tutorial_Text : MonoBehaviour {
 		// Determine Platform at compile time
 
 		#if UNITY_STANDALONE
-		tutorialTextJump.text = "Press 'space' to jump";
+		tutorialTextJump.text = "Press space to jump";
 		tutorialTextPunch.text = "Press 'A' to punch";
-		tutorialTextPause.text = "Press 'ESC' to pause";
+		tutorialTextPause_Enjoy.text = "Press ESC to pause";
+		tutorialTextNote_MissedNotes.text = "Missed Notes play nothing";
 		tutorialTextNote_Music.text = "Notes will play part \n of the music track";
 		tutorialTextNote_Background.text = "Notes will also add \n color to background!";
 		#endif
@@ -25,9 +27,10 @@ public class Tutorial_Text : MonoBehaviour {
 		#if UNITY_IPHONE
 		tutorialTextJump.text = "Tap screen to Jump";
 		tutorialTextPunch.text = "Tap Punch button!";
-		tutorialTextPause.text = "Tap Pause button!";
+		tutorialTextPause_Enjoy.text = "Enjoy Chromacore!";
+		tutorialTextNote_MissedNotes.text = "Missed Notes play nothing";
 		tutorialTextNote_Music.text = "Notes will play \n part of music track";
-		tutorialTextNote_Background.text = "Notes will add \n color to background";
+		tutorialTextNote_Background.text = "Notes will also add \n color to background";
 		#endif
 
 		#if UNITY_ANDROID
@@ -36,16 +39,18 @@ public class Tutorial_Text : MonoBehaviour {
 			if ((Input.GetJoystickNames().Length > 0)){
 				tutorialTextJump.text = "Press A to jump";
 				tutorialTextPunch.text = "Press X to punch";
-				tutorialTextPause.text = "Press B to pause";
+				tutorialTextPause_Enjoy.text = "Press B to pause";
+				tutorialTextNote_MissedNotes.text = "Missed Notes play nothing";
 				tutorialTextNote_Music.text = "Notes will play \n part of music track";
-				tutorialTextNote_Background.text = "Notes will add \n color to background";
+				tutorialTextNote_Background.text = "Notes will also add \n color to background";
 			// Otherwise assume it's a touchscreen
 			}else{
 				tutorialTextJump.text = "Tap screen to jump";
 				tutorialTextPunch.text = "Tap Punch button!";
-				tutorialTextPause.text = "Tap Pause button!";
+				tutorialTextPause_Enjoy.text = "Enjoy Chromacore!";
+				tutorialTextNote_MissedNotes.text = "Missed Notes play nothing";
 				tutorialTextNote_Music.text = "Notes will play \n part of music track";
-				tutorialTextNote_Background.text = "Notes will add \n color to background";
+				tutorialTextNote_Background.text = "Notes will also add \n color to background";
 			}
 		}catch(Exception e){
 			Debug.Log(e.ToString());

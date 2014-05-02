@@ -3,8 +3,10 @@
 // Responsible for movement, gravity
 class Movement_Gravity extends MonoBehaviour{
 	var speed : float = 6.0;
-	var jumpSpeed : float = 8.0;
-	var gravity : float = 20.0;
+	var jumpSpeed : float = 7.5; // NOTE: These values are superseded by
+	var gravity : float = 14.0;  // the values set in the inspector!!!!
+	var extraJump : float = 5.0; // Used to give jump extra boost if held
+	var moveDirectionCap : float = 9.0;
 	
 	private var moveDirection : Vector3 = Vector3.zero;
 
@@ -24,7 +26,6 @@ class Movement_Gravity extends MonoBehaviour{
 		// Set dead boolean to the boolean value passed to it by 
 		// either Reset() or ObstalceDeath() methods
 		deadP = bool;
-		
 	}
 	
 	// Used to recieve message from Teli_Animation.cs
@@ -40,7 +41,9 @@ class Movement_Gravity extends MonoBehaviour{
 	// Update is called once every frame
 	function Update() {
 		var controller : CharacterController = GetComponent(CharacterController);
+		
 		if (controller.isGrounded) {
+			
 			// We are grounded, so recalculate
 			// move direction directly from axes
 			moveDirection = Vector3(1, 0, 0);
@@ -48,7 +51,7 @@ class Movement_Gravity extends MonoBehaviour{
 			moveDirection *= speed;
 			
 			// Jump on input
-			if (Input.GetButton ("Jump") && punchingP == false && deadP == false) {
+			if (Input.GetButton("Jump") && punchingP == false && deadP == false) {
 				moveDirection.y = jumpSpeed;
 			}
 			
