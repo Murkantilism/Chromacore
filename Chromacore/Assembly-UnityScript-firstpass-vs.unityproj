@@ -54,6 +54,7 @@
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js" />
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <Compile Include="Assets\Standard Assets\Scripts\General Scripts\DragRigidbody.js" />
+     <Compile Include="Assets\Standard Assets\Scripts\Menus\UpdateChecker.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\creditsScreen.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\levelSelect.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Menus\levelSelect2.js" />

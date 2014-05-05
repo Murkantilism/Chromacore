@@ -1,16 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Tutorial_Text.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\UpdateChecker.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Menus\shopMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\UpdateChecker.js" Line="35" Column="13" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\UpdateChecker.js" Line="35" Column="13" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\shopMenu.js" Line="2" Column="1" />
       <File FileName="Assets\Soomla\Scripts\ChromacoreStoreAssets.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\ChromacoreStore.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\ChromacoreLocalStoreInfo.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\StoreController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Soomla\Scripts\ChromacoreEventHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\NoteAssigner.cs" Line="37" Column="59" />
-      <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="30" Column="46" />
+      <File FileName="Assets\Soomla\Scripts\ChromacoreEventHandler.cs" Line="4" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\mainMenu.js" Line="11" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
