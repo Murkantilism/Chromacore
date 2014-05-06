@@ -60,6 +60,10 @@ public class Teli_Animation : MonoBehaviour {
 	// Used to offset GUI buttons
 	private RectOffset rctOff;
 
+	tk2dSpriteAnimationClip repspawnClip;
+
+	GameObject pauseSystem_go;
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -72,6 +76,10 @@ public class Teli_Animation : MonoBehaviour {
 		guiSkin = Resources.Load("customBtnSkin") as GUISkin;
 
 		mainCamera = GameObject.FindObjectOfType<Camera>() as Camera;
+
+		pauseSystem_go = GameObject.Find("PauseSystem");
+
+		repspawnClip = anim.GetClipByName("Respawning");
 
 		if(Application.loadedLevelName == "Level12" || Application.loadedLevelName == "Level17"){
 			levelthresholdY = -15;
@@ -142,7 +150,7 @@ public class Teli_Animation : MonoBehaviour {
 		}
 		
 		// If none of the other animations are playing
-		if (!anim.IsPlaying("Run") & !anim.IsPlaying("Jump") & !anim.IsPlaying("Run_Glow") & !anim.IsPlaying("Punch") & !anim.IsPlaying("Death")  && deadp == false){
+		if (!anim.IsPlaying("Run") & !anim.IsPlaying("Jump") & !anim.IsPlaying("Run_Glow") & !anim.IsPlaying("Punch") & !anim.IsPlaying("Death") & !anim.IsPlaying("Respawning") && deadp == false){
 			// Loop running animation
 			anim.Play("Run");
 		}
@@ -150,7 +158,7 @@ public class Teli_Animation : MonoBehaviour {
 		// If the character is falling
 		if (teliCharacter.velocity.y < fallAnimVel){
 			// And the falling animation isn't already playing
-			if (!anim.IsPlaying("Fall")){
+			if (!anim.IsPlaying("Fall") & !anim.IsPlaying("Respawning")){
 				anim.Play("Fall");
 				//SendMessageUpwards("fallingDeath", true); //FIXME (fixed): Jettison bug here <---
 			}
@@ -234,7 +242,7 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// Reset Teli's position, the background track, and respawn Notes
 	void Reset(){
-		Debug.Log(resetp);
+		//Debug.Log(resetp);
 		if (resetp == true){
 			Debug.Log("RESET");
 			// Send a message to restart Teli's movement
@@ -258,8 +266,24 @@ public class Teli_Animation : MonoBehaviour {
 			for(int i = 0; i < Notes.Length; i++){
 				Notes[i].renderer.enabled = true;
 			}
+
 			deadp = false;
 			resetp = false;
+
+			Debug.Log("We got here");
+
+			// Invoke unpause ahead of time
+			//pauseSystem_go.SendMessage("Unpause");
+
+			// Pause immediately after repspawning
+			//pauseSystem_go.SendMessage("TriggerPause", true);
+
+			Debug.Log("And got here");
+
+			// Trigger fade-in fade-out animation
+			anim.Play("Respawning");
+
+			Debug.Log("Here too");
 		}
 	}
 	
