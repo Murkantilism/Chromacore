@@ -64,6 +64,8 @@ public class Teli_Animation : MonoBehaviour {
 
 	GameObject pauseSystem_go;
 
+	GameObject exclamationPoint;
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -80,6 +82,10 @@ public class Teli_Animation : MonoBehaviour {
 		pauseSystem_go = GameObject.Find("PauseSystem");
 
 		repspawnClip = anim.GetClipByName("Respawning");
+
+		exclamationPoint = GameObject.Find("exclamationPoint");
+
+		exclamationPoint.renderer.enabled = false;
 
 		if(Application.loadedLevelName == "Level12" || Application.loadedLevelName == "Level17"){
 			levelthresholdY = -15;
@@ -223,6 +229,9 @@ public class Teli_Animation : MonoBehaviour {
 
 				// If the death animation isn't already playing
 				if(!anim.IsPlaying("Death")){
+					audio.Play();
+					exclamationPoint.renderer.enabled = true;
+
 					// Play the death animation
 					anim.Play("Death");
 					SendMessageUpwards("death", true);
@@ -245,6 +254,9 @@ public class Teli_Animation : MonoBehaviour {
 		//Debug.Log(resetp);
 		if (resetp == true){
 			Debug.Log("RESET");
+
+			// Disable exclamation point
+			exclamationPoint.renderer.enabled = false;
 			// Send a message to restart Teli's movement
 			SendMessageUpwards("death", false);
 			// Send a message to restart Teli's movement
@@ -306,6 +318,9 @@ public class Teli_Animation : MonoBehaviour {
 
 			// And the death animation isn't already playing
 			if(!anim.IsPlaying("Death")){
+				audio.Play();
+				exclamationPoint.renderer.enabled = true;
+
 				// Play the death animation
 				anim.Play("Death");
 				// Send a message to stop Teli's movement
