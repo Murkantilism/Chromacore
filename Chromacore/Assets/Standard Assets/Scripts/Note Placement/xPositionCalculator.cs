@@ -67,12 +67,12 @@ public class xPositionCalculator : MonoBehaviour {
 	//        : (Test Note X Pos - Teli's Starting X Pos) / Time to Note
 	float calcVelocity(){
 		if (Application.loadedLevelName == "LevelFour"){
-			testNoteXPOS = 18.46568f;
-			timeToTestNote = 14.66f;
+			//testNoteXPOS = 18.46568f;
+			//timeToTestNote = 14.66f;
 			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
 		}else if (Application.loadedLevelName == "LevelFive"){
-			testNoteXPOS = 62.75334f;
-			timeToTestNote = 23.90f;
+			//testNoteXPOS = 62.75334f;
+			//timeToTestNote = 23.90f;
 			return ((testNoteXPOS - teliStartXPOS) / timeToTestNote);
 		}else if (Application.loadedLevelName == "LevelSix"){
 			testNoteXPOS = -21.05437f;
@@ -104,7 +104,7 @@ public class xPositionCalculator : MonoBehaviour {
 			// To identify the current level, we subtract 1 from the Application level count
 			if (Application.isEditor){
 				//EDITME
-				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level1_timestamps.txt");
+				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level5_timestamps.txt");
 			}//else{
 			//	ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
 			//}

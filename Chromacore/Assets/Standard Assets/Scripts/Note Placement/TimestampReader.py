@@ -9,9 +9,9 @@ import os, sys
 
 def readTimestamps():
 	# Open or create the timestamp text file
-	myTimestamps = open("level1_timestamps.txt", "w")
+	myTimestamps = open("level5_timestamps.txt", "w")
 	
-	mypath = "F:\\Classes\\Chromacore\\FL Studio Work\\tutorial\\Level1_pickupTracks"
+	mypath = "F:\\Classes\\Chromacore\\FL Studio Work\\happ piano mau5\\Level5_pickupTracks"
 	myFiles = listdir(mypath)
 	#onlyFiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 	

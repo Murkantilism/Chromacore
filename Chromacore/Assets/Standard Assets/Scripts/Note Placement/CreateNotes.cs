@@ -20,7 +20,7 @@ public class CreateNotes : MonoBehaviour {
 		if (instantiationDoneP == false){
 			for (int i = 0; i < numNotes; i++){
 				GameObject temp = Instantiate(note, new Vector3(0, 5, -10), Quaternion.identity) as GameObject;
-				temp.name = "Note" + (i + startCount);
+				temp.name = "" + (i + startCount);
 				temp.transform.parent = parentNote.transform;
 			}
 			instantiationDoneP = true;
