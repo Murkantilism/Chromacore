@@ -228,21 +228,28 @@ public class Teli_Animation : MonoBehaviour {
 			}else{
 
 				// If the death animation isn't already playing
-				if(!anim.IsPlaying("Death")){
-					audio.Play();
+				if(!anim.IsPlaying("Death") && deadp == true){
 					exclamationPoint.renderer.enabled = true;
 
 					// Play the death animation
 					anim.Play("Death");
 					SendMessageUpwards("death", true);
+
+
+					deadp = false;
 				}
+			}
+
+			if(!audio.isPlaying){
+				audio.Play();
 			}
 
 			// Call reset function after 2 seconds
 			Invoke("Reset", 2);
+
 		}
 	}
-	
+
 	// Recieve the checkpoint timestamp from ObstacleDeath.cs and set
 	// checkpoint timestamp variable to the latest checkpoint's timestamp
 	void getCheckpoint(float timestamp){
@@ -254,7 +261,7 @@ public class Teli_Animation : MonoBehaviour {
 		//Debug.Log(resetp);
 		if (resetp == true){
 			Debug.Log("RESET");
-
+			
 			// Disable exclamation point
 			exclamationPoint.renderer.enabled = false;
 			// Send a message to restart Teli's movement
