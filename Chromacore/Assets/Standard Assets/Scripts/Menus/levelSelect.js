@@ -79,6 +79,8 @@ public class levelSelect extends MonoBehaviour {
 	}
 
 	function OnGUI() {
+		GUI.backgroundColor = Color.magenta;
+		
 		var buttonStyle = new GUIStyle("button");
 		buttonStyle.fontSize = 25;
 		

@@ -2,8 +2,11 @@
 using System.Collections;
 
 public class ObstacleCollision : MonoBehaviour {
-	private tk2dSpriteAnimator anim;
-	
+	private tk2dSpriteAnimator anim; // Animator for this obstacle
+
+	// Get Teli Animation GO
+	public GameObject teliAnimGO;
+
 	// Get the Teli animation object
 	public tk2dSpriteAnimator Teli;
 
@@ -15,6 +18,10 @@ public class ObstacleCollision : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		teliAnimGO = GameObject.Find("AnimatedSprite");
+
+		Teli = teliAnimGO.GetComponent<tk2dSpriteAnimator>();
+
 		anim = GetComponent<tk2dSpriteAnimator>();
 
 		// Find the pow GO
@@ -81,7 +88,7 @@ public class ObstacleCollision : MonoBehaviour {
 		// Move the pow text to this location
 		powTextGO.transform.position = gameObject.transform.position;
 		// Move it up and over 5X, 5Y so it's visisble near obstalce
-		powTextGO.transform.position += new Vector3(5, 5, 0);
+		powTextGO.transform.position += new Vector3(5, 6, 0);
 
 		// Incrememnt pow counter
 		powCnt++;

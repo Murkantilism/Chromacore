@@ -62,6 +62,8 @@ function OnMouseUp(){
 }
 
 function OnGUI() {
+	GUI.backgroundColor = Color.magenta;
+	
 	var buttonStyle = new GUIStyle("button");
 	buttonStyle.fontSize = 25;
 	

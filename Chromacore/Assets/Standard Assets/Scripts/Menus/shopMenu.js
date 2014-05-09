@@ -72,6 +72,8 @@ public class shopMenu extends MonoBehaviour {
 	}
 
 	function OnGUI() {
+		GUI.backgroundColor = Color.magenta;
+	
 		var buttonStyle = new GUIStyle("button");
 		buttonStyle.fontSize = 25;
 		
