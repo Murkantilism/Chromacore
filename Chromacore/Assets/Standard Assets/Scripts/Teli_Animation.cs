@@ -11,6 +11,18 @@ public class Teli_Animation : MonoBehaviour {
 	// The main character's Charcter Controller	
 	public CharacterController teliCharacter;
 
+	// Player Character Animation GameObject (used to scale)
+	GameObject pcAnimationGO;
+
+	bool scarfUnlockedp = false;
+
+	bool skullKidUnlockedp = false;
+
+	bool scarfEquippedp = false;
+
+	bool skullKidEquippedp = false;
+
+
 	public Camera mainCamera;
 	
 	// Value of character's Y velocity to begin falling animation at
@@ -86,6 +98,21 @@ public class Teli_Animation : MonoBehaviour {
 		exclamationPoint = GameObject.Find("exclamationPoint");
 
 		exclamationPoint.renderer.enabled = false;
+
+		pcAnimationGO = GameObject.Find("AnimatedSprite");
+
+
+		// Depending on which ones are unlocked and equipped, change
+		// player character's sprite animation library
+		if(scarfUnlockedp && scarfEquippedp){
+			anim.Library = Resources.Load("Scarf_Animation", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
+			pcAnimationGO.transform.localScale = new Vector3(0.6f, 0.6f, 1);
+		}
+
+		//if(skullKidUnlockedp && skullKidEquippedp){
+			anim.Library = Resources.Load("Skull_Kid_Animation", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
+			pcAnimationGO.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+		//}
 
 		if(Application.loadedLevelName == "Level12" || Application.loadedLevelName == "Level17"){
 			levelthresholdY = -15;
