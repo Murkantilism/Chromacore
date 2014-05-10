@@ -10,7 +10,7 @@
       <File FileName="Assets\Soomla\Scripts\StoreController.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\ChromacoreEventHandler.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Scripts\Tutorial_Text.cs" Line="5" Column="50" />
-      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="245" Column="25" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="243" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
