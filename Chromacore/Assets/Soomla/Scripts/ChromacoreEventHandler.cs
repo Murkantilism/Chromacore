@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Soomla;
 using UnityEngine;
+using System.IO;
 
 public class ChromacoreEventHandler : MonoBehaviour
 {
@@ -42,10 +43,11 @@ public class ChromacoreEventHandler : MonoBehaviour
 	public void onMarketPurchase(PurchasableVirtualItem pvi, string purchaseToken) {
 		if(pvi.ItemId == "skull_kid_skin"){
 			skullKidPurchasedp = true;
-		}
-
-		if(pvi.ItemId == "scarf_skin"){
+		}else if(pvi.ItemId == "scarf_skin"){
 			scarfPurchasedp = true;
+		}else{
+			skullKidPurchasedp = false;
+			scarfPurchasedp = false;
 		}
 
 		shopMenu.SendMessage("skullKid_skinBought", skullKidPurchasedp);

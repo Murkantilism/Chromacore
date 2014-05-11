@@ -1,14 +1,27 @@
 ﻿#pragma strict
+import System;
+import System.IO;
+
 public class shopMenu extends MonoBehaviour {
+	var mainCamera : GameObject;
 	
+	var chromacoreStore : GameObject;
+
 	var skullKidButtonp = false;
 	var scarfButtonp = false;
 	var donateButtonp = false;
 	
-	var mainCamera : GameObject;
+	var scarfUnlockedp = false;
+	var skullKidUnlockedp = false;
 	
-	var chromacoreStore : GameObject;
+	var skullKidEquipButtonp = false;
+	var scarfEquipButtonp = false;
+	var teliEquipButtonp = false;
 	
+	var scarfEquippedp = false;
+	var skullKidEquippedp = false;
+	var teliEquippedp = true;
+
 	var unlockedSprite_SkullKid : GameObject;
 	
 	var unlockedSprite_Scarf : GameObject;
@@ -16,11 +29,39 @@ public class shopMenu extends MonoBehaviour {
 	var lockedSprite_SkullKid : GameObject;
 	
 	var lockedSprite_Scarf : GameObject;
+	
+	var Teli_Equipped_text_GO : GameObject;
+	var Teli_Equipped_text : TextMesh;
+	
+	var Scarf_Equipped_text_GO : GameObject;
+	var Scarf_Equipped_text : TextMesh;
+	
+	var SkullKid_Equipped_text_GO : GameObject;
+	var SkullKid_Equipped_text : TextMesh;
+	
+	var skullKidPurchasedTxt = "skullKidPurchasedTxt.txt";
+	var scarfPurchasedTxt = "scarfPurchasedTxt.txt";
+
+	var skullKidEquippedTxt = "skullKidEquippedTxt.txt";
+	var scarfEquippedTxt = "scarfEquippedTxt.txt";
+	
+	var teliEquippedTxt = "teliEquippedTxt.txt";
 
 	function Start () {
 		mainCamera = GameObject.FindWithTag("MainCamera");
 		
 		chromacoreStore = GameObject.Find("ChromacoreStore");
+		
+		Teli_Equipped_text_GO = GameObject.Find("Teli_Equipped_text");
+		Teli_Equipped_text = Teli_Equipped_text_GO.GetComponent(TextMesh);
+		
+		Scarf_Equipped_text_GO = GameObject.Find("Scarf_Equipped_text");
+		Scarf_Equipped_text = Scarf_Equipped_text_GO.GetComponent(TextMesh);
+		Scarf_Equipped_text.renderer.enabled = false;
+		
+		SkullKid_Equipped_text_GO = GameObject.Find("SkullKid_Equipped_text");
+		SkullKid_Equipped_text = SkullKid_Equipped_text_GO.GetComponent(TextMesh);
+		SkullKid_Equipped_text.renderer.enabled = false;
 		
 		unlockedSprite_SkullKid = GameObject.Find("unlockedSprite_SkullKid");
 		
@@ -51,23 +92,199 @@ public class shopMenu extends MonoBehaviour {
 		}else if(donateButtonp){
 			Application.OpenURL("http://www.ccs.neu.edu/home/ozkaynak/donate.html");
 		}
-	}
-	
-	function skullKid_skinBought(boughtP : boolean){
-		if(boughtP == true){
-			unlockedSprite_SkullKid.renderer.enabled = true;
-			lockedSprite_SkullKid.renderer.enabled = false;
-		}else{
-			return;
+		
+		// If the skull kid equip button is clicked, and it's unlocked
+		if(skullKidEquipButtonp && skullKidUnlockedp == true){
+			// and it's not already equipped
+			if(SkullKid_Equipped_text.text == "Equip"){
+				// Equip it
+				SkullKid_Equipped_text.text = "Equipped";
+				skullKidEquippedp = true;
+				
+				// Write to text file that this skin has been equipped
+				var swSkullKid_equipped = File.CreateText(Application.persistentDataPath + "\\" + skullKidEquippedTxt);
+				swSkullKid_equipped.Write("true");
+				swSkullKid_equipped.Close();
+				
+				// Unequip other skins
+				scarfEquippedp = false;
+				teliEquippedp = false;
+				
+				// Set the text for other skins to be eligible for equip
+				Scarf_Equipped_text.text = "Equip";
+				Teli_Equipped_text.text = "Equip";
+				
+				// Write to text files that the other skins have been unequipped
+				WriteScarfEquippedFalse();
+				WriteTeliEquippedFalse();
+			}
+		// If the scarf equip button is clicked, and it's unlocked
+		}else if(scarfEquipButtonp && scarfUnlockedp == true){
+			// and it's not already equipped
+			if(Scarf_Equipped_text.text == "Equip"){
+				// Equip it
+				Scarf_Equipped_text.text = "Equipped";
+				scarfEquippedp = true;
+				
+				// Write to text file that this skin has been equipped
+				var swScarf_equipped = File.CreateText(Application.persistentDataPath + "\\" + scarfEquippedTxt);
+				swScarf_equipped.Write("true");
+				swScarf_equipped.Close();
+				
+				// Unequip other skins
+				skullKidEquippedp = false;
+				teliEquippedp = false;
+
+				// Set the text for other skins to be eligible for equip
+				SkullKid_Equipped_text.text = "Equip";
+				Teli_Equipped_text.text = "Equip";
+				
+				// Write to text files that the other skins have been unequipped
+				WriteSkullKidEquippedFalse();
+				WriteTeliEquippedFalse();
+			}
+		// If the Teli equip button is clicked (no need to check if it's unlocked)
+		}else if(teliEquipButtonp){
+			// and it's not already equipped
+			if(Teli_Equipped_text.text == "Equip"){
+				// Equip it
+				Teli_Equipped_text.text = "Equipped";
+				teliEquippedp = true;
+				
+				// Write to text file that this skin has been equipped
+				var swTeli_equipped = File.CreateText(Application.persistentDataPath + "\\" + teliEquippedTxt);
+				swTeli_equipped.Write("true");
+				swTeli_equipped.Close();
+				
+				// Unequip other skins
+				skullKidEquippedp = false;
+				scarfEquippedp = false;
+				
+				// Set the text for other skins to be eligible for equip
+				SkullKid_Equipped_text.text = "Equip";
+				Scarf_Equipped_text.text = "Equip";
+				
+				// Write to text files that the other skins have been unequipped
+				WriteSkullKidEquippedFalse();
+				WriteScarfEquippedFalse();
+			}
+			
 		}
 	}
 	
+	// Helper functions for writing to text files based on which skin is equipped
+	function WriteTeliEquippedFalse(){
+		var swTeli_equipped_f = File.CreateText(Application.persistentDataPath + "\\" + teliEquippedTxt);
+		swTeli_equipped_f.Write("false");
+		swTeli_equipped_f.Close();
+	}
+	
+	function WriteScarfEquippedFalse(){
+		var swScarf_equipped_f = File.CreateText(Application.persistentDataPath + "\\" + scarfEquippedTxt);
+		swScarf_equipped_f.Write("false");
+		swScarf_equipped_f.Close();
+	}
+	
+	function WriteSkullKidEquippedFalse(){
+		var swSkullKid_equipped_f = File.CreateText(Application.persistentDataPath + "\\" + skullKidEquippedTxt);
+		swSkullKid_equipped_f.Write("false");
+		swSkullKid_equipped_f.Close();
+	}
+	
+	// If the skull kid skin has been bought (recieves message from ChromacoreEventHandler.cs)
+	function skullKid_skinBought(boughtP : boolean){
+		if(boughtP == true){ 
+			// Set boolean flag to true
+			skullKidUnlockedp = true;
+			// Show the "unlocked" sprite
+			unlockedSprite_SkullKid.renderer.enabled = true;
+			// Hide the "locked" sprite
+			lockedSprite_SkullKid.renderer.enabled = false;
+			// Show the "Equipped" text
+			SkullKid_Equipped_text.renderer.enabled = true;
+			// Equip skin on purchase
+			skullKidEquippedp = true;
+			
+			// Write to text file that skin has been unlocked
+			var swSkullKid = File.CreateText(Application.persistentDataPath + "\\" + skullKidPurchasedTxt);
+			swSkullKid.Write("true");
+			swSkullKid.Close();
+			
+			// Write to text file that this skin has been equipped
+			var swSkullKid_equipped = File.CreateText(Application.persistentDataPath + "\\" + skullKidEquippedTxt);
+			swSkullKid_equipped.Write("true");
+			swSkullKid_equipped.Close();
+			
+			// Unequip other skins
+			scarfEquippedp = false;
+			teliEquippedp = false;
+			// Set the text for other skins to be eligible for equip
+			Scarf_Equipped_text.text = "Equip";
+			Teli_Equipped_text.text = "Equip";
+			// Write to text files that the other skins have been unequipped
+			WriteScarfEquippedFalse();
+			WriteTeliEquippedFalse();
+		}else{
+			// Otherwise, set boolean flag to false, and write to text files 
+			// that this skin isn't unlocked or equipped
+			skullKidUnlockedp = false;
+			var swSkullKid_f = File.CreateText(Application.persistentDataPath + "\\" + skullKidPurchasedTxt);
+			swSkullKid_f.Write("false");
+			swSkullKid_f.Close();
+			
+			skullKidEquippedp = false;
+			var swSkullKid_equipped_f = File.CreateText(Application.persistentDataPath + "\\" + skullKidEquippedTxt);
+			swSkullKid_equipped_f.Write("false");
+			swSkullKid_equipped_f.Close();
+		}
+	}
+	
+	// If the scarf skin has been bought (recieves message from ChromacoreEventHandler.cs)
 	function scarf_skinBought(boughtP : boolean){
 		if(boughtP == true){
+			// Set boolean flag to true
+			scarfUnlockedp = true;
+			// Show the "unlocked" sprite
 			unlockedSprite_Scarf.renderer.enabled = true;
+			// Hide the "locked" sprite
 			lockedSprite_Scarf.renderer.enabled = false;
+			// Show the "Equipped" text
+			Scarf_Equipped_text.renderer.enabled = true;
+			// Equip skin on purchase
+			scarfEquippedp = true;
+			
+			// Write to text file that skin has been unlocked
+			var swScarf = File.CreateText(Application.persistentDataPath + "\\" + scarfPurchasedTxt);
+			swScarf.Write("true");
+			swScarf.Close();
+			
+			// Write to text file that this skin has been equipped
+			var swScarf_equipped = File.CreateText(Application.persistentDataPath + "\\" + scarfEquippedTxt);
+			swScarf_equipped.Write("true");
+			swScarf_equipped.Close();
+			
+			// Unequip other skins
+			skullKidEquippedp = false;
+			teliEquippedp = false;
+			// Set the text for other skins to be eligible for equip
+			SkullKid_Equipped_text.text = "Equip";
+			Teli_Equipped_text.text = "Equip";
+			// Write to text files that the other skins have been unequipped
+			WriteSkullKidEquippedFalse();
+			WriteTeliEquippedFalse();
 		}else{
-			return;
+			
+			// Otherwise, set boolean flag to false, and write to text files 
+			// that this skin isn't unlocked or equipped
+			scarfUnlockedp = false;
+			var swScarf_f = File.CreateText(Application.persistentDataPath + "\\" + scarfPurchasedTxt);
+			swScarf_f.Write("false");
+			swScarf_f.Close();
+			
+			scarfEquippedp = false;
+			var swScarf_equipped_f = File.CreateText(Application.persistentDataPath + "\\" + scarfEquippedTxt);
+			swScarf_equipped_f.Write("false");
+			swScarf_equipped_f.Close();
 		}
 	}
 

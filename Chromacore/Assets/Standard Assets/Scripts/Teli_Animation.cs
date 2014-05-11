@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.IO;
 
 [AddComponentMenu("2D Toolkit/Sprite/tk2dSpriteAnimator")]
 public class Teli_Animation : MonoBehaviour {
@@ -14,13 +16,15 @@ public class Teli_Animation : MonoBehaviour {
 	// Player Character Animation GameObject (used to scale)
 	GameObject pcAnimationGO;
 
-	bool scarfUnlockedp = false;
+	public bool scarfUnlockedp = false;
 
-	bool skullKidUnlockedp = false;
+	public bool skullKidUnlockedp = false;
 
-	bool scarfEquippedp = false;
+	public bool scarfEquippedp = false;
 
-	bool skullKidEquippedp = false;
+	public bool skullKidEquippedp = false;
+
+	public bool teliEquippedp = true;
 
 
 	public Camera mainCamera;
@@ -78,6 +82,14 @@ public class Teli_Animation : MonoBehaviour {
 
 	GameObject exclamationPoint;
 
+	string skullKidPurchasedTxt = "skullKidPurchasedTxt.txt";
+	string scarfPurchasedTxt = "scarfPurchasedTxt.txt";
+	
+	string skullKidEquippedTxt = "skullKidEquippedTxt.txt";
+	string scarfEquippedTxt = "scarfEquippedTxt.txt";
+	
+	string teliEquippedTxt = "teliEquippedTxt.txt";
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -101,18 +113,23 @@ public class Teli_Animation : MonoBehaviour {
 
 		pcAnimationGO = GameObject.Find("AnimatedSprite");
 
+		// Read all of the text files for cosmetic skins
+		ReadSkinsTextFiles();
 
-		// Depending on which ones are unlocked and equipped, change
-		// player character's sprite animation library
-		if(scarfUnlockedp && scarfEquippedp){
+		// Depending on which skins are unlocked and equipped, change
+		// player character's sprite animation library and resize transform
+		if(scarfUnlockedp && scarfEquippedp && teliEquippedp == false){
 			anim.Library = Resources.Load("Scarf_Animation", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
 			pcAnimationGO.transform.localScale = new Vector3(0.6f, 0.6f, 1);
-		}
-
-		//if(skullKidUnlockedp && skullKidEquippedp){
+		}else if(skullKidUnlockedp && skullKidEquippedp && teliEquippedp == false){
 			anim.Library = Resources.Load("Skull_Kid_Animation", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
 			pcAnimationGO.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-		//}
+			// Move the skull kid animation back in X direction slightly
+			pcAnimationGO.transform.localPosition = new Vector3(-1.525f, -1.22f, 0f);
+		}else{
+			anim.Library = Resources.Load("Teli_Animations", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
+			pcAnimationGO.transform.localScale = new Vector3(0.15f, 0.15f, 1);
+		}
 
 		if(Application.loadedLevelName == "Level12" || Application.loadedLevelName == "Level17"){
 			levelthresholdY = -15;
@@ -134,6 +151,99 @@ public class Teli_Animation : MonoBehaviour {
 		// seconds after game has begun.
 		InvokeRepeating("DeathAnimation", 3, 0.1f);
 		//DeathAnimation();
+	}
+
+	// Read the text files to find out which skins are unlocked and equipped
+	void ReadSkinsTextFiles(){
+
+		// Read skull kid text files
+		try{
+			// Create an instance of StreamReader to read text file
+			StreamReader srSkullKid = new StreamReader(Application.persistentDataPath + "\\" + skullKidPurchasedTxt);
+			string line = srSkullKid.ReadToEnd();
+
+			Debug.Log(line);
+
+			// If the text file reads true, set boolean flag to true for this skin
+			if(line == "true"){
+				skullKidUnlockedp = true;
+			}else{
+				skullKidUnlockedp = false;
+			}
+			
+		}catch(Exception e){
+			Debug.Log(e.ToString());
+		}
+
+		try{
+			// Create an instance of StreamReader to read text file
+			StreamReader srSkullKid_equipped = new StreamReader(Application.persistentDataPath + "\\" + skullKidEquippedTxt);
+			string line = srSkullKid_equipped.ReadToEnd();
+
+			// If the text file reads true, set boolean flag to true for this skin
+			if(line == "true"){
+				skullKidEquippedp = true;
+			}else{
+				skullKidEquippedp = false;
+			}
+			
+		}catch(Exception e){
+			Debug.Log(e.ToString());
+		}
+
+
+		// Read scarf text files
+		try{
+			// Create an instance of StreamReader to read text file
+			StreamReader srScarf = new StreamReader(Application.persistentDataPath + "\\" + scarfPurchasedTxt);
+			string line = srScarf.ReadToEnd();
+
+			// If the text file reads true, set boolean flag to true for this skin
+			if(line == "true"){
+				scarfUnlockedp = true;
+			}else{
+				scarfUnlockedp = false;
+			}
+			
+		}catch(Exception e){
+			Debug.Log(e.ToString());
+		}
+
+		try{
+			// Create an instance of StreamReader to read text file
+			StreamReader srScarf_equipped = new StreamReader(Application.persistentDataPath + "\\" + scarfEquippedTxt);
+			string line = srScarf_equipped.ReadToEnd();
+
+			// If the text file reads true, set boolean flag to true for this skin
+			if(line == "true"){
+				scarfEquippedp = true;
+			}else{
+				scarfEquippedp = false;
+			}
+			
+		}catch(Exception e){
+			Debug.Log(e.ToString());
+		}
+
+
+		// Read Teli text files
+		try{
+			// Create an instance of StreamReader to read text file
+			StreamReader srTeli_equipped = new StreamReader(Application.persistentDataPath + "\\" + teliEquippedTxt);
+			string line = srTeli_equipped.ReadToEnd();
+
+			// If the text file reads true, set boolean flag to true for this skin
+			if(line == "true"){
+				teliEquippedp = true;
+			}else{
+				teliEquippedp = false;
+			}
+			
+		}catch(Exception e){
+			Debug.Log(e.ToString());
+		}
+
+
 	}
 		
 	// Update is called once per frame
