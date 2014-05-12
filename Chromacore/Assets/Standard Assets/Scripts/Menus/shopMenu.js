@@ -22,13 +22,16 @@ public class shopMenu extends MonoBehaviour {
 	var skullKidEquippedp = false;
 	var teliEquippedp = true;
 
-	var unlockedSprite_SkullKid : GameObject;
-	
-	var unlockedSprite_Scarf : GameObject;
-	
 	var lockedSprite_SkullKid : GameObject;
+	var unlockedSprite_SkullKid : GameObject;
+	var equippedSprite_SkullKid : GameObject;
 	
 	var lockedSprite_Scarf : GameObject;
+	var unlockedSprite_Scarf : GameObject;
+	var equippedSprite_Scarf : GameObject;
+	
+	var unlockedSprite_Teli : GameObject;
+	var equippedSprite_Teli : GameObject;
 	
 	var Teli_Equipped_text_GO : GameObject;
 	var Teli_Equipped_text : TextMesh;
@@ -72,13 +75,16 @@ public class shopMenu extends MonoBehaviour {
 		SkullKid_Equipped_text = SkullKid_Equipped_text_GO.GetComponent(TextMesh);
 		//SkullKid_Equipped_text.renderer.enabled = false;
 		
-		unlockedSprite_SkullKid = GameObject.Find("unlockedSprite_SkullKid");
-		
-		unlockedSprite_Scarf = GameObject.Find("unlockedSprite_Scarf");
-		
 		lockedSprite_SkullKid = GameObject.Find("lockedSprite_SkullKid");
+		unlockedSprite_SkullKid = GameObject.Find("unlockedSprite_SkullKid");
+		equippedSprite_SkullKid = GameObject.Find("equippedSprite_SkullKid");
 		
 		lockedSprite_Scarf = GameObject.Find("lockedSprite_Scarf");
+		unlockedSprite_Scarf = GameObject.Find("unlockedSprite_Scarf");
+		equippedSprite_Scarf = GameObject.Find("equippedSprite_Scarf");
+		
+		unlockedSprite_Teli = GameObject.Find("unlockedSprite_Teli");
+		equippedSprite_Teli = GameObject.Find("equippedSprite_Teli");
 		
 		Debug_Text_GO = GameObject.Find("text_Debug");
 		Debug_Text = Debug_Text_GO.GetComponent(TextMesh);
@@ -138,6 +144,11 @@ public class shopMenu extends MonoBehaviour {
 				Scarf_Equipped_text.text = "Equip";
 				Teli_Equipped_text.text = "Equip";
 				
+				// Hide plain unlocked sprite
+				unlockedSprite_SkullKid.renderer.enabled = false;
+				// Show green equipped sprite
+				equippedSprite_SkullKid.renderer.enabled = true;
+				
 				// Write to text files that the other skins have been unequipped
 				WriteScarfEquippedFalse();
 				WriteTeliEquippedFalse();
@@ -163,6 +174,11 @@ public class shopMenu extends MonoBehaviour {
 				SkullKid_Equipped_text.text = "Equip";
 				Teli_Equipped_text.text = "Equip";
 				
+				// Hide plain unlocked sprite
+				unlockedSprite_Scarf.renderer.enabled = false;
+				// Show green equipped sprite
+				equippedSprite_Scarf.renderer.enabled = true;
+				
 				// Write to text files that the other skins have been unequipped
 				WriteSkullKidEquippedFalse();
 				WriteTeliEquippedFalse();
@@ -187,6 +203,11 @@ public class shopMenu extends MonoBehaviour {
 				// Set the text for other skins to be eligible for equip
 				SkullKid_Equipped_text.text = "Equip";
 				Scarf_Equipped_text.text = "Equip";
+				
+				// Hide plain unlocked sprite
+				unlockedSprite_Teli.renderer.enabled = false;
+				// Show green equipped sprite
+				equippedSprite_Teli.renderer.enabled = true;
 				
 				// Write to text files that the other skins have been unequipped
 				WriteSkullKidEquippedFalse();
@@ -225,16 +246,21 @@ public class shopMenu extends MonoBehaviour {
 			unlockedSprite_SkullKid.renderer.enabled = true;
 			// Hide the "locked" sprite
 			lockedSprite_SkullKid.renderer.enabled = false;
+			
+			// Set the text for this skin to be eligible to equip
+			SkullKid_Equipped_text.text = "Equip";
 			// Show the "Equipped" text
 			SkullKid_Equipped_text.renderer.enabled = true;
+			
 			// Equip skin on purchase
-			skullKidEquippedp = true;
+			//skullKidEquippedp = true;
 			
 			// Write to text file that skin has been unlocked
 			var swSkullKid = File.CreateText(Application.persistentDataPath + "\\" + skullKidPurchasedTxt);
 			swSkullKid.Write("true");
 			swSkullKid.Close();
 			
+			/*
 			// Write to text file that this skin has been equipped
 			var swSkullKid_equipped = File.CreateText(Application.persistentDataPath + "\\" + skullKidEquippedTxt);
 			swSkullKid_equipped.Write("true");
@@ -249,6 +275,7 @@ public class shopMenu extends MonoBehaviour {
 			// Write to text files that the other skins have been unequipped
 			WriteScarfEquippedFalse();
 			WriteTeliEquippedFalse();
+			*/
 		}else{
 			// Otherwise, set boolean flag to false, and write to text files 
 			// that this skin isn't unlocked or equipped
@@ -274,16 +301,21 @@ public class shopMenu extends MonoBehaviour {
 			unlockedSprite_Scarf.renderer.enabled = true;
 			// Hide the "locked" sprite
 			lockedSprite_Scarf.renderer.enabled = false;
+			
+			// Set the text for this skin to be eligible to equip
+			Scarf_Equipped_text.text = "Equip";
 			// Show the "Equipped" text
 			Scarf_Equipped_text.renderer.enabled = true;
+			
 			// Equip skin on purchase
-			scarfEquippedp = true;
+			//scarfEquippedp = true;
 			
 			// Write to text file that skin has been unlocked
 			var swScarf = File.CreateText(Application.persistentDataPath + "\\" + scarfPurchasedTxt);
 			swScarf.Write("true");
 			swScarf.Close();
 			
+			/*
 			// Write to text file that this skin has been equipped
 			var swScarf_equipped = File.CreateText(Application.persistentDataPath + "\\" + scarfEquippedTxt);
 			swScarf_equipped.Write("true");
@@ -298,6 +330,7 @@ public class shopMenu extends MonoBehaviour {
 			// Write to text files that the other skins have been unequipped
 			WriteSkullKidEquippedFalse();
 			WriteTeliEquippedFalse();
+			*/
 		}else{
 			
 			// Otherwise, set boolean flag to false, and write to text files 
