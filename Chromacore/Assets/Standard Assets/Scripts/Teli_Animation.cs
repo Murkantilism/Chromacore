@@ -90,6 +90,9 @@ public class Teli_Animation : MonoBehaviour {
 	
 	string teliEquippedTxt = "teliEquippedTxt.txt";
 
+	public GameObject Debug_Text_GO;
+	public GUIText Debug_Text;
+
 	// Use this for initialization
 	void Start () {
 		// This script must be attached to the sprite to work
@@ -112,6 +115,9 @@ public class Teli_Animation : MonoBehaviour {
 		exclamationPoint.renderer.enabled = false;
 
 		pcAnimationGO = GameObject.Find("AnimatedSprite");
+
+		Debug_Text_GO = GameObject.Find("text_Debug");
+		Debug_Text = Debug_Text_GO.GetComponent<GUIText>();
 
 		// Read all of the text files for cosmetic skins
 		ReadSkinsTextFiles();
@@ -248,6 +254,9 @@ public class Teli_Animation : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
+
+		Debug_Text.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp + "\n Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp + "\n Teli equipped : " + teliEquippedp;
+
 		// Jump Animation
 		if (Input.GetAxis("Jump") != 0){
 			// Only play the clip if it is not already playing.

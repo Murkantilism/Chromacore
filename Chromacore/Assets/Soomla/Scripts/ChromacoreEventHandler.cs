@@ -59,7 +59,17 @@ public class ChromacoreEventHandler : MonoBehaviour
 	}
 	
 	public void onItemPurchased(PurchasableVirtualItem pvi) {
+		if(pvi.ItemId == "skull_kid_skin"){
+			skullKidPurchasedp = true;
+		}else if(pvi.ItemId == "scarf_skin"){
+			scarfPurchasedp = true;
+		}else{
+			skullKidPurchasedp = false;
+			scarfPurchasedp = false;
+		}
 		
+		shopMenu.SendMessage("skullKid_skinBought", skullKidPurchasedp);
+		shopMenu.SendMessage("scarf_skinBought", scarfPurchasedp);
 	}
 	
 	public void onGoodEquipped(EquippableVG good) {

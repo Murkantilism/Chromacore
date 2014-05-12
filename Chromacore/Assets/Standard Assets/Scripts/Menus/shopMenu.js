@@ -39,6 +39,15 @@ public class shopMenu extends MonoBehaviour {
 	var SkullKid_Equipped_text_GO : GameObject;
 	var SkullKid_Equipped_text : TextMesh;
 	
+	var Debug_Text_GO : GameObject;
+	var Debug_Text : TextMesh;
+	var Debug_Text2_GO : GameObject;
+	var Debug_Text2 : TextMesh;
+	var Debug_Text3_GO : GameObject;
+	var Debug_Text3 : TextMesh;
+	var Debug_Text4_GO : GameObject;
+	var Debug_Text4 : TextMesh;
+	
 	var skullKidPurchasedTxt = "skullKidPurchasedTxt.txt";
 	var scarfPurchasedTxt = "scarfPurchasedTxt.txt";
 
@@ -57,11 +66,11 @@ public class shopMenu extends MonoBehaviour {
 		
 		Scarf_Equipped_text_GO = GameObject.Find("Scarf_Equipped_text");
 		Scarf_Equipped_text = Scarf_Equipped_text_GO.GetComponent(TextMesh);
-		Scarf_Equipped_text.renderer.enabled = false;
+		//Scarf_Equipped_text.renderer.enabled = false;
 		
 		SkullKid_Equipped_text_GO = GameObject.Find("SkullKid_Equipped_text");
 		SkullKid_Equipped_text = SkullKid_Equipped_text_GO.GetComponent(TextMesh);
-		SkullKid_Equipped_text.renderer.enabled = false;
+		//SkullKid_Equipped_text.renderer.enabled = false;
 		
 		unlockedSprite_SkullKid = GameObject.Find("unlockedSprite_SkullKid");
 		
@@ -70,6 +79,21 @@ public class shopMenu extends MonoBehaviour {
 		lockedSprite_SkullKid = GameObject.Find("lockedSprite_SkullKid");
 		
 		lockedSprite_Scarf = GameObject.Find("lockedSprite_Scarf");
+		
+		Debug_Text_GO = GameObject.Find("text_Debug");
+		Debug_Text = Debug_Text_GO.GetComponent(TextMesh);
+		Debug_Text2_GO = GameObject.Find("text_Debug2");
+		Debug_Text2 = Debug_Text2_GO.GetComponent(TextMesh);
+		Debug_Text3_GO = GameObject.Find("text_Debug3");
+		Debug_Text3 = Debug_Text3_GO.GetComponent(TextMesh);
+		Debug_Text4_GO = GameObject.Find("text_Debug4");
+		Debug_Text4 = Debug_Text4_GO.GetComponent(TextMesh);
+	}
+	
+	function Update(){
+		Debug_Text2.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp;
+		Debug_Text3.text = "Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp;
+		Debug_Text4.text = "Teli equipped : " + teliEquippedp;
 	}
 	
 	function OnMouseEnter(){
@@ -193,7 +217,8 @@ public class shopMenu extends MonoBehaviour {
 	
 	// If the skull kid skin has been bought (recieves message from ChromacoreEventHandler.cs)
 	function skullKid_skinBought(boughtP : boolean){
-		if(boughtP == true){ 
+		if(boughtP == true){
+			Debug_Text.text = "skull kid skin purchased";
 			// Set boolean flag to true
 			skullKidUnlockedp = true;
 			// Show the "unlocked" sprite
@@ -242,6 +267,7 @@ public class shopMenu extends MonoBehaviour {
 	// If the scarf skin has been bought (recieves message from ChromacoreEventHandler.cs)
 	function scarf_skinBought(boughtP : boolean){
 		if(boughtP == true){
+			Debug_Text.text = "scarf skin purchased";
 			// Set boolean flag to true
 			scarfUnlockedp = true;
 			// Show the "unlocked" sprite

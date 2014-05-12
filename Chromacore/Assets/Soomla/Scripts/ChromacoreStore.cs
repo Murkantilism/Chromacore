@@ -27,8 +27,18 @@ public class ChromacoreStore : StoreEvents {
 		handler = new ChromacoreEventHandler();
 		
 		StoreController.Initialize(new ChromacoreStoreAssets());
+
+		shopMenu = GameObject.Find("Shop Text");
 		
 		// Initialization of 'ExampleLocalStoreInfo' and some example usages in ExampleEventHandler.onStoreControllerInitialized
+	}
+
+	void Update(){
+		if(StoreInventory.NonConsumableItemExists("skull_kid_skin")){
+			shopMenu.SendMessage("skullKid_skinBought", true);
+		}else if(StoreInventory.NonConsumableItemExists("scarf_skin")){
+			shopMenu.SendMessage("scarf_skinBought", true);
+		}
 	}
 
 	void buySkin(string skinID){
@@ -49,10 +59,10 @@ public class ChromacoreStore : StoreEvents {
 			Application.LoadLevel("MainMenu");
 		}
 
-		if (GUI.Button(new Rect(Screen.width/2 - Screen.width/4, Screen.height/2 + Screen.height/4, 250, 100), "Activate Store", buttonStyle)){
+		/*if (GUI.Button(new Rect(Screen.width/2 - Screen.width/4, Screen.height/2 + Screen.height/4, 250, 100), "Activate Store", buttonStyle)){
 			#if UNITY_ANDROID && !UNITY_EDITOR
 			StoreController.StartIabServiceInBg();
 			#endif
-		}
+		}*/
 	}
 }
