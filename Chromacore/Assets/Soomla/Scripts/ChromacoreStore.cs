@@ -11,6 +11,9 @@ public class ChromacoreStore : StoreEvents {
 
 	GameObject shopMenu;
 
+	bool skullKidMessageSentp = false;
+	bool scarfMessageSentp = false;
+
 	void Awake(){
 		if(instance == null){ 	//making sure we only initialize one instance.
 			instance = this;
@@ -34,10 +37,22 @@ public class ChromacoreStore : StoreEvents {
 	}
 
 	void Update(){
+		// If this skin has been purchased
 		if(StoreInventory.NonConsumableItemExists("skull_kid_skin")){
-			shopMenu.SendMessage("skullKid_skinBought", true);
-		}else if(StoreInventory.NonConsumableItemExists("scarf_skin")){
-			shopMenu.SendMessage("scarf_skinBought", true);
+			// Send a signal to shopMenu.js only once
+			if(skullKidMessageSentp == false){
+				shopMenu.SendMessage("skullKid_skinBought", true);
+				skullKidMessageSentp = true;
+			}
+		}
+
+		// If this skin has been purchased
+		if(StoreInventory.NonConsumableItemExists("scarf_skin")){
+			// Send a signal to shopMenu.js only once
+			if(scarfMessageSentp == false){
+				shopMenu.SendMessage("scarf_skinBought", true);
+				scarfMessageSentp = true;
+			}
 		}
 	}
 

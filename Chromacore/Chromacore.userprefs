@@ -1,16 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Soomla\Scripts\ChromacoreStore.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\Menus\shopMenu.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Scripts\Menus\mainMenu.js" Line="14" Column="34" />
-      <File FileName="Assets\Standard Assets\Scripts\Menus\shopMenu.js" Line="96" Column="57" />
-      <File FileName="Assets\Soomla\Scripts\ChromacoreStore.cs" Line="12" Column="21" />
-      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="94" Column="16" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\shopMenu.js" Line="197" Column="21" />
+      <File FileName="Assets\Standard Assets\Scripts\Menus\mainMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Soomla\Scripts\ChromacoreStore.cs" Line="37" Column="55" />
+      <File FileName="Assets\Standard Assets\Scripts\Teli_Animation.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\ChromacoreStoreAssets.cs" Line="62" Column="3" />
       <File FileName="Assets\Soomla\Scripts\ChromacoreLocalStoreInfo.cs" Line="1" Column="1" />
       <File FileName="Assets\Soomla\Scripts\StoreController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Soomla\Scripts\ChromacoreEventHandler.cs" Line="12" Column="2" />
-      <File FileName="Assets\Standard Assets\Scripts\Note Placement\xPositionCalculator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Soomla\Scripts\ChromacoreEventHandler.cs" Line="70" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

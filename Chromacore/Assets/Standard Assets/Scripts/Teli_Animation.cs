@@ -116,8 +116,12 @@ public class Teli_Animation : MonoBehaviour {
 
 		pcAnimationGO = GameObject.Find("AnimatedSprite");
 
-		Debug_Text_GO = GameObject.Find("text_Debug");
-		Debug_Text = Debug_Text_GO.GetComponent<GUIText>();
+		try{
+			Debug_Text_GO = GameObject.Find("text_Debug");
+			Debug_Text = Debug_Text_GO.GetComponent<GUIText>();
+		}catch (Exception e){
+			Debug.Log(e.ToString());
+		}
 
 		// Read all of the text files for cosmetic skins
 		ReadSkinsTextFiles();
@@ -133,8 +137,8 @@ public class Teli_Animation : MonoBehaviour {
 			// Move the skull kid animation back in X direction slightly
 			pcAnimationGO.transform.localPosition = new Vector3(-1.525f, -1.22f, 0f);
 		}else{
-			anim.Library = Resources.Load("Teli_Animations", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
-			pcAnimationGO.transform.localScale = new Vector3(0.15f, 0.15f, 1);
+			//anim.Library = Resources.Load("Teli_Animations", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
+			//pcAnimationGO.transform.localScale = new Vector3(0.15f, 0.15f, 1);
 		}
 
 		if(Application.loadedLevelName == "Level12" || Application.loadedLevelName == "Level17"){
@@ -254,9 +258,11 @@ public class Teli_Animation : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
-
-		Debug_Text.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp + "\n Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp + "\n Teli equipped : " + teliEquippedp;
-
+		try{
+			Debug_Text.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp + "\n Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp + "\n Teli equipped : " + teliEquippedp;
+		}catch (Exception e){
+			Debug.Log(e.ToString());
+		}
 		// Jump Animation
 		if (Input.GetAxis("Jump") != 0){
 			// Only play the clip if it is not already playing.
