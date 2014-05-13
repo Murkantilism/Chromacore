@@ -58,6 +58,9 @@ public class shopMenu extends MonoBehaviour {
 	var scarfEquippedTxt = "scarfEquippedTxt.txt";
 	
 	var teliEquippedTxt = "teliEquippedTxt.txt";
+	
+	var pcDefaultText_GO;
+	var pcDefaultText;
 
 	function Start () {
 		mainCamera = GameObject.FindWithTag("MainCamera");
@@ -94,6 +97,15 @@ public class shopMenu extends MonoBehaviour {
 		Debug_Text3 = Debug_Text3_GO.GetComponent(TextMesh);
 		Debug_Text4_GO = GameObject.Find("text_Debug4");
 		Debug_Text4 = Debug_Text4_GO.GetComponent(TextMesh);
+		
+		// If the platform is PC, unlock the skins by default
+		#if UNITY_STANDALONE
+		scarfUnlockedp = true;
+		scarfUnlockedp = true;
+		pcDefaultText_GO = GameObject.Find("pc default text");
+		pcDefaultText = pcDefaultText_GO.GetComponent(TextMesh);
+		pcDefaultText.renderer.enabled = true;
+		#endif
 	}
 	
 	function Update(){
