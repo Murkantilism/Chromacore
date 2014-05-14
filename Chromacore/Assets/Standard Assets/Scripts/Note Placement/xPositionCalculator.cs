@@ -104,7 +104,7 @@ public class xPositionCalculator : MonoBehaviour {
 			// To identify the current level, we subtract 1 from the Application level count
 			if (Application.isEditor){
 				//EDITME
-				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level5_timestamps.txt");
+				ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level8_timestamps.txt");
 			}//else{
 			//	ReadFile("..\\Chromacore\\Assets\\Standard Assets\\Scripts\\Note Placement\\level" + (Application.loadedLevel - 1).ToString() + "_timestamps.txt");
 			//}

@@ -98,6 +98,11 @@ public class shopMenu extends MonoBehaviour {
 		Debug_Text4_GO = GameObject.Find("text_Debug4");
 		Debug_Text4 = Debug_Text4_GO.GetComponent(TextMesh);
 		
+		// Hide plain unlocked sprite
+		unlockedSprite_Teli.renderer.enabled = false;
+		// Show green equipped sprite
+		equippedSprite_Teli.renderer.enabled = true;
+		
 		// If the platform is PC, unlock the skins by default
 		#if UNITY_STANDALONE
 		scarfUnlockedp = true;
@@ -111,7 +116,7 @@ public class shopMenu extends MonoBehaviour {
 	function Update(){
 		Debug_Text2.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp;
 		Debug_Text3.text = "Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp;
-		Debug_Text4.text = "Teli equipped : " + teliEquippedp;
+		Debug_Text4.text = "Teli equipped : " + teliEquippedp + " | " + Time.timeSinceLevelLoad.ToString();
 		
 		// If any skins are unequipped, set text eligible to Equip
 		if(skullKidEquippedp == false){
@@ -153,7 +158,10 @@ public class shopMenu extends MonoBehaviour {
 		
 		// If the skull kid equip button is clicked, and it's unlocked
 		if(skullKidEquipButtonp){
-			if(skullKidUnlockedp == true){
+			Debug_Text.text = "Skull Kid skin unlocked, can't equip." + skullKidUnlockedp;
+			//if(skullKidUnlockedp == true){
+			if(SkullKid_Equipped_text.text == "Equip"){
+				Debug_Text.text = "Skull Kid skin equip started";
 				// Equip it
 				skullKidEquippedp = true;
 				SkullKid_Equipped_text.text = "Equipped";
@@ -165,6 +173,13 @@ public class shopMenu extends MonoBehaviour {
 				unlockedSprite_SkullKid.renderer.enabled = false;
 				// Show green equipped sprite
 				equippedSprite_SkullKid.renderer.enabled = true;
+				
+				// Hide the equipped sprites for other skins
+				equippedSprite_Teli.renderer.enabled = false;
+				equippedSprite_Scarf.renderer.enabled = false;
+				// Show the plain sprite for other skins
+				unlockedSprite_Teli.renderer.enabled = true;
+				unlockedSprite_Scarf.renderer.enabled = true;
 				
 				// Unequip the other skins
 				scarfEquippedp = false;
@@ -179,7 +194,10 @@ public class shopMenu extends MonoBehaviour {
 		}
 		// If the scarf equip button is clicked, and it's unlocked
 		if(scarfEquipButtonp){
-			if(scarfUnlockedp == true){
+			Debug_Text.text = "Scarf skin unlocked, can't equip." + scarfUnlockedp;
+			//if(scarfUnlockedp == true){
+			if(Scarf_Equipped_text.text == "Equip"){
+				Debug_Text.text = "Scarf equip started";
 				// Equip it
 				scarfEquippedp = true;
 				Scarf_Equipped_text.text = "Equipped";
@@ -191,6 +209,13 @@ public class shopMenu extends MonoBehaviour {
 				unlockedSprite_Scarf.renderer.enabled = false;
 				// Show green equipped sprite
 				equippedSprite_Scarf.renderer.enabled = true;
+				
+				// Hide the equipped sprites for other skins
+				equippedSprite_Teli.renderer.enabled = false;
+				equippedSprite_SkullKid.renderer.enabled = false;
+				// Show the plain sprite for other skins
+				unlockedSprite_Teli.renderer.enabled = true;
+				unlockedSprite_SkullKid.renderer.enabled = true;
 				
 				// Unequip the other skins
 				skullKidEquippedp = false;
@@ -216,6 +241,13 @@ public class shopMenu extends MonoBehaviour {
 			unlockedSprite_Teli.renderer.enabled = false;
 			// Show green equipped sprite
 			equippedSprite_Teli.renderer.enabled = true;
+			
+			// Hide the equipped sprites for other skins
+			equippedSprite_SkullKid.renderer.enabled = false;
+			equippedSprite_Scarf.renderer.enabled = false;
+			// Show the plain sprite for other skins
+			unlockedSprite_SkullKid.renderer.enabled = true;
+			unlockedSprite_Scarf.renderer.enabled = true;
 			
 			// Unequip the other skins
 			skullKidEquippedp = false;
@@ -256,7 +288,7 @@ public class shopMenu extends MonoBehaviour {
 			
 			// Write to text file that skin has been unlocked
 			WriteToTextFile(skullKidPurchasedTxt, true);
-		}else{
+		}else if (boughtP == false){
 			// Otherwise, set boolean flag to false, and write to text files 
 			// that this skin isn't unlocked or equipped
 			skullKidUnlockedp = false;
@@ -288,7 +320,7 @@ public class shopMenu extends MonoBehaviour {
 			
 			// Write to text file that skin has been unlocked
 			WriteToTextFile(scarfPurchasedTxt, true);
-		}else{
+		}else if (boughtP == false){
 			// Otherwise, set boolean flag to false, and write to text files 
 			// that this skin isn't unlocked or equipped
 			scarfUnlockedp = false;
