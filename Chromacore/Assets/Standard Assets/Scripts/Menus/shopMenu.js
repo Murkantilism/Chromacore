@@ -6,22 +6,25 @@ public class shopMenu extends MonoBehaviour {
 	var mainCamera : GameObject;
 	
 	var chromacoreStore : GameObject;
-
-	var skullKidButtonp = false;
-	var scarfButtonp = false;
-	var donateButtonp = false;
 	
-	var scarfUnlockedp = false;
-	var skullKidUnlockedp = false;
+	// Text buttons
+	var skullKidPurchaseButtonp = false;
+	var scarfPurchaseButtonp = false;
+	var donateButtonp = false;
 	
 	var skullKidEquipButtonp = false;
 	var scarfEquipButtonp = false;
 	var teliEquipButtonp = false;
 	
-	var scarfEquippedp = false;
+	// Boolean flags
+	var scarfUnlockedp = false;
+	var skullKidUnlockedp = false;
+	
 	var skullKidEquippedp = false;
-	var teliEquippedp = true;
-
+	var scarfEquippedp = false;
+	var teliEquippedp = false;
+	
+	// Sprites
 	var lockedSprite_SkullKid : GameObject;
 	var unlockedSprite_SkullKid : GameObject;
 	var equippedSprite_SkullKid : GameObject;
@@ -33,6 +36,7 @@ public class shopMenu extends MonoBehaviour {
 	var unlockedSprite_Teli : GameObject;
 	var equippedSprite_Teli : GameObject;
 	
+	// Text Meshes
 	var Teli_Equipped_text_GO : GameObject;
 	var Teli_Equipped_text : TextMesh;
 	
@@ -41,7 +45,20 @@ public class shopMenu extends MonoBehaviour {
 	
 	var SkullKid_Equipped_text_GO : GameObject;
 	var SkullKid_Equipped_text : TextMesh;
+
+	// File names for writing text files
+	var skullKidTextFileName= "skullKidPurchasedTxt.txt";
+	var scarfTextFileName = "scarfPurchasedTxt.txt";
+
+	var skullKidEquippedTextFileName = "skullKidEquippedTxt.txt";
+	var scarfEquippedTextFileName = "scarfEquippedTxt.txt";
+	var teliEquippedTextFileName = "teliEquippedTxt.txt";
 	
+	// Default text shown only on PC builds
+	var pcDefaultText_GO : GameObject;
+	var pcDefaultText : TextMesh;
+	
+	// Text meshes for debugging
 	var Debug_Text_GO : GameObject;
 	var Debug_Text : TextMesh;
 	var Debug_Text2_GO : GameObject;
@@ -51,36 +68,22 @@ public class shopMenu extends MonoBehaviour {
 	var Debug_Text4_GO : GameObject;
 	var Debug_Text4 : TextMesh;
 	
-	var skullKid_boughtP_runp : boolean;
-	var scarf_boughtP_runp : boolean;
-	
-	var skullKidPurchasedTxt = "skullKidPurchasedTxt.txt";
-	var scarfPurchasedTxt = "scarfPurchasedTxt.txt";
-
-	var skullKidEquippedTxt = "skullKidEquippedTxt.txt";
-	var scarfEquippedTxt = "scarfEquippedTxt.txt";
-	
-	var teliEquippedTxt = "teliEquippedTxt.txt";
-	
-	var pcDefaultText_GO : GameObject;
-	var pcDefaultText : TextMesh;
-
-	function Start () {
+	function Start(){
 		mainCamera = GameObject.FindWithTag("MainCamera");
 		
 		chromacoreStore = GameObject.Find("ChromacoreStore");
 		
+		// Find and assign the text meshes for each skin
 		Teli_Equipped_text_GO = GameObject.Find("Teli_Equipped_text");
 		Teli_Equipped_text = Teli_Equipped_text_GO.GetComponent(TextMesh);
 		
 		Scarf_Equipped_text_GO = GameObject.Find("Scarf_Equipped_text");
 		Scarf_Equipped_text = Scarf_Equipped_text_GO.GetComponent(TextMesh);
-		//Scarf_Equipped_text.renderer.enabled = false;
 		
 		SkullKid_Equipped_text_GO = GameObject.Find("SkullKid_Equipped_text");
 		SkullKid_Equipped_text = SkullKid_Equipped_text_GO.GetComponent(TextMesh);
-		//SkullKid_Equipped_text.renderer.enabled = false;
 		
+		// Find and assign the sprites for unlocked/locked/equipped for each skin
 		lockedSprite_SkullKid = GameObject.Find("lockedSprite_SkullKid");
 		unlockedSprite_SkullKid = GameObject.Find("unlockedSprite_SkullKid");
 		equippedSprite_SkullKid = GameObject.Find("equippedSprite_SkullKid");
@@ -92,6 +95,7 @@ public class shopMenu extends MonoBehaviour {
 		unlockedSprite_Teli = GameObject.Find("unlockedSprite_Teli");
 		equippedSprite_Teli = GameObject.Find("equippedSprite_Teli");
 		
+		// Find and assign the text meshes for debugging
 		Debug_Text_GO = GameObject.Find("text_Debug");
 		Debug_Text = Debug_Text_GO.GetComponent(TextMesh);
 		Debug_Text2_GO = GameObject.Find("text_Debug2");
@@ -101,22 +105,26 @@ public class shopMenu extends MonoBehaviour {
 		Debug_Text4_GO = GameObject.Find("text_Debug4");
 		Debug_Text4 = Debug_Text4_GO.GetComponent(TextMesh);
 		
-		// Hide plain unlocked sprite
+		// Show Teli's skin as equipped by default - Hide plain unlocked sprite
 		unlockedSprite_Teli.renderer.enabled = false;
 		// Show green equipped sprite
 		equippedSprite_Teli.renderer.enabled = true;
 		
-		skullKid_boughtP_runp = false;
-		scarf_boughtP_runp = false;
-		
 		// If the platform is PC, unlock the skins by default
 		#if UNITY_STANDALONE
-		scarfUnlockedp = true;
+		skullKidUnlockedp = true;
 		scarfUnlockedp = true;
 		pcDefaultText_GO = GameObject.Find("pc default text");
 		pcDefaultText = pcDefaultText_GO.GetComponent(TextMesh);
 		pcDefaultText.renderer.enabled = true;
 		#endif
+		
+		CheckTextFiles();
+	}
+	
+	// Check the unlock and equip text files to see which skin was previously being used
+	function CheckTextFiles(){
+		
 	}
 	
 	function Update(){
@@ -125,44 +133,84 @@ public class shopMenu extends MonoBehaviour {
 		Debug_Text4.text = "Teli equipped : " + teliEquippedp + " | " + Time.timeSinceLevelLoad.ToString();
 	}
 	
-	function OnMouseEnter(){
-		// Change the color of the text
-		renderer.material.color = Color.blue;
-		//levelSelectKeyboard.SendMessage("mouseOver", true);
+	// If the skull kid skin has been bought (recieves message from ChromacoreEventHandler.cs) 
+	function skullKid_skinBought(boughtP : boolean){
+		if(boughtP == true){
+			// Unlock the skull kid skin
+			skullKidUnlockedp = true;
+			// Show the "unlocked" sprite
+			unlockedSprite_SkullKid.renderer.enabled = true;
+			// Hide the "locked" sprite
+			lockedSprite_SkullKid.renderer.enabled = false;
+			
+			// Set the text for this skin to be eligible to equip
+			SkullKid_Equipped_text.text = "Equip";
+			// Show the "Equipped" text
+			SkullKid_Equipped_text.renderer.enabled = true;
+			
+			Debug_Text.text = skullKidUnlockedp + " | " + Time.timeSinceLevelLoad;
+		}
 	}
-
+	
+	// If the scarf skin has been bought (recieves message from ChromacoreEventHandler.cs)
+	function scarf_skinBought(boughtP : boolean){
+		if(boughtP == true){
+			// Unlock the scarf skin
+			scarfUnlockedp = true;
+			// Show the "unlocked" sprite
+			unlockedSprite_Scarf.renderer.enabled = true;
+			// Hide the "locked" sprite
+			lockedSprite_Scarf.renderer.enabled = false;
+			
+			// Set the text for this skin to be eligible to equip
+			Scarf_Equipped_text.text = "Equip";
+			// Show the "Equipped" text
+			Scarf_Equipped_text.renderer.enabled = true;
+		}	
+	}
+	
+	// Change the color of the text on scrollover
+	function OnMouseEnter(){
+		renderer.material.color = Color.blue;
+	}
+	
+	// Change the color of the text back to the original color (white)
 	function OnMouseExit(){
-		// Change the color of the text back to the original color (white)
 		renderer.material.color = Color.white;
-		//levelSelectKeyboard.SendMessage("mouseOver", false);
 	}
 	
 	function OnMouseUp(){
-		if(skullKidButtonp){
+		// If the button to buy Skull Kid is clicked
+		if(skullKidPurchaseButtonp){
+			// Send a message to ChromacoreStore.cs
 			chromacoreStore.SendMessage("buySkin", "skull_kid_skin");
-		}else if(scarfButtonp){
+		}else if(scarfPurchaseButtonp){
 			chromacoreStore.SendMessage("buySkin", "scarf_skin");
 		}else if(donateButtonp){
 			Application.OpenURL("http://www.ccs.neu.edu/home/ozkaynak/donate.html");
 		}
 		
-		// If the skull kid equip button is clicked, and it's unlocked
+		// If the equip text button for Skull Kid is clicked
 		if(skullKidEquipButtonp){
-			Debug_Text.text = "Skull Kid skin unlocked, can't equip." + skullKidUnlockedp;
-			//if(skullKidUnlockedp == true){
+			// And the skin is eligible to be equipped
 			if(SkullKid_Equipped_text.text == "Equip"){
-				Debug_Text.text = "Skull Kid skin equip started";
-				// Equip it
+				// Equip the skin
 				skullKidEquippedp = true;
 				SkullKid_Equipped_text.text = "Equipped";
-				
-				// Write to text file that this skin has been equipped
-				WriteToTextFile(skullKidEquippedTxt, true);
 				
 				// Hide plain unlocked sprite
 				unlockedSprite_SkullKid.renderer.enabled = false;
 				// Show green equipped sprite
 				equippedSprite_SkullKid.renderer.enabled = true;
+				
+				
+				// Unequip the other skins
+				scarfEquippedp = false;
+				teliEquippedp = false;
+				
+				// Set the text for other skins to "Equip"
+				Scarf_Equipped_text.text = "Equip";
+				Teli_Equipped_text.text = "Equip";
 				
 				// Hide the equipped sprites for other skins
 				equippedSprite_Teli.renderer.enabled = false;
@@ -171,38 +219,25 @@ public class shopMenu extends MonoBehaviour {
 				unlockedSprite_Teli.renderer.enabled = true;
 				unlockedSprite_Scarf.renderer.enabled = true;
 				
-				// Unequip the other skins
-				scarfEquippedp = false;
-				teliEquippedp = false;
-				
-				// Set text for other skins to "equip"
-				Scarf_Equipped_text.text = "Equip";
-				Teli_Equipped_text.text = "Equip";
-				
-				// Write to text file that the other skins have been unequipped
-				WriteToTextFile(scarfEquippedTxt, false);
-				WriteToTextFile(teliEquippedTxt, false);
-				
 				Debug_Text.text = "Skull Kid skin equipped";
 			}
 		}
-		// If the scarf equip button is clicked, and it's unlocked
+		
+		// If the equip text button for Scarf is clicked
 		if(scarfEquipButtonp){
-			Debug_Text.text = "Scarf skin unlocked, can't equip." + scarfUnlockedp;
-			//if(scarfUnlockedp == true){
+			// And the skin is eligible to be equipped
 			if(Scarf_Equipped_text.text == "Equip"){
-				Debug_Text.text = "Scarf equip started";
-				// Equip it
+				// Equip the skin
 				scarfEquippedp = true;
 				Scarf_Equipped_text.text = "Equipped";
 				
-				// Write to text file that this skin has been equipped
-				WriteToTextFile(scarfEquippedTxt, true);
+				// Unequip the other skins
+				skullKidEquippedp = false;
+				teliEquippedp = false;
 				
-				// Hide plain unlocked sprite
-				unlockedSprite_Scarf.renderer.enabled = false;
-				// Show green equipped sprite
-				equippedSprite_Scarf.renderer.enabled = true;
+				// Set the text for other skins to "Equip"
+				SkullKid_Equipped_text.text = "Equip";
+				Teli_Equipped_text.text = "Equip";
 				
 				// Hide the equipped sprites for other skins
 				equippedSprite_Teli.renderer.enabled = false;
@@ -211,55 +246,35 @@ public class shopMenu extends MonoBehaviour {
 				unlockedSprite_Teli.renderer.enabled = true;
 				unlockedSprite_SkullKid.renderer.enabled = true;
 				
-				// Unequip the other skins
-				skullKidEquippedp = false;
-				teliEquippedp = false;
-				
-				// Set text for other skins to "equip"
-				SkullKid_Equipped_text.text = "Equip";
-				Teli_Equipped_text.text = "Equip";
-				
-				// Write to text file that the other skins have been unequipped
-				WriteToTextFile(skullKidEquippedTxt, false);
-				WriteToTextFile(teliEquippedTxt, false);
-				
 				Debug_Text.text = "Scarf skin equipped";
 			}
 		}
-		// If the Teli equip button is clicked (no need to check if it's unlocked)
+		
+		// If the equip text button for Teli is clicked
 		if(teliEquipButtonp){
-			// Equip it
-			teliEquippedp = true;
-			Teli_Equipped_text.text = "Equipped";
-			
-			// Write to text file that this skin has been equipped
-			WriteToTextFile(teliEquippedTxt, true);
-			
-			// Hide plain unlocked sprite
-			unlockedSprite_Teli.renderer.enabled = false;
-			// Show green equipped sprite
-			equippedSprite_Teli.renderer.enabled = true;
-			
-			// Hide the equipped sprites for other skins
-			equippedSprite_SkullKid.renderer.enabled = false;
-			equippedSprite_Scarf.renderer.enabled = false;
-			// Show the plain sprite for other skins
-			unlockedSprite_SkullKid.renderer.enabled = true;
-			unlockedSprite_Scarf.renderer.enabled = true;
-			
-			// Unequip the other skins
-			skullKidEquippedp = false;
-			scarfEquippedp = false;
-			
-			// Set text for other skins to "equip"
-			SkullKid_Equipped_text.text = "Equip";
-			Scarf_Equipped_text.text = "Equip";
-			
-			// Write to text file that the other skins have been unequipped
-			WriteToTextFile(skullKidEquippedTxt, false);
-			WriteToTextFile(scarfEquippedTxt, false);
-			
-			Debug_Text.text = "Teli skin equipped";
+			// And the skin is eligible to be equipped
+			if(Teli_Equipped_text.text == "Equip"){
+				// Equip the skin
+				teliEquippedp = true;
+				Teli_Equipped_text.text = "Equipped";
+				
+				// Unequip the other skins
+				skullKidEquippedp = false;
+				scarfEquippedp = false;
+				
+				// Set the text for other skins to "Equip"
+				SkullKid_Equipped_text.text = "Equip";
+				Scarf_Equipped_text.text = "Equip";
+				
+				// Hide the equipped sprites for other skins
+				equippedSprite_SkullKid.renderer.enabled = false;
+				equippedSprite_Scarf.renderer.enabled = false;
+				// Show the plain sprite for other skins
+				unlockedSprite_SkullKid.renderer.enabled = true;
+				unlockedSprite_Scarf.renderer.enabled = true;
+				
+				Debug_Text.text = "Teli skin equipped";
+			}
 		}
 	}
 	
@@ -270,75 +285,6 @@ public class shopMenu extends MonoBehaviour {
 		sw.Close();
 	}
 	
-	// If the skull kid skin has been bought (recieves message from ChromacoreEventHandler.cs)
-	function skullKid_skinBought(boughtP : boolean){
-		if(skullKid_boughtP_runp == false){ // Only run this code once
-			if(boughtP == true){
-				// Set boolean flag to true
-				skullKidUnlockedp = true;
-				// Show the "unlocked" sprite
-				unlockedSprite_SkullKid.renderer.enabled = true;
-				// Hide the "locked" sprite
-				lockedSprite_SkullKid.renderer.enabled = false;
-				
-				// Set the text for this skin to be eligible to equip
-				SkullKid_Equipped_text.text = "Equip";
-				// Show the "Equipped" text
-				SkullKid_Equipped_text.renderer.enabled = true;
-				
-				// Equip skin on purchase
-				//skullKidEquippedp = true;
-				
-				// Write to text file that skin has been unlocked
-				WriteToTextFile(skullKidPurchasedTxt, true);
-			}else if (boughtP == false){
-				// Otherwise, set boolean flag to false, and write to text files 
-				// that this skin isn't unlocked or equipped
-				skullKidUnlockedp = false;
-				WriteToTextFile(skullKidPurchasedTxt, false);
-				
-				//skullKidEquippedp = false;
-				//WriteToTextFile(skullKidEquippedTxt, false);
-			}
-			skullKid_boughtP_runp = true; // Only run the above code once
-		}
-	}
-	
-	// If the scarf skin has been bought (recieves message from ChromacoreEventHandler.cs)
-	function scarf_skinBought(boughtP : boolean){
-		if(scarf_boughtP_runp == false){ // Only run this code once
-			if(boughtP == true){
-				Debug_Text.text = "scarf skin purchased";
-				// Set boolean flag to true
-				scarfUnlockedp = true;
-				// Show the "unlocked" sprite
-				unlockedSprite_Scarf.renderer.enabled = true;
-				// Hide the "locked" sprite
-				lockedSprite_Scarf.renderer.enabled = false;
-				
-				// Set the text for this skin to be eligible to equip
-				Scarf_Equipped_text.text = "Equip";
-				// Show the "Equipped" text
-				Scarf_Equipped_text.renderer.enabled = true;
-				
-				// Equip skin on purchase
-				//scarfEquippedp = true;
-				
-				// Write to text file that skin has been unlocked
-				WriteToTextFile(scarfPurchasedTxt, true);
-			}else if (boughtP == false){
-				// Otherwise, set boolean flag to false, and write to text files 
-				// that this skin isn't unlocked or equipped
-				scarfUnlockedp = false;
-				WriteToTextFile(scarfPurchasedTxt, false);
-				
-				//scarfEquippedp = false;
-				//WriteToTextFile(scarfEquippedTxt, true);
-			}
-			scarf_boughtP_runp = true; // Only run above code once
-		}
-	}
-
 	function OnGUI() {
 		GUI.backgroundColor = Color.magenta;
 	
