@@ -56,7 +56,7 @@ public class levelSelectKeyboard extends MonoBehaviour {
 		}
 		
 		if(Input.GetKeyDown(KeyCode.DownArrow)){
-			if(menuIndex <= 9){
+			if(menuIndex <= 7){
 				menuIndex++;
 			}
 		}
@@ -99,42 +99,46 @@ public class levelSelectKeyboard extends MonoBehaviour {
 				levelFiveText.renderer.material.color = Color.white;
 				levelFive = false;
 			}
+			// This is also heard this before
 			if(menuIndex == 5){
-				levelSixText.renderer.material.color = Color.blue;
-				levelSix = true;
-			}else{
-				levelSixText.renderer.material.color = Color.white;
-				levelSix = false;
-			}
-			if(menuIndex == 6){
 				levelSevenText.renderer.material.color = Color.blue;
 				levelSeven = true;
 			}else{
 				levelSevenText.renderer.material.color = Color.white;
 				levelSeven = false;
 			}
-			if(menuIndex == 7){
-				levelEightText.renderer.material.color = Color.blue;
-				levelEight = true;
+			/*
+			if(menuIndex == 6){
+				levelSevenText.renderer.material.color = Color.blue;
+				levelSeven = true;
 			}else{
-				levelEightText.renderer.material.color = Color.white;
-				levelEight = false;
-			}
-			if(menuIndex == 8){
+				levelSevenText.renderer.material.color = Color.white;
+				levelSeven = false;
+			}*/
+			// This is so happy 5
+			if(menuIndex == 6){
 				levelNineText.renderer.material.color = Color.blue;
 				levelNine = true;
 			}else{
 				levelNineText.renderer.material.color = Color.white;
 				levelNine = false;
 			}
-			if(menuIndex == 9){
+			/*
+			if(menuIndex == 8){
+				levelNineText.renderer.material.color = Color.blue;
+				levelNine = true;
+			}else{
+				levelNineText.renderer.material.color = Color.white;
+				levelNine = false;
+			}*/
+			if(menuIndex == 7){
 				levelTenText.renderer.material.color = Color.blue;
 				levelTen = true;
 			}else{
 				levelTenText.renderer.material.color = Color.white;
 				levelTen = false;
 			}
-			if(menuIndex == 10){
+			if(menuIndex == 8){
 				moreLevelsText.renderer.material.color = Color.blue;
 				moreLevels = true;
 			}else{
@@ -151,22 +155,22 @@ public class levelSelectKeyboard extends MonoBehaviour {
 				Application.LoadLevel("Level1");
 			}else if(levelTwo){
 				Destroy(mainCamera);
-				Application.LoadLevel("Level2");
+				Application.LoadLevel("Level4");
 			}else if(levelThree){
 				Destroy(mainCamera);
-				Application.LoadLevel("Level3");
+				Application.LoadLevel("Level7");
 			}else if(levelFour){
 				Destroy(mainCamera);
-				Application.LoadLevel("Level4");
+				Application.LoadLevel("Level5");
 			}else if(levelFive){
 				Destroy(mainCamera);
-				Application.LoadLevel("Level5");
+				Application.LoadLevel("Level2");
 			}else if(levelSix){
 				Destroy(mainCamera);
 				Application.LoadLevel("Level6");
 			}else if(levelSeven){
 				Destroy(mainCamera);
-				Application.LoadLevel("Level7");
+				Application.LoadLevel("Level3");
 			}else if(levelEight){
 				Destroy(mainCamera);
 				Application.LoadLevel("Level8");

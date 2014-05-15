@@ -47,14 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\Android\GooglePlayDownloader.cs" />
-     <Compile Include="Assets\Plugins\FMOD\Editor\FMODEditorExtension.cs" />
-     <Compile Include="Assets\Plugins\FMOD\FMODAsset.cs" />
-     <Compile Include="Assets\Plugins\FMOD\FMOD_Listener.cs" />
-     <Compile Include="Assets\Plugins\FMOD\FMOD_StudioEventEmitter.cs" />
-     <Compile Include="Assets\Plugins\FMOD\FMOD_StudioSystem.cs" />
-     <Compile Include="Assets\Plugins\FMOD\Wrapper\fmod.cs" />
-     <Compile Include="Assets\Plugins\FMOD\Wrapper\fmod_errors.cs" />
-     <Compile Include="Assets\Plugins\FMOD\Wrapper\fmod_studio.cs" />
      <Compile Include="Assets\Plugins\tk2d\Code\Camera\tk2dCamera.cs" />
      <Compile Include="Assets\Plugins\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
      <Compile Include="Assets\Plugins\tk2d\Code\Camera\tk2dCameraUtil.cs" />

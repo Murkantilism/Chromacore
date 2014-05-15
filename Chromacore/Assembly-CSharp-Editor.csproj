@@ -47,8 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\BuildStreamedSceneAssetBundle.cs" />
-     <Compile Include="Assets\Editor\FMODEventEmitterInspector.cs" />
-     <Compile Include="Assets\Editor\FMODEventInspector.cs" />
      <Compile Include="Assets\Soomla\Editor\SoomlaPostBuild.cs" />
      <Compile Include="Assets\Soomla\Editor\SoomlaSettingsEditor.cs" />
      <Compile Include="Assets\Soomla\Editor\android\ManifestTools.cs" />
