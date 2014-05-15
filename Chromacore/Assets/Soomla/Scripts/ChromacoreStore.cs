@@ -15,11 +15,11 @@ public class ChromacoreStore : StoreEvents {
 	bool scarfMessageSentp = false;
 
 	void Awake(){
-		if(instance == null){ 	//making sure we only initialize one instance.
+		if(instance == null){   //making sure we only initialize one instance.
 			instance = this;
 			GameObject.DontDestroyOnLoad(this.gameObject);
-		} else {					//Destroying unused instances.
-			GameObject.Destroy(this);
+		} else {                    //Destroying unused instances.
+			GameObject.Destroy(this.gameObject);
 		}
 	}
 
@@ -27,7 +27,7 @@ public class ChromacoreStore : StoreEvents {
 	void Start () {
 		mainCamera = GameObject.FindWithTag("MainCamera");
 
-		handler = new ChromacoreEventHandler();
+		handler = gameObject.AddComponent<ChromacoreEventHandler>();
 		
 		StoreController.Initialize(new ChromacoreStoreAssets());
 
@@ -61,6 +61,7 @@ public class ChromacoreStore : StoreEvents {
 	}
 
 	void OnGUI(){
+		GUI.backgroundColor = Color.magenta;
 		GUIStyle buttonStyle = new GUIStyle("button");
 		buttonStyle.fontSize = 25;
 		

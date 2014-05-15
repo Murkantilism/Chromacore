@@ -47,8 +47,8 @@ public class shopMenu extends MonoBehaviour {
 	var SkullKid_Equipped_text : TextMesh;
 
 	// File names for writing text files
-	var skullKidTextFileName= "skullKidPurchasedTxt.txt";
-	var scarfTextFileName = "scarfPurchasedTxt.txt";
+	var skullKidPurchasedTextFileName= "skullKidPurchasedTxt.txt";
+	var scarfPurchasedTextFileName = "scarfPurchasedTxt.txt";
 
 	var skullKidEquippedTextFileName = "skullKidEquippedTxt.txt";
 	var scarfEquippedTextFileName = "scarfEquippedTxt.txt";
@@ -119,18 +119,49 @@ public class shopMenu extends MonoBehaviour {
 		pcDefaultText.renderer.enabled = true;
 		#endif
 		
-		CheckTextFiles();
+		// Check which skins were previously equipped
+		CheckTextFiles(skullKidEquippedTextFileName, "skullKidEquippedp");
+		CheckTextFiles(scarfEquippedTextFileName, "scarfEquippedp");
+		CheckTextFiles(teliEquippedTextFileName, "teliEquippedp");
 	}
 	
-	// Check the unlock and equip text files to see which skin was previously being used
-	function CheckTextFiles(){
-		
-	}
-	
-	function Update(){
-		Debug_Text2.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp;
-		Debug_Text3.text = "Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp;
-		Debug_Text4.text = "Teli equipped : " + teliEquippedp + " | " + Time.timeSinceLevelLoad.ToString();
+	// Check the equip text files to see which skin was previously being used
+	function CheckTextFiles(textFilePath : String, skinBool : String){
+		// If the file exists
+		if(File.Exists(textFilePath)){
+			// Create an instance of StreamReader to read text file
+			var sr = File.OpenText(Application.persistentDataPath + "\\" + textFilePath);
+			var line = sr.ReadToEnd();
+
+			Debug.Log(line);
+		}else{
+			Debug.Log("Could not Open the file: " + textFilePath + " for reading.");
+        	return;
+		}
+
+		// If the text file reads true, set boolean flag to true for the corresponding skin
+		if(line == "true"){
+			if(skinBool == "skullKidEquippedp"){
+				skullKidEquippedp = true;
+			}
+			if(skinBool == "scarfEquippedp"){
+				scarfEquippedp = true;
+			}
+			if(skinBool == "teliEquippedp"){
+				teliEquippedp = true;
+			}
+		// If the text file reads false, set the boolean flag to false for the corresponding skin
+		}else{
+			if(skinBool == "skullKidEquippedp"){
+				skullKidEquippedp = false;
+			}
+			if(skinBool == "scarfEquippedp"){
+				scarfEquippedp = false;
+			}
+			if(skinBool == "teliEquippedp"){
+				teliEquippedp = false;
+			}
+		}
 	}
 	
 	// If the skull kid skin has been bought (recieves message from ChromacoreEventHandler.cs) 
@@ -147,6 +178,9 @@ public class shopMenu extends MonoBehaviour {
 			SkullKid_Equipped_text.text = "Equip";
 			// Show the "Equipped" text
 			SkullKid_Equipped_text.renderer.enabled = true;
+			
+			// Write to text file that skin has been unlocked
+			WriteToTextFile(skullKidPurchasedTextFileName, true);
 			
 			Debug_Text.text = skullKidUnlockedp + " | " + Time.timeSinceLevelLoad;
 		}
@@ -166,6 +200,9 @@ public class shopMenu extends MonoBehaviour {
 			Scarf_Equipped_text.text = "Equip";
 			// Show the "Equipped" text
 			Scarf_Equipped_text.renderer.enabled = true;
+			
+			// Write to text file that skin has been unlocked
+			WriteToTextFile(scarfPurchasedTextFileName, true);
 		}	
 	}
 	
@@ -203,6 +240,8 @@ public class shopMenu extends MonoBehaviour {
 				// Show green equipped sprite
 				equippedSprite_SkullKid.renderer.enabled = true;
 				
+				// Write to text file that this skin has been equipped
+				WriteToTextFile(skullKidEquippedTextFileName, true);
 				
 				// Unequip the other skins
 				scarfEquippedp = false;
@@ -219,7 +258,14 @@ public class shopMenu extends MonoBehaviour {
 				unlockedSprite_Teli.renderer.enabled = true;
 				unlockedSprite_Scarf.renderer.enabled = true;
 				
+				// Write to text file that the other skins have been unequipped
+				WriteToTextFile(scarfEquippedTextFileName, false);
+				WriteToTextFile(teliEquippedTextFileName, false);
+				
 				Debug_Text.text = "Skull Kid skin equipped";
+				Debug_Text2.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp;
+				Debug_Text3.text = "Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp;
+				Debug_Text4.text = "Teli equipped : " + teliEquippedp + " | " + Time.timeSinceLevelLoad.ToString();
 			}
 		}
 		
@@ -231,6 +277,14 @@ public class shopMenu extends MonoBehaviour {
 				scarfEquippedp = true;
 				Scarf_Equipped_text.text = "Equipped";
 				
+				// Hide plain unlocked sprite
+				unlockedSprite_Scarf.renderer.enabled = false;
+				// Show green equipped sprite
+				equippedSprite_Scarf.renderer.enabled = true;
+				
+				// Write to text file that this skin has been equipped
+				WriteToTextFile(scarfEquippedTextFileName, true);
+				
 				// Unequip the other skins
 				skullKidEquippedp = false;
 				teliEquippedp = false;
@@ -246,7 +300,14 @@ public class shopMenu extends MonoBehaviour {
 				unlockedSprite_Teli.renderer.enabled = true;
 				unlockedSprite_SkullKid.renderer.enabled = true;
 				
+				// Write to text file that the other skins have been unequipped
+				WriteToTextFile(skullKidEquippedTextFileName, false);
+				WriteToTextFile(teliEquippedTextFileName, false);
+				
 				Debug_Text.text = "Scarf skin equipped";
+				Debug_Text2.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp;
+				Debug_Text3.text = "Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp;
+				Debug_Text4.text = "Teli equipped : " + teliEquippedp + " | " + Time.timeSinceLevelLoad.ToString();
 			}
 		}
 		
@@ -257,6 +318,14 @@ public class shopMenu extends MonoBehaviour {
 				// Equip the skin
 				teliEquippedp = true;
 				Teli_Equipped_text.text = "Equipped";
+				
+				// Hide plain unlocked sprite
+				unlockedSprite_Teli.renderer.enabled = false;
+				// Show green equipped sprite
+				equippedSprite_Teli.renderer.enabled = true;
+				
+				// Write to text file that this skin has been equipped
+				WriteToTextFile(teliEquippedTextFileName, true);
 				
 				// Unequip the other skins
 				skullKidEquippedp = false;
@@ -273,7 +342,14 @@ public class shopMenu extends MonoBehaviour {
 				unlockedSprite_SkullKid.renderer.enabled = true;
 				unlockedSprite_Scarf.renderer.enabled = true;
 				
+				// Write to text file that the other skins have been unequipped
+				WriteToTextFile(skullKidEquippedTextFileName, false);
+				WriteToTextFile(scarfEquippedTextFileName, false);
+				
 				Debug_Text.text = "Teli skin equipped";
+				Debug_Text2.text = "Skull kid unlocked: " + skullKidUnlockedp + " | Skull kid equipped : " + skullKidEquippedp;
+				Debug_Text3.text = "Scarf unlocked : " + scarfUnlockedp + " | Scarf equipped : " + scarfEquippedp;
+				Debug_Text4.text = "Teli equipped : " + teliEquippedp + " | " + Time.timeSinceLevelLoad.ToString();
 			}
 		}
 	}
@@ -283,18 +359,5 @@ public class shopMenu extends MonoBehaviour {
 		var sw = File.CreateText(Application.persistentDataPath + "\\" + textFilePath);
 		sw.Write(myBool);
 		sw.Close();
-	}
-	
-	function OnGUI() {
-		GUI.backgroundColor = Color.magenta;
-	
-		var buttonStyle = new GUIStyle("button");
-		buttonStyle.fontSize = 25;
-		
-		if (GUI.Button(new Rect(Screen.width/2 + Screen.width/4, Screen.height/2 + Screen.height/4, 200, 100), "Back", buttonStyle)){
-			Destroy(mainCamera);
-			Destroy(chromacoreStore);
-			Application.LoadLevel("MainMenu");
-		}
 	}
 }
