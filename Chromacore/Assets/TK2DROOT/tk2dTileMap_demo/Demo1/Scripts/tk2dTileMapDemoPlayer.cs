@@ -86,8 +86,8 @@ public class tk2dTileMapDemoPlayer : MonoBehaviour {
 	void FixedUpdate () {
 		if (AllowAddForce && moveX != 0) {
 			forceWait = addForceLimit;
-			rigidbody.AddForce(new Vector3(moveX * amount, amount, 0) * Time.deltaTime, ForceMode.Impulse);
-			rigidbody.AddTorque(new Vector3(0,0,-moveX * torque) * Time.deltaTime, ForceMode.Impulse);
+			GetComponent<Rigidbody>().AddForce(new Vector3(moveX * amount, amount, 0) * Time.deltaTime, ForceMode.Impulse);
+			GetComponent<Rigidbody>().AddTorque(new Vector3(0,0,-moveX * torque) * Time.deltaTime, ForceMode.Impulse);
 			moveX = 0;
 		}
 	}

@@ -24,9 +24,9 @@ public class Pickup : MonoBehaviour {
 			// A note has been collected so increment the score
 			col.SendMessage("CollectNote");
 			// Make this object invisible
-			gameObject.renderer.enabled = false;
+			gameObject.GetComponent<Renderer>().enabled = false;
 			// Play the corresponding sound
-			audio.Play();
+			GetComponent<AudioSource>().Play();
 		}
 	}
 		

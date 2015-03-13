@@ -280,7 +280,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		}
 		else if (Camera.main)
 		{
-			if (Camera.main.isOrthoGraphic)
+			if (Camera.main.orthographic)
 			{
 				s = Camera.main.orthographicSize;
 			}
@@ -531,7 +531,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		}
 
 		// User has created a collider
-		if (collider != null)
+		if (GetComponent<Collider>() != null)
 		{
 			boxCollider = GetComponent<BoxCollider>();
 			meshCollider = GetComponent<MeshCollider>();
@@ -567,7 +567,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 			meshCollider.smoothSphereCollisions = sprite.colliderSmoothSphereCollisions;
 			
 			// this is required so our mesh pivot is at the right point
-			if (rigidbody) rigidbody.centerOfMass = Vector3.zero;
+			if (GetComponent<Rigidbody>()) GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
 		}
 		else if (sprite.colliderType != tk2dSpriteDefinition.ColliderType.None)
 		{
@@ -595,8 +595,8 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Unset)
 			return;
 		
-		PhysicMaterial physicsMaterial = collider?collider.sharedMaterial:null;
-		bool isTrigger = collider?collider.isTrigger:false;
+		PhysicMaterial physicsMaterial = GetComponent<Collider>()?GetComponent<Collider>().sharedMaterial:null;
+		bool isTrigger = GetComponent<Collider>()?GetComponent<Collider>().isTrigger:false;
 
 		boxCollider = gameObject.GetComponent<BoxCollider>();
 		meshCollider = gameObject.GetComponent<MeshCollider>();
@@ -623,10 +623,10 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 
 		CreateCollider();
 		
-		if (collider)
+		if (GetComponent<Collider>())
 		{
-			collider.isTrigger = isTrigger;
-			collider.material = physicsMaterial;
+			GetComponent<Collider>().isTrigger = isTrigger;
+			GetComponent<Collider>().material = physicsMaterial;
 		}
 	}
 #endif

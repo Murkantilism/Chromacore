@@ -669,7 +669,7 @@ public class tk2dTextMesh : MonoBehaviour, tk2dRuntime.ISpriteCollectionForceBui
 		}
 		else if (Camera.main)
 		{
-			if (Camera.main.isOrthoGraphic)
+			if (Camera.main.orthographic)
 			{
 				s = Camera.main.orthographicSize;
 			}
@@ -695,8 +695,8 @@ public class tk2dTextMesh : MonoBehaviour, tk2dRuntime.ISpriteCollectionForceBui
 	
 	void UpdateMaterial()
 	{
-		if (renderer.sharedMaterial != _fontInst.materialInst)
-			renderer.material = _fontInst.materialInst;
+		if (GetComponent<Renderer>().sharedMaterial != _fontInst.materialInst)
+			GetComponent<Renderer>().material = _fontInst.materialInst;
 	}
 	
 	public void ForceBuild()

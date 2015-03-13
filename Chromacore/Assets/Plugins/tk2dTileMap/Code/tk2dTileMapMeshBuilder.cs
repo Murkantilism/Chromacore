@@ -128,7 +128,7 @@ namespace tk2dRuntime.TileMap
 			if (subMeshCount > 0)
 			{
 				chunk.mesh.subMeshCount = subMeshCount;
-				chunk.gameObject.renderer.materials = materials.ToArray();
+				chunk.gameObject.GetComponent<Renderer>().materials = materials.ToArray();
 				int subMeshId = 0;
 				foreach (var indices in meshIndices)
 				{

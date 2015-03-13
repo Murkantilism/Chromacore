@@ -90,7 +90,7 @@ public class tk2dCameraAnchor : MonoBehaviour
 	public Camera AnchorCamera {
 		get {
 			if (tk2dCamera != null) {
-				_anchorCamera = tk2dCamera.camera;
+				_anchorCamera = tk2dCamera.GetComponent<Camera>();
 				tk2dCamera = null;
 #if UNITY_EDITOR
 				UnityEditor.EditorUtility.SetDirty(this);

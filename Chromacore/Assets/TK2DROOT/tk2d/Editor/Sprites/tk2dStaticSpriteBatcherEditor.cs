@@ -19,11 +19,11 @@ class tk2dStaticSpriteBatcherEditor : Editor
 			// sort sprites, smaller to larger z
 			if (batcher.CheckFlag(tk2dStaticSpriteBatcher.Flags.SortToCamera)) {
 				tk2dCamera tk2dCam = tk2dCamera.CameraForLayer( batcher.gameObject.layer );
-				Camera cam = tk2dCam ? tk2dCam.camera : Camera.main;
-				allTransforms = (from t in allTransforms orderby cam.WorldToScreenPoint((t.renderer != null) ? t.renderer.bounds.center : t.position).z descending select t).ToArray();
+				Camera cam = tk2dCam ? tk2dCam.GetComponent<Camera>() : Camera.main;
+				allTransforms = (from t in allTransforms orderby cam.WorldToScreenPoint((t.GetComponent<Renderer>() != null) ? t.GetComponent<Renderer>().bounds.center : t.position).z descending select t).ToArray();
 			}
 			else {
-				allTransforms = (from t in allTransforms orderby t.renderer.bounds.center.z descending select t).ToArray();
+				allTransforms = (from t in allTransforms orderby t.GetComponent<Renderer>().bounds.center.z descending select t).ToArray();
 			}
 			
 			// and within the z sort by material

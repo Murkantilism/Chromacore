@@ -278,8 +278,8 @@ public class tk2dClippedSprite : tk2dBaseSprite
 
 	protected override void UpdateMaterial()
 	{
-		if (renderer.sharedMaterial != collectionInst.spriteDefinitions[spriteId].materialInst)
-			renderer.material = collectionInst.spriteDefinitions[spriteId].materialInst;
+		if (GetComponent<Renderer>().sharedMaterial != collectionInst.spriteDefinitions[spriteId].materialInst)
+			GetComponent<Renderer>().material = collectionInst.spriteDefinitions[spriteId].materialInst;
 	}
 	
 	protected override int GetCurrentVertexCount()

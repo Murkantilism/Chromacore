@@ -31,11 +31,11 @@ public class ScoringSystem : MonoBehaviour {
 	// Concatonate the number of Notes seen & collected into 1 string
 	// and display the string with the GUI Text object.
 	void ScoreString(){
-		guiText.text = _numCollected + " / " + _numSeen;
+		GetComponent<GUIText>().text = _numCollected + " / " + _numSeen;
 	}
 	
 	// Set the position of Score GUI to top center
 	void SetPosition(){
-		guiText.pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 2.5f);
+		GetComponent<GUIText>().pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 2.5f);
 	}
 }

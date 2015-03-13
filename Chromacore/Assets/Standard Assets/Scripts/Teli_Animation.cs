@@ -116,7 +116,7 @@ public class Teli_Animation : MonoBehaviour {
 		
 		// Reset the renderer of all Notes
 		for(int i = 0; i < Notes.Length; i++){
-			Notes[i].renderer.enabled = true;
+			Notes[i].GetComponent<Renderer>().enabled = true;
 		}
 	}
 	

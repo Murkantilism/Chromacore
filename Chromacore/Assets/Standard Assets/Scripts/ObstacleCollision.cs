@@ -28,7 +28,7 @@ public class ObstacleCollision : MonoBehaviour {
 				// Break the obstacle
 				BreakObstacle();
 				// Play the breaking sound
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}

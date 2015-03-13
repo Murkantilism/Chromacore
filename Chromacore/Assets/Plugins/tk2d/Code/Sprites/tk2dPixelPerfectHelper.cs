@@ -42,10 +42,10 @@ public class tk2dPixelPerfectHelper : MonoBehaviour
 		
 		float resScale = collectionTargetHeight / targetResolutionHeight;
 
-		if (camera != null) cam = camera;
+		if (GetComponent<Camera>() != null) cam = GetComponent<Camera>();
 		if (cam == null) cam = Camera.main;
 		
-		if (cam.isOrthoGraphic)
+		if (cam.orthographic)
 		{
 			scaleK = resScale * cam.orthographicSize / collectionOrthoSize;
 			scaleD = 0.0f;
@@ -72,7 +72,7 @@ public class tk2dPixelPerfectHelper : MonoBehaviour
 	/// </summary>
 	public bool CameraIsOrtho
 	{
-		get { return cam.isOrthoGraphic; }
+		get { return cam.orthographic; }
 	}
 	
 	// camera

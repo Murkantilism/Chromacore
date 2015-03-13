@@ -78,7 +78,7 @@ public class tk2dUILayoutEditor : Editor {
 
 		// Draw outline of selected item
 		if (selItem != null) {
-			if (selItem.gameObj.renderer != null || selItem.layout != null) {
+			if (selItem.gameObj.GetComponent<Renderer>() != null || selItem.layout != null) {
 				float s = HandleUtility.GetHandleSize(t.position) * 0.05f;
 				Vector3 svec = new Vector3(s, s);
 				Bounds b = new Bounds();
@@ -86,7 +86,7 @@ public class tk2dUILayoutEditor : Editor {
 					b.center = selItem.gameObj.transform.position + 0.5f * (selItem.layout.bMin + selItem.layout.bMax);
 					b.size = selItem.layout.bMax - selItem.layout.bMin;
 				} else {
-					b = selItem.gameObj.renderer.bounds;
+					b = selItem.gameObj.GetComponent<Renderer>().bounds;
 				}
 				Handles.color = Color.red;
 				float[] kx = new float[] {-1, 1, 1, -1, -1};

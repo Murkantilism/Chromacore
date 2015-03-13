@@ -38,7 +38,7 @@ public class Checkpoints : MonoBehaviour {
 	
 	float calcTimestamp(){
 		// Formula: ( timestamp = (xPOS - startPOS) / velocity )
-		checkpoint_timestamp = (collider.transform.position.x - startPOS) / velocity;
+		checkpoint_timestamp = (GetComponent<Collider>().transform.position.x - startPOS) / velocity;
 		return checkpoint_timestamp;
 		
 		// (Opposite of calcXPOS formula: xPOS = (velocity * timestamp) + startPOS )
