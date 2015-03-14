@@ -91,5 +91,4 @@ public class ColorSwap : MonoBehaviour {
 		// The color texture fades in, so it increments up
 		curFadeIn = curFade;	
 	}
-	
 }

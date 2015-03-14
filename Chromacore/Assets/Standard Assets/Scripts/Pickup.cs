@@ -17,6 +17,7 @@ public class Pickup : MonoBehaviour {
 	
 	// Upon picking up this object, trigger events
 	void OnTriggerEnter(Collider col){
+		Debug.Log ("i am on " + gameObject);
 		if(col.gameObject.tag == "Player")
 		{
 			// Change the color of the textures on pickup
