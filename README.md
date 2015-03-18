@@ -1,10 +1,10 @@
 Chromacore
 ==========
-
+Github Game Off 2015
+--------------------
+<br></br>
 ## Description
 
-Built for Github Game Off 2015
-------------------------------
 Chromacore is a 2D infinite musical platformer set in a dark. Run, run and run!
 
 ## Initial game screenshots
