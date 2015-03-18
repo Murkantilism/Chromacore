@@ -5,7 +5,9 @@ Github Game Off 2015
 <br></br>
 ## Description
 
-Chromacore is a 2D infinite musical platformer set in a dark. Run, run and run!
+Chromacore is a 2D infinite musical platformer set in the dark. Our thief struggles to run away from other mystic forces slowing him. Run, run and run!
+<br></br><br></br>
+The game can be found here: http://catalincraciun.me/Chromacore
 
 ## Initial game screenshots
 
@@ -13,6 +15,8 @@ Chromacore is a 2D infinite musical platformer set in a dark. Run, run and run!
 
 ## The Team
 
-The prototype for this game was originally developed by Deniz Ozkaynak, Jen Tella, Korbin Shuffelton, and Jeff Fienberg at Northeastern University for the Game Assets & Prototyping class, taught by Joshua Gross.
+Special thanks to the initial authors which have set the basis of this game: Deniz Ozkaynak, Jen Tella, Korbin Shuffelton, Jeff Fienberg, Ronny Mraz, Sean King.
 
-Development of Chromacore into a full game is continued by Deniz Ozkaynak, Ronny Mraz, Sean King, Jen Tella, and Korbin Shuffelton.
+The project has been continued by a two-member motivated team:
+- Code: Catalin Craciun
+- Art: Domide Bogdan
