@@ -1,17 +1,15 @@
 Chromacore
 ==========
-
+Github Game Off 2015
+--------------------
+<br></br>
 ## Description
 
-Chromacore is a 2D musical platformer set in a dark, black & white world that progressively becomes more colorful and happy through successful gameplay.
+Chromacore is a 2D infinite musical platformer set in a dark. Run, run and run!
 
-## In-Game Screenshot
+## Initial game screenshots
 
 ![Chromacore - In-Game Screenshot](https://raw.github.com/Murkantilism/game-off-2013/master/ChromacoreInGameScreenshot.png)
-
-## Early Concept Art
-
-![Chromacore - Early Concept Art](https://raw.github.com/Murkantilism/game-off-2013/master/ChromacoreEarlyConceptArt.jpg)
 
 ## The Team
 
