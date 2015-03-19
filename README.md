@@ -9,9 +9,13 @@ Chromacore is a 2D infinite musical platformer set in the dark. Our thief strugg
 <br></br><br></br>
 The game can be found here: http://catalincraciun.me/Chromacore
 
-## Initial game screenshots
+## "Before" game screenshots
 
 ![Chromacore - In-Game Screenshot](https://raw.github.com/Murkantilism/game-off-2013/master/ChromacoreInGameScreenshot.png)
+
+## "After" game screenshots
+
+Coming soon!
 
 ## The Team
 
