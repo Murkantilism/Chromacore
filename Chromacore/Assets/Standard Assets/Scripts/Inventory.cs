@@ -3,7 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
-	
+
+	const int RunAnimationState = 0;
+	const int PunchAnimationState = 1;
+	const int JumpAnimationState = 2;
+	const int FallAnimationState = 3;
+	const int DeathAnimationState = 4;
+	const int GlowRunAnimationState = 5;
+
 	// Notes that have been collected by the player
 	private int notesCollected = 0;
 	// Notes that have been seen by the player
@@ -18,6 +25,9 @@ public class Inventory : MonoBehaviour {
 	void Start () {
 		save_notesCollected = 0;
 		save_notesSeen = 0;
+
+		GameObject teli = GameObject.FindGameObjectWithTag ("Teli");
+		teli.GetComponent<Animator> ().SetInteger ("state", GlowRunAnimationState);
 	}
 	
 	// Increment notes when the player passes them

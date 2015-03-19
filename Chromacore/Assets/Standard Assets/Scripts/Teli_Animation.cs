@@ -24,7 +24,9 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// An array of notes
 	public GameObject[] Notes;
-	
+
+	GameObject scoringSystem;
+
 	// The latest timestamp to reset music track at right checkpoint
 	float checkpoint_timestamp;
 	
@@ -32,8 +34,8 @@ public class Teli_Animation : MonoBehaviour {
 	void Start () {
 		// This script must be attached to the sprite to work
 		anim = GetComponent<tk2dSpriteAnimator>();
-		
-		Notes = GameObject.FindGameObjectsWithTag("Note");
+
+		scoringSystem = GameObject.FindGameObjectWithTag ("ScoringSystem");
 	}
 		
 	// Update is called once per frame
@@ -72,8 +74,6 @@ public class Teli_Animation : MonoBehaviour {
 		// Wait to invoke death animation function until a few
 		// seconds after game has begun.
 		Invoke("DeathAnimation", 3);
-		
-		
 	}
 	
 	// Handles death by Edges (death by obstacles is 
@@ -83,6 +83,8 @@ public class Teli_Animation : MonoBehaviour {
 		if (teliCharacter.velocity.x < 1 || teliCharacter.transform.position.y < -5){
 			//Debug.Log(teliCharacter.velocity.x);
 			Debug.Log("DEATH");
+			scoringSystem.SendMessage("SetCharacterDead");
+
 			// And the death animation isn't already playing
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation
@@ -101,6 +103,8 @@ public class Teli_Animation : MonoBehaviour {
 	
 	// Reset Teli's position, the background track, and respawn Notes
 	void Reset(){
+		anim.Stop ();
+		/*
 		// Send a message to restart Teli's movement
 		SendMessageUpwards("death", true);
 		// Reset score to last saved score
@@ -118,6 +122,7 @@ public class Teli_Animation : MonoBehaviour {
 		for(int i = 0; i < Notes.Length; i++){
 			Notes[i].GetComponent<Renderer>().enabled = true;
 		}
+		*/
 	}
 	
 	// Hanlde Glow Animation

@@ -1,41 +1,44 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ScoringSystem : MonoBehaviour {
-	string _numSeen = "0";
-	string _numCollected  = "0";
-	
-	// Use this for initialization
+	// Properties
+	float timeLapsed;
+	GUIText scoreLabel;
+	int score;
+	bool teliIsDead;
+
+	// Methods
+	// Start method
+	public void SetCharacterAlive() {
+		teliIsDead = false;
+	}
+
+	public void SetCharacterDead() {
+		teliIsDead = true;
+	}
+
+	public void ResetScore() {
+		score = 0;
+	}
+
 	void Start () {
-		
+		timeLapsed = 0;
+		score = 0;
+
+		scoreLabel = GetComponent<GUIText>();
+		scoreLabel.pixelOffset = new Vector2(-(Screen.width/2) + 100, (Screen.height/2) - 50);
+	
+		SetCharacterAlive ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		ScoreString();
-		SetPosition();
-	}
-	
-	// Recieve the number of Notes seen from Inventory.cs
-	// Save it to pass on to ScoreString function
-	void ScoreSeen(string numSeen){
-		_numSeen = numSeen;
-	}
-	
-	// Recieve the number of Notes collected from Inventory.cs
-	// Save it to pass on to ScoreString function
-	void ScoreCollected(string numCollected){
-		_numCollected = numCollected;
-	}
-	
-	// Concatonate the number of Notes seen & collected into 1 string
-	// and display the string with the GUI Text object.
-	void ScoreString(){
-		GetComponent<GUIText>().text = _numCollected + " / " + _numSeen;
-	}
-	
-	// Set the position of Score GUI to top center
-	void SetPosition(){
-		GetComponent<GUIText>().pixelOffset = new Vector2(Screen.width / 500, (float)Screen.height / 2.5f);
+		timeLapsed += Time.deltaTime;
+		if (timeLapsed >= 0.5f && !teliIsDead) {
+			timeLapsed -= 0.5f;
+			scoreLabel.text = "Score: " + score.ToString();
+			score++;
+		}
 	}
 }

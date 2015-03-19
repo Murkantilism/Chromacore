@@ -32,6 +32,7 @@ function Update() {
 			moveDirection.y = jumpSpeed;
 		}
 	}
+	
 	// Apply gravity
 	moveDirection.y -= gravity * Time.deltaTime;
 	
