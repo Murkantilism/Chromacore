@@ -37,7 +37,6 @@ function Update() {
 	moveDirection.y -= gravity * Time.deltaTime;
 	
 	// Move the controller if we are not dead
-	if (notdeadp == true){
+	if (notdeadp == true)
 		controller.Move(moveDirection * Time.deltaTime);
-	}
 }

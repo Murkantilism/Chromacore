@@ -14,9 +14,11 @@ public class Pickup : MonoBehaviour {
 	
 	// Upon picking up this object, trigger events
 	void OnTriggerEnter(Collider col){
-		if(col.gameObject.tag == "Player")
+		if(col.gameObject.tag == "Teli")
 		{
 			Debug.Log ("The player took a mistic ball");
+
+			col.gameObject.SendMessage("CollectMisticBall");
 
 			// Make this object invisible
 			GetComponent<Renderer>().enabled = false;

@@ -33,12 +33,8 @@ public class ScoringSystem : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		timeLapsed += Time.deltaTime;
-		if (timeLapsed >= 0.5f && !teliIsDead) {
-			timeLapsed -= 0.5f;
-			scoreLabel.text = "Score: " + score.ToString();
-			score++;
-		}
+	void UpdateScore() {
+		scoreLabel.text = "Score: " + score.ToString();
+		score++;
 	}
 }

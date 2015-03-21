@@ -2,79 +2,98 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[AddComponentMenu("2D Toolkit/Sprite/tk2dSpriteAnimator")]
 public class Teli_Animation : MonoBehaviour {
-	// Spawn point at beginning of level
-	public GameObject spawn;
-	
+
+	// Animation states
+	const int RunAnimationState = 0;
+	const int PunchAnimationState = 1;
+	const int JumpAnimationState = 2;
+	const int FallAnimationState = 3;
+	const int DeathAnimationState = 4;
+	const int GlowRunAnimationState = 5;
+
 	// The main character's Charcter Controller	
-	public CharacterController teliCharacter;
+	CharacterController teliCharacter;
 	
 	// Value of character's Y velocity to begin falling animation at
 	private float fallAnimVel = -0.25f;
 	
-	// Link to animated sprite
-	private tk2dSpriteAnimator anim;
-	
+	Animator animator;
+	GameObject scoringSystem;
+
 	// State variable to check if player is running (running by default)
 	public bool runningP = true;
 	
 	// The background music track (used to reset after death)
 	public AudioSource backgroundTrack;
-	
-	// An array of notes
-	public GameObject[] Notes;
 
-	GameObject scoringSystem;
+	int misticBalls;
 
-	// The latest timestamp to reset music track at right checkpoint
-	float checkpoint_timestamp;
-	
-	// Use this for initialization
+	void CollectMisticBall() {
+		misticBalls++;
+		scoringSystem.SendMessage ("UpdateScore");
+		if (animator.GetInteger ("state") != GlowRunAnimationState)
+			animator.SetInteger("state", GlowRunAnimationState);
+	}
+
 	void Start () {
-		// This script must be attached to the sprite to work
-		anim = GetComponent<tk2dSpriteAnimator>();
+		misticBalls = 0;
 
+		animator = GetComponent<Animator> ();
+		teliCharacter = GetComponent<CharacterController> ();
 		scoringSystem = GameObject.FindGameObjectWithTag ("ScoringSystem");
 	}
 		
-	// Update is called once per frame
+	void Update() {
+		if (Input.GetKey (KeyCode.Space) && animator.GetInteger("state") != JumpAnimationState)
+			animator.SetInteger ("state", JumpAnimationState);
+		if (Input.GetKey (KeyCode.A) && animator.GetInteger ("state") != PunchAnimationState)
+			animator.SetInteger ("state", PunchAnimationState);
+
+		if (teliCharacter.velocity.y < fallAnimVel) {
+			if (animator.GetInteger ("state") != FallAnimationState) {
+				animator.SetInteger ("state", FallAnimationState);
+			}
+		} else if (animator.GetInteger ("state") == FallAnimationState)
+			animator.SetInteger("state", RunAnimationState);
+	}
+/*
 	void Update () {
 		// Jump Animation
 		if (Input.GetKey(KeyCode.Space)){
 			// Only play the clip if it is not already playing.
 			// Calling play will restart the clip if it is already playing
-			if (!anim.IsPlaying("Jump")){
-				anim.Play("Jump");
-			}
+			// Jump
+			animator.SetTrigger("Jump");
 		}
 		
 		// If the Player presses the punch button
 		if (Input.GetKey(KeyCode.A)){
 			// And the charcter isn't currently punching
-			if(!anim.IsPlaying("Punch")){
-				anim.Play("Punch");
-			}
+			animator.SetTrigger("Punch");
 		}
 		
 		// If none of the other animations are playing
+		/*
 		if (!anim.IsPlaying("Run") & !anim.IsPlaying("Jump") & !anim.IsPlaying("Run_Glow") & !anim.IsPlaying("Punch") & !anim.IsPlaying("Death")){
 			// Loop running animation
 			anim.Play("Run");
 		}
 		
 		// If the character is falling
+
 		if (teliCharacter.velocity.y < fallAnimVel){
 			// And the falling animation isn't already playing
-			if (!anim.IsPlaying("Fall")){
-				anim.Play("Fall");
+			if (animator.GetInteger("state") != FallAnimationState){
+				animator.SetInteger("state", FallAnimationState);
 			}
-		}
-		
+		} else if (animator.GetInteger("state") == FallAnimationState)
+			animator.SetInteger ("state", RunAnimationState);
 		// Wait to invoke death animation function until a few
 		// seconds after game has begun.
-		Invoke("DeathAnimation", 3);
+		//Invoke("DeathAnimation", 3);
 	}
+*/
 	
 	// Handles death by Edges (death by obstacles is 
 	// handled in ObstacleDeath() function)
@@ -84,58 +103,33 @@ public class Teli_Animation : MonoBehaviour {
 			//Debug.Log(teliCharacter.velocity.x);
 			Debug.Log("DEATH");
 			scoringSystem.SendMessage("SetCharacterDead");
-
+			/*
 			// And the death animation isn't already playing
 			if(!anim.IsPlaying("Death")){
 				// Play the death animation
 				anim.Play("Death");
-			}
+			}*/
 			// Call reset function after 2 seconds
 			Invoke("Reset", 1);
 		}
 	}
 	
-	// Recieve the checkpoint timestamp from ObstacleDeath.cs and set
-	// checkpoint timestamp variable to the latest checkpoint's timestamp
-	void getCheckpoint(float timestamp){
-		checkpoint_timestamp = timestamp;
-	}
-	
 	// Reset Teli's position, the background track, and respawn Notes
 	void Reset(){
-		anim.Stop ();
-		/*
-		// Send a message to restart Teli's movement
-		SendMessageUpwards("death", true);
-		// Reset score to last saved score
-		SendMessageUpwards("ResetScore");
-		// Reset position to spawn
-		teliCharacter.transform.position = spawn.transform.position;
-		// Reset music
-		backgroundTrack.Stop();
-		// Set music's start time to checkpoint's start time
-		backgroundTrack.time = checkpoint_timestamp;
-		// Restart music track
-		backgroundTrack.Play();
-		
-		// Reset the renderer of all Notes
-		for(int i = 0; i < Notes.Length; i++){
-			Notes[i].GetComponent<Renderer>().enabled = true;
-		}
-		*/
+
 	}
 	
 	// Hanlde Glow Animation
-	void GlowAnimation(){
+	void GlowAnimation(){/*
 		if(!anim.IsPlaying("Run_Glow")){
 			anim.Stop();
 			anim.Play("Run_Glow");
-		}
+		}*/
 	}
 	
 	// On death, stop movement and if the PunchAnimation isn't 
 	// already playing	when Death broadcast is recieved, play it.
-	void ObstacleDeath(){
+	void ObstacleDeath(){/*
 		if(!anim.IsPlaying("Punch")){
 			Debug.Log("DEATH - Wasn't punching");
 			// And the death animation isn't already playing
@@ -147,6 +141,6 @@ public class Teli_Animation : MonoBehaviour {
 			}
 			// Call reset function after 2 seconds
 			Invoke("Reset", 1);
-		}
+		}*/
 	}
 }

@@ -121,6 +121,7 @@
      <Compile Include="Assets\Standard Assets\Scripts\ObstacleDeath.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Pickup.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\ScoringSystem.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\SetState.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Teli_Animation.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\CombineChildren.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\Utility Scripts\MeshCombineUtility.cs" />
