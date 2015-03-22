@@ -34,7 +34,7 @@ public class ScoringSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void UpdateScore() {
-		scoreLabel.text = "Score: " + score.ToString();
 		score++;
+		scoreLabel.text = "Score: " + score.ToString();
 	}
 }
