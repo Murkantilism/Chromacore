@@ -135,13 +135,13 @@
      <Compile Include="Assets\Resources\Other\Scripts\Pickup.cs" />
      <Compile Include="Assets\Resources\Other\Scripts\ScoringSystem.cs" />
      <Compile Include="Assets\Resources\Other\Scripts\SetState.cs" />
-     <Compile Include="Assets\Resources\Other\Scripts\Teli_Animation.cs" />
      <Compile Include="Assets\Resources\Other\Scripts\Utility Scripts\CombineChildren.cs" />
      <Compile Include="Assets\Resources\Other\Scripts\Utility Scripts\MeshCombineUtility.cs" />
      <Compile Include="Assets\Scripts\FlashyLight.cs" />
      <Compile Include="Assets\Scripts\FollowTeli.cs" />
      <Compile Include="Assets\Scripts\SceneManagement.cs" />
-     <Compile Include="Assets\Teli_Control.cs" />
+     <Compile Include="Assets\Scripts\TeliBrain.cs" />
+     <Compile Include="Assets\Scripts\Teli_Control.cs" />
      <None Include="Assets\Resources\Other\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Other\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
      <None Include="Assets\Other\TK2DROOT\tk2d\Goodies\TexturePacker\Exporter\2dtoolkit\exporter.xml" />

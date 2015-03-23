@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FlashyLight.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TeliBrain.cs">
     <Files>
-      <File FileName="Assets/Scripts/FlashyLight.cs" Line="25" Column="27" />
       <File FileName="Assets/Scripts/SceneManagement.cs" Line="16" Column="1" />
+      <File FileName="Assets/Scripts/Teli_Control.cs" Line="12" Column="2" />
+      <File FileName="Assets/Scripts/TeliBrain.cs" Line="51" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
