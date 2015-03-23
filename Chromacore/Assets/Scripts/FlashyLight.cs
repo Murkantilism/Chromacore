@@ -22,7 +22,7 @@ public class FlashyLight : MonoBehaviour {
 		tm2 += Time.deltaTime;
 	
 		if (tm2 >= Random.Range(0.01f, 0.05f)) {
-			if (light.intensity < 4 && sign == -1) {
+			if (light.intensity < 6 && sign == -1) {
 				sign *= -1;
 				tm = 0;
 			}
