@@ -5,7 +5,7 @@ Github Game Off 2015
 <br></br>
 ## Description
 
-Chromacore is a 2D infinite musical platformer set in the dark. Our thief struggles to run away from other mystic forces slowing him. Run, run and run!
+Chromacore is a 2D infinite musical platformer set in the dark. Our thief struggles to run away from other mystic forces slowing him down. Run, run and run!
 <br></br><br></br>
 The game can be found here: http://catalincraciun.me/Chromacore
 
