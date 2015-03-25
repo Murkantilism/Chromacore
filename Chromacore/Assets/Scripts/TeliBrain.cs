@@ -7,6 +7,8 @@ public class TeliBrain : MonoBehaviour {
 	public AudioSource backgroundTrack; // The background music track (used to reset after death)
 	public float xSpeed = 5f;
 
+	bool jumped;
+	
 	// Animation states - Constants
 	const int RunAnimationState = 0;
 	const int PunchAnimationState = 1;
@@ -15,7 +17,7 @@ public class TeliBrain : MonoBehaviour {
 	const int DeathAnimationState = 4;
 	const int GlowRunAnimationState = 5;
 
-	private float deltaVelocity = -0.15f;
+	private float deltaVelocity = -0.35f;
 	Rigidbody2D teliBody;
 	
 	Animator animator;
@@ -34,7 +36,11 @@ public class TeliBrain : MonoBehaviour {
 		if (animator.GetInteger ("state") != GlowRunAnimationState)
 			animator.SetInteger("state", GlowRunAnimationState);
 	}
-	
+
+	void DisableJumped () {
+		jumped = false;
+	}
+
 	void Start () {
 		misticBalls = 0;
 		time = 0;
@@ -54,7 +60,7 @@ public class TeliBrain : MonoBehaviour {
 			teliFalling = true;
 			if (animator.GetInteger("state") != FallAnimationState)
 				animator.SetInteger("state", FallAnimationState);
-		} else if (animator.GetInteger("state") == FallAnimationState) {
+		} else if (animator.GetInteger("state") == FallAnimationState && !jumped) {
 			// Make Teli run again
 			teliFalling = false;
 			animator.SetInteger("state", RunAnimationState);
@@ -65,10 +71,12 @@ public class TeliBrain : MonoBehaviour {
 
 
 		// Managing jumping
-		if (!teliFalling && Input.GetKeyDown(KeyCode.Space) && animator.GetInteger ("state") == RunAnimationState) {
+		if (!teliFalling && !jumped && Input.GetKeyDown(KeyCode.Space) && animator.GetInteger ("state") == RunAnimationState) {
 			Debug.Log("Jump");
 			animator.SetInteger ("state", JumpAnimationState);
 			shouldJump = true;
+			jumped = true;
+			Invoke("DisableJumped", 0.8f);
 		}
 
 		if (shouldJump) {
@@ -77,7 +85,7 @@ public class TeliBrain : MonoBehaviour {
 			if (time >= 0.1) {
 				time = 0;
 				shouldJump = false;
-				animator.SetInteger("state", RunAnimationState);
+				animator.SetInteger("state", FallAnimationState);
 			}
 		}
 	}
