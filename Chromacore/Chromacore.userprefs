@@ -1,12 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TeliBrain.cs">
-    <Files>
-      <File FileName="Assets/Scripts/SceneManagement.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Teli_Control.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TeliBrain.cs" Line="54" Column="2" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

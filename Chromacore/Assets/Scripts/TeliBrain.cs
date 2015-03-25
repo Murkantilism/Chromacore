@@ -15,48 +15,33 @@ public class TeliBrain : MonoBehaviour {
 	const int JumpAnimationState = 2;
 	const int FallAnimationState = 3;
 	const int DeathAnimationState = 4;
-	const int GlowRunAnimationState = 5;
 
 	private float deltaVelocity = -0.35f;
 	Rigidbody2D teliBody;
 	
 	Animator animator;
-	GameObject scoringSystem;
-	
-	int misticBalls;
 
 	bool teliFalling;
 	bool shouldJump;
 
 	float time;
-	
-	void CollectMisticBall() {
-		misticBalls++;
-		scoringSystem.SendMessage ("UpdateScore");
-		if (animator.GetInteger ("state") != GlowRunAnimationState)
-			animator.SetInteger("state", GlowRunAnimationState);
-	}
 
 	void DisableJumped () {
 		jumped = false;
 	}
 
 	void Start () {
-		misticBalls = 0;
 		time = 0;
 		teliFalling = false;
 
 		animator = GetComponent<Animator> ();
 		teliBody = GetComponent<Rigidbody2D> ();
-
-		scoringSystem = GameObject.FindGameObjectWithTag ("ScoringSystem");
 	}
 
 	void FixedUpdate() {
 		// Managing falling
 		if (teliBody.velocity.y < deltaVelocity) {
 			// Falling
-			Debug.Log ("Falling");
 			teliFalling = true;
 			if (animator.GetInteger("state") != FallAnimationState)
 				animator.SetInteger("state", FallAnimationState);
@@ -72,7 +57,6 @@ public class TeliBrain : MonoBehaviour {
 
 		// Managing jumping
 		if (!teliFalling && !jumped && Input.GetKeyDown(KeyCode.Space) && animator.GetInteger ("state") == RunAnimationState) {
-			Debug.Log("Jump");
 			animator.SetInteger ("state", JumpAnimationState);
 			shouldJump = true;
 			jumped = true;
