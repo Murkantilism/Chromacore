@@ -53,7 +53,6 @@
      <Compile Include="Assets\Scripts\ScoringSystem.cs" />
      <Compile Include="Assets\Scripts\SetState.cs" />
      <Compile Include="Assets\Scripts\TeliBrain.cs" />
-     <Compile Include="Assets\Scripts\Teli_Control.cs" />
      <None Include="Assets\Resources\Fonts\Brainflower\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
