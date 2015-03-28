@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TeliBrain.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FollowTeli.cs">
     <Files>
-      <File FileName="Assets/Scripts/TeliBrain.cs" Line="67" Column="34" />
+      <File FileName="Assets/Scripts/MisticBallsGenerator.cs" Line="18" Column="115" />
+      <File FileName="Assets/Scripts/FollowTeli.cs" Line="15" Column="98" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

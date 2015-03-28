@@ -12,6 +12,6 @@ public class FollowTeli : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.position = new Vector3 (teli.transform.position.x, teli.transform.position.y + 2f, -12.5f);
+		this.transform.position = new Vector3 (teli.transform.position.x, teli.transform.position.y + 3f, -12.5f);
 	}
 }
