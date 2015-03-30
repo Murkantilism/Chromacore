@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TeliBrain : MonoBehaviour {
-	
-	public AudioSource backgroundTrack; // The background music track (used to reset after death)
+
 	public float xSpeed = 5f;
 
 	bool jumped;
@@ -16,6 +15,7 @@ public class TeliBrain : MonoBehaviour {
 	const int FallAnimationState = 3;
 	const int DeathAnimationState = 4;
 
+	public float jumpHeight = 0.2f;
 	private float deltaVelocity = -0.05f;
 	Rigidbody2D teliBody;
 	
@@ -23,6 +23,11 @@ public class TeliBrain : MonoBehaviour {
 
 	bool teliFalling;
 	bool shouldJump;
+
+	float startPosition;
+
+	float oldvel;
+	float timeForVel;
 
 	float time;
 
@@ -32,13 +37,15 @@ public class TeliBrain : MonoBehaviour {
 
 	void Start () {
 		time = 0;
+		timeForVel = 0;
 		teliFalling = false;
 
 		animator = GetComponent<Animator> ();
 		teliBody = GetComponent<Rigidbody2D> ();
 	}
 
-	void FixedUpdate() {
+	void Update() {
+		Debug.Log (teliBody.velocity.y.ToString ());
 		// Managing punching
 		if (Input.GetKey (KeyCode.A) && animator.GetInteger ("state") == RunAnimationState)
 			animator.SetInteger ("state", PunchAnimationState);
@@ -49,7 +56,7 @@ public class TeliBrain : MonoBehaviour {
 			teliFalling = true;
 			if (animator.GetInteger("state") != FallAnimationState)
 				animator.SetInteger("state", FallAnimationState);
-		} else if (animator.GetInteger("state") == FallAnimationState && !jumped && teliBody.velocity.y > deltaVelocity) {
+		} else if (animator.GetInteger("state") == FallAnimationState && !jumped && teliBody.velocity.y > deltaVelocity && teliBody.velocity.y > oldvel) {
 			// Make Teli run again
 			teliFalling = false;
 			animator.SetInteger("state", RunAnimationState);
@@ -64,17 +71,23 @@ public class TeliBrain : MonoBehaviour {
 			animator.SetInteger ("state", JumpAnimationState);
 			shouldJump = true;
 			jumped = true;
+			startPosition = this.transform.position.y;
 			Invoke("DisableJumped", 0.8f);
 		}
 
 		if (shouldJump) {
 			teliBody.velocity = new Vector2(teliBody.velocity.x, teliBody.velocity.y + 1);
-			time += Time.fixedDeltaTime;
-			if (time >= 0.1) {
-				time = 0;
+			if (this.transform.position.y - startPosition > jumpHeight) {
 				shouldJump = false;
+				startPosition = this.transform.position.y;
 				animator.SetInteger("state", FallAnimationState);
 			}
+		}
+
+		timeForVel += Time.deltaTime;
+		if (timeForVel > 0.07) {
+			oldvel = teliBody.velocity.y;
+			timeForVel = 0;
 		}
 	}
 }
