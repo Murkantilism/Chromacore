@@ -45,7 +45,6 @@ public class TeliBrain : MonoBehaviour {
 	}
 
 	void Update() {
-		Debug.Log (teliBody.velocity.y.ToString ());
 		// Managing punching
 		if (Input.GetKey (KeyCode.A) && animator.GetInteger ("state") == RunAnimationState)
 			animator.SetInteger ("state", PunchAnimationState);
