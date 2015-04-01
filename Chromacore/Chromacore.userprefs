@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TeliBrain.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FollowerGuard.cs">
     <Files>
-      <File FileName="Assets/Scripts/TeliBrain.cs" Line="75" Column="31" />
+      <File FileName="Assets/Scripts/TeliBrain.cs" Line="50" Column="65" />
+      <File FileName="Assets/Scripts/FollowTeli.cs" Line="40" Column="4" />
+      <File FileName="Assets/Scripts/FollowerGuard.cs" Line="7" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -45,6 +45,11 @@ public class TeliBrain : MonoBehaviour {
 		teliBody = GetComponent<Rigidbody2D> ();
 	}
 
+	void FixedUpdate() {
+		// Moving character to right
+		teliBody.velocity = new Vector2 (xSpeed, teliBody.velocity.y);
+	}
+
 	void Update() {
 		// Managing punching
 		if (Input.GetKey (KeyCode.A) && animator.GetInteger ("state") == RunAnimationState)
@@ -61,10 +66,6 @@ public class TeliBrain : MonoBehaviour {
 			teliFalling = false;
 			animator.SetInteger("state", RunAnimationState);
 		}
-
-		// Moving character to right
-		teliBody.velocity = new Vector2 (xSpeed, teliBody.velocity.y);
-
 
 		// Managing jumping
 		if (!teliFalling && !jumped && Input.GetKeyDown(KeyCode.Space) && animator.GetInteger ("state") == RunAnimationState) {

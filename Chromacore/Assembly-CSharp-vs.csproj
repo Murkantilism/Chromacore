@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\FlashyLight.cs" />
      <Compile Include="Assets\Scripts\FollowTeli.cs" />
+     <Compile Include="Assets\Scripts\FollowerGuard.cs" />
      <Compile Include="Assets\Scripts\MisticBallsGenerator.cs" />
      <Compile Include="Assets\Scripts\Pickup.cs" />
      <Compile Include="Assets\Scripts\SceneManagement.cs" />
