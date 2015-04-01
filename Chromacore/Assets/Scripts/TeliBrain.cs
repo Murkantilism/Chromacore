@@ -17,6 +17,7 @@ public class TeliBrain : MonoBehaviour {
 
 	public float jumpHeight = 0.2f;
 	private float deltaVelocity = -0.05f;
+	private float precisionError = 0.05f;
 	Rigidbody2D teliBody;
 	
 	Animator animator;
@@ -55,7 +56,7 @@ public class TeliBrain : MonoBehaviour {
 			teliFalling = true;
 			if (animator.GetInteger("state") != FallAnimationState)
 				animator.SetInteger("state", FallAnimationState);
-		} else if (animator.GetInteger("state") == FallAnimationState && !jumped && teliBody.velocity.y > deltaVelocity && teliBody.velocity.y > oldvel) {
+		} else if (animator.GetInteger("state") == FallAnimationState && !jumped && teliBody.velocity.y >= oldvel) {
 			// Make Teli run again
 			teliFalling = false;
 			animator.SetInteger("state", RunAnimationState);
