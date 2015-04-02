@@ -15,7 +15,7 @@ public class FollowTeli : MonoBehaviour {
 	void StartFollowing() {
 		cameraBody = GetComponent<Rigidbody2D> ();
 
-		this.transform.position = new Vector3 (teli.transform.position.x, teli.transform.position.y + 3.15f, -12.5f);
+		this.transform.position = new Vector3 (teli.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
 		cameraBody.velocity = new Vector2 (cameraBody.velocity.x + 4.5f, 0);
 
 		shouldFollow = true;
@@ -31,7 +31,7 @@ public class FollowTeli : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (shouldFollow)
-			this.transform.position = new Vector3 (this.transform.position.x, teli.transform.position.y + 3.15f, -12.5f);
+			this.transform.position = new Vector3 (this.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
 		else {
 			if (cameraBody.velocity.x >= 0.02f)
 				cameraBody.velocity = new Vector2(cameraBody.velocity.x - 0.02f, cameraBody.velocity.y);
