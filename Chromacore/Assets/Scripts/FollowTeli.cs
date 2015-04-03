@@ -7,6 +7,8 @@ public class FollowTeli : MonoBehaviour {
 	Rigidbody2D cameraBody;
 	Vector3 pos;
 	bool shouldFollow;
+	public GameObject background1;
+	public GameObject background2;
 
 	void StopFollowing() {
 		shouldFollow = false;
@@ -30,9 +32,15 @@ public class FollowTeli : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (shouldFollow)
+		if (shouldFollow) {
 			this.transform.position = new Vector3 (this.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
-		else {
+			background1.transform.position = new Vector3(background1.transform.position.x,
+			                                             teli.transform.position.y + 5.5f,
+			                                             background1.transform.position.z);
+			background2.transform.position = new Vector3(background2.transform.position.x,
+			                                             teli.transform.position.y + 5.5f,
+			                                             background2.transform.position.z);
+		} else {
 			if (cameraBody.velocity.x >= 0.02f)
 				cameraBody.velocity = new Vector2(cameraBody.velocity.x - 0.02f, cameraBody.velocity.y);
 			else

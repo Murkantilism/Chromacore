@@ -5,8 +5,18 @@ public class SceneManagement : MonoBehaviour {
 
 	public int generationRow;
 	public GameObject[] structsPrefabs;
+	public GameObject background1;
+	public GameObject background2;
 
 	GameObject teli;
+
+	Vector2[,] dependencies; // A 2d array listing dependencies between structs - dependencies[x][y] = the difference in position if y comes after x
+	Vector2[] strP; // The generated positions
+	StructType[] str; // The type of struct generated
+	GameObject[] generatedStructs;
+	float rightmostPositionX;
+	float rightmostBackgroundPositionX;
+	int freeMem;
 
 	enum StructType{
 		str1 = 1,
@@ -18,13 +28,6 @@ public class SceneManagement : MonoBehaviour {
 		str7 = 7,
 		str8 = 8
 	};
-
-	Vector2[,] dependencies; // A 2d array listing dependencies between structs - dependencies[x][y] = the difference in position if y comes after x
-	Vector2[] strP; // The generated positions
-	StructType[] str; // The type of struct generated
-	GameObject[] generatedStructs;
-	float rightmostPositionX;
-	int freeMem;
 
 	int RandomIntLowerThan(int x) {
 		int rand = (int)Random.Range (0, x);
@@ -155,7 +158,8 @@ public class SceneManagement : MonoBehaviour {
 	void Start () {
 		Debug.Log ("Start");
 
-		generationRow = 5;
+		rightmostBackgroundPositionX = 78.9f;
+		generationRow = 3;
 		freeMem = 2;
 		teli = GameObject.FindGameObjectWithTag ("Teli");
 		dependencies = new Vector2[10, 10];
@@ -171,6 +175,20 @@ public class SceneManagement : MonoBehaviour {
 	void Update () {
 		if (teli.transform.position.x >= rightmostPositionX) {
 			GenerateStructure();
+		}
+		if (teli.transform.position.x >= rightmostBackgroundPositionX) {
+			Debug.Log("Should generate background...");
+			if (background1.transform.position.x < background2.transform.position.x) {
+				// Should move background 1
+				background1.transform.position = new Vector2(background2.transform.position.x + 78.9f,
+				                                             background1.transform.position.y);
+				rightmostBackgroundPositionX = background1.transform.position.x;
+			} else {
+				// Should move background 2
+				background2.transform.position = new Vector2(background1.transform.position.x + 78.9f,
+				                                             background2.transform.position.y);
+				rightmostBackgroundPositionX = background2.transform.position.x;
+			}
 		}
 	}
 }
