@@ -11,6 +11,8 @@ Built with Unity 5 (Personal Edition)
 <br></br><br></br>
 The game can be found here: http://catalincraciun.me/Chromacore
 <br></br>
+The initial version of the game can be found here: http://catalincraciun.me/OLDChromacore
+<br></br><br></br>
 A youtube gameplay video can be found here: [Coming soon]
 
 ## "Before" game screenshots
