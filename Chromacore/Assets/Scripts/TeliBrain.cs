@@ -32,6 +32,10 @@ public class TeliBrain : MonoBehaviour {
 
 	float time;
 
+	void YouAreDead () {
+		Debug.Log ("I am dead");
+	}
+
 	void DisableJumped () {
 		jumped = false;
 	}

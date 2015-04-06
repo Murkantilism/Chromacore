@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SceneManagement.cs">
     <Files>
-      <File FileName="Assets/Scripts/SceneManagement.cs" Line="122" Column="1" />
+      <File FileName="Assets/Scripts/FollowerGuard.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/SceneManagement.cs" Line="125" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
