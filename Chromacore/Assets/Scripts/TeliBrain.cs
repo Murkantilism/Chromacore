@@ -32,6 +32,10 @@ public class TeliBrain : MonoBehaviour {
 
 	float time;
 
+	void YouAreDead () {
+		Debug.Log ("I am dead");
+	}
+
 	void DisableJumped () {
 		jumped = false;
 	}
@@ -43,6 +47,11 @@ public class TeliBrain : MonoBehaviour {
 
 		animator = GetComponent<Animator> ();
 		teliBody = GetComponent<Rigidbody2D> ();
+	}
+
+	void FixedUpdate() {
+		// Moving character to right
+		teliBody.velocity = new Vector2 (xSpeed, teliBody.velocity.y);
 	}
 
 	void Update() {
@@ -61,10 +70,6 @@ public class TeliBrain : MonoBehaviour {
 			teliFalling = false;
 			animator.SetInteger("state", RunAnimationState);
 		}
-
-		// Moving character to right
-		teliBody.velocity = new Vector2 (xSpeed, teliBody.velocity.y);
-
 
 		// Managing jumping
 		if (!teliFalling && !jumped && Input.GetKeyDown(KeyCode.Space) && animator.GetInteger ("state") == RunAnimationState) {
