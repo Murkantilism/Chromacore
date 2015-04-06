@@ -7,8 +7,8 @@ public class SceneManagement : MonoBehaviour {
 	public GameObject[] structsPrefabs;
 	public GameObject background1;
 	public GameObject background2;
-
-	GameObject teli;
+	
+	GameObject mainCamera;
 
 	Vector2[,] dependencies; // A 2d array listing dependencies between structs - dependencies[x][y] = the difference in position if y comes after x
 	Vector2[] strP; // The generated positions
@@ -62,7 +62,7 @@ public class SceneManagement : MonoBehaviour {
 		dependencies [3, 2] = new Vector2 (25.72f, 0f);
 		dependencies [3, 3] = new Vector2 (25.99f, 2.55f);
 		dependencies [3, 4] = new Vector2 (43.16f, 3.34f);
-		dependencies [3, 5] = new Vector2 (35.75f, 0.82f);
+		dependencies [3, 5] = new Vector2 (25.81f, 0.82f);
 		dependencies [3, 6] = new Vector2 (25.42f, 0.53f);
 		dependencies [3, 7] = new Vector2 (32.83f, 0f);
 		dependencies [3, 8] = new Vector2 (61.04f, 3.22f);
@@ -161,7 +161,9 @@ public class SceneManagement : MonoBehaviour {
 		rightmostBackgroundPositionX = 78.9f;
 		generationRow = 3;
 		freeMem = 2;
-		teli = GameObject.FindGameObjectWithTag ("Teli");
+
+		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
+
 		dependencies = new Vector2[10, 10];
 		strP = new Vector2[generationRow + 2];
 		str = new StructType[generationRow + 2];
@@ -173,11 +175,10 @@ public class SceneManagement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (teli.transform.position.x >= rightmostPositionX) {
+		if (mainCamera.transform.position.x >= rightmostPositionX) {
 			GenerateStructure();
 		}
-		if (teli.transform.position.x >= rightmostBackgroundPositionX) {
-			Debug.Log("Should generate background...");
+		if (mainCamera.transform.position.x >= rightmostBackgroundPositionX) {
 			if (background1.transform.position.x < background2.transform.position.x) {
 				// Should move background 1
 				background1.transform.position = new Vector2(background2.transform.position.x + 78.9f,
