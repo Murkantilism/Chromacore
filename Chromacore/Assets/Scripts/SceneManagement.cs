@@ -35,82 +35,82 @@ public class SceneManagement : MonoBehaviour {
 	}
 
 	void SetDependencies () {
-		Debug.Log ("Setting dependencies..."); for (int i=1; i<=8; i++) for (int j=1; j<=8; j++) dependencies [i, j] = new Vector2 (75, 0);
+		Debug.Log ("Setting dependencies...");
 
 		// For structs coming after 1
 		dependencies [1, 1] = new Vector2 (76.7f, 1.01f);
 		dependencies [1, 2] = new Vector2 (55.19f, -1.46f);
-		dependencies [1, 3] = new Vector2 (55.42f, 2f);
+		dependencies [1, 3] = new Vector2 (56.9f, 2.7f);			
 		dependencies [1, 4] = new Vector2 (72f, 1.27f);
-		dependencies [1, 5] = new Vector2 (56.42f, -1f);
-		dependencies [1, 6] = new Vector2 (56.85f, -1.51f);
-		dependencies [1, 7] = new Vector2 (63.02f, -1.33f);
+		dependencies [1, 5] = new Vector2 (56.42f, -1f);	
+		dependencies [1, 6] = new Vector2 (56.85f, -1.51f);	
+		dependencies [1, 7] = new Vector2 (63.02f, -1.33f);	
 		dependencies [1, 8] = new Vector2 (90.6f, 1.35f);
 
 		// For structs coming after 2
 		dependencies [2, 1] = new Vector2 (54.51f, 1.15f);
 		dependencies [2, 2] = new Vector2 (33.98f, -1.04f);
-		dependencies [2, 3] = new Vector2 (33.13f, 1.87f);
+		dependencies [2, 3] = new Vector2 (35.25f, 3.04f);
 		dependencies [2, 4] = new Vector2 (51.31f, 3.77f);
 		dependencies [2, 5] = new Vector2 (34.26f, -0.04f);
-		dependencies [2, 6] = new Vector2 (35.59f, -0.4f);
-		dependencies [2, 7] = new Vector2 (41.5f, -0.51f);
+		dependencies [2, 6] = new Vector2 (34.06f, -0.69f);
+		dependencies [2, 7] = new Vector2 (40.85f, -0.91f);
 		dependencies [2, 8] = new Vector2 (68.83f, 3.39f);
 
 		// For structs coming after 3
-		dependencies [3, 1] = new Vector2 (45.24f, 2.82f);
+		dependencies [3, 1] = new Vector2 (45.69f, 3.31f);
 		dependencies [3, 2] = new Vector2 (25.72f, 0f);
-		dependencies [3, 3] = new Vector2 (25.99f, 2.55f);
-		dependencies [3, 4] = new Vector2 (43.16f, 3.34f);
+		dependencies [3, 3] = new Vector2 (25.76f, 5.17f);
+		dependencies [3, 4] = new Vector2 (41.48f, 4.81f);
 		dependencies [3, 5] = new Vector2 (25.81f, 0.82f);
 		dependencies [3, 6] = new Vector2 (25.42f, 0.53f);
-		dependencies [3, 7] = new Vector2 (32.83f, 0f);
-		dependencies [3, 8] = new Vector2 (61.04f, 3.22f);
+		dependencies [3, 7] = new Vector2 (31.93f, 0.78f);
+		dependencies [3, 8] = new Vector2 (59.07f, 5.11f);
 
 		// For structs coming after 4
-		dependencies [4, 1] = new Vector2 (73.31f, 0.16f);
+		dependencies [4, 1] = new Vector2 (72.46f, 1.7f);
 		dependencies [4, 2] = new Vector2 (52.11f, -0.89f);
-		dependencies [4, 3] = new Vector2 (54.1f, 0f);
-		dependencies [4, 4] = new Vector2 (70.15f, 1.13f);
+		dependencies [4, 3] = new Vector2 (52.69f, 3.73f);
+		dependencies [4, 4] = new Vector2 (68.55f, 3.39f);
 		dependencies [4, 5] = new Vector2 (52.17f, 0f);
-		dependencies [4, 6] = new Vector2 (51.82f, -0.42f);
+		dependencies [4, 6] = new Vector2 (51.39f, -0.35f);
 		dependencies [4, 7] = new Vector2 (58.92f, -0.68f);
-		dependencies [4, 8] = new Vector2 (87.02f, 1.78f);
+		dependencies [4, 8] = new Vector2 (86.33f, 3.53f);
 
 		// For structs coming after 5
-		dependencies [5, 1] = new Vector2 (53.6f, 0f);
+		dependencies [5, 1] = new Vector2 (53.15f, 2.8f);
 		dependencies [5, 2] = new Vector2 (31.82f, 0f);
-		dependencies [5, 3] = new Vector2 (33.11f, 2.15f);
-		dependencies [5, 4] = new Vector2 (49.31f, 2.74f);
-		dependencies [5, 5] = new Vector2 (32.55f, -0.85f);
-		dependencies [5, 6] = new Vector2 (32.3f, 0.6f);
+		dependencies [5, 3] = new Vector2 (33.1f, 4.92f);
+		dependencies [5, 4] = new Vector2 (48.97f, 4.48f);
+		dependencies [5, 5] = new Vector2 (32.1f, 1.41f);
+		dependencies [5, 6] = new Vector2 (31.59f, 0.6f);
 		dependencies [5, 7] = new Vector2 (39.32f, 0.42f);
-		dependencies [5, 8] = new Vector2 (67.72f, 2.57f);
+		dependencies [5, 8] = new Vector2 (66.17f, 4.72f);
 
 		// For structs coming after 6
-		dependencies [6, 1] = new Vector2 (57.75f, 2.32f);
-		dependencies [6, 2] = new Vector2 (37.23f, 0f);
-		dependencies [6, 3] = new Vector2 (38.21f, 3.23f);
-		dependencies [6, 4] = new Vector2 (53.7f, 3f);
+		dependencies [6, 1] = new Vector2 (56.08f, 4.27f);
+		dependencies [6, 2] = new Vector2 (36.33f, 1.87f);
+		dependencies [6, 3] = new Vector2 (38.21f, 5.8f);
+		dependencies [6, 4] = new Vector2 (53.21f, 6.12f);
 		dependencies [6, 5] = new Vector2 (36.9f, 2.5f);
 		dependencies [6, 6] = new Vector2 (36.22f, 1.87f);
 		dependencies [6, 7] = new Vector2 (43.03f, 1.97f);
-		dependencies [6, 8] = new Vector2 (70.95f, 4.97f);
+		dependencies [6, 8] = new Vector2 (70.36f, 6.43f);
 
 		// For structs coming after 7
-		dependencies [7, 1] = new Vector2 (63.58f, 1.3f);
+		dependencies [7, 1] = new Vector2 (63.36f, 2.8f);
 		dependencies [7, 2] = new Vector2 (42.38f, 0.98f);
-		dependencies [7, 3] = new Vector2 (43.48f, 3.88f);
+		dependencies [7, 3] = new Vector2 (44.05f, 4.87f);
 		dependencies [7, 4] = new Vector2 (59.51f, 4.32f);
 		dependencies [7, 5] = new Vector2 (43.1f, 1.71f);
 		dependencies [7, 6] = new Vector2 (42.38f, 0.96f);
-		dependencies [7, 7] = new Vector2 (50.15f, -0.46f);
-		dependencies [7, 8] = new Vector2 (78.3f, 4f);
+		dependencies [7, 7] = new Vector2 (50.15f, 0.46f);
+		dependencies [7, 8] = new Vector2 (77.44f, 5.56f);
 
 		// For structs coming after 8
 		dependencies [8, 1] = new Vector2 (90.1f, -1.43f);
 		dependencies [8, 2] = new Vector2 (70.72f, -3.59f);
-		dependencies [8, 3] = new Vector2 (70.26f, -1.02f);
+		dependencies [8, 3] = new Vector2 (70.95f, 0.93f);
 		dependencies [8, 4] = new Vector2 (86.79f, 0f);
 		dependencies [8, 5] = new Vector2 (70.04f, -3.05f);
 		dependencies [8, 6] = new Vector2 (69.47f, -3.4f);
