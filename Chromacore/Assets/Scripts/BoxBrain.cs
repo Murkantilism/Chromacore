@@ -53,6 +53,17 @@ public class BoxBrain : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		RaycastHit2D[] hits = Physics2D.BoxCastAll (new Vector2 (gameObject.transform.position.x - 1f, gameObject.transform.position.y),
+		                                            new Vector2 (0.25f, 4.5f),
+		                                            0f,
+		                                            new Vector2 (-0.01f, 0f),
+		                                            3.5f);
+		foreach (RaycastHit2D ray in hits) {
+			if (ray.transform.gameObject.tag == "MisticBall") {
+				Destroy(ray.transform.gameObject);
+			}
+		}
+
 		if (shouldPlayAnimation) {
 			if (index >= BoxAnimation.Length)
 				shouldPlayAnimation = false;
