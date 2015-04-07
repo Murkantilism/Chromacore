@@ -6,10 +6,11 @@ public class TeliBrain : MonoBehaviour {
 
 	Animator teliAnimator;
 	GameObject mainCamera;
+	GameObject scoringSystem;
 	public float xSpeed = 5f;
 
 	bool jumped;
-	
+
 	// Animation states - Constants
 	const int RunAnimationState = 0;
 	const int PunchAnimationState = 1;
@@ -37,7 +38,7 @@ public class TeliBrain : MonoBehaviour {
 	float time;
 
 	void YouAreDead () {
-		Debug.Log ("I am dead");
+		scoringSystem.SendMessage ("RegisterScore");
 	}
 
 	void DisableJumped () {
@@ -54,6 +55,7 @@ public class TeliBrain : MonoBehaviour {
 		teliBody = GetComponent<Rigidbody2D> ();
 
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
+		scoringSystem = GameObject.FindGameObjectWithTag ("ScoringSystem");
 		teliAnimator = GetComponent<Animator> ();
 	}
 

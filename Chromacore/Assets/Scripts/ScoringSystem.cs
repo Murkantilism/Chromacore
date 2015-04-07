@@ -5,10 +5,26 @@ public class ScoringSystem : MonoBehaviour {
 	// Properties
 	float timeLapsed;
 	GUIText scoreLabel;
-	int score;
 	bool teliIsDead;
 
+	private int score;
+	private const string highScoreKey = "HighScore";
+
 	// Methods
+	public void RegisterScore () {
+		int currentHighScore = PlayerPrefs.GetInt (highScoreKey);
+
+		// Updating the high score
+		if (score > currentHighScore) {
+			PlayerPrefs.SetInt (highScoreKey, score);
+			PlayerPrefs.Save();
+		}
+	
+		// Do what you want with the updated high score and the current score
+		// ...
+		scoreLabel.text = "High Score: " + PlayerPrefs.GetInt (highScoreKey);
+	}
+
 	// Start method
 	public void SetCharacterAlive() {
 		teliIsDead = false;
