@@ -7,7 +7,7 @@ public class TeliBrain : MonoBehaviour {
 	Animator teliAnimator;
 	GameObject mainCamera;
 	GameObject scoringSystem;
-	public float xSpeed = 5f;
+	public float xSpeed = 4.5f;
 
 	bool jumped;
 
@@ -20,10 +20,7 @@ public class TeliBrain : MonoBehaviour {
 
 	public float jumpHeight = 0.2f;
 	private float deltaVelocity = -0.05f;
-	private float precisionError = 0.05f;
 	Rigidbody2D teliBody;
-	
-	Animator animator;
 
 	float levelTime;
 
@@ -34,11 +31,19 @@ public class TeliBrain : MonoBehaviour {
 
 	float oldvel;
 	float timeForVel;
-
-	float time;
+	
+	bool dead;
 
 	void YouAreDead () {
-		scoringSystem.SendMessage ("RegisterScore");
+		if (!dead) {
+			dead = true;
+			xSpeed = 0f;
+			this.transform.position = new Vector3(-1000f, -1000f, 1000f);
+			scoringSystem.SendMessage ("RegisterScore");
+
+			// Do whatever you want after teli dies
+			// ...
+		}
 	}
 
 	void DisableJumped () {
@@ -46,12 +51,11 @@ public class TeliBrain : MonoBehaviour {
 	}
 
 	void Start () {
-		time = 0;
+		dead = false;
 		timeForVel = 0;
 		levelTime = 0;
 		teliFalling = false;
 
-		animator = GetComponent<Animator> ();
 		teliBody = GetComponent<Rigidbody2D> ();
 
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
@@ -66,24 +70,24 @@ public class TeliBrain : MonoBehaviour {
 
 	void Update() {
 		// Managing punching
-		if (Input.GetKey (KeyCode.A) && animator.GetInteger ("state") == RunAnimationState)
-			animator.SetInteger ("state", PunchAnimationState);
+		if (Input.GetKey (KeyCode.A) && teliAnimator.GetInteger ("state") == RunAnimationState)
+			teliAnimator.SetInteger ("state", PunchAnimationState);
 
 		// Managing falling
 		if (teliBody.velocity.y < deltaVelocity) {
 			// Falling
 			teliFalling = true;
-			if (animator.GetInteger("state") != FallAnimationState)
-				animator.SetInteger("state", FallAnimationState);
-		} else if (animator.GetInteger("state") == FallAnimationState && !jumped && teliBody.velocity.y >= oldvel) {
+			if (teliAnimator.GetInteger("state") != FallAnimationState)
+				teliAnimator.SetInteger("state", FallAnimationState);
+		} else if (teliAnimator.GetInteger("state") == FallAnimationState && !jumped && teliBody.velocity.y >= oldvel) {
 			// Make Teli run again
 			teliFalling = false;
-			animator.SetInteger("state", RunAnimationState);
+			teliAnimator.SetInteger("state", RunAnimationState);
 		}
 
 		// Managing jumping
-		if (!teliFalling && !jumped && Input.GetKeyDown(KeyCode.Space) && animator.GetInteger ("state") == RunAnimationState) {
-			animator.SetInteger ("state", JumpAnimationState);
+		if (!teliFalling && !jumped && Input.GetKeyDown(KeyCode.Space) && teliAnimator.GetInteger ("state") == RunAnimationState) {
+			teliAnimator.SetInteger ("state", JumpAnimationState);
 			shouldJump = true;
 			jumped = true;
 			startPosition = this.transform.position.y;
@@ -95,7 +99,7 @@ public class TeliBrain : MonoBehaviour {
 			if (this.transform.position.y - startPosition > jumpHeight) {
 				shouldJump = false;
 				startPosition = this.transform.position.y;
-				animator.SetInteger("state", FallAnimationState);
+				teliAnimator.SetInteger("state", FallAnimationState);
 			}
 		}
 
@@ -109,7 +113,7 @@ public class TeliBrain : MonoBehaviour {
 		if (levelTime > 3f) {
 			if (xSpeed < 7f) {
 				xSpeed += 0.025f;
-				animator.speed += 0.005f;
+				teliAnimator.speed += 0.005f;
 				mainCamera.SendMessage("UpdateVelocity");
 			}
 

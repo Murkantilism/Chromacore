@@ -7,13 +7,13 @@ public class Pickup : MonoBehaviour {
 	// the object
 	private AudioClip collectSound;
 	GameObject scoringSystem;
-	CircleCollider2D collider;
+	CircleCollider2D BallCollider;
 	SpriteRenderer spriteRenderer;
 
 	// Use this for initialization
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		collider = GetComponent<CircleCollider2D> ();
+		BallCollider = GetComponent<CircleCollider2D> ();
 		scoringSystem = GameObject.FindGameObjectWithTag ("ScoringSystem");
 	}
 	
@@ -21,7 +21,7 @@ public class Pickup : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		if(col.gameObject.tag == "Teli") {
 			// Make this object invisible
-			Destroy(collider);
+			Destroy(BallCollider);
 			Destroy(spriteRenderer);
 			Destroy(gameObject, 3f);
 			

@@ -3,14 +3,14 @@ using System.Collections;
 
 public class FlashyLight : MonoBehaviour {
 
-	Light light;
+	Light thisLight;
 	float tm;
 	float tm2;
 	int sign;
 
 	// Use this for initialization
 	void Start () {
-		light = GetComponent<Light> ();
+		thisLight = GetComponent<Light> ();
 		tm = 0;
 		tm2 = 0;
 		sign = 1;
@@ -22,11 +22,11 @@ public class FlashyLight : MonoBehaviour {
 		tm2 += Time.deltaTime;
 	
 		if (tm2 >= Random.Range(0.01f, 0.05f)) {
-			if (light.intensity < 6 && sign == -1) {
+			if (thisLight.intensity < 6 && sign == -1) {
 				sign *= -1;
 				tm = 0;
 			}
-			light.intensity += (float)(sign * Random.Range (0.3f, 0.7f));
+			thisLight.intensity += (float)(sign * Random.Range (0.3f, 0.7f));
 			tm2 = 0;
 		}
 
