@@ -38,7 +38,9 @@ public class TeliBrain : MonoBehaviour {
 		if (!dead) {
 			dead = true;
 			xSpeed = 0f;
-			this.transform.position = new Vector3(-1000f, -1000f, 1000f);
+			// Putting teli in a "safe" position, but only if he died by not catching up with the camera
+			if (gameObject.transform.position.x < mainCamera.transform.position.x - 9.35f)
+				gameObject.transform.position = new Vector3(-1000f, -1000f, 1000f);
 			scoringSystem.SendMessage ("RegisterScore");
 
 			// Do whatever you want after teli dies
@@ -90,15 +92,15 @@ public class TeliBrain : MonoBehaviour {
 			teliAnimator.SetInteger ("state", JumpAnimationState);
 			shouldJump = true;
 			jumped = true;
-			startPosition = this.transform.position.y;
+			startPosition = gameObject.transform.position.y;
 			Invoke("DisableJumped", 0.8f);
 		}
 
 		if (shouldJump) {
 			teliBody.velocity = new Vector2(teliBody.velocity.x, teliBody.velocity.y + 1);
-			if (this.transform.position.y - startPosition > jumpHeight) {
+			if (gameObject.transform.position.y - startPosition > jumpHeight) {
 				shouldJump = false;
-				startPosition = this.transform.position.y;
+				startPosition = gameObject.transform.position.y;
 				teliAnimator.SetInteger("state", FallAnimationState);
 			}
 		}

@@ -18,6 +18,11 @@ public class BoxBrain : MonoBehaviour {
 
 
 	// Methods
+	void DestroyYourself () {
+		Destroy (gameObject);
+		Destroy (gameObject.transform.parent.gameObject);
+	}
+
 	int RandomIntLowerThan(int x) {
 		int rand = (int)Random.Range (0, x);
 		return rand;
@@ -31,6 +36,7 @@ public class BoxBrain : MonoBehaviour {
 				AudioSource BoxAudioSource = GetComponent<AudioSource>();
 				BoxAudioSource.clip = BoxSounds[RandomIntLowerThan(BoxSounds.Length)];
 				BoxAudioSource.Play();
+				Invoke("DestroyYourself", 3f);
 			}
 		}
 	}

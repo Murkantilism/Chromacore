@@ -25,7 +25,7 @@ public class FollowTeli : MonoBehaviour {
 
 		cameraBody = GetComponent<Rigidbody2D> ();
 
-		this.transform.position = new Vector3 (teli.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
+		gameObject.transform.position = new Vector3 (teli.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
 		cameraBody.velocity = new Vector2 (cameraBody.velocity.x + 4.5f, 0);
 
 		shouldFollow = true;
@@ -41,11 +41,11 @@ public class FollowTeli : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (shouldFollow) {
-			if (teli.transform.position.x < this.transform.position.x - 9.35f) {
+			if (teli.transform.position.x < gameObject.transform.position.x - 9.35f) {
 				StopFollowing();
 				teli.SendMessage("YouAreDead");
 			} else {
-				this.transform.position = new Vector3 (this.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
+				gameObject.transform.position = new Vector3 (gameObject.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
 				background1.transform.position = new Vector3(background1.transform.position.x,
 			                                     	         teli.transform.position.y + 5.5f,
 			                                          	     background1.transform.position.z);

@@ -21,7 +21,7 @@ public class MisticBallsGenerator : MonoBehaviour {
 			int index = Random.Range (0, points.Length);
 			while (used[index] == true)
 				index = Random.Range (0, points.Length);
-			(Instantiate (misticBall, new Vector3(this.transform.position.x + points[index].x, this.transform.position.y + points[index].y, 0f), Quaternion.identity) as GameObject).transform.parent = this.transform;
+			(Instantiate (misticBall, new Vector3(gameObject.transform.position.x + points[index].x, gameObject.transform.position.y + points[index].y, 0f), Quaternion.identity) as GameObject).transform.parent = gameObject.transform;
 			used[index] = true;
 		}
 	}
