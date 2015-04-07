@@ -4,10 +4,13 @@ using System.Collections.Generic;
 
 public class TeliBrain : MonoBehaviour {
 
+	Animator teliAnimator;
+	GameObject mainCamera;
+	GameObject scoringSystem;
 	public float xSpeed = 5f;
 
 	bool jumped;
-	
+
 	// Animation states - Constants
 	const int RunAnimationState = 0;
 	const int PunchAnimationState = 1;
@@ -22,6 +25,8 @@ public class TeliBrain : MonoBehaviour {
 	
 	Animator animator;
 
+	float levelTime;
+
 	bool teliFalling;
 	bool shouldJump;
 
@@ -33,7 +38,7 @@ public class TeliBrain : MonoBehaviour {
 	float time;
 
 	void YouAreDead () {
-		Debug.Log ("I am dead");
+		scoringSystem.SendMessage ("RegisterScore");
 	}
 
 	void DisableJumped () {
@@ -43,10 +48,15 @@ public class TeliBrain : MonoBehaviour {
 	void Start () {
 		time = 0;
 		timeForVel = 0;
+		levelTime = 0;
 		teliFalling = false;
 
 		animator = GetComponent<Animator> ();
 		teliBody = GetComponent<Rigidbody2D> ();
+
+		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
+		scoringSystem = GameObject.FindGameObjectWithTag ("ScoringSystem");
+		teliAnimator = GetComponent<Animator> ();
 	}
 
 	void FixedUpdate() {
@@ -93,6 +103,17 @@ public class TeliBrain : MonoBehaviour {
 		if (timeForVel > 0.07) {
 			oldvel = teliBody.velocity.y;
 			timeForVel = 0;
+		}
+
+		levelTime += Time.deltaTime;
+		if (levelTime > 3f) {
+			if (xSpeed < 7f) {
+				xSpeed += 0.025f;
+				animator.speed += 0.005f;
+				mainCamera.SendMessage("UpdateVelocity");
+			}
+
+			levelTime = 0;
 		}
 	}
 }

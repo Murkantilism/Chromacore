@@ -10,11 +10,19 @@ public class FollowTeli : MonoBehaviour {
 	public GameObject background1;
 	public GameObject background2;
 
+	float unit;
+
+	void UpdateVelocity() {
+		cameraBody.velocity = new Vector2 (cameraBody.velocity.x + 0.025f, 0);
+	}
+
 	void StopFollowing() {
 		shouldFollow = false;
 	}
 
 	void StartFollowing() {
+		unit = 0f;
+
 		cameraBody = GetComponent<Rigidbody2D> ();
 
 		this.transform.position = new Vector3 (teli.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
@@ -46,8 +54,10 @@ public class FollowTeli : MonoBehaviour {
 			                                             	 background2.transform.position.z);
 			}
 		} else {
-			if (cameraBody.velocity.x >= 0.02f)
-				cameraBody.velocity = new Vector2(cameraBody.velocity.x - 0.02f, cameraBody.velocity.y);
+			if (unit == 0)
+				unit = cameraBody.velocity.x / 128f;
+			if (cameraBody.velocity.x >= unit)
+				cameraBody.velocity = new Vector2(cameraBody.velocity.x - unit, cameraBody.velocity.y);
 			else
 				cameraBody.velocity = new Vector2(0f, cameraBody.velocity.y);
 		}
