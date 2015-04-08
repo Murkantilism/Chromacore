@@ -6,6 +6,7 @@ public class BoardBrain : MonoBehaviour {
 	GameObject mainCamera;
 	GUIText scoreLabel;
 	Renderer boardRenderer;
+	GameObject[] boardButtons;
 
 	bool shouldUpdate;
 
@@ -15,6 +16,9 @@ public class BoardBrain : MonoBehaviour {
 		boardRenderer.enabled = true;
 
 		scoreLabel.text = labelToSet;
+
+		foreach (GameObject boardButton in boardButtons)
+			boardButton.SetActive(true);
 	}
 
 	// Use this for initialization
@@ -26,6 +30,11 @@ public class BoardBrain : MonoBehaviour {
 		GameObject scoreBoardGUI = GameObject.FindGameObjectWithTag ("ScoreBoardGUI");
 
 		scoreLabel = scoreBoardGUI.GetComponent<GUIText>();
+
+		boardButtons = GameObject.FindGameObjectsWithTag ("BoardButton");
+		foreach (GameObject boardButton in boardButtons)
+			boardButton.SetActive(false);
+
 		scoreLabel.enabled = false;
 		boardRenderer.enabled = false;
 		scoreLabel.pixelOffset = new Vector2(Screen.width/2, Screen.height/2 + 20);
