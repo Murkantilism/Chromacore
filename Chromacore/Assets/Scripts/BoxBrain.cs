@@ -29,14 +29,16 @@ public class BoxBrain : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D col) {
-		for (int i = 0; i < TeliPunchAnimation.Length; i++) {
-			if (TeliSpriteRenderer.sprite == TeliPunchAnimation[i]) {
-				Destroy(GetComponent<BoxCollider2D>());
-				shouldPlayAnimation = true;
-				AudioSource BoxAudioSource = GetComponent<AudioSource>();
-				BoxAudioSource.clip = BoxSounds[RandomIntLowerThan(BoxSounds.Length)];
-				BoxAudioSource.Play();
-				Invoke("DestroyYourself", 3f);
+		if (col.gameObject.tag == "Teli") {
+			for (int i = 0; i < TeliPunchAnimation.Length; i++) {
+				if (TeliSpriteRenderer.sprite == TeliPunchAnimation [i]) {
+					Destroy (GetComponent<BoxCollider2D> ());
+					shouldPlayAnimation = true;
+					AudioSource BoxAudioSource = GetComponent<AudioSource> ();
+					BoxAudioSource.clip = BoxSounds [RandomIntLowerThan (BoxSounds.Length)];
+					BoxAudioSource.Play ();
+					Invoke ("DestroyYourself", 3f);
+				}
 			}
 		}
 	}

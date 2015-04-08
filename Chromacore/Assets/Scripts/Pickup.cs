@@ -19,7 +19,7 @@ public class Pickup : MonoBehaviour {
 	
 	// Upon picking up this object, trigger events
 	void OnTriggerEnter2D(Collider2D col) {
-		if(col.gameObject.tag == "Teli") {
+		if(col.gameObject.tag == "Teli" || col.gameObject.tag == "AutoTeli") {
 			// Make this object invisible
 			Destroy(BallCollider);
 			Destroy(spriteRenderer);
