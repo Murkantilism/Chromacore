@@ -12,8 +12,8 @@ public class BoxesGenerator : MonoBehaviour {
 	}
 
 	void GenerateBoxes() {
-		int randomNumber = RandomIntLowerThan (100);
-		if (randomNumber % 2 == 0) {
+		int randomNumber = RandomIntLowerThan (21);
+		if (randomNumber % 5 != 0) {
 			// Should generate a box on this structure
 			int index = RandomIntLowerThan(points.Length);
 			(Instantiate (box, new Vector3(gameObject.transform.position.x + points[index].x, gameObject.transform.position.y + points[index].y, 0f), Quaternion.identity) as GameObject).transform.parent = gameObject.transform;
