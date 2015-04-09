@@ -19,8 +19,8 @@ public class TeliBrain : MonoBehaviour {
 	const int DeathAnimationState = 4;
 
 	public float jumpHeight = 0.2f;
-	private float deltaVelocity = -0.1f;
-	private const float errorVel = 0.2f;
+	private float deltaVelocity = -0.2f;
+	private const float errorVel = 0.1f;
 	Rigidbody2D teliBody;
 
 	float levelTime;

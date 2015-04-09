@@ -57,7 +57,6 @@ public class BackgroundManagement : MonoBehaviour {
 				rightmostPositionX = struct3.transform.position.x;
 			} else if (rightmostPositionX == struct3.transform.position.x) {
 				// Struct 1 follows
-				Debug.Log("Here");
 				struct1.transform.position = new Vector2(struct3.transform.position.x + 69.5f,
 				                                         struct3.transform.position.y - 3.89f);
 				struct1.SendMessage("GenerateBoxes");
