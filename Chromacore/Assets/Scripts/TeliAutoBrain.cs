@@ -34,7 +34,7 @@ public class TeliAutoBrain : MonoBehaviour {
 
 	// Auto-control methods
 	public void Jump() {
-		if (!teliFalling && !jumped && teliAnimator.GetInteger ("state") == RunAnimationState) {
+		if (!teliFalling && !jumped) {
 			teliAnimator.SetInteger ("state", JumpAnimationState);
 			shouldJump = true;
 			jumped = true;
