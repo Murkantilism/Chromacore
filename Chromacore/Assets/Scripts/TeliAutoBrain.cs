@@ -18,32 +18,35 @@ public class TeliAutoBrain : MonoBehaviour {
 	const int DeathAnimationState = 4;
 	
 	public float jumpHeight = 0.2f;
-	private float deltaVelocity = -0.05f;
+	private float deltaVelocity = -0.1f;
+	private const float errorVel = 0.2f;
 	Rigidbody2D teliBody;
 	
 	float levelTime;
-
-	float timeForVel;
+	
+	bool teliFalling;
 	bool shouldJump;
 	
 	float startPosition;
 	
 	float oldvel;
+	float timeForVel;
 
 	// Auto-control methods
 	public void Jump() {
-		teliAnimator.SetInteger ("state", JumpAnimationState);
-		shouldJump = true;
-		jumped = true;
-		startPosition = gameObject.transform.position.y;
-		Invoke("DisableJumped", 0.8f);
+		if (!teliFalling && !jumped && teliAnimator.GetInteger ("state") == RunAnimationState) {
+			teliAnimator.SetInteger ("state", JumpAnimationState);
+			shouldJump = true;
+			jumped = true;
+			startPosition = gameObject.transform.position.y;
+			Invoke("DisableJumped", 0.8f);
+		}
 	}
 	
 	public void Punch() {
 		teliAnimator.SetInteger ("state", PunchAnimationState);
 	}
-
-
+	
 	void DisableJumped () {
 		jumped = false;
 	}
@@ -51,6 +54,7 @@ public class TeliAutoBrain : MonoBehaviour {
 	void Start () {
 		timeForVel = 0;
 		levelTime = 0;
+		teliFalling = false;
 		
 		teliBody = GetComponent<Rigidbody2D> ();
 		
@@ -64,18 +68,26 @@ public class TeliAutoBrain : MonoBehaviour {
 	}
 	
 	void Update() {
-		// Managing falling
-		RaycastHit2D hitBox = Physics2D.BoxCast (new Vector2 (this.transform.position.x, this.transform.position.y), new Vector2 (0.25f, 4f), 0, new Vector2 (0.1f, 0f));
-		if (hitBox)
-			if (hitBox.collider.gameObject.tag == "Box")
-				Punch ();
+		// Detecting boxes
+		RaycastHit2D[] hits = Physics2D.RaycastAll (new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y),
+		                                           new Vector2 (1f, 0f),
+		                                           2f);
+		foreach (RaycastHit2D hit in hits) {
+			if (hit.collider) {
+				if (hit.collider.gameObject.tag == "Box")
+					Punch ();
+			}
+		}
 
+		// Managing falling
 		if (teliBody.velocity.y < deltaVelocity) {
 			// Falling
+			teliFalling = true;
 			if (teliAnimator.GetInteger("state") != FallAnimationState)
 				teliAnimator.SetInteger("state", FallAnimationState);
-		} else if (teliAnimator.GetInteger("state") == FallAnimationState && !jumped && teliBody.velocity.y >= oldvel) {
+		} else if (teliAnimator.GetInteger("state") == FallAnimationState && !jumped && (teliBody.velocity.y >= oldvel || Mathf.Abs(teliBody.velocity.y) <= errorVel)) {
 			// Make Teli run again
+			teliFalling = false;
 			teliAnimator.SetInteger("state", RunAnimationState);
 		}
 		
