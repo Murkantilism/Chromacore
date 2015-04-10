@@ -16,7 +16,6 @@ public class TeliBrain : MonoBehaviour {
 	const int PunchAnimationState = 1;
 	const int JumpAnimationState = 2;
 	const int FallAnimationState = 3;
-	const int DeathAnimationState = 4;
 
 	public float jumpHeight = 0.2f;
 	private float deltaVelocity = -0.1f;

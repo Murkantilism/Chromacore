@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class TeliAutoBrain : MonoBehaviour {
 	
 	Animator teliAnimator;
-	GameObject mainCamera;
 	public float xSpeed = 4.5f;
 	
 	bool jumped;
@@ -15,7 +14,6 @@ public class TeliAutoBrain : MonoBehaviour {
 	const int PunchAnimationState = 1;
 	const int JumpAnimationState = 2;
 	const int FallAnimationState = 3;
-	const int DeathAnimationState = 4;
 	
 	public float jumpHeight = 0.2f;
 	private float deltaVelocity = -0.05f;
@@ -52,8 +50,6 @@ public class TeliAutoBrain : MonoBehaviour {
 		timeForVel = 0;
 		
 		teliBody = GetComponent<Rigidbody2D> ();
-		
-		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 		teliAnimator = GetComponent<Animator> ();
 	}
 	
