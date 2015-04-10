@@ -44,7 +44,7 @@ public class FollowAutoTeli : MonoBehaviour {
 			if (teli.transform.position.x < gameObject.transform.position.x - 9.35f) {
 				StopFollowing();
 			} else {
-				gameObject.transform.position = new Vector3 (gameObject.transform.position.x, teli.transform.position.y + 3.2f, -12.5f);
+				gameObject.transform.position = new Vector3 (gameObject.transform.position.x, teli.transform.position.y + 3f, -12.5f);
 				background1.transform.position = new Vector3(background1.transform.position.x,
 				                                             teli.transform.position.y + 5.5f,
 				                                             background1.transform.position.z);

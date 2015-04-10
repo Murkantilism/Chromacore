@@ -13,13 +13,9 @@ public class MoveToRight : MonoBehaviour {
 	}
 
 	void Update () {
-		if (this.transform.position.x >= 13f) {
-			if (unit == 0)
-				unit = cameraBody.velocity.x / 128f;
-			if (cameraBody.velocity.x >= unit)
-				cameraBody.velocity = new Vector2 (cameraBody.velocity.x - unit, cameraBody.velocity.y);
-			else
-				cameraBody.velocity = new Vector2 (0f, cameraBody.velocity.y);
-		}
+		if (this.transform.position.x >= 15f)
+			cameraBody.velocity = new Vector2 (-1.75f, 0f);
+		else if (this.transform.position.x <= -7)
+			cameraBody.velocity = new Vector2 (1.75f, 0f);
 	}
 }
