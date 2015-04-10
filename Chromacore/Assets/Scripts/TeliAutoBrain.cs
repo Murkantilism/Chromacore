@@ -18,13 +18,10 @@ public class TeliAutoBrain : MonoBehaviour {
 	const int DeathAnimationState = 4;
 	
 	public float jumpHeight = 0.2f;
-	private float deltaVelocity = -0.2f;
-	private const float errorVel = 0.1f;
+	private float deltaVelocity = -0.05f;
+	private const float errorVel = 0.05f;
 	Rigidbody2D teliBody;
-	
-	float levelTime;
-	
-	bool teliFalling;
+
 	bool shouldJump;
 	
 	float startPosition;
@@ -34,7 +31,7 @@ public class TeliAutoBrain : MonoBehaviour {
 
 	// Auto-control methods
 	public void Jump() {
-		if (!teliFalling && !jumped) {
+		if (!jumped) {
 			teliAnimator.SetInteger ("state", JumpAnimationState);
 			shouldJump = true;
 			jumped = true;
@@ -53,8 +50,6 @@ public class TeliAutoBrain : MonoBehaviour {
 	
 	void Start () {
 		timeForVel = 0;
-		levelTime = 0;
-		teliFalling = false;
 		
 		teliBody = GetComponent<Rigidbody2D> ();
 		
@@ -73,21 +68,20 @@ public class TeliAutoBrain : MonoBehaviour {
 		                                           new Vector2 (1f, 0f),
 		                                           2f);
 		foreach (RaycastHit2D hit in hits) {
-			if (hit.collider) {
+			if (hit.collider)
 				if (hit.collider.gameObject.tag == "Box")
 					Punch ();
-			}
 		}
 
 		// Managing falling
 		if (teliBody.velocity.y < deltaVelocity) {
 			// Falling
-			teliFalling = true;
 			if (teliAnimator.GetInteger("state") != FallAnimationState)
 				teliAnimator.SetInteger("state", FallAnimationState);
 		} else if (teliAnimator.GetInteger("state") == FallAnimationState && !jumped && (teliBody.velocity.y >= oldvel || Mathf.Abs(teliBody.velocity.y) <= errorVel)) {
 			// Make Teli run again
-			teliFalling = false;
+			Debug.Log("here!");
+			jumped = false;
 			teliAnimator.SetInteger("state", RunAnimationState);
 		}
 		
@@ -104,17 +98,6 @@ public class TeliAutoBrain : MonoBehaviour {
 		if (timeForVel > 0.07) {
 			oldvel = teliBody.velocity.y;
 			timeForVel = 0;
-		}
-		
-		levelTime += Time.deltaTime;
-		if (levelTime > 3f) {
-			if (xSpeed < 7f) {
-				xSpeed += 0.025f;
-				teliAnimator.speed += 0.005f;
-				mainCamera.SendMessage("UpdateVelocity");
-			}
-			
-			levelTime = 0;
 		}
 	}
 }
