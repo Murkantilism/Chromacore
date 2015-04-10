@@ -1,32 +1,36 @@
 Chromacore
 ==========
-
+Github Game Off 2015
+--------------------
+<br></br>
 ## Description
 
-Chromacore is a 2D musical platformer set in a dark, black & white world that progressively becomes more colorful and happy through successful gameplay.
+Chromacore is a 2D infinite musical platformer set in the dark. Our thief struggles to run away from other mystic forces slowing him down. Run, run and run!
 
-Positive audiovisual feedback rewards players for successful gameplay, while negative feedback is non-existent.
+Built with Unity 5 (Personal Edition)
+<br></br><br></br>
+The game can be found here: http://catalincraciun.me/Chromacore
+<br></br>
+The initial version of the game can be found here: http://catalincraciun.me/OLDChromacore
+<br></br><br></br>
+A youtube gameplay video can be found here: [Coming soon]
 
-## Playable Game
-
-Android: https://play.google.com/store/apps/details?id=com.Deniz_Ozkaynak.Chromacore
-
-PC/Mac/Linux: http://www.desura.com/games/chromacore
-
-iOS: Coming Soon
-
-Depricated web prototype available here: http://www.ccs.neu.edu/home/ozkaynak/Chromacore/Chromacore_buildIndex.html?ref=live
-
-## In-Game Screenshot
+## "Before" game screenshots
 
 ![Chromacore - In-Game Screenshot](https://raw.github.com/Murkantilism/game-off-2013/master/ChromacoreInGameScreenshot.png)
 
-## Early Concept Art
+## "After" game screenshots
 
-![Chromacore - Early Concept Art](https://raw.github.com/Murkantilism/game-off-2013/master/ChromacoreEarlyConceptArt.jpg)
+Coming soon!
+
+### What we have changed
+
+Coming soon!
 
 ## The Team
 
-The prototype for this game was originally developed by Deniz Ozkaynak, Jen Tella, Korbin Shuffelton, and Jeff Fienberg at Northeastern University for the Game Assets & Prototyping class, taught by Joshua Gross.
+Special thanks to the initial authors which have set the basis of this game: Deniz Ozkaynak, Jen Tella, Korbin Shuffelton, Jeff Fienberg, Ronny Mraz, Sean King.
 
-Development of Chromacore into a full game is continued by Deniz Ozkaynak, Ronny Mraz, Sean King, Jen Tella, and Korbin Shuffelton.
+The project has been continued by a two-member motivated team:
+- Code: Catalin Craciun
+- Art: Domide Bogdan
