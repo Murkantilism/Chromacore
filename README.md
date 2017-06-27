@@ -1,5 +1,6 @@
 Chromacore
 ==========
+[The full game is now avaialble on itch.io for free](https://incendiaryindustries.itch.io/chromacore)
 
 ## Description
 
@@ -25,4 +26,4 @@ PC/Mac/Linux: https://incendiaryindustries.itch.io/chromacore
 
 The prototype for this game was originally developed by Deniz Ozkaynak, Jen Tella, Korbin Shuffelton, and Jeff Fienberg at Northeastern University for the Game Assets & Prototyping class, taught by Joshua Gross.
 
-Development of Chromacore into a full game is continued by Deniz Ozkaynak, Ronny Mraz, Sean King, Jen Tella, and Korbin Shuffelton.
+Development of Chromacore into a full game was continued by Deniz Ozkaynak, Ronny Mraz, Sean King, Jen Tella, and Korbin Shuffelton.
