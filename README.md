@@ -20,7 +20,25 @@ PC/Mac/Linux: https://incendiaryindustries.itch.io/chromacore
 
 ## Early Concept Art
 
-![Chromacore - Early Concept Art](https://raw.github.com/Murkantilism/game-off-2013/master/ChromacoreEarlyConceptArt.jpg)
+### Storyboards
+
+![Chromacore - Storyboards](https://raw.githubusercontent.com/Murkantilism/Chromacore/master/color_storyboard1.jpg)
+
+![Chromacore - Storyboards](https://raw.githubusercontent.com/Murkantilism/Chromacore/master/color_storyboard2.jpg)
+
+![Chromacore - Storyboards](https://raw.githubusercontent.com/Murkantilism/Chromacore/master/color_storyboard3.jpg)
+
+### Character Art
+
+![Chromacore - Early Concept of Teli](https://raw.github.com/Murkantilism/game-off-2013/master/ChromacoreEarlyConceptArt.jpg)
+
+![Chromacore - Early Character Art](https://raw.githubusercontent.com/Murkantilism/Chromacore/master/concept_2.jpg)
+
+![Chromacore - Early Character Art](https://raw.githubusercontent.com/Murkantilism/Chromacore/master/leit_concept_3.jpg)
+
+![Chromacore - Early Character Art](https://raw.githubusercontent.com/Murkantilism/Chromacore/master/lineup_BW.jpg)
+
+![Chromacore - Early Character Art](https://raw.githubusercontent.com/Murkantilism/Chromacore/master/lineup_color.jpg)
 
 ## The Team
 
